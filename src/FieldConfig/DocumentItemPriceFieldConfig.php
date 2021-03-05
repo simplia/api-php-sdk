@@ -11,6 +11,8 @@ namespace Simplia\Api\FieldConfig;
 
 class DocumentItemPriceFieldConfig extends AbstractFieldConfig {
     public function withId(): self {
+        $this->fields['id'] = true;
+
         return $this;
     }
 

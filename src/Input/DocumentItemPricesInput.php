@@ -10,7 +10,12 @@ declare(strict_types=1);
 namespace Simplia\Api\Input;
 
 class DocumentItemPricesInput extends AbstractApiInput {
-    public function setItems($items): self {
+    /**
+     * @param DocumentItemPriceInput[] $items
+     * @return $this
+     */
+    public function setItems(array $items): self {
+        self::validateArray($items, DocumentItemPriceInput::class);
         $this->params['items'] = $items;
 
         return $this;

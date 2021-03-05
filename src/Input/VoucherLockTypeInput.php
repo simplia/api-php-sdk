@@ -16,7 +16,7 @@ class VoucherLockTypeInput extends AbstractApiInput {
         return $this;
     }
 
-    public function setTtl($ttl): self {
+    public function setTtl(int $ttl): self {
         $this->params['ttl'] = $ttl;
 
         return $this;

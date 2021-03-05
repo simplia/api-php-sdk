@@ -12,7 +12,8 @@ namespace Simplia\Api\Entity;
 use Simplia\Api\FieldConfig\DocumentItemPriceFieldConfig;
 
 class DocumentItemPriceApiEntity extends AbstractApiEntity {
-    public function getId() {
+    public function getId(): int {
+        return $this->returnField('id');
     }
 
     public function getPrice(): float {
