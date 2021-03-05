@@ -1,0 +1,25 @@
+{
+    "name": "simplia/api",
+    "type": "library",
+    "description": "",
+    "authors": [
+        {
+            "name": "Petr Soukup",
+            "email": "soukup@simplia.cz"
+        }
+    ],
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Simplia\\Api\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.4",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^7.2"
+    }
+}
