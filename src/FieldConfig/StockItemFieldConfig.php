@@ -34,6 +34,12 @@ class StockItemFieldConfig extends AbstractFieldConfig {
         return $this;
     }
 
+    public function withFullPrice(): self {
+        $this->fields['full_price'] = true;
+
+        return $this;
+    }
+
     public function withTotalStockAmount(): self {
         $this->fields['total_stock_amount'] = true;
 

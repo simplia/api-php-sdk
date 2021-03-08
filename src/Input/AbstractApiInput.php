@@ -28,7 +28,7 @@ abstract class AbstractApiInput {
 
     protected static function validateArray(array $values, string $class): void {
         foreach ($values as $value) {
-            if (!is_object($value) || !is_subclass_of($value, $class)) {
+            if (!is_object($value) || get_class($value) !== $class) {
                 throw new \RuntimeException('Expected value of type ' . $class);
             }
         }

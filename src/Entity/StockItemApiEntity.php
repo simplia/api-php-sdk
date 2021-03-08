@@ -28,6 +28,10 @@ class StockItemApiEntity extends AbstractApiEntity {
         return $this->returnField('ean');
     }
 
+    public function getFullPrice(): float {
+        return $this->returnField('full_price');
+    }
+
     public function getTotalStockAmount(): int {
         return $this->returnField('total_stock_amount');
     }
