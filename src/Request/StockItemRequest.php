@@ -21,6 +21,16 @@ class StockItemRequest extends AbstractApiRequest {
     }
 
     /**
+     * @param string[] $codes Stock item codes
+     * @return $this
+     */
+    public function whereCodes(array $codes): self {
+        $this->params['codes'] = $codes;
+
+        return $this;
+    }
+
+    /**
      * @param bool $inStock Only items currently in stock
      * @return $this
      */

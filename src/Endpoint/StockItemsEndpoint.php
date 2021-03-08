@@ -12,6 +12,7 @@ namespace Simplia\Api\Endpoint;
 use Generator;
 use Simplia\Api\Entity\StockItemApiEntity;
 use Simplia\Api\FieldConfig\StockItemFieldConfig;
+use Simplia\Api\Input\StockItemBatchTypeInput;
 use Simplia\Api\Request\StockItemRequest;
 
 class StockItemsEndpoint extends AbstractEndpoint {
@@ -40,5 +41,16 @@ class StockItemsEndpoint extends AbstractEndpoint {
         $result = $this->singleResult('stock-items/' . $id, [], $fields);
 
         return $result ? new StockItemApiEntity($result) : null;
+    }
+
+    /**
+     * Update stock items
+     *
+     * return StockItemApiEntity[]
+     */
+    final public function batchUpdate(StockItemBatchTypeInput $input, ?StockItemFieldConfig $fields = null): array {
+        $result = $this->request('put', 'stock-items/batch', [], $input, $fields);
+
+        return array_map(static fn(array $row) => new StockItemApiEntity($row), $result);
     }
 }
