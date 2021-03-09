@@ -2,7 +2,9 @@
 
 namespace Simplia\Api\Input;
 
-abstract class AbstractApiInput {
+use Countable;
+
+abstract class AbstractApiInput implements Countable {
     protected array $params = [];
 
     public function toArray(): array {
@@ -34,7 +36,8 @@ abstract class AbstractApiInput {
         }
     }
 
-    final public function isEmpty(): bool {
-        return empty($this->params);
+    public function count(): int {
+        return count($this->params);
     }
+
 }
