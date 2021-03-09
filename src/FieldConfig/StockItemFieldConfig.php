@@ -46,6 +46,12 @@ class StockItemFieldConfig extends AbstractFieldConfig {
         return $this;
     }
 
+    public function withAvailabilityHours(): self {
+        $this->fields['availability_hours'] = true;
+
+        return $this;
+    }
+
     public function withName(): self {
         $this->fields['name'] = true;
 
