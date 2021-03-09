@@ -33,4 +33,8 @@ abstract class AbstractApiInput {
             }
         }
     }
+
+    final public function isEmpty(): bool {
+        return empty($this->params);
+    }
 }
