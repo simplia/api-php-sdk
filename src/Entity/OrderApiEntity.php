@@ -97,6 +97,10 @@ class OrderApiEntity extends AbstractApiEntity {
         return $this->returnField('total_price');
     }
 
+    public function getTotalPriceWithoutVat(): float {
+        return $this->returnField('total_price_without_vat');
+    }
+
     public function getTotalPaid(): float {
         return $this->returnField('total_paid');
     }

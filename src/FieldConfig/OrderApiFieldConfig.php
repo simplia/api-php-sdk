@@ -124,6 +124,12 @@ class OrderApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withTotalPriceWithoutVat(): self {
+        $this->fields['total_price_without_vat'] = true;
+
+        return $this;
+    }
+
     public function withTotalPaid(): self {
         $this->fields['total_paid'] = true;
 
