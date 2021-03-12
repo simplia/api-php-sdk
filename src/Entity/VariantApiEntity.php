@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\FieldConfig\VariantFieldConfig;
+use Simplia\Api\FieldConfig\VariantApiFieldConfig;
 
 class VariantApiEntity extends AbstractApiEntity {
     public function getId(): int {
@@ -32,7 +32,7 @@ class VariantApiEntity extends AbstractApiEntity {
         return $this->returnField('ean');
     }
 
-    final public static function createFieldConfig(): VariantFieldConfig {
-        return new VariantFieldConfig();
+    final public static function createFieldConfig(): VariantApiFieldConfig {
+        return new VariantApiFieldConfig();
     }
 }

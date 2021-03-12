@@ -7,17 +7,17 @@
 
 namespace Simplia\Api;
 
-use Simplia\Api\Endpoint\ArticlesEndpoint;
-use Simplia\Api\Endpoint\AvailabilitiesEndpoint;
-use Simplia\Api\Endpoint\DocumentsEndpoint;
-use Simplia\Api\Endpoint\OrdersEndpoint;
-use Simplia\Api\Endpoint\PackagesEndpoint;
-use Simplia\Api\Endpoint\PaymentsEndpoint;
-use Simplia\Api\Endpoint\StockItemsEndpoint;
-use Simplia\Api\Endpoint\StockRoomsEndpoint;
-use Simplia\Api\Endpoint\TextPagesEndpoint;
-use Simplia\Api\Endpoint\VoucherEndpoint;
-use Simplia\Api\Endpoint\VoucherLockEndpoint;
+use Simplia\Api\Endpoint\ArticlesApiEndpoint;
+use Simplia\Api\Endpoint\AvailabilitiesApiEndpoint;
+use Simplia\Api\Endpoint\DocumentsApiEndpoint;
+use Simplia\Api\Endpoint\OrdersApiEndpoint;
+use Simplia\Api\Endpoint\PackagesApiEndpoint;
+use Simplia\Api\Endpoint\PaymentsApiEndpoint;
+use Simplia\Api\Endpoint\StockItemsApiEndpoint;
+use Simplia\Api\Endpoint\StockRoomsApiEndpoint;
+use Simplia\Api\Endpoint\TextPagesApiEndpoint;
+use Simplia\Api\Endpoint\VoucherApiEndpoint;
+use Simplia\Api\Endpoint\VoucherLockApiEndpoint;
 
 final class Api {
     public RequestHandler $client;
@@ -30,47 +30,47 @@ final class Api {
         return new self($hostname, $username, $password);
     }
 
-    final public function getArticlesEndpoint(): ArticlesEndpoint {
-        return new ArticlesEndpoint($this->client);
+    final public function getArticlesEndpoint(): ArticlesApiEndpoint {
+        return new ArticlesApiEndpoint($this->client);
     }
 
-    final public function getAvailabilitiesEndpoint(): AvailabilitiesEndpoint {
-        return new AvailabilitiesEndpoint($this->client);
+    final public function getAvailabilitiesEndpoint(): AvailabilitiesApiEndpoint {
+        return new AvailabilitiesApiEndpoint($this->client);
     }
 
-    final public function getDocumentsEndpoint(): DocumentsEndpoint {
-        return new DocumentsEndpoint($this->client);
+    final public function getDocumentsEndpoint(): DocumentsApiEndpoint {
+        return new DocumentsApiEndpoint($this->client);
     }
 
-    final public function getOrdersEndpoint(): OrdersEndpoint {
-        return new OrdersEndpoint($this->client);
+    final public function getOrdersEndpoint(): OrdersApiEndpoint {
+        return new OrdersApiEndpoint($this->client);
     }
 
-    final public function getPackagesEndpoint(): PackagesEndpoint {
-        return new PackagesEndpoint($this->client);
+    final public function getPackagesEndpoint(): PackagesApiEndpoint {
+        return new PackagesApiEndpoint($this->client);
     }
 
-    final public function getPaymentsEndpoint(): PaymentsEndpoint {
-        return new PaymentsEndpoint($this->client);
+    final public function getPaymentsEndpoint(): PaymentsApiEndpoint {
+        return new PaymentsApiEndpoint($this->client);
     }
 
-    final public function getStockItemsEndpoint(): StockItemsEndpoint {
-        return new StockItemsEndpoint($this->client);
+    final public function getStockItemsEndpoint(): StockItemsApiEndpoint {
+        return new StockItemsApiEndpoint($this->client);
     }
 
-    final public function getStockRoomsEndpoint(): StockRoomsEndpoint {
-        return new StockRoomsEndpoint($this->client);
+    final public function getStockRoomsEndpoint(): StockRoomsApiEndpoint {
+        return new StockRoomsApiEndpoint($this->client);
     }
 
-    final public function getTextPagesEndpoint(): TextPagesEndpoint {
-        return new TextPagesEndpoint($this->client);
+    final public function getTextPagesEndpoint(): TextPagesApiEndpoint {
+        return new TextPagesApiEndpoint($this->client);
     }
 
-    final public function getVoucherEndpoint(): VoucherEndpoint {
-        return new VoucherEndpoint($this->client);
+    final public function getVoucherEndpoint(): VoucherApiEndpoint {
+        return new VoucherApiEndpoint($this->client);
     }
 
-    final public function getVoucherLockEndpoint(): VoucherLockEndpoint {
-        return new VoucherLockEndpoint($this->client);
+    final public function getVoucherLockEndpoint(): VoucherLockApiEndpoint {
+        return new VoucherLockApiEndpoint($this->client);
     }
 }

@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\FieldConfig\DocumentFieldConfig;
+use Simplia\Api\FieldConfig\DocumentApiFieldConfig;
 
 class DocumentApiEntity extends AbstractApiEntity {
     public function getId(): string {
@@ -52,8 +52,11 @@ class DocumentApiEntity extends AbstractApiEntity {
         return $this->returnField('variable_symbol');
     }
 
+    /**
+     * @return DocumentItemApiEntity[]
+     */
     public function getRows(): array {
-        return $this->returnField('rows');
+        return $this->returnFieldArray('rows', DocumentItemApiEntity::class);
     }
 
     public function getCustomerAddress(): ContactApiEntity {
@@ -68,15 +71,21 @@ class DocumentApiEntity extends AbstractApiEntity {
         return $this->returnField('relevant_document', DocumentApiEntity::class);
     }
 
+    /**
+     * @return DocumentApiEntity[]
+     */
     public function getRelevantDocuments(): array {
-        return $this->returnField('relevant_documents');
+        return $this->returnFieldArray('relevant_documents', DocumentApiEntity::class);
     }
 
+    /**
+     * @return PaymentApiEntity[]
+     */
     public function getPayments(): array {
-        return $this->returnField('payments');
+        return $this->returnFieldArray('payments', PaymentApiEntity::class);
     }
 
-    final public static function createFieldConfig(): DocumentFieldConfig {
-        return new DocumentFieldConfig();
+    final public static function createFieldConfig(): DocumentApiFieldConfig {
+        return new DocumentApiFieldConfig();
     }
 }

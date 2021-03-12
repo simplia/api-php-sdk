@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\FieldConfig\OrderDiscountFieldConfig;
+use Simplia\Api\FieldConfig\OrderDiscountApiFieldConfig;
 
 class OrderDiscountApiEntity extends AbstractApiEntity {
     public function getId(): int {
@@ -28,7 +28,7 @@ class OrderDiscountApiEntity extends AbstractApiEntity {
         return $this->returnField('vat_rate');
     }
 
-    final public static function createFieldConfig(): OrderDiscountFieldConfig {
-        return new OrderDiscountFieldConfig();
+    final public static function createFieldConfig(): OrderDiscountApiFieldConfig {
+        return new OrderDiscountApiFieldConfig();
     }
 }

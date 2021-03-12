@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\FieldConfig\OrderFieldConfig;
+use Simplia\Api\FieldConfig\OrderApiFieldConfig;
 
 class OrderApiEntity extends AbstractApiEntity {
     public function getId(): string {
@@ -64,16 +64,25 @@ class OrderApiEntity extends AbstractApiEntity {
         return $this->returnField('variable_symbol');
     }
 
+    /**
+     * @return OrderItemApiEntity[]
+     */
     public function getItems(): array {
-        return $this->returnField('items');
+        return $this->returnFieldArray('items', OrderItemApiEntity::class);
     }
 
+    /**
+     * @return PaymentApiEntity[]
+     */
     public function getPayments(): array {
-        return $this->returnField('payments');
+        return $this->returnFieldArray('payments', PaymentApiEntity::class);
     }
 
+    /**
+     * @return OrderDiscountApiEntity[]
+     */
     public function getDiscounts(): array {
-        return $this->returnField('discounts');
+        return $this->returnFieldArray('discounts', OrderDiscountApiEntity::class);
     }
 
     public function getDeliveryAddress(): ContactApiEntity {
@@ -92,7 +101,7 @@ class OrderApiEntity extends AbstractApiEntity {
         return $this->returnField('total_paid');
     }
 
-    final public static function createFieldConfig(): OrderFieldConfig {
-        return new OrderFieldConfig();
+    final public static function createFieldConfig(): OrderApiFieldConfig {
+        return new OrderApiFieldConfig();
     }
 }

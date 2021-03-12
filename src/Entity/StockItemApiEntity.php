@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\FieldConfig\StockItemFieldConfig;
+use Simplia\Api\FieldConfig\StockItemApiFieldConfig;
 
 class StockItemApiEntity extends AbstractApiEntity {
     public function getId(): int {
@@ -44,8 +44,11 @@ class StockItemApiEntity extends AbstractApiEntity {
         return $this->returnField('name');
     }
 
+    /**
+     * @return StockStorageLocationApiEntity[]
+     */
     public function getStorageLocations(): array {
-        return $this->returnField('storage_locations');
+        return $this->returnFieldArray('storage_locations', StockStorageLocationApiEntity::class);
     }
 
     public function getProduct(): ProductApiEntity {
@@ -56,7 +59,7 @@ class StockItemApiEntity extends AbstractApiEntity {
         return $this->returnField('variant', VariantApiEntity::class);
     }
 
-    final public static function createFieldConfig(): StockItemFieldConfig {
-        return new StockItemFieldConfig();
+    final public static function createFieldConfig(): StockItemApiFieldConfig {
+        return new StockItemApiFieldConfig();
     }
 }

@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\FieldConfig\OrderItemFieldConfig;
+use Simplia\Api\FieldConfig\OrderItemApiFieldConfig;
 
 class OrderItemApiEntity extends AbstractApiEntity {
     public function getId(): int {
@@ -44,7 +44,7 @@ class OrderItemApiEntity extends AbstractApiEntity {
         return $this->returnField('stock_item', StockItemApiEntity::class);
     }
 
-    final public static function createFieldConfig(): OrderItemFieldConfig {
-        return new OrderItemFieldConfig();
+    final public static function createFieldConfig(): OrderItemApiFieldConfig {
+        return new OrderItemApiFieldConfig();
     }
 }

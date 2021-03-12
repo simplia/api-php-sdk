@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\FieldConfig\VoucherGroupFieldConfig;
+use Simplia\Api\FieldConfig\VoucherGroupApiFieldConfig;
 
 class VoucherGroupApiEntity extends AbstractApiEntity {
     public function getId(): int {
@@ -20,7 +20,7 @@ class VoucherGroupApiEntity extends AbstractApiEntity {
         return $this->returnField('name');
     }
 
-    final public static function createFieldConfig(): VoucherGroupFieldConfig {
-        return new VoucherGroupFieldConfig();
+    final public static function createFieldConfig(): VoucherGroupApiFieldConfig {
+        return new VoucherGroupApiFieldConfig();
     }
 }

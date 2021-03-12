@@ -31,4 +31,11 @@ abstract class AbstractApiEntity {
 
         return $this->data[$key];
     }
+
+    final protected function returnFieldArray(string $key, string $class): array {
+        $this->failOnMissingData($key);
+
+
+        return array_map(fn(array $row) => new $class($row, $this->fieldPrefix . $key . '.'), $this->data[$key]);
+    }
 }

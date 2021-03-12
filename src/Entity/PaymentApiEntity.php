@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\FieldConfig\PaymentFieldConfig;
+use Simplia\Api\FieldConfig\PaymentApiFieldConfig;
 
 class PaymentApiEntity extends AbstractApiEntity {
     public function getId(): int {
@@ -48,7 +48,7 @@ class PaymentApiEntity extends AbstractApiEntity {
         return $this->returnField('invoice', DocumentApiEntity::class);
     }
 
-    final public static function createFieldConfig(): PaymentFieldConfig {
-        return new PaymentFieldConfig();
+    final public static function createFieldConfig(): PaymentApiFieldConfig {
+        return new PaymentApiFieldConfig();
     }
 }

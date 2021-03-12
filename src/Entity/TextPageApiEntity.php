@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\FieldConfig\TextPageFieldConfig;
+use Simplia\Api\FieldConfig\TextPageApiFieldConfig;
 
 class TextPageApiEntity extends AbstractApiEntity {
     public function getId(): int {
@@ -24,7 +24,7 @@ class TextPageApiEntity extends AbstractApiEntity {
         return $this->returnField('text');
     }
 
-    final public static function createFieldConfig(): TextPageFieldConfig {
-        return new TextPageFieldConfig();
+    final public static function createFieldConfig(): TextPageApiFieldConfig {
+        return new TextPageApiFieldConfig();
     }
 }

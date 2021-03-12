@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\FieldConfig\BrandFieldConfig;
+use Simplia\Api\FieldConfig\BrandApiFieldConfig;
 
 class BrandApiEntity extends AbstractApiEntity {
     public function getId(): int {
@@ -20,7 +20,7 @@ class BrandApiEntity extends AbstractApiEntity {
         return $this->returnField('name');
     }
 
-    final public static function createFieldConfig(): BrandFieldConfig {
-        return new BrandFieldConfig();
+    final public static function createFieldConfig(): BrandApiFieldConfig {
+        return new BrandApiFieldConfig();
     }
 }

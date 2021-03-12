@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\FieldConfig\CallFieldConfig;
+use Simplia\Api\FieldConfig\CallApiFieldConfig;
 
 class CallApiEntity extends AbstractApiEntity {
     public function getId(): int {
@@ -44,7 +44,7 @@ class CallApiEntity extends AbstractApiEntity {
         return $this->returnField('connected');
     }
 
-    final public static function createFieldConfig(): CallFieldConfig {
-        return new CallFieldConfig();
+    final public static function createFieldConfig(): CallApiFieldConfig {
+        return new CallApiFieldConfig();
     }
 }

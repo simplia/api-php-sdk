@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\FieldConfig\ArticleFieldConfig;
+use Simplia\Api\FieldConfig\ArticleApiFieldConfig;
 
 class ArticleApiEntity extends AbstractApiEntity {
     public function getId(): int {
@@ -36,7 +36,7 @@ class ArticleApiEntity extends AbstractApiEntity {
         return $this->returnField('url');
     }
 
-    final public static function createFieldConfig(): ArticleFieldConfig {
-        return new ArticleFieldConfig();
+    final public static function createFieldConfig(): ArticleApiFieldConfig {
+        return new ArticleApiFieldConfig();
     }
 }

@@ -9,14 +9,17 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\FieldConfig\DocumentItemPricesFieldConfig;
+use Simplia\Api\FieldConfig\DocumentItemPricesApiFieldConfig;
 
 class DocumentItemPricesApiEntity extends AbstractApiEntity {
+    /**
+     * @return DocumentItemPriceApiEntity[]
+     */
     public function getItems(): array {
-        return $this->returnField('items');
+        return $this->returnFieldArray('items', DocumentItemPriceApiEntity::class);
     }
 
-    final public static function createFieldConfig(): DocumentItemPricesFieldConfig {
-        return new DocumentItemPricesFieldConfig();
+    final public static function createFieldConfig(): DocumentItemPricesApiFieldConfig {
+        return new DocumentItemPricesApiFieldConfig();
     }
 }

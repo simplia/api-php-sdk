@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\FieldConfig\PackageFieldConfig;
+use Simplia\Api\FieldConfig\PackageApiFieldConfig;
 
 class PackageApiEntity extends AbstractApiEntity {
     public function getId(): int {
@@ -88,7 +88,7 @@ class PackageApiEntity extends AbstractApiEntity {
         return $this->returnField('date');
     }
 
-    final public static function createFieldConfig(): PackageFieldConfig {
-        return new PackageFieldConfig();
+    final public static function createFieldConfig(): PackageApiFieldConfig {
+        return new PackageApiFieldConfig();
     }
 }

@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\FieldConfig\VoucherLockFieldConfig;
+use Simplia\Api\FieldConfig\VoucherLockApiFieldConfig;
 
 class VoucherLockApiEntity extends AbstractApiEntity {
     public function getId(): int {
@@ -32,7 +32,7 @@ class VoucherLockApiEntity extends AbstractApiEntity {
         return $this->returnField('voucher', VoucherApiEntity::class);
     }
 
-    final public static function createFieldConfig(): VoucherLockFieldConfig {
-        return new VoucherLockFieldConfig();
+    final public static function createFieldConfig(): VoucherLockApiFieldConfig {
+        return new VoucherLockApiFieldConfig();
     }
 }

@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\FieldConfig\ProductFieldConfig;
+use Simplia\Api\FieldConfig\ProductApiFieldConfig;
 
 class ProductApiEntity extends AbstractApiEntity {
     public function getId(): int {
@@ -48,7 +48,7 @@ class ProductApiEntity extends AbstractApiEntity {
         return $this->returnField('ean');
     }
 
-    final public static function createFieldConfig(): ProductFieldConfig {
-        return new ProductFieldConfig();
+    final public static function createFieldConfig(): ProductApiFieldConfig {
+        return new ProductApiFieldConfig();
     }
 }

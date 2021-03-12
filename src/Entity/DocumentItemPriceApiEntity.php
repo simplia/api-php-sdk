@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\FieldConfig\DocumentItemPriceFieldConfig;
+use Simplia\Api\FieldConfig\DocumentItemPriceApiFieldConfig;
 
 class DocumentItemPriceApiEntity extends AbstractApiEntity {
     public function getId(): int {
@@ -24,7 +24,7 @@ class DocumentItemPriceApiEntity extends AbstractApiEntity {
         return $this->returnField('vat_rate');
     }
 
-    final public static function createFieldConfig(): DocumentItemPriceFieldConfig {
-        return new DocumentItemPriceFieldConfig();
+    final public static function createFieldConfig(): DocumentItemPriceApiFieldConfig {
+        return new DocumentItemPriceApiFieldConfig();
     }
 }

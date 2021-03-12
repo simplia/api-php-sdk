@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\FieldConfig\DocumentItemFieldConfig;
+use Simplia\Api\FieldConfig\DocumentItemApiFieldConfig;
 
 class DocumentItemApiEntity extends AbstractApiEntity {
     public function getId(): int {
@@ -40,7 +40,7 @@ class DocumentItemApiEntity extends AbstractApiEntity {
         return $this->returnField('type');
     }
 
-    final public static function createFieldConfig(): DocumentItemFieldConfig {
-        return new DocumentItemFieldConfig();
+    final public static function createFieldConfig(): DocumentItemApiFieldConfig {
+        return new DocumentItemApiFieldConfig();
     }
 }

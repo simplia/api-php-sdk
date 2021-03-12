@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\FieldConfig\AvailabilityFieldConfig;
+use Simplia\Api\FieldConfig\AvailabilityApiFieldConfig;
 
 class AvailabilityApiEntity extends AbstractApiEntity {
     public function getId(): int {
@@ -24,7 +24,7 @@ class AvailabilityApiEntity extends AbstractApiEntity {
         return $this->returnField('hours');
     }
 
-    final public static function createFieldConfig(): AvailabilityFieldConfig {
-        return new AvailabilityFieldConfig();
+    final public static function createFieldConfig(): AvailabilityApiFieldConfig {
+        return new AvailabilityApiFieldConfig();
     }
 }

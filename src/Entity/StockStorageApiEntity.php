@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\FieldConfig\StockStorageFieldConfig;
+use Simplia\Api\FieldConfig\StockStorageApiFieldConfig;
 
 class StockStorageApiEntity extends AbstractApiEntity {
     public function getId(): int {
@@ -20,7 +20,7 @@ class StockStorageApiEntity extends AbstractApiEntity {
         return $this->returnField('name');
     }
 
-    final public static function createFieldConfig(): StockStorageFieldConfig {
-        return new StockStorageFieldConfig();
+    final public static function createFieldConfig(): StockStorageApiFieldConfig {
+        return new StockStorageApiFieldConfig();
     }
 }

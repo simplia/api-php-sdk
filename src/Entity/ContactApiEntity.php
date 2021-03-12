@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\FieldConfig\ContactFieldConfig;
+use Simplia\Api\FieldConfig\ContactApiFieldConfig;
 
 class ContactApiEntity extends AbstractApiEntity {
     public function getId(): int {
@@ -60,7 +60,7 @@ class ContactApiEntity extends AbstractApiEntity {
         return $this->returnField('email');
     }
 
-    final public static function createFieldConfig(): ContactFieldConfig {
-        return new ContactFieldConfig();
+    final public static function createFieldConfig(): ContactApiFieldConfig {
+        return new ContactApiFieldConfig();
     }
 }
