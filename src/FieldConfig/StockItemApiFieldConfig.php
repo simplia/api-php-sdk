@@ -58,8 +58,8 @@ class StockItemApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
-    public function withStorageLocations(): self {
-        $this->fields['storage_locations'] = true;
+    public function withStorageLocations(StockStorageLocationApiFieldConfig $config): self {
+        $this->fields['storage_locations'] = $config;
 
         return $this;
     }

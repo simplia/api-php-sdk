@@ -88,20 +88,20 @@ class OrderApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
-    public function withItems(): self {
-        $this->fields['items'] = true;
+    public function withItems(OrderItemApiFieldConfig $config): self {
+        $this->fields['items'] = $config;
 
         return $this;
     }
 
-    public function withPayments(): self {
-        $this->fields['payments'] = true;
+    public function withPayments(PaymentApiFieldConfig $config): self {
+        $this->fields['payments'] = $config;
 
         return $this;
     }
 
-    public function withDiscounts(): self {
-        $this->fields['discounts'] = true;
+    public function withDiscounts(OrderDiscountApiFieldConfig $config): self {
+        $this->fields['discounts'] = $config;
 
         return $this;
     }

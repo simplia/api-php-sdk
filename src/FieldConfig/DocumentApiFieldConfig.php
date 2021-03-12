@@ -70,8 +70,8 @@ class DocumentApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
-    public function withRows(): self {
-        $this->fields['rows'] = true;
+    public function withRows(DocumentItemApiFieldConfig $config): self {
+        $this->fields['rows'] = $config;
 
         return $this;
     }
@@ -94,14 +94,14 @@ class DocumentApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
-    public function withRelevantDocuments(): self {
-        $this->fields['relevant_documents'] = true;
+    public function withRelevantDocuments(DocumentApiFieldConfig $config): self {
+        $this->fields['relevant_documents'] = $config;
 
         return $this;
     }
 
-    public function withPayments(): self {
-        $this->fields['payments'] = true;
+    public function withPayments(PaymentApiFieldConfig $config): self {
+        $this->fields['payments'] = $config;
 
         return $this;
     }
