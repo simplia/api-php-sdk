@@ -24,7 +24,7 @@ class OrderDiscountApiEntity extends AbstractApiEntity {
         return $this->returnField('price');
     }
 
-    public function getVatRate(): float {
+    public function getVatRate(): ?float {
         return $this->returnField('vat_rate');
     }
 

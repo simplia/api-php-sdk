@@ -20,7 +20,7 @@ class OrderApiEntity extends AbstractApiEntity {
         return $this->returnField('date_created');
     }
 
-    public function getDateInStatus(): string {
+    public function getDateInStatus(): ?string {
         return $this->returnField('date_in_status');
     }
 
@@ -40,7 +40,7 @@ class OrderApiEntity extends AbstractApiEntity {
         return $this->returnField('currency_rate');
     }
 
-    public function getCarrierCode(): string {
+    public function getCarrierCode(): ?string {
         return $this->returnField('carrier_code');
     }
 
@@ -48,19 +48,19 @@ class OrderApiEntity extends AbstractApiEntity {
         return $this->returnField('delivery_price');
     }
 
-    public function getDeliveryName(): string {
+    public function getDeliveryName(): ?string {
         return $this->returnField('delivery_name');
     }
 
-    public function getPaymentType(): string {
+    public function getPaymentType(): ?string {
         return $this->returnField('payment_type');
     }
 
-    public function getNote(): string {
+    public function getNote(): ?string {
         return $this->returnField('note');
     }
 
-    public function getVariableSymbol(): string {
+    public function getVariableSymbol(): ?string {
         return $this->returnField('variable_symbol');
     }
 

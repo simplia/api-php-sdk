@@ -16,47 +16,47 @@ class ContactApiEntity extends AbstractApiEntity {
         return $this->returnField('id');
     }
 
-    public function getFirstName(): string {
+    public function getFirstName(): ?string {
         return $this->returnField('first_name');
     }
 
-    public function getLastName(): string {
+    public function getLastName(): ?string {
         return $this->returnField('last_name');
     }
 
-    public function getStreet(): string {
+    public function getStreet(): ?string {
         return $this->returnField('street');
     }
 
-    public function getZip(): string {
+    public function getZip(): ?string {
         return $this->returnField('zip');
     }
 
-    public function getCity(): string {
+    public function getCity(): ?string {
         return $this->returnField('city');
     }
 
-    public function getCountry(): string {
+    public function getCountry(): ?string {
         return $this->returnField('country');
     }
 
-    public function getCompanyName(): string {
+    public function getCompanyName(): ?string {
         return $this->returnField('company_name');
     }
 
-    public function getCompanyId(): string {
+    public function getCompanyId(): ?string {
         return $this->returnField('company_id');
     }
 
-    public function getCompanyVatId(): string {
+    public function getCompanyVatId(): ?string {
         return $this->returnField('company_vat_id');
     }
 
-    public function getPhone(): string {
+    public function getPhone(): ?string {
         return $this->returnField('phone');
     }
 
-    public function getEmail(): string {
+    public function getEmail(): ?string {
         return $this->returnField('email');
     }
 

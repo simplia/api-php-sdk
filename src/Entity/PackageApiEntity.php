@@ -16,39 +16,39 @@ class PackageApiEntity extends AbstractApiEntity {
         return $this->returnField('id');
     }
 
-    public function getName(): string {
+    public function getName(): ?string {
         return $this->returnField('name');
     }
 
-    public function getCompany(): string {
+    public function getCompany(): ?string {
         return $this->returnField('company');
     }
 
-    public function getStreet(): string {
+    public function getStreet(): ?string {
         return $this->returnField('street');
     }
 
-    public function getCity(): string {
+    public function getCity(): ?string {
         return $this->returnField('city');
     }
 
-    public function getZip(): string {
+    public function getZip(): ?string {
         return $this->returnField('zip');
     }
 
-    public function getPhone(): string {
+    public function getPhone(): ?string {
         return $this->returnField('phone');
     }
 
-    public function getEmail(): string {
+    public function getEmail(): ?string {
         return $this->returnField('email');
     }
 
-    public function getCode(): string {
+    public function getCode(): ?string {
         return $this->returnField('code');
     }
 
-    public function getCountry(): string {
+    public function getCountry(): ?string {
         return $this->returnField('country');
     }
 
@@ -68,7 +68,7 @@ class PackageApiEntity extends AbstractApiEntity {
         return $this->returnField('status');
     }
 
-    public function getWeight(): float {
+    public function getWeight(): ?float {
         return $this->returnField('weight');
     }
 
@@ -80,7 +80,7 @@ class PackageApiEntity extends AbstractApiEntity {
         return $this->returnField('cash_on_delivery');
     }
 
-    public function getPrice(): float {
+    public function getPrice(): ?float {
         return $this->returnField('price');
     }
 

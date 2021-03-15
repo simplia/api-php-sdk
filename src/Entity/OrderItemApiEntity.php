@@ -20,7 +20,7 @@ class OrderItemApiEntity extends AbstractApiEntity {
         return $this->returnField('name');
     }
 
-    public function getNote(): string {
+    public function getNote(): ?string {
         return $this->returnField('note');
     }
 

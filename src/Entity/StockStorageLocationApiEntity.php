@@ -24,7 +24,7 @@ class StockStorageLocationApiEntity extends AbstractApiEntity {
         return $this->returnField('name');
     }
 
-    public function getDescription(): string {
+    public function getDescription(): ?string {
         return $this->returnField('description');
     }
 

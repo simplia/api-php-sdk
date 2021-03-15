@@ -28,11 +28,11 @@ class PaymentApiEntity extends AbstractApiEntity {
         return $this->returnField('currency');
     }
 
-    public function getNote(): string {
+    public function getNote(): ?string {
         return $this->returnField('note');
     }
 
-    public function getVariableSymbol(): string {
+    public function getVariableSymbol(): ?string {
         return $this->returnField('variable_symbol');
     }
 

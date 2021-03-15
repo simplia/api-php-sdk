@@ -24,11 +24,11 @@ class VariantApiEntity extends AbstractApiEntity {
         return $this->returnField('code');
     }
 
-    public function getCodeSupplier(): string {
+    public function getCodeSupplier(): ?string {
         return $this->returnField('code_supplier');
     }
 
-    public function getEan(): string {
+    public function getEan(): ?string {
         return $this->returnField('ean');
     }
 

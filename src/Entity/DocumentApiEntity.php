@@ -20,11 +20,11 @@ class DocumentApiEntity extends AbstractApiEntity {
         return $this->returnField('date_issued');
     }
 
-    public function getDueDate(): string {
+    public function getDueDate(): ?string {
         return $this->returnField('due_date');
     }
 
-    public function getVatDate(): string {
+    public function getVatDate(): ?string {
         return $this->returnField('vat_date');
     }
 
@@ -36,7 +36,7 @@ class DocumentApiEntity extends AbstractApiEntity {
         return $this->returnField('currency_rate');
     }
 
-    public function getNote(): string {
+    public function getNote(): ?string {
         return $this->returnField('note');
     }
 
@@ -44,11 +44,11 @@ class DocumentApiEntity extends AbstractApiEntity {
         return $this->returnField('type');
     }
 
-    public function getSubtype(): string {
+    public function getSubtype(): ?string {
         return $this->returnField('subtype');
     }
 
-    public function getVariableSymbol(): string {
+    public function getVariableSymbol(): ?string {
         return $this->returnField('variable_symbol');
     }
 

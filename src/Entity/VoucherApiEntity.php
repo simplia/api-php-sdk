@@ -20,15 +20,15 @@ class VoucherApiEntity extends AbstractApiEntity {
         return $this->returnField('code');
     }
 
-    public function getValidFrom(): string {
+    public function getValidFrom(): ?string {
         return $this->returnField('valid_from');
     }
 
-    public function getValidTo(): string {
+    public function getValidTo(): ?string {
         return $this->returnField('valid_to');
     }
 
-    public function getPriceValue(): float {
+    public function getPriceValue(): ?float {
         return $this->returnField('price_value');
     }
 
@@ -40,7 +40,7 @@ class VoucherApiEntity extends AbstractApiEntity {
         return $this->returnField('group', VoucherGroupApiEntity::class);
     }
 
-    public function getMaxUses(): int {
+    public function getMaxUses(): ?int {
         return $this->returnField('max_uses');
     }
 
