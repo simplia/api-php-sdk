@@ -18,6 +18,7 @@ final class RequestHandler {
         $this->baseUri = 'https://' . $host . '/api/2/';
         $this->auth = 'Basic ' . base64_encode($username . ':' . $password);
         $this->client = $client;
+        $this->requestFactory = new Psr17Factory();
     }
 
     private function createUrl(string $path, array $query): string {

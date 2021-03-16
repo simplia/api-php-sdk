@@ -28,12 +28,12 @@ Celý repozitář je automaticky generován z OpenAPI definic a pull request je 
 #### Change order status
 ```php
 use \Simplia\Api\Api;
-use \Simplia\Api\Input\OrderStatusTypeInput;
+use \Simplia\Api\Input\OrderStatusTypeApiInput;
 
-$api = Api::withUsernameAuth('demo2.simpliashop.cz', 'api_user', '*********');
+$api = Api::withUsernameAuth($httpClient, 'demo2.simpliashop.cz', 'api_user', '*********');
 $api->getOrdersEndpoint()->updateStatus(
     '123',
-    OrderStatusTypeInput::create()
+    OrderStatusTypeApiInput::create()
         ->setStatusId(4)
 );
 ```
@@ -43,11 +43,11 @@ $api->getOrdersEndpoint()->updateStatus(
 use \Simplia\Api\Api;
 use \Simplia\Api\Entity\ContactApiEntity;
 use \Simplia\Api\Entity\OrderApiEntity;
-use \Simplia\Api\Request\OrderRequest;
+use \Simplia\Api\Request\OrderApiRequest;
 
-$api = Api::withUsernameAuth('demo2.simpliashop.cz', 'api_user', '*********');
+$api = Api::withUsernameAuth($httpClient, 'demo2.simpliashop.cz', 'api_user', '*********');
 $orders = $api->getOrdersEndpoint()->iterate(
-    OrderRequest::create()
+    OrderApiRequest::create()
         ->whereStatus(1),
     OrderApiEntity::createFieldConfig()
         ->withId()
@@ -69,7 +69,7 @@ use \Simplia\Api\Api;
 use \Simplia\Api\Entity\ContactApiEntity;
 use \Simplia\Api\Entity\OrderApiEntity;
 
-$api = Api::withUsernameAuth('demo2.simpliashop.cz', 'api_user', '*********');
+$api = Api::withUsernameAuth($httpClient, 'demo2.simpliashop.cz', 'api_user', '*********');
 $order = $api->getOrdersEndpoint()->get(
    '123',
     OrderApiEntity::createFieldConfig()
@@ -88,12 +88,12 @@ echo $order->getCurrency(); // throws error because currency with wasn't loaded 
 #### Article list by topic
 ```php
 use \Simplia\Api\Api;
-use \Simplia\Api\Request\ArticleRequest;
+use \Simplia\Api\Request\ArticleApiRequest;
 use \Simplia\Api\Entity\ArticleApiEntity;
 
-$api = Api::withUsernameAuth('demo2.simpliashop.cz', 'api_user', '*********');
+$api = Api::withUsernameAuth($httpClient, 'demo2.simpliashop.cz', 'api_user', '*********');
 $articles = $api->getArticlesEndpoint()->iterate(
-    ArticleRequest::create()
+    ArticleApiRequest::create()
         ->whereTopic(7)
         ->orderByPublishedAsc(),
     ArticleApiEntity::createFieldConfig()
