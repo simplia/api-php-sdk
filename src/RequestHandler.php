@@ -2,29 +2,41 @@
 
 namespace Simplia\Api;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\RequestOptions;
+use Nyholm\Psr7\Factory\Psr17Factory;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
 final class RequestHandler {
-    private Client $client;
+    private ClientInterface $client;
 
-    public function __construct(string $host, string $username, string $password) {
-        $this->client = new Client([
-            'base_uri' => 'https://' . $host . '/api/2/',
-            'auth' => [$username, $password],
-            'headers' => [
-                'Accept-Encoding' => 'gzip',
-                'Accept' => 'application/gzip',
-            ],
-        ]);
+    private string $baseUri;
+    private string $auth;
+    private Psr17Factory $requestFactory;
+
+    public function __construct(ClientInterface $client, string $host, string $username, string $password) {
+        $this->baseUri = 'https://' . $host . '/api/2/';
+        $this->auth = 'Basic ' . base64_encode($username . ':' . $password);
+        $this->client = $client;
+    }
+
+    private function createUrl(string $path, array $query): string {
+        $url = $this->baseUri . $path;
+        if (!empty($query)) {
+            $url .= '?' . http_build_query($query);
+        }
+
+        return $url;
+    }
+
+    private function send(RequestInterface $request): ResponseInterface {
+        return $this->client->sendRequest($request
+            ->withAddedHeader('Authorization', $this->auth)
+        );
     }
 
     public function get(string $url, array $query): ?array {
-        $response = $this->client->get($url, [
-            RequestOptions::QUERY => $query,
-            RequestOptions::HTTP_ERRORS => false,
-        ]);
+        $response = $this->send($this->requestFactory->createRequest('GET', $this->createUrl($url, $query)));
 
         if ($response->getStatusCode() === 404) {
             return null;
@@ -39,11 +51,10 @@ final class RequestHandler {
     }
 
     public function request(string $method, string $url, array $query, array $body): ?array {
-        $response = $this->client->request($method, $url, [
-            RequestOptions::QUERY => $query,
-            RequestOptions::JSON => $body,
-            RequestOptions::HTTP_ERRORS => false,
-        ]);
+        $request = $this->requestFactory->createRequest($method, $this->createUrl($url, $query))
+            ->withBody($this->requestFactory->createStream(json_encode($body, JSON_THROW_ON_ERROR)))
+            ->withAddedHeader('content-type', 'application/json');
+        $response = $this->send($request);
 
         if ($response->getStatusCode() === 404) {
             return null;
@@ -61,9 +72,8 @@ final class RequestHandler {
         $query['page'] = 1;
         $query['limit'] = $batchSize;
         do {
-            $response = $this->client->get($url, [
-                RequestOptions::QUERY => $query,
-            ]);
+            $request = $this->requestFactory->createRequest('GET', $this->createUrl($url, $query));
+            $response = $this->client->sendRequest($request);
 
             $list = $this->decode($response);
             if (empty($list)) {

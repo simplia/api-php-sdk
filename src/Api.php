@@ -7,6 +7,7 @@
 
 namespace Simplia\Api;
 
+use Psr\Http\Client\ClientInterface;
 use Simplia\Api\Endpoint\ArticlesApiEndpoint;
 use Simplia\Api\Endpoint\AvailabilitiesApiEndpoint;
 use Simplia\Api\Endpoint\DocumentsApiEndpoint;
@@ -22,12 +23,17 @@ use Simplia\Api\Endpoint\VoucherLockApiEndpoint;
 final class Api {
     public RequestHandler $client;
 
-    private function __construct(string $host, string $username, string $password) {
-        $this->client = new RequestHandler($host, $username, $password);
+    private function __construct(ClientInterface $client, string $host, string $username, string $password) {
+        $this->client = new RequestHandler($client, $host, $username, $password);
     }
 
-    public static function withUsernameAuth(string $hostname, string $username, string $password): self {
-        return new self($hostname, $username, $password);
+    public static function withUsernameAuth(
+        ClientInterface $client,
+        string $hostname,
+        string $username,
+        string $password
+    ): self {
+        return new self($client, $hostname, $username, $password);
     }
 
     final public function getArticlesEndpoint(): ArticlesApiEndpoint {
