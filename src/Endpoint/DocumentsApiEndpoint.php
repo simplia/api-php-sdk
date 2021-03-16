@@ -51,7 +51,7 @@ class DocumentsApiEndpoint extends AbstractApiEndpoint {
         DocumentItemPricesApiInput $input,
         ?DocumentApiFieldConfig $fields = null
     ): DocumentApiEntity {
-        $result = $this->request('put', 'documents/' . $id . '/rows/price', [], $input, $fields);
+        $result = $this->request('PUT', 'documents/' . $id . '/rows/price', [], $input, $fields);
 
         return new DocumentApiEntity($result);
     }

@@ -38,7 +38,7 @@ class VoucherApiEndpoint extends AbstractApiEndpoint {
     ): VoucherApiEntity {
         $query = [];
         $query['code'] = $code;
-        $result = $this->request('put', 'voucher/activate', $query, $input, $fields);
+        $result = $this->request('PUT', 'voucher/activate', $query, $input, $fields);
 
         return new VoucherApiEntity($result);
     }
@@ -54,7 +54,7 @@ class VoucherApiEndpoint extends AbstractApiEndpoint {
     ): VoucherApiEntity {
         $query = [];
         $query['code'] = $code;
-        $result = $this->request('put', 'voucher/apply', $query, $input, $fields);
+        $result = $this->request('PUT', 'voucher/apply', $query, $input, $fields);
 
         return new VoucherApiEntity($result);
     }

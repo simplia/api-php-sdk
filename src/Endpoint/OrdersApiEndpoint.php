@@ -51,7 +51,7 @@ class OrdersApiEndpoint extends AbstractApiEndpoint {
         OrderStatusTypeApiInput $input,
         ?OrderApiFieldConfig $fields = null
     ): OrderApiEntity {
-        $result = $this->request('put', 'orders/' . $id . '/status', [], $input, $fields);
+        $result = $this->request('PUT', 'orders/' . $id . '/status', [], $input, $fields);
 
         return new OrderApiEntity($result);
     }

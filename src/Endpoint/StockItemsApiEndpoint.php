@@ -49,7 +49,7 @@ class StockItemsApiEndpoint extends AbstractApiEndpoint {
      * return StockItemApiEntity[]
      */
     final public function batchUpdate(StockItemBatchTypeApiInput $input, ?StockItemApiFieldConfig $fields = null): array {
-        $result = $this->request('put', 'stock-items/batch', [], $input, $fields);
+        $result = $this->request('PUT', 'stock-items/batch', [], $input, $fields);
 
         return array_map(static fn(array $row) => new StockItemApiEntity($row), $result);
     }

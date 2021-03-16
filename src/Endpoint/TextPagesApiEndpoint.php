@@ -57,7 +57,7 @@ class TextPagesApiEndpoint extends AbstractApiEndpoint {
         TextPageApiInput $input,
         ?TextPageApiFieldConfig $fields = null
     ): TextPageApiEntity {
-        $result = $this->request('patch', 'text-pages/' . $id, [], $input, $fields);
+        $result = $this->request('PATCH', 'text-pages/' . $id, [], $input, $fields);
 
         return new TextPageApiEntity($result);
     }
