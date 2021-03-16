@@ -74,7 +74,7 @@ final class RequestHandler {
         $query['limit'] = $batchSize;
         do {
             $request = $this->requestFactory->createRequest('GET', $this->createUrl($url, $query));
-            $response = $this->client->sendRequest($request);
+            $response = $this->send($request);
 
             $list = $this->decode($response);
             if (empty($list)) {
