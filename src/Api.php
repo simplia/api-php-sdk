@@ -13,10 +13,12 @@ use Simplia\Api\Endpoint\AvailabilitiesApiEndpoint;
 use Simplia\Api\Endpoint\DocumentsApiEndpoint;
 use Simplia\Api\Endpoint\OrdersApiEndpoint;
 use Simplia\Api\Endpoint\PackagesApiEndpoint;
+use Simplia\Api\Endpoint\PaymentMethodApiEndpoint;
 use Simplia\Api\Endpoint\PaymentsApiEndpoint;
 use Simplia\Api\Endpoint\StockItemsApiEndpoint;
 use Simplia\Api\Endpoint\StockRoomsApiEndpoint;
 use Simplia\Api\Endpoint\TextPagesApiEndpoint;
+use Simplia\Api\Endpoint\TransportMethodApiEndpoint;
 use Simplia\Api\Endpoint\VoucherApiEndpoint;
 use Simplia\Api\Endpoint\VoucherLockApiEndpoint;
 
@@ -56,6 +58,10 @@ final class Api {
         return new PackagesApiEndpoint($this->client);
     }
 
+    final public function getPaymentMethodEndpoint(): PaymentMethodApiEndpoint {
+        return new PaymentMethodApiEndpoint($this->client);
+    }
+
     final public function getPaymentsEndpoint(): PaymentsApiEndpoint {
         return new PaymentsApiEndpoint($this->client);
     }
@@ -70,6 +76,10 @@ final class Api {
 
     final public function getTextPagesEndpoint(): TextPagesApiEndpoint {
         return new TextPagesApiEndpoint($this->client);
+    }
+
+    final public function getTransportMethodEndpoint(): TransportMethodApiEndpoint {
+        return new TransportMethodApiEndpoint($this->client);
     }
 
     final public function getVoucherEndpoint(): VoucherApiEndpoint {

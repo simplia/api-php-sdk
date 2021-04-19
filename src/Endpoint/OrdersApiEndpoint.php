@@ -12,6 +12,7 @@ namespace Simplia\Api\Endpoint;
 use Generator;
 use Simplia\Api\Entity\OrderApiEntity;
 use Simplia\Api\FieldConfig\OrderApiFieldConfig;
+use Simplia\Api\Input\OrderCreateTypeApiInput;
 use Simplia\Api\Input\OrderStatusTypeApiInput;
 use Simplia\Api\Request\OrderApiRequest;
 
@@ -32,6 +33,12 @@ class OrdersApiEndpoint extends AbstractApiEndpoint {
             yield new OrderApiEntity($row);
         }
         yield from [];
+    }
+
+    /**
+     * Create new order
+     */
+    final public function create(OrderCreateTypeApiInput $input) {
     }
 
     /**

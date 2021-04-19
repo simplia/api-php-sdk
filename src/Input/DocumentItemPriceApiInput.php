@@ -16,13 +16,13 @@ class DocumentItemPriceApiInput extends AbstractApiInput {
         return $this;
     }
 
-    public function setPrice(int $price): self {
+    public function setPrice(float $price): self {
         $this->params['price'] = $price;
 
         return $this;
     }
 
-    public function setVatRate(int $vatRate): self {
+    public function setVatRate(float $vatRate): self {
         $this->params['vat_rate'] = $vatRate;
 
         return $this;
