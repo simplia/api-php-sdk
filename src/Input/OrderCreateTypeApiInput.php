@@ -10,6 +10,12 @@ declare(strict_types=1);
 namespace Simplia\Api\Input;
 
 class OrderCreateTypeApiInput extends AbstractApiInput {
+    public function setExternalCode(string $externalCode): self {
+        $this->params['external_code'] = $externalCode;
+
+        return $this;
+    }
+
     /**
      * @param OrderItemTypeApiInput[] $items
      * @return $this
@@ -33,32 +39,14 @@ class OrderCreateTypeApiInput extends AbstractApiInput {
         return $this;
     }
 
+    public function setDelivery(OrderDeliveryTypeApiInput $delivery): self {
+        $this->params['delivery'] = $delivery;
+
+        return $this;
+    }
+
     public function setCustomerNote(string $customerNote): self {
         $this->params['customer_note'] = $customerNote;
-
-        return $this;
-    }
-
-    public function setTransportMethodId(int $transportMethodId): self {
-        $this->params['transport_method_id'] = $transportMethodId;
-
-        return $this;
-    }
-
-    public function setTransportPrice(float $transportPrice): self {
-        $this->params['transport_price'] = $transportPrice;
-
-        return $this;
-    }
-
-    public function setPaymentMethodId(int $paymentMethodId): self {
-        $this->params['payment_method_id'] = $paymentMethodId;
-
-        return $this;
-    }
-
-    public function setPaymentPrice(float $paymentPrice): self {
-        $this->params['payment_price'] = $paymentPrice;
 
         return $this;
     }

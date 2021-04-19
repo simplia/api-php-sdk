@@ -34,6 +34,12 @@ class AddressTypeApiInput extends AbstractApiInput {
         return $this;
     }
 
+    public function setRegion(string $region): self {
+        $this->params['region'] = $region;
+
+        return $this;
+    }
+
     public function setCountry(string $country): self {
         $this->params['country'] = $country;
 
