@@ -56,7 +56,6 @@ $order = $api->getOrdersEndpoint()->create(
 
 echo $order->getId();
 ```
-```
 
 #### Change order status
 ```php
