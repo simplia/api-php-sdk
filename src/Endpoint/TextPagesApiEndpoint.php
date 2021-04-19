@@ -37,7 +37,10 @@ class TextPagesApiEndpoint extends AbstractApiEndpoint {
     /**
      * Create new text page
      */
-    final public function create(TextPageApiInput $input) {
+    final public function create(TextPageApiInput $input, ?TextPageApiFieldConfig $fields = null): TextPageApiEntity {
+        $result = $this->request('POST', 'text-pages', [], $input, $fields);
+
+        return new TextPageApiEntity($result);
     }
 
     /**

@@ -38,7 +38,10 @@ class OrdersApiEndpoint extends AbstractApiEndpoint {
     /**
      * Create new order
      */
-    final public function create(OrderCreateTypeApiInput $input) {
+    final public function create(OrderCreateTypeApiInput $input, ?OrderApiFieldConfig $fields = null): OrderApiEntity {
+        $result = $this->request('POST', 'orders', [], $input, $fields);
+
+        return new OrderApiEntity($result);
     }
 
     /**

@@ -25,6 +25,39 @@ Celý repozitář je automaticky generován z OpenAPI definic a pull request je 
 
 ## Examples
 
+#### Create new order
+```php
+use \Simplia\Api\Api;
+use \Simplia\Api\Input\AddressTypeApiInput;
+use \Simplia\Api\Input\OrderCreateTypeApiInput;
+use \Simplia\Api\Input\OrderItemTypeApiInput;
+use \Simplia\Api\Entity\OrderApiEntity;
+
+$api = Api::withUsernameAuth($httpClient, 'demo2.simpliashop.cz', 'api_user', '*********');
+$order = $api->getOrdersEndpoint()->create(
+    OrderCreateTypeApiInput::create()
+        ->setDeliveryAddress(
+            AddressTypeApiInput::create()
+                ->setFirstName('John')
+                ->setLastName('Smith')
+                ->setCity('Prague')
+                ->setEmail('info@example.org')
+        )
+        ->setCustomerNote('customer note')
+        ->setItems([
+            OrderItemTypeApiInput::create()
+            ->setItemId(123)
+            ->setQuantity(2)
+            ->setPriceVat(200) // unit price with vat
+        ]),
+    OrderApiEntity::createFieldConfig()
+        ->withId()
+);
+
+echo $order->getId();
+```
+```
+
 #### Change order status
 ```php
 use \Simplia\Api\Api;
