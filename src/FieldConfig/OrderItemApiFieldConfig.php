@@ -46,6 +46,12 @@ class OrderItemApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withPriceWithoutVat(): self {
+        $this->fields['price_without_vat'] = true;
+
+        return $this;
+    }
+
     public function withVatRate(): self {
         $this->fields['vat_rate'] = true;
 

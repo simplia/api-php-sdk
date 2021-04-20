@@ -36,6 +36,10 @@ class OrderItemApiEntity extends AbstractApiEntity {
         return $this->returnField('price');
     }
 
+    public function getPriceWithoutVat(): float {
+        return $this->returnField('price_without_vat');
+    }
+
     public function getVatRate(): float {
         return $this->returnField('vat_rate');
     }
