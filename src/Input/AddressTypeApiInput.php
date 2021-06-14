@@ -40,6 +40,12 @@ class AddressTypeApiInput extends AbstractApiInput {
         return $this;
     }
 
+    public function setZip(string $zip): self {
+        $this->params['zip'] = $zip;
+
+        return $this;
+    }
+
     public function setCountry(string $country): self {
         $this->params['country'] = $country;
 
