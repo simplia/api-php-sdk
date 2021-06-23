@@ -85,6 +85,13 @@ class OrderApiEntity extends AbstractApiEntity {
         return $this->returnFieldArray('discounts', OrderDiscountApiEntity::class);
     }
 
+    /**
+     * @return PackageApiEntity[]
+     */
+    public function getPackages(): array {
+        return $this->returnFieldArray('packages', PackageApiEntity::class);
+    }
+
     public function getDeliveryAddress(): ContactApiEntity {
         return $this->returnField('delivery_address', ContactApiEntity::class);
     }
