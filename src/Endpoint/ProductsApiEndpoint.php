@@ -38,7 +38,7 @@ class ProductsApiEndpoint extends AbstractApiEndpoint {
      * Create new product
      * @param string $category
      */
-    final public function activate(
+    final public function create(
         ProductTypeApiInput $input,
         string $category,
         ?ProductApiFieldConfig $fields = null
@@ -46,6 +46,19 @@ class ProductsApiEndpoint extends AbstractApiEndpoint {
         $query = [];
         $query['category'] = $category;
         $result = $this->request('POST', 'products', $query, $input, $fields);
+
+        return new ProductApiEntity($result);
+    }
+
+    /**
+     * Update existing product (patch)
+     */
+    final public function update(
+        int $id,
+        ProductTypeApiInput $input,
+        ?ProductApiFieldConfig $fields = null
+    ): ProductApiEntity {
+        $result = $this->request('PATCH', 'products/' . $id, [], $input, $fields);
 
         return new ProductApiEntity($result);
     }

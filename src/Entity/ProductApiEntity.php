@@ -20,6 +20,10 @@ class ProductApiEntity extends AbstractApiEntity {
         return $this->returnField('name');
     }
 
+    public function getVatRate(): string {
+        return $this->returnField('vat_rate');
+    }
+
     public function getShortDescription(): string {
         return $this->returnField('short_description');
     }

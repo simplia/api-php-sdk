@@ -24,6 +24,10 @@ class VariantApiEntity extends AbstractApiEntity {
         return $this->returnField('code');
     }
 
+    public function getPriceVat(): string {
+        return $this->returnField('price_vat');
+    }
+
     public function getCodeSupplier(): ?string {
         return $this->returnField('code_supplier');
     }

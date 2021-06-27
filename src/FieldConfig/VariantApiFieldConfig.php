@@ -28,6 +28,12 @@ class VariantApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withPriceVat(): self {
+        $this->fields['price_vat'] = true;
+
+        return $this;
+    }
+
     public function withCodeSupplier(): self {
         $this->fields['code_supplier'] = true;
 

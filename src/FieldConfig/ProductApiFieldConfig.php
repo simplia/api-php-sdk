@@ -22,6 +22,12 @@ class ProductApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withVatRate(): self {
+        $this->fields['vat_rate'] = true;
+
+        return $this;
+    }
+
     public function withShortDescription(): self {
         $this->fields['short_description'] = true;
 

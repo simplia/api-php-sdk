@@ -9,21 +9,27 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Input;
 
-class ProductTypeApiInput extends AbstractApiInput {
+class VariantTypeApiInput extends AbstractApiInput {
     public function setName(string $name): self {
         $this->params['name'] = $name;
 
         return $this;
     }
 
-    public function setVatRate(string $vatRate): self {
-        $this->params['vat_rate'] = $vatRate;
+    public function setCode(string $code): self {
+        $this->params['code'] = $code;
 
         return $this;
     }
 
-    public function setCode(string $code): self {
-        $this->params['code'] = $code;
+    public function setEan(string $ean): self {
+        $this->params['ean'] = $ean;
+
+        return $this;
+    }
+
+    public function setPriceVat(string $priceVat): self {
+        $this->params['price_vat'] = $priceVat;
 
         return $this;
     }
