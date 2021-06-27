@@ -75,4 +75,10 @@ class StockItemApiFieldConfig extends AbstractApiFieldConfig {
 
         return $this;
     }
+
+    public function withBundleParts(BundlePartApiFieldConfig $config): self {
+        $this->fields['bundle_parts'] = $config;
+
+        return $this;
+    }
 }
