@@ -12,6 +12,7 @@ namespace Simplia\Api\Endpoint;
 use Generator;
 use Simplia\Api\Entity\ProductApiEntity;
 use Simplia\Api\FieldConfig\ProductApiFieldConfig;
+use Simplia\Api\Input\ProductTypeApiInput;
 use Simplia\Api\Request\ProductApiRequest;
 
 class ProductsApiEndpoint extends AbstractApiEndpoint {
@@ -31,5 +32,21 @@ class ProductsApiEndpoint extends AbstractApiEndpoint {
             yield new ProductApiEntity($row);
         }
         yield from [];
+    }
+
+    /**
+     * Create new product
+     * @param string $category
+     */
+    final public function activate(
+        ProductTypeApiInput $input,
+        string $category,
+        ?ProductApiFieldConfig $fields = null
+    ): ProductApiEntity {
+        $query = [];
+        $query['category'] = $category;
+        $result = $this->request('POST', 'products', $query, $input, $fields);
+
+        return new ProductApiEntity($result);
     }
 }
