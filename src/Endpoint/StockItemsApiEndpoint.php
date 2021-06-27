@@ -13,6 +13,7 @@ use Generator;
 use Simplia\Api\Entity\StockItemApiEntity;
 use Simplia\Api\FieldConfig\StockItemApiFieldConfig;
 use Simplia\Api\Input\StockItemBatchTypeApiInput;
+use Simplia\Api\Input\StockItemLocationTypeApiInput;
 use Simplia\Api\Request\StockItemApiRequest;
 
 class StockItemsApiEndpoint extends AbstractApiEndpoint {
@@ -52,5 +53,19 @@ class StockItemsApiEndpoint extends AbstractApiEndpoint {
         $result = $this->request('PUT', 'stock-items/batch', [], $input, $fields);
 
         return array_map(static fn(array $row) => new StockItemApiEntity($row), $result);
+    }
+
+    /**
+     * Update storage location
+     */
+    final public function updateLocation(
+        int $id,
+        int $stockRoom,
+        StockItemLocationTypeApiInput $input,
+        ?StockItemApiFieldConfig $fields = null
+    ): StockItemApiEntity {
+        $result = $this->request('PUT', 'stock-items/' . $id . '/location/' . $stockRoom, [], $input, $fields);
+
+        return new StockItemApiEntity($result);
     }
 }
