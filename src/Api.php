@@ -15,6 +15,7 @@ use Simplia\Api\Endpoint\OrdersApiEndpoint;
 use Simplia\Api\Endpoint\PackagesApiEndpoint;
 use Simplia\Api\Endpoint\PaymentMethodApiEndpoint;
 use Simplia\Api\Endpoint\PaymentsApiEndpoint;
+use Simplia\Api\Endpoint\ProductsApiEndpoint;
 use Simplia\Api\Endpoint\StockItemsApiEndpoint;
 use Simplia\Api\Endpoint\StockRoomsApiEndpoint;
 use Simplia\Api\Endpoint\TextPagesApiEndpoint;
@@ -64,6 +65,10 @@ final class Api {
 
     final public function getPaymentsEndpoint(): PaymentsApiEndpoint {
         return new PaymentsApiEndpoint($this->client);
+    }
+
+    final public function getProductsEndpoint(): ProductsApiEndpoint {
+        return new ProductsApiEndpoint($this->client);
     }
 
     final public function getStockItemsEndpoint(): StockItemsApiEndpoint {
