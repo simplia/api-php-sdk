@@ -10,6 +10,7 @@ namespace Simplia\Api;
 use Psr\Http\Client\ClientInterface;
 use Simplia\Api\Endpoint\ArticlesApiEndpoint;
 use Simplia\Api\Endpoint\AvailabilitiesApiEndpoint;
+use Simplia\Api\Endpoint\BundleApiEndpoint;
 use Simplia\Api\Endpoint\DocumentsApiEndpoint;
 use Simplia\Api\Endpoint\OrdersApiEndpoint;
 use Simplia\Api\Endpoint\PackagesApiEndpoint;
@@ -46,6 +47,10 @@ final class Api {
 
     final public function getAvailabilitiesEndpoint(): AvailabilitiesApiEndpoint {
         return new AvailabilitiesApiEndpoint($this->client);
+    }
+
+    final public function getBundleEndpoint(): BundleApiEndpoint {
+        return new BundleApiEndpoint($this->client);
     }
 
     final public function getDocumentsEndpoint(): DocumentsApiEndpoint {
