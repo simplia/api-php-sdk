@@ -13,6 +13,7 @@ use Generator;
 use Simplia\Api\Entity\DocumentApiEntity;
 use Simplia\Api\FieldConfig\DocumentApiFieldConfig;
 use Simplia\Api\Input\DocumentItemPricesApiInput;
+use Simplia\Api\Input\StockDocumentTypeApiInput;
 use Simplia\Api\Request\DocumentApiRequest;
 
 class DocumentsApiEndpoint extends AbstractApiEndpoint {
@@ -52,6 +53,18 @@ class DocumentsApiEndpoint extends AbstractApiEndpoint {
         ?DocumentApiFieldConfig $fields = null
     ): DocumentApiEntity {
         $result = $this->request('PUT', 'documents/' . $id . '/rows/price', [], $input, $fields);
+
+        return new DocumentApiEntity($result);
+    }
+
+    /**
+     * Create stock document
+     */
+    final public function createStock(
+        StockDocumentTypeApiInput $input,
+        ?DocumentApiFieldConfig $fields = null
+    ): DocumentApiEntity {
+        $result = $this->request('POST', 'documents/stock/', [], $input, $fields);
 
         return new DocumentApiEntity($result);
     }
