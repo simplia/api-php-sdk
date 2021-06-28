@@ -51,4 +51,14 @@ class DocumentApiRequest extends AbstractApiRequest {
 
         return $this;
     }
+
+    /**
+     * @param string[] $codes Document codes
+     * @return $this
+     */
+    public function whereCodes(array $codes): self {
+        $this->params['codes'] = $codes;
+
+        return $this;
+    }
 }
