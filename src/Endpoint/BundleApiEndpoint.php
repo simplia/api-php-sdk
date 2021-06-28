@@ -11,18 +11,18 @@ namespace Simplia\Api\Endpoint;
 
 use Simplia\Api\Entity\StockItemApiEntity;
 use Simplia\Api\FieldConfig\StockItemApiFieldConfig;
-use Simplia\Api\Input\MultiPackTypeApiInput;
+use Simplia\Api\Input\BundleTypeApiInput;
 
 class BundleApiEndpoint extends AbstractApiEndpoint {
     /**
-     * Set item as multi pack
+     * Update item bundle parts
      */
-    final public function setMultiPack(
+    final public function update(
         int $item,
-        MultiPackTypeApiInput $input,
+        BundleTypeApiInput $input,
         ?StockItemApiFieldConfig $fields = null
     ): StockItemApiEntity {
-        $result = $this->request('PUT', 'bundles/' . $item . '/set-multi-pack', [], $input, $fields);
+        $result = $this->request('PUT', 'bundles/' . $item, [], $input, $fields);
 
         return new StockItemApiEntity($result);
     }
