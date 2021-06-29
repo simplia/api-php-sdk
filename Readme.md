@@ -2,7 +2,7 @@ SDK pro API eshopů Simplia.cz (https://api.simplia.cz/) určené pro interní n
 
 Výhody oproti přímému použití REST API:
 
- - možnost statické analýzy ([PHPStan](https://phpstan.org/)) a odhladění problému bez nutnosti volat API
+ - možnost statické analýzy ([PHPStan](https://phpstan.org/)) a odhalení problému bez nutnosti volat API
  - jednodušší testování (komunikace s SDK se mockuje jednodušeji než celá HTTP komunikace)
  - napovídání v editoru
 
