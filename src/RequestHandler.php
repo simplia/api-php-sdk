@@ -45,7 +45,13 @@ final class RequestHandler {
 
         $status = $response->getStatusCode();
         if ($status < 200 || $status > 299) {
-            throw new \RuntimeException('API error HTTP' . $response->getStatusCode());
+            try {
+                $body = json_decode($response->getBody(), true, 512, JSON_THROW_ON_ERROR);
+                throw new RequestException('API error HTTP' . $response->getStatusCode(), $body);
+            } catch (\JsonException $exception) {
+                throw new RequestException('API error HTTP' . $response->getStatusCode(), null);
+            }
+
         }
 
         return $this->decode($response);
