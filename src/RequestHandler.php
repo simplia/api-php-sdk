@@ -54,9 +54,9 @@ final class RequestHandler {
     private function throwExceptionFromResponse(ResponseInterface $response): void {
         try {
             $body = json_decode($response->getBody(), true, 512, JSON_THROW_ON_ERROR);
-            throw new RequestException('API error HTTP' . $response->getStatusCode(), $body);
+            throw new RequestException('API error HTTP' . $response->getStatusCode() . "\n" . $response->getBody(), $body);
         } catch (\JsonException $exception) {
-            throw new RequestException('API error HTTP' . $response->getStatusCode(), null);
+            throw new RequestException('API error HTTP' . $response->getStatusCode() . "\n" . $response->getBody(), null);
         }
     }
 
