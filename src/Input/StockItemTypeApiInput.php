@@ -22,6 +22,12 @@ class StockItemTypeApiInput extends AbstractApiInput {
         return $this;
     }
 
+    public function setAvailabilityHours(float $availabilityHours): self {
+        $this->params['availability_hours'] = $availabilityHours;
+
+        return $this;
+    }
+
     public function setEan(string $ean): self {
         $this->params['ean'] = $ean;
 
