@@ -46,6 +46,18 @@ class StockItemApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withTotalReservedStockAmount(): self {
+        $this->fields['total_reserved_stock_amount'] = true;
+
+        return $this;
+    }
+
+    public function withTotalBlockedStockAmount(): self {
+        $this->fields['total_blocked_stock_amount'] = true;
+
+        return $this;
+    }
+
     public function withAvailabilityHours(): self {
         $this->fields['availability_hours'] = true;
 

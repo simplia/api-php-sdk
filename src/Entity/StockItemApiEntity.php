@@ -36,6 +36,14 @@ class StockItemApiEntity extends AbstractApiEntity {
         return $this->returnField('total_stock_amount');
     }
 
+    public function getTotalReservedStockAmount(): int {
+        return $this->returnField('total_reserved_stock_amount');
+    }
+
+    public function getTotalBlockedStockAmount(): int {
+        return $this->returnField('total_blocked_stock_amount');
+    }
+
     public function getAvailabilityHours(): int {
         return $this->returnField('availability_hours');
     }
