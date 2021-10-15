@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Input;
 
+use Simplia\Api\Input\AbstractApiInput;
+
 class ProductTypeApiInput extends AbstractApiInput {
     public function setName(string $name): self {
         $this->params['name'] = $name;

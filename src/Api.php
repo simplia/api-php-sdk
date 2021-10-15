@@ -24,6 +24,7 @@ use Simplia\Api\Endpoint\TransportMethodApiEndpoint;
 use Simplia\Api\Endpoint\VariantsApiEndpoint;
 use Simplia\Api\Endpoint\VoucherApiEndpoint;
 use Simplia\Api\Endpoint\VoucherLockApiEndpoint;
+use Simplia\Api\RequestHandler;
 
 final class Api {
     public RequestHandler $client;
@@ -41,67 +42,67 @@ final class Api {
         return new self($client, $hostname, $username, $password);
     }
 
-    final public function getArticlesEndpoint(): ArticlesApiEndpoint {
-        return new ArticlesApiEndpoint($this->client);
+    final public function getArticlesEndpoint(): Endpoint\ArticlesApiEndpoint {
+        return new Endpoint\ArticlesApiEndpoint($this->client);
     }
 
-    final public function getAvailabilitiesEndpoint(): AvailabilitiesApiEndpoint {
-        return new AvailabilitiesApiEndpoint($this->client);
+    final public function getAvailabilitiesEndpoint(): Endpoint\AvailabilitiesApiEndpoint {
+        return new Endpoint\AvailabilitiesApiEndpoint($this->client);
     }
 
-    final public function getBundleEndpoint(): BundleApiEndpoint {
-        return new BundleApiEndpoint($this->client);
+    final public function getBundleEndpoint(): Endpoint\BundleApiEndpoint {
+        return new Endpoint\BundleApiEndpoint($this->client);
     }
 
-    final public function getDocumentsEndpoint(): DocumentsApiEndpoint {
-        return new DocumentsApiEndpoint($this->client);
+    final public function getDocumentsEndpoint(): Endpoint\DocumentsApiEndpoint {
+        return new Endpoint\DocumentsApiEndpoint($this->client);
     }
 
-    final public function getOrdersEndpoint(): OrdersApiEndpoint {
-        return new OrdersApiEndpoint($this->client);
+    final public function getOrdersEndpoint(): Endpoint\OrdersApiEndpoint {
+        return new Endpoint\OrdersApiEndpoint($this->client);
     }
 
-    final public function getPackagesEndpoint(): PackagesApiEndpoint {
-        return new PackagesApiEndpoint($this->client);
+    final public function getPackagesEndpoint(): Endpoint\PackagesApiEndpoint {
+        return new Endpoint\PackagesApiEndpoint($this->client);
     }
 
-    final public function getPaymentMethodEndpoint(): PaymentMethodApiEndpoint {
-        return new PaymentMethodApiEndpoint($this->client);
+    final public function getPaymentMethodEndpoint(): Endpoint\PaymentMethodApiEndpoint {
+        return new Endpoint\PaymentMethodApiEndpoint($this->client);
     }
 
-    final public function getPaymentsEndpoint(): PaymentsApiEndpoint {
-        return new PaymentsApiEndpoint($this->client);
+    final public function getPaymentsEndpoint(): Endpoint\PaymentsApiEndpoint {
+        return new Endpoint\PaymentsApiEndpoint($this->client);
     }
 
-    final public function getProductsEndpoint(): ProductsApiEndpoint {
-        return new ProductsApiEndpoint($this->client);
+    final public function getProductsEndpoint(): Endpoint\ProductsApiEndpoint {
+        return new Endpoint\ProductsApiEndpoint($this->client);
     }
 
-    final public function getStockItemsEndpoint(): StockItemsApiEndpoint {
-        return new StockItemsApiEndpoint($this->client);
+    final public function getStockItemsEndpoint(): Endpoint\StockItemsApiEndpoint {
+        return new Endpoint\StockItemsApiEndpoint($this->client);
     }
 
-    final public function getStockRoomsEndpoint(): StockRoomsApiEndpoint {
-        return new StockRoomsApiEndpoint($this->client);
+    final public function getStockRoomsEndpoint(): Endpoint\StockRoomsApiEndpoint {
+        return new Endpoint\StockRoomsApiEndpoint($this->client);
     }
 
-    final public function getTextPagesEndpoint(): TextPagesApiEndpoint {
-        return new TextPagesApiEndpoint($this->client);
+    final public function getTextPagesEndpoint(): Endpoint\TextPagesApiEndpoint {
+        return new Endpoint\TextPagesApiEndpoint($this->client);
     }
 
-    final public function getTransportMethodEndpoint(): TransportMethodApiEndpoint {
-        return new TransportMethodApiEndpoint($this->client);
+    final public function getTransportMethodEndpoint(): Endpoint\TransportMethodApiEndpoint {
+        return new Endpoint\TransportMethodApiEndpoint($this->client);
     }
 
-    final public function getVariantsEndpoint(): VariantsApiEndpoint {
-        return new VariantsApiEndpoint($this->client);
+    final public function getVariantsEndpoint(): Endpoint\VariantsApiEndpoint {
+        return new Endpoint\VariantsApiEndpoint($this->client);
     }
 
-    final public function getVoucherEndpoint(): VoucherApiEndpoint {
-        return new VoucherApiEndpoint($this->client);
+    final public function getVoucherEndpoint(): Endpoint\VoucherApiEndpoint {
+        return new Endpoint\VoucherApiEndpoint($this->client);
     }
 
-    final public function getVoucherLockEndpoint(): VoucherLockApiEndpoint {
-        return new VoucherLockApiEndpoint($this->client);
+    final public function getVoucherLockEndpoint(): Endpoint\VoucherLockApiEndpoint {
+        return new Endpoint\VoucherLockApiEndpoint($this->client);
     }
 }

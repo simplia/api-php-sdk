@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Request;
 
+use Simplia\Api\Request\AbstractApiRequest;
+
 class ProductApiRequest extends AbstractApiRequest {
     /**
      * @param int[] $ids Product IDs

@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Input;
 
+use Simplia\Api\Input\AbstractApiInput;
+
 class TextPageApiInput extends AbstractApiInput {
     public function setId(int $id): self {
         $this->params['id'] = $id;

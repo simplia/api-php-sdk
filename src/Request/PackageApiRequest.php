@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Request;
 
+use Simplia\Api\Request\AbstractApiRequest;
+
 class PackageApiRequest extends AbstractApiRequest {
     public function orderByDateAsc(): self {
         $this->params['sort'] = 'date';

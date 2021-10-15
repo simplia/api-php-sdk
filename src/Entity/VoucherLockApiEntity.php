@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
+use Simplia\Api\Entity\VoucherApiEntity;
 use Simplia\Api\FieldConfig\VoucherLockApiFieldConfig;
 
 class VoucherLockApiEntity extends AbstractApiEntity {

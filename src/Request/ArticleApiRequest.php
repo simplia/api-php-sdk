@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Request;
 
+use Simplia\Api\Request\AbstractApiRequest;
+
 class ArticleApiRequest extends AbstractApiRequest {
     public function orderByPublishedAsc(): self {
         $this->params['sort'] = 'published';

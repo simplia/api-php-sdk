@@ -9,6 +9,11 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Input;
 
+use Simplia\Api\Input\AbstractApiInput;
+use Simplia\Api\Input\AddressTypeApiInput;
+use Simplia\Api\Input\OrderDeliveryTypeApiInput;
+use Simplia\Api\Input\OrderItemTypeApiInput;
+
 class OrderCreateTypeApiInput extends AbstractApiInput {
     public function setExternalCode(string $externalCode): self {
         $this->params['external_code'] = $externalCode;

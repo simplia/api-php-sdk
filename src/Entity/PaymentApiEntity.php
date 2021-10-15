@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
+use Simplia\Api\Entity\DocumentApiEntity;
+use Simplia\Api\Entity\OrderApiEntity;
 use Simplia\Api\FieldConfig\PaymentApiFieldConfig;
 
 class PaymentApiEntity extends AbstractApiEntity {

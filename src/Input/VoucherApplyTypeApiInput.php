@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Input;
 
+use Simplia\Api\Input\AbstractApiInput;
+
 class VoucherApplyTypeApiInput extends AbstractApiInput {
     public function setKey(string $key): self {
         $this->params['key'] = $key;

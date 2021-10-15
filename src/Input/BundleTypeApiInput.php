@@ -9,6 +9,9 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Input;
 
+use Simplia\Api\Input\AbstractApiInput;
+use Simplia\Api\Input\BundlerPartTypeApiInput;
+
 class BundleTypeApiInput extends AbstractApiInput {
     /**
      * @param BundlerPartTypeApiInput[] $parts

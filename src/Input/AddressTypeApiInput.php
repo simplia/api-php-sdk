@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Input;
 
+use Simplia\Api\Input\AbstractApiInput;
+
 class AddressTypeApiInput extends AbstractApiInput {
     public function setFirstName(string $firstName): self {
         $this->params['first_name'] = $firstName;

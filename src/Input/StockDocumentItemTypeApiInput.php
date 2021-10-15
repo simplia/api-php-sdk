@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Input;
 
+use Simplia\Api\Input\AbstractApiInput;
+
 class StockDocumentItemTypeApiInput extends AbstractApiInput {
     public function setItemId(string $itemId): self {
         $this->params['item_id'] = $itemId;
