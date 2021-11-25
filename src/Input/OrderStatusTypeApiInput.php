@@ -9,8 +9,6 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Input;
 
-use Simplia\Api\Input\AbstractApiInput;
-
 class OrderStatusTypeApiInput extends AbstractApiInput {
     public function setStatusId(int $statusId): self {
         $this->params['status_id'] = $statusId;

@@ -9,8 +9,6 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Request;
 
-use Simplia\Api\Request\AbstractApiRequest;
-
 class StockRoomApiRequest extends AbstractApiRequest {
     /**
      * @param int[] $ids Stock room IDs

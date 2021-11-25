@@ -9,10 +9,6 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\Entity\BundlePartApiEntity;
-use Simplia\Api\Entity\ProductApiEntity;
-use Simplia\Api\Entity\StockStorageLocationApiEntity;
-use Simplia\Api\Entity\VariantApiEntity;
 use Simplia\Api\FieldConfig\StockItemApiFieldConfig;
 
 class StockItemApiEntity extends AbstractApiEntity {

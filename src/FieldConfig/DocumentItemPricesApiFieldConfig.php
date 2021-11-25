@@ -9,8 +9,6 @@ declare(strict_types=1);
 
 namespace Simplia\Api\FieldConfig;
 
-use Simplia\Api\FieldConfig\DocumentItemPriceApiFieldConfig;
-
 class DocumentItemPricesApiFieldConfig extends AbstractApiFieldConfig {
     public function withItems(DocumentItemPriceApiFieldConfig $config): self {
         $this->fields['items'] = $config;

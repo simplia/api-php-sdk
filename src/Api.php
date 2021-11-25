@@ -24,7 +24,6 @@ use Simplia\Api\Endpoint\TransportMethodApiEndpoint;
 use Simplia\Api\Endpoint\VariantsApiEndpoint;
 use Simplia\Api\Endpoint\VoucherApiEndpoint;
 use Simplia\Api\Endpoint\VoucherLockApiEndpoint;
-use Simplia\Api\RequestHandler;
 
 final class Api {
     public RequestHandler $client;

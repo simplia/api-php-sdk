@@ -9,11 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\Entity\ContactApiEntity;
 use Simplia\Api\Entity\DocumentApiEntity as DocumentApiEntity1;
-use Simplia\Api\Entity\DocumentItemApiEntity;
-use Simplia\Api\Entity\PaymentApiEntity;
-use Simplia\Api\Entity\StockRoomApiEntity;
 use Simplia\Api\FieldConfig\DocumentApiFieldConfig;
 
 class DocumentApiEntity extends AbstractApiEntity {

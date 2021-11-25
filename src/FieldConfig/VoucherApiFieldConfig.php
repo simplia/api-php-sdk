@@ -9,8 +9,6 @@ declare(strict_types=1);
 
 namespace Simplia\Api\FieldConfig;
 
-use Simplia\Api\FieldConfig\VoucherGroupApiFieldConfig;
-
 class VoucherApiFieldConfig extends AbstractApiFieldConfig {
     public function withId(): self {
         $this->fields['id'] = true;

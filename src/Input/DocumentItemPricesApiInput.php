@@ -9,9 +9,6 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Input;
 
-use Simplia\Api\Input\AbstractApiInput;
-use Simplia\Api\Input\DocumentItemPriceApiInput;
-
 class DocumentItemPricesApiInput extends AbstractApiInput {
     /**
      * @param DocumentItemPriceApiInput[] $items

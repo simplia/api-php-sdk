@@ -9,11 +9,6 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\Entity\ContactApiEntity;
-use Simplia\Api\Entity\OrderDiscountApiEntity;
-use Simplia\Api\Entity\OrderItemApiEntity;
-use Simplia\Api\Entity\PackageApiEntity;
-use Simplia\Api\Entity\PaymentApiEntity;
 use Simplia\Api\FieldConfig\OrderApiFieldConfig;
 
 class OrderApiEntity extends AbstractApiEntity {

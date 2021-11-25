@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\Entity\DocumentItemPriceApiEntity;
 use Simplia\Api\FieldConfig\DocumentItemPricesApiFieldConfig;
 
 class DocumentItemPricesApiEntity extends AbstractApiEntity {

@@ -9,12 +9,6 @@ declare(strict_types=1);
 
 namespace Simplia\Api\FieldConfig;
 
-use Simplia\Api\FieldConfig\ContactApiFieldConfig;
-use Simplia\Api\FieldConfig\OrderDiscountApiFieldConfig;
-use Simplia\Api\FieldConfig\OrderItemApiFieldConfig;
-use Simplia\Api\FieldConfig\PackageApiFieldConfig;
-use Simplia\Api\FieldConfig\PaymentApiFieldConfig;
-
 class OrderApiFieldConfig extends AbstractApiFieldConfig {
     public function withId(): self {
         $this->fields['id'] = true;

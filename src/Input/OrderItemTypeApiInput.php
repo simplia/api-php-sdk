@@ -9,8 +9,6 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Input;
 
-use Simplia\Api\Input\AbstractApiInput;
-
 class OrderItemTypeApiInput extends AbstractApiInput {
     public function setItemId(int $itemId): self {
         $this->params['item_id'] = $itemId;

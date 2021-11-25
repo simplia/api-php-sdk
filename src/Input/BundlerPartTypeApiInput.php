@@ -9,8 +9,6 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Input;
 
-use Simplia\Api\Input\AbstractApiInput;
-
 class BundlerPartTypeApiInput extends AbstractApiInput {
     public function setPartItemId(string $partItemId): self {
         $this->params['part_item_id'] = $partItemId;

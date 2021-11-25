@@ -9,8 +9,6 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
-use Simplia\Api\Entity\BrandApiEntity;
-use Simplia\Api\Entity\SupplierApiEntity;
 use Simplia\Api\FieldConfig\ProductApiFieldConfig;
 
 class ProductApiEntity extends AbstractApiEntity {

@@ -9,11 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\FieldConfig;
 
-use Simplia\Api\FieldConfig\ContactApiFieldConfig;
 use Simplia\Api\FieldConfig\DocumentApiFieldConfig as DocumentApiFieldConfig1;
-use Simplia\Api\FieldConfig\DocumentItemApiFieldConfig;
-use Simplia\Api\FieldConfig\PaymentApiFieldConfig;
-use Simplia\Api\FieldConfig\StockRoomApiFieldConfig;
 
 class DocumentApiFieldConfig extends AbstractApiFieldConfig {
     public function withId(): self {

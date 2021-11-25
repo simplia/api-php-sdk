@@ -9,8 +9,6 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Input;
 
-use Simplia\Api\Input\AbstractApiInput;
-
 class OrderDeliveryTypeApiInput extends AbstractApiInput {
     public function setTransportMethodId(int $transportMethodId): self {
         $this->params['transport_method_id'] = $transportMethodId;

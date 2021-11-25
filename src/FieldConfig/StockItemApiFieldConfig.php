@@ -9,11 +9,6 @@ declare(strict_types=1);
 
 namespace Simplia\Api\FieldConfig;
 
-use Simplia\Api\FieldConfig\BundlePartApiFieldConfig;
-use Simplia\Api\FieldConfig\ProductApiFieldConfig;
-use Simplia\Api\FieldConfig\StockStorageLocationApiFieldConfig;
-use Simplia\Api\FieldConfig\VariantApiFieldConfig;
-
 class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     public function withId(): self {
         $this->fields['id'] = true;
