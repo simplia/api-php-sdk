@@ -40,6 +40,12 @@ class StockItemApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withAccountingValue(): self {
+        $this->fields['accounting_value'] = true;
+
+        return $this;
+    }
+
     public function withTotalStockAmount(): self {
         $this->fields['total_stock_amount'] = true;
 

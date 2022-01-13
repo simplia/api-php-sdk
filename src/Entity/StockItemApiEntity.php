@@ -32,6 +32,10 @@ class StockItemApiEntity extends AbstractApiEntity {
         return $this->returnField('full_price');
     }
 
+    public function getAccountingValue(): string {
+        return $this->returnField('accounting_value');
+    }
+
     public function getTotalStockAmount(): int {
         return $this->returnField('total_stock_amount');
     }
