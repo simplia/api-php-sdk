@@ -112,6 +112,12 @@ class OrderApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withPackagingHistories(OrderPackagingApiFieldConfig $config): self {
+        $this->fields['packaging_histories'] = $config;
+
+        return $this;
+    }
+
     public function withDeliveryAddress(ContactApiFieldConfig $config): self {
         $this->fields['delivery_address'] = $config;
 
