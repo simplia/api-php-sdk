@@ -43,15 +43,16 @@ final class RequestHandler {
             return null;
         }
 
-        $status = $response->getStatusCode();
-        if ($status < 200 || $status > 299) {
-            $this->throwExceptionFromResponse($response);
-        }
+        $this->throwExceptionIfErrorResponse($response);
 
         return $this->decode($response);
     }
 
-    private function throwExceptionFromResponse(ResponseInterface $response): void {
+    private function throwExceptionIfErrorResponse(ResponseInterface $response): void {
+        if ($response->getStatusCode() >= 200 && $response->getStatusCode() < 300) {
+            return;
+        }
+
         try {
             $body = json_decode($response->getBody(), true, 512, JSON_THROW_ON_ERROR);
             throw new RequestException('API error HTTP' . $response->getStatusCode() . "\n" . $response->getBody(), $body);
@@ -70,10 +71,7 @@ final class RequestHandler {
             return null;
         }
 
-        $status = $response->getStatusCode();
-        if ($status < 200 || $status > 299) {
-            $this->throwExceptionFromResponse($response);
-        }
+        $this->throwExceptionIfErrorResponse($response);
 
         return $this->decode($response);
     }
@@ -84,6 +82,8 @@ final class RequestHandler {
         do {
             $request = $this->requestFactory->createRequest('GET', $this->createUrl($url, $query));
             $response = $this->send($request);
+
+            $this->throwExceptionIfErrorResponse($response);
 
             $list = $this->decode($response);
             if (empty($list)) {
