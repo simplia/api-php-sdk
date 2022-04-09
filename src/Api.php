@@ -28,8 +28,8 @@ use Simplia\Api\Endpoint\VoucherLockApiEndpoint;
 final class Api {
     public RequestHandler $client;
 
-    private function __construct(ClientInterface $client, string $host, string $username, string $password) {
-        $this->client = new RequestHandler($client, $host, $username, $password);
+    private function __construct(ClientInterface $client, string $host, string $auth) {
+        $this->client = new RequestHandler($client, $host, $auth);
     }
 
     public static function withUsernameAuth(
@@ -38,7 +38,15 @@ final class Api {
         string $username,
         string $password
     ): self {
-        return new self($client, $hostname, $username, $password);
+        $auth = 'Basic ' . base64_encode($username . ':' . $password);
+
+        return new self($client, $hostname, $auth);
+    }
+
+    public static function withJWT(ClientInterface $client, string $hostname, string $JWT): self {
+        $auth = 'Bearer ' . base64_encode($JWT);
+
+        return new self($client, $hostname, $auth);
     }
 
     final public function getArticlesEndpoint(): ArticlesApiEndpoint {

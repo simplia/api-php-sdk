@@ -14,9 +14,9 @@ final class RequestHandler {
     private string $auth;
     private Psr17Factory $requestFactory;
 
-    public function __construct(ClientInterface $client, string $host, string $username, string $password) {
+    public function __construct(ClientInterface $client, string $host, string $auth) {
         $this->baseUri = 'https://' . $host . '/api/2/';
-        $this->auth = 'Basic ' . base64_encode($username . ':' . $password);
+        $this->auth = $auth;
         $this->client = $client;
         $this->requestFactory = new Psr17Factory();
     }
