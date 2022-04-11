@@ -22,6 +22,18 @@ class StockItemTypeApiInput extends AbstractApiInput {
         return $this;
     }
 
+    public function setPriceOriginal(float $priceOriginal): self {
+        $this->params['price_original'] = $priceOriginal;
+
+        return $this;
+    }
+
+    public function setVat(float $vat): self {
+        $this->params['vat'] = $vat;
+
+        return $this;
+    }
+
     public function setAvailabilityHours(float $availabilityHours): self {
         $this->params['availability_hours'] = $availabilityHours;
 
