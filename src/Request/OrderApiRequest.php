@@ -11,11 +11,11 @@ namespace Simplia\Api\Request;
 
 class OrderApiRequest extends AbstractApiRequest {
     /**
-     * @param bool $status Order status
+     * @param string[] $status Order status
      * @return $this
      */
-    public function whereStatus(bool $status): self {
-        $this->params['status'] = $status ? 'true' : 'false';
+    public function whereStatus(array $status): self {
+        $this->params['status'] = $status;
 
         return $this;
     }

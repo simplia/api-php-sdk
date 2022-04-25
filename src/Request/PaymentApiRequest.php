@@ -43,11 +43,11 @@ class PaymentApiRequest extends AbstractApiRequest {
     }
 
     /**
-     * @param bool $type Payment type
+     * @param string[] $type Payment type
      * @return $this
      */
-    public function whereType(bool $type): self {
-        $this->params['type'] = $type ? 'true' : 'false';
+    public function whereType(array $type): self {
+        $this->params['type'] = $type;
 
         return $this;
     }
