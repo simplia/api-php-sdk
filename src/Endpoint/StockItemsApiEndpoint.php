@@ -10,10 +10,13 @@ declare(strict_types=1);
 namespace Simplia\Api\Endpoint;
 
 use Generator;
+use Simplia\Api\Entity\DocumentApiEntity;
 use Simplia\Api\Entity\StockItemApiEntity;
+use Simplia\Api\FieldConfig\DocumentApiFieldConfig;
 use Simplia\Api\FieldConfig\StockItemApiFieldConfig;
 use Simplia\Api\Input\StockItemBatchTypeApiInput;
 use Simplia\Api\Input\StockItemLocationTypeApiInput;
+use Simplia\Api\Input\StockItemStockAmountBatchTypeApiInput;
 use Simplia\Api\Request\StockItemApiRequest;
 
 class StockItemsApiEndpoint extends AbstractApiEndpoint {
@@ -67,5 +70,20 @@ class StockItemsApiEndpoint extends AbstractApiEndpoint {
         $result = $this->request('PUT', 'stock-items/' . $id . '/location/' . $stockRoom, [], $input, $fields);
 
         return new StockItemApiEntity($result);
+    }
+
+    /**
+     * Update stock amount of stock items
+     *
+     * return DocumentApiEntity[]
+     */
+    final public function batchUpdateStockAmount(
+        int $stockRoom,
+        StockItemStockAmountBatchTypeApiInput $input,
+        ?DocumentApiFieldConfig $fields = null
+    ): array {
+        $result = $this->request('PUT', 'stock-items/stock-amount/batch/' . $stockRoom, [], $input, $fields);
+
+        return array_map(static fn(array $row) => new DocumentApiEntity($row), $result);
     }
 }
