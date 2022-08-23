@@ -28,7 +28,9 @@ class DocumentItemApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
-    public function withItem(): self {
+    public function withItem(StockItemApiFieldConfig $config): self {
+        $this->fields['item'] = $config;
+
         return $this;
     }
 

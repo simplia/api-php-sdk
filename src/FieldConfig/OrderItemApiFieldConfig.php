@@ -58,7 +58,9 @@ class OrderItemApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
-    public function withStockItem(): self {
+    public function withStockItem(StockItemApiFieldConfig $config): self {
+        $this->fields['stock_item'] = $config;
+
         return $this;
     }
 }

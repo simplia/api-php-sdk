@@ -46,7 +46,9 @@ class VoucherApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
-    public function withGroup(): self {
+    public function withGroup(VoucherGroupApiFieldConfig $config): self {
+        $this->fields['group'] = $config;
+
         return $this;
     }
 

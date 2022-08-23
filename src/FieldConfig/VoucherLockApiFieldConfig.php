@@ -34,7 +34,9 @@ class VoucherLockApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
-    public function withVoucher(): self {
+    public function withVoucher(VoucherApiFieldConfig $config): self {
+        $this->fields['voucher'] = $config;
+
         return $this;
     }
 }

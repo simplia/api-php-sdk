@@ -40,11 +40,15 @@ class ProductApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
-    public function withBrand(): self {
+    public function withBrand(BrandApiFieldConfig $config): self {
+        $this->fields['brand'] = $config;
+
         return $this;
     }
 
-    public function withSupplier(): self {
+    public function withSupplier(SupplierApiFieldConfig $config): self {
+        $this->fields['supplier'] = $config;
+
         return $this;
     }
 
