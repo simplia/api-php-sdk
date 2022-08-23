@@ -40,11 +40,11 @@ class PaymentApiEntity extends AbstractApiEntity {
         return $this->returnField('amount');
     }
 
-    public function getOrder(): OrderApiEntity {
+    public function getOrder(): ?OrderApiEntity {
         return $this->returnField('order', OrderApiEntity::class);
     }
 
-    public function getInvoice(): DocumentApiEntity {
+    public function getInvoice(): ?DocumentApiEntity {
         return $this->returnField('invoice', DocumentApiEntity::class);
     }
 

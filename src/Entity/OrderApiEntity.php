@@ -99,11 +99,11 @@ class OrderApiEntity extends AbstractApiEntity {
         return $this->returnFieldArray('packaging_histories', OrderPackagingApiEntity::class);
     }
 
-    public function getDeliveryAddress(): ContactApiEntity {
+    public function getDeliveryAddress(): ?ContactApiEntity {
         return $this->returnField('delivery_address', ContactApiEntity::class);
     }
 
-    public function getInvoiceAddress(): ContactApiEntity {
+    public function getInvoiceAddress(): ?ContactApiEntity {
         return $this->returnField('invoice_address', ContactApiEntity::class);
     }
 

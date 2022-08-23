@@ -60,15 +60,15 @@ class DocumentApiEntity extends AbstractApiEntity {
         return $this->returnFieldArray('rows', DocumentItemApiEntity::class);
     }
 
-    public function getCustomerAddress(): ContactApiEntity {
+    public function getCustomerAddress(): ?ContactApiEntity {
         return $this->returnField('customer_address', ContactApiEntity::class);
     }
 
-    public function getStockRoom(): StockRoomApiEntity {
+    public function getStockRoom(): ?StockRoomApiEntity {
         return $this->returnField('stock_room', StockRoomApiEntity::class);
     }
 
-    public function getRelevantDocument(): DocumentApiEntity {
+    public function getRelevantDocument(): ?DocumentApiEntity {
         return $this->returnField('relevant_document', DocumentApiEntity::class);
     }
 

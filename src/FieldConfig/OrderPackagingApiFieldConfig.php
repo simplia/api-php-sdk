@@ -16,9 +16,7 @@ class OrderPackagingApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
-    public function withPickedBy(AdminApiFieldConfig $config): self {
-        $this->fields['picked_by'] = $config;
-
+    public function withPickedBy(): self {
         return $this;
     }
 
@@ -34,9 +32,7 @@ class OrderPackagingApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
-    public function withPackagedBy(AdminApiFieldConfig $config): self {
-        $this->fields['packaged_by'] = $config;
-
+    public function withPackagedBy(): self {
         return $this;
     }
 

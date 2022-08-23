@@ -44,7 +44,7 @@ class OrderItemApiEntity extends AbstractApiEntity {
         return $this->returnField('vat_rate');
     }
 
-    public function getStockItem(): StockItemApiEntity {
+    public function getStockItem(): ?StockItemApiEntity {
         return $this->returnField('stock_item', StockItemApiEntity::class);
     }
 

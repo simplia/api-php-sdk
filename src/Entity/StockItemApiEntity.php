@@ -67,7 +67,7 @@ class StockItemApiEntity extends AbstractApiEntity {
         return $this->returnField('product', ProductApiEntity::class);
     }
 
-    public function getVariant(): VariantApiEntity {
+    public function getVariant(): ?VariantApiEntity {
         return $this->returnField('variant', VariantApiEntity::class);
     }
 

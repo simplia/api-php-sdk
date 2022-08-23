@@ -32,11 +32,11 @@ class ProductApiEntity extends AbstractApiEntity {
         return $this->returnField('long_description');
     }
 
-    public function getBrand(): BrandApiEntity {
+    public function getBrand(): ?BrandApiEntity {
         return $this->returnField('brand', BrandApiEntity::class);
     }
 
-    public function getSupplier(): SupplierApiEntity {
+    public function getSupplier(): ?SupplierApiEntity {
         return $this->returnField('supplier', SupplierApiEntity::class);
     }
 

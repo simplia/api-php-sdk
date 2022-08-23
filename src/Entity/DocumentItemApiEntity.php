@@ -24,7 +24,7 @@ class DocumentItemApiEntity extends AbstractApiEntity {
         return $this->returnField('amount');
     }
 
-    public function getItem(): StockItemApiEntity {
+    public function getItem(): ?StockItemApiEntity {
         return $this->returnField('item', StockItemApiEntity::class);
     }
 

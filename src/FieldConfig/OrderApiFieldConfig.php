@@ -118,15 +118,11 @@ class OrderApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
-    public function withDeliveryAddress(ContactApiFieldConfig $config): self {
-        $this->fields['delivery_address'] = $config;
-
+    public function withDeliveryAddress(): self {
         return $this;
     }
 
-    public function withInvoiceAddress(ContactApiFieldConfig $config): self {
-        $this->fields['invoice_address'] = $config;
-
+    public function withInvoiceAddress(): self {
         return $this;
     }
 

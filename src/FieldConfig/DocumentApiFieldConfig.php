@@ -78,21 +78,15 @@ class DocumentApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
-    public function withCustomerAddress(ContactApiFieldConfig $config): self {
-        $this->fields['customer_address'] = $config;
-
+    public function withCustomerAddress(): self {
         return $this;
     }
 
-    public function withStockRoom(StockRoomApiFieldConfig $config): self {
-        $this->fields['stock_room'] = $config;
-
+    public function withStockRoom(): self {
         return $this;
     }
 
-    public function withRelevantDocument(DocumentApiFieldConfig $config): self {
-        $this->fields['relevant_document'] = $config;
-
+    public function withRelevantDocument(): self {
         return $this;
     }
 

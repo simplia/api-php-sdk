@@ -52,15 +52,11 @@ class PaymentApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
-    public function withOrder(OrderApiFieldConfig $config): self {
-        $this->fields['order'] = $config;
-
+    public function withOrder(): self {
         return $this;
     }
 
-    public function withInvoice(DocumentApiFieldConfig $config): self {
-        $this->fields['invoice'] = $config;
-
+    public function withInvoice(): self {
         return $this;
     }
 }

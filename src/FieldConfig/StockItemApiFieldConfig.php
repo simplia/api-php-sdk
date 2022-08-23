@@ -82,15 +82,11 @@ class StockItemApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
-    public function withProduct(ProductApiFieldConfig $config): self {
-        $this->fields['product'] = $config;
-
+    public function withProduct(): self {
         return $this;
     }
 
-    public function withVariant(VariantApiFieldConfig $config): self {
-        $this->fields['variant'] = $config;
-
+    public function withVariant(): self {
         return $this;
     }
 

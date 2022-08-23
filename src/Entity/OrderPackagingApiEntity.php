@@ -16,7 +16,7 @@ class OrderPackagingApiEntity extends AbstractApiEntity {
         return $this->returnField('id');
     }
 
-    public function getPickedBy(): AdminApiEntity {
+    public function getPickedBy(): ?AdminApiEntity {
         return $this->returnField('picked_by', AdminApiEntity::class);
     }
 
@@ -28,7 +28,7 @@ class OrderPackagingApiEntity extends AbstractApiEntity {
         return $this->returnField('picking_end');
     }
 
-    public function getPackagedBy(): AdminApiEntity {
+    public function getPackagedBy(): ?AdminApiEntity {
         return $this->returnField('packaged_by', AdminApiEntity::class);
     }
 
