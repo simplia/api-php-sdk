@@ -84,6 +84,18 @@ class DocumentApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withSupplier(SupplierApiFieldConfig $config): self {
+        $this->fields['supplier'] = $config;
+
+        return $this;
+    }
+
+    public function withStorageCenter(StockStorageCenterApiFieldConfig $config): self {
+        $this->fields['storage_center'] = $config;
+
+        return $this;
+    }
+
     public function withStockRoom(StockRoomApiFieldConfig $config): self {
         $this->fields['stock_room'] = $config;
 
