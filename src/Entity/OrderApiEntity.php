@@ -48,6 +48,10 @@ class OrderApiEntity extends AbstractApiEntity {
         return $this->returnField('delivery_price');
     }
 
+    public function getDeliveryPriceWithoutVat(): float {
+        return $this->returnField('delivery_price_without_vat');
+    }
+
     public function getDeliveryName(): ?string {
         return $this->returnField('delivery_name');
     }

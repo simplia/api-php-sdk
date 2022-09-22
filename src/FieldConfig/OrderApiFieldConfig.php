@@ -64,6 +64,12 @@ class OrderApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withDeliveryPriceWithoutVat(): self {
+        $this->fields['delivery_price_without_vat'] = true;
+
+        return $this;
+    }
+
     public function withDeliveryName(): self {
         $this->fields['delivery_name'] = true;
 
