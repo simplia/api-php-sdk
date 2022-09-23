@@ -12,6 +12,7 @@ use Simplia\Api\Endpoint\ArticlesApiEndpoint;
 use Simplia\Api\Endpoint\AvailabilitiesApiEndpoint;
 use Simplia\Api\Endpoint\BundleApiEndpoint;
 use Simplia\Api\Endpoint\DocumentsApiEndpoint;
+use Simplia\Api\Endpoint\EmailApiEndpoint;
 use Simplia\Api\Endpoint\OrdersApiEndpoint;
 use Simplia\Api\Endpoint\PackagesApiEndpoint;
 use Simplia\Api\Endpoint\PaymentMethodApiEndpoint;
@@ -63,6 +64,10 @@ final class Api {
 
     final public function getDocumentsEndpoint(): DocumentsApiEndpoint {
         return new DocumentsApiEndpoint($this->client);
+    }
+
+    final public function getEmailEndpoint(): EmailApiEndpoint {
+        return new EmailApiEndpoint($this->client);
     }
 
     final public function getOrdersEndpoint(): OrdersApiEndpoint {
