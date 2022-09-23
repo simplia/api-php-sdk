@@ -16,12 +16,13 @@ use Simplia\Api\Input\EmailMessageTypeApiInput;
 class EmailApiEndpoint extends AbstractApiEndpoint {
     /**
      * Send e-mail
-     *
-     * return EmailMessageApiEntity[]
      */
-    final public function send(EmailMessageTypeApiInput $input, ?EmailMessageApiFieldConfig $fields = null): array {
+    final public function send(
+        EmailMessageTypeApiInput $input,
+        ?EmailMessageApiFieldConfig $fields = null
+    ): EmailMessageApiEntity {
         $result = $this->request('POST', 'email/send', [], $input, $fields);
 
-        return array_map(static fn(array $row) => new EmailMessageApiEntity($row), $result);
+        return new EmailMessageApiEntity($result);
     }
 }
