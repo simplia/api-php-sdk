@@ -36,6 +36,10 @@ class ProductApiEntity extends AbstractApiEntity {
         return $this->returnField('brand', BrandApiEntity::class);
     }
 
+    public function getMainImage(): ?ImageApiEntity {
+        return $this->returnField('main_image', ImageApiEntity::class);
+    }
+
     public function getSupplier(): ?SupplierApiEntity {
         return $this->returnField('supplier', SupplierApiEntity::class);
     }

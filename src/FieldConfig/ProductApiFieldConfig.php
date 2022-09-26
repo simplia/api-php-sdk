@@ -46,6 +46,12 @@ class ProductApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withMainImage(ImageApiFieldConfig $config): self {
+        $this->fields['main_image'] = $config;
+
+        return $this;
+    }
+
     public function withSupplier(SupplierApiFieldConfig $config): self {
         $this->fields['supplier'] = $config;
 

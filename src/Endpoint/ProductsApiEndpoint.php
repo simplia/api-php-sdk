@@ -10,8 +10,11 @@ declare(strict_types=1);
 namespace Simplia\Api\Endpoint;
 
 use Generator;
+use Simplia\Api\Entity\ImageApiEntity;
 use Simplia\Api\Entity\ProductApiEntity;
+use Simplia\Api\FieldConfig\ImageApiFieldConfig;
 use Simplia\Api\FieldConfig\ProductApiFieldConfig;
+use Simplia\Api\Input\ImageUploadTypeApiInput;
 use Simplia\Api\Input\ProductTypeApiInput;
 use Simplia\Api\Request\ProductApiRequest;
 
@@ -61,5 +64,18 @@ class ProductsApiEndpoint extends AbstractApiEndpoint {
         $result = $this->request('PATCH', 'products/' . $id, [], $input, $fields);
 
         return new ProductApiEntity($result);
+    }
+
+    /**
+     * Upload image to product
+     */
+    final public function uploadImage(
+        int $id,
+        ImageUploadTypeApiInput $input,
+        ?ImageApiFieldConfig $fields = null
+    ): ImageApiEntity {
+        $result = $this->request('POST', 'products/' . $id . '/upload-image', [], $input, $fields);
+
+        return new ImageApiEntity($result);
     }
 }
