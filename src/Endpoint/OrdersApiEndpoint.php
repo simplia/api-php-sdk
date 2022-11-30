@@ -19,24 +19,17 @@ use Simplia\Api\Request\OrderApiRequest;
 class OrdersApiEndpoint extends AbstractApiEndpoint {
     /**
      * List orders
-     * @param string $email
-     * @param string $phone
      * @param OrderApiRequest $request
      * @param OrderApiFieldConfig $fields
      * @param int $batchSize
      * @return Generator|OrderApiEntity[]
      */
     final public function iterate(
-        string $email,
-        string $phone,
         OrderApiRequest $request,
         OrderApiFieldConfig $fields,
         int $batchSize = 100
     ): Generator {
-        $query = [];
-        $query['email'] = $email;
-        $query['phone'] = $phone;
-        foreach ($this->iterateList('orders', $query, $request, $fields, $batchSize) as $row) {
+        foreach ($this->iterateList('orders', [], $request, $fields, $batchSize) as $row) {
             yield new OrderApiEntity($row);
         }
         yield from [];

@@ -20,6 +20,26 @@ class OrderApiRequest extends AbstractApiRequest {
         return $this;
     }
 
+    /**
+     * @param string $email Customer email.
+     * @return $this
+     */
+    public function whereEmail(string $email): self {
+        $this->params['email'] = $email;
+
+        return $this;
+    }
+
+    /**
+     * @param string $phone Customer phone.
+     * @return $this
+     */
+    public function wherePhone(string $phone): self {
+        $this->params['phone'] = $phone;
+
+        return $this;
+    }
+
     public function orderByDateAsc(): self {
         $this->params['sort'] = 'date';
 
