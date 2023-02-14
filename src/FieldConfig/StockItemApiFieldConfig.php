@@ -70,6 +70,12 @@ class StockItemApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withAvailabilityDate(): self {
+        $this->fields['availability_date'] = true;
+
+        return $this;
+    }
+
     public function withName(): self {
         $this->fields['name'] = true;
 

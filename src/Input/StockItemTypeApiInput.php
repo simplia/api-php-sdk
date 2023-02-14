@@ -40,6 +40,12 @@ class StockItemTypeApiInput extends AbstractApiInput {
         return $this;
     }
 
+    public function setAvailabilityDate(string $availabilityDate): self {
+        $this->params['availability_date'] = $availabilityDate;
+
+        return $this;
+    }
+
     public function setEan(string $ean): self {
         $this->params['ean'] = $ean;
 
