@@ -52,7 +52,7 @@ class StockItemApiEntity extends AbstractApiEntity {
         return $this->returnField('availability_hours');
     }
 
-    public function getAvailabilityDate(): string {
+    public function getAvailabilityDate(): ?string {
         return $this->returnField('availability_date');
     }
 
