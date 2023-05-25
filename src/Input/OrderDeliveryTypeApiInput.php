@@ -22,8 +22,8 @@ class OrderDeliveryTypeApiInput extends AbstractApiInput {
         return $this;
     }
 
-    public function setPaymentVatRate(float $paymentVatRate): self {
-        $this->params['payment_vat_rate'] = $paymentVatRate;
+    public function setTransportVatRate(float $transportVatRate): self {
+        $this->params['transport_vat_rate'] = $transportVatRate;
 
         return $this;
     }
@@ -36,6 +36,12 @@ class OrderDeliveryTypeApiInput extends AbstractApiInput {
 
     public function setPaymentPrice(float $paymentPrice): self {
         $this->params['payment_price'] = $paymentPrice;
+
+        return $this;
+    }
+
+    public function setPaymentVatRate(float $paymentVatRate): self {
+        $this->params['payment_vat_rate'] = $paymentVatRate;
 
         return $this;
     }
