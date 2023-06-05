@@ -20,6 +20,10 @@ class StockRoomApiEntity extends AbstractApiEntity {
         return $this->returnField('name');
     }
 
+    public function getStorageCenter(): StockStorageCenterApiEntity {
+        return $this->returnField('storage_center', StockStorageCenterApiEntity::class);
+    }
+
     final public static function createFieldConfig(): StockRoomApiFieldConfig {
         return new StockRoomApiFieldConfig();
     }

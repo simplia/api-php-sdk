@@ -21,4 +21,10 @@ class StockRoomApiFieldConfig extends AbstractApiFieldConfig {
 
         return $this;
     }
+
+    public function withStorageCenter(StockStorageCenterApiFieldConfig $config): self {
+        $this->fields['storage_center'] = $config;
+
+        return $this;
+    }
 }

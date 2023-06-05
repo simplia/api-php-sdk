@@ -82,6 +82,13 @@ class StockItemApiEntity extends AbstractApiEntity {
         return $this->returnFieldArray('bundle_parts', BundlePartApiEntity::class);
     }
 
+    /**
+     * @return StockItemAmountApiEntity[]
+     */
+    public function getStockAmounts(): array {
+        return $this->returnFieldArray('stock_amounts', StockItemAmountApiEntity::class);
+    }
+
     final public static function createFieldConfig(): StockItemApiFieldConfig {
         return new StockItemApiFieldConfig();
     }

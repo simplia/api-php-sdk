@@ -105,4 +105,10 @@ class StockItemApiFieldConfig extends AbstractApiFieldConfig {
 
         return $this;
     }
+
+    public function withStockAmounts(StockItemAmountApiFieldConfig $config): self {
+        $this->fields['stock_amounts'] = $config;
+
+        return $this;
+    }
 }
