@@ -10,6 +10,12 @@ declare(strict_types=1);
 namespace Simplia\Api\FieldConfig;
 
 class StockItemAmountApiFieldConfig extends AbstractApiFieldConfig {
+    public function withId(): self {
+        $this->fields['id'] = true;
+
+        return $this;
+    }
+
     public function withStockRoom(StockRoomApiFieldConfig $config): self {
         $this->fields['stock_room'] = $config;
 

@@ -12,6 +12,10 @@ namespace Simplia\Api\Entity;
 use Simplia\Api\FieldConfig\StockItemAmountApiFieldConfig;
 
 class StockItemAmountApiEntity extends AbstractApiEntity {
+    public function getId(): int {
+        return $this->returnField('id');
+    }
+
     public function getStockRoom(): StockRoomApiEntity {
         return $this->returnField('stock_room', StockRoomApiEntity::class);
     }
