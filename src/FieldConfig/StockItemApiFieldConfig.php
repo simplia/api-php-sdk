@@ -76,6 +76,12 @@ class StockItemApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withDemandable(): self {
+        $this->fields['demandable'] = true;
+
+        return $this;
+    }
+
     public function withName(): self {
         $this->fields['name'] = true;
 

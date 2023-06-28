@@ -56,6 +56,10 @@ class StockItemApiEntity extends AbstractApiEntity {
         return $this->returnField('availability_date');
     }
 
+    public function isDemandable(): bool {
+        return $this->returnField('demandable');
+    }
+
     public function getName(): string {
         return $this->returnField('name');
     }
