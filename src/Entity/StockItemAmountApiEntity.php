@@ -44,6 +44,10 @@ class StockItemAmountApiEntity extends AbstractApiEntity {
         return $this->returnField('maximal_amount');
     }
 
+    public function getSuggestedAmount(): int {
+        return $this->returnField('suggested_amount');
+    }
+
     final public static function createFieldConfig(): StockItemAmountApiFieldConfig {
         return new StockItemAmountApiFieldConfig();
     }

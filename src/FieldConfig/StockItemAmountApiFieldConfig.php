@@ -57,4 +57,10 @@ class StockItemAmountApiFieldConfig extends AbstractApiFieldConfig {
 
         return $this;
     }
+
+    public function withSuggestedAmount(): self {
+        $this->fields['suggested_amount'] = true;
+
+        return $this;
+    }
 }
