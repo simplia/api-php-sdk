@@ -45,4 +45,10 @@ class VariantApiFieldConfig extends AbstractApiFieldConfig {
 
         return $this;
     }
+
+    public function withCreated(): self {
+        $this->fields['created'] = true;
+
+        return $this;
+    }
 }

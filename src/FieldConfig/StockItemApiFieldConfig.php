@@ -40,6 +40,12 @@ class StockItemApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withOriginalPrice(): self {
+        $this->fields['original_price'] = true;
+
+        return $this;
+    }
+
     public function withAccountingValue(): self {
         $this->fields['accounting_value'] = true;
 
@@ -114,6 +120,24 @@ class StockItemApiFieldConfig extends AbstractApiFieldConfig {
 
     public function withStockAmounts(StockItemAmountApiFieldConfig $config): self {
         $this->fields['stock_amounts'] = $config;
+
+        return $this;
+    }
+
+    public function withFirstPurchase(): self {
+        $this->fields['first_purchase'] = true;
+
+        return $this;
+    }
+
+    public function withLastPurchase(): self {
+        $this->fields['last_purchase'] = true;
+
+        return $this;
+    }
+
+    public function withLastSale(): self {
+        $this->fields['last_sale'] = true;
 
         return $this;
     }

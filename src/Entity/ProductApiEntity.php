@@ -56,6 +56,10 @@ class ProductApiEntity extends AbstractApiEntity {
         return $this->returnField('ean');
     }
 
+    public function getCreated(): string {
+        return $this->returnField('created');
+    }
+
     final public static function createFieldConfig(): ProductApiFieldConfig {
         return new ProductApiFieldConfig();
     }

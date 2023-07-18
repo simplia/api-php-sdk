@@ -32,6 +32,10 @@ class StockItemApiEntity extends AbstractApiEntity {
         return $this->returnField('full_price');
     }
 
+    public function getOriginalPrice(): float {
+        return $this->returnField('original_price');
+    }
+
     public function getAccountingValue(): string {
         return $this->returnField('accounting_value');
     }
@@ -91,6 +95,18 @@ class StockItemApiEntity extends AbstractApiEntity {
      */
     public function getStockAmounts(): array {
         return $this->returnFieldArray('stock_amounts', StockItemAmountApiEntity::class);
+    }
+
+    public function getFirstPurchase(): ?string {
+        return $this->returnField('first_purchase');
+    }
+
+    public function getLastPurchase(): ?string {
+        return $this->returnField('last_purchase');
+    }
+
+    public function getLastSale(): ?string {
+        return $this->returnField('last_sale');
     }
 
     final public static function createFieldConfig(): StockItemApiFieldConfig {
