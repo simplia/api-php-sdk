@@ -22,6 +22,7 @@ use Simplia\Api\Endpoint\StockItemsApiEndpoint;
 use Simplia\Api\Endpoint\StockRoomsApiEndpoint;
 use Simplia\Api\Endpoint\TextPagesApiEndpoint;
 use Simplia\Api\Endpoint\TransportMethodApiEndpoint;
+use Simplia\Api\Endpoint\UsersApiEndpoint;
 use Simplia\Api\Endpoint\VariantsApiEndpoint;
 use Simplia\Api\Endpoint\VoucherApiEndpoint;
 use Simplia\Api\Endpoint\VoucherLockApiEndpoint;
@@ -104,6 +105,10 @@ final class Api {
 
     final public function getTransportMethodEndpoint(): TransportMethodApiEndpoint {
         return new TransportMethodApiEndpoint($this->client);
+    }
+
+    final public function getUsersEndpoint(): UsersApiEndpoint {
+        return new UsersApiEndpoint($this->client);
     }
 
     final public function getVariantsEndpoint(): VariantsApiEndpoint {
