@@ -94,6 +94,14 @@ class DocumentApiEntity extends AbstractApiEntity {
         return $this->returnFieldArray('payments', PaymentApiEntity::class);
     }
 
+    public function getUser(): ?UserApiEntity {
+        return $this->returnField('user', UserApiEntity::class);
+    }
+
+    public function getCashRegister(): ?CashRegisterApiEntity {
+        return $this->returnField('cash_register', CashRegisterApiEntity::class);
+    }
+
     final public static function createFieldConfig(): DocumentApiFieldConfig {
         return new DocumentApiFieldConfig();
     }

@@ -119,4 +119,16 @@ class DocumentApiFieldConfig extends AbstractApiFieldConfig {
 
         return $this;
     }
+
+    public function withUser(UserApiFieldConfig $config): self {
+        $this->fields['user'] = $config;
+
+        return $this;
+    }
+
+    public function withCashRegister(CashRegisterApiFieldConfig $config): self {
+        $this->fields['cash_register'] = $config;
+
+        return $this;
+    }
 }
