@@ -50,4 +50,10 @@ class OrderCreateTypeApiInput extends AbstractApiInput {
 
         return $this;
     }
+
+    public function setVariableSymbol(int $variableSymbol): self {
+        $this->params['variable_symbol'] = $variableSymbol;
+
+        return $this;
+    }
 }
