@@ -46,6 +46,12 @@ class ContactApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withRegion(): self {
+        $this->fields['region'] = true;
+
+        return $this;
+    }
+
     public function withCountry(): self {
         $this->fields['country'] = true;
 

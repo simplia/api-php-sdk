@@ -36,6 +36,10 @@ class ContactApiEntity extends AbstractApiEntity {
         return $this->returnField('city');
     }
 
+    public function getRegion(): ?string {
+        return $this->returnField('region');
+    }
+
     public function getCountry(): ?string {
         return $this->returnField('country');
     }
