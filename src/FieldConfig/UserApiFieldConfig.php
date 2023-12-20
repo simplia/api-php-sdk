@@ -16,6 +16,12 @@ class UserApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withWholesale(): self {
+        $this->fields['wholesale'] = true;
+
+        return $this;
+    }
+
     public function withPointsFactor(): self {
         $this->fields['points_factor'] = true;
 

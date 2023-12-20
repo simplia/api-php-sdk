@@ -16,6 +16,12 @@ class UserApiInput extends AbstractApiInput {
         return $this;
     }
 
+    public function setWholesale(bool $wholesale): self {
+        $this->params['wholesale'] = $wholesale ? 'true' : 'false';
+
+        return $this;
+    }
+
     public function setPointsFactor(string $pointsFactor): self {
         $this->params['points_factor'] = $pointsFactor;
 

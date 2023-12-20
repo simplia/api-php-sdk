@@ -16,6 +16,10 @@ class UserApiEntity extends AbstractApiEntity {
         return $this->returnField('id');
     }
 
+    public function isWholesale(): bool {
+        return $this->returnField('wholesale');
+    }
+
     public function getPointsFactor(): string {
         return $this->returnField('points_factor');
     }
