@@ -45,8 +45,32 @@ class OrderCreateTypeApiInput extends AbstractApiInput {
         return $this;
     }
 
+    public function setStoreId(int $storeId): self {
+        $this->params['store_id'] = $storeId;
+
+        return $this;
+    }
+
+    public function setCreatedStoreId(int $createdStoreId): self {
+        $this->params['created_store_id'] = $createdStoreId;
+
+        return $this;
+    }
+
+    public function setStorageCenterId(int $storageCenterId): self {
+        $this->params['storage_center_id'] = $storageCenterId;
+
+        return $this;
+    }
+
     public function setCustomerNote(string $customerNote): self {
         $this->params['customer_note'] = $customerNote;
+
+        return $this;
+    }
+
+    public function setInvoiceNote(string $invoiceNote): self {
+        $this->params['invoice_note'] = $invoiceNote;
 
         return $this;
     }

@@ -20,6 +20,8 @@ use Simplia\Api\Endpoint\PaymentsApiEndpoint;
 use Simplia\Api\Endpoint\ProductsApiEndpoint;
 use Simplia\Api\Endpoint\StockItemsApiEndpoint;
 use Simplia\Api\Endpoint\StockRoomsApiEndpoint;
+use Simplia\Api\Endpoint\StorageCentersApiEndpoint;
+use Simplia\Api\Endpoint\StoresApiEndpoint;
 use Simplia\Api\Endpoint\TextPagesApiEndpoint;
 use Simplia\Api\Endpoint\TransportMethodApiEndpoint;
 use Simplia\Api\Endpoint\UsersApiEndpoint;
@@ -97,6 +99,14 @@ final class Api {
 
     final public function getStockRoomsEndpoint(): StockRoomsApiEndpoint {
         return new StockRoomsApiEndpoint($this->client);
+    }
+
+    final public function getStorageCentersEndpoint(): StorageCentersApiEndpoint {
+        return new StorageCentersApiEndpoint($this->client);
+    }
+
+    final public function getStoresEndpoint(): StoresApiEndpoint {
+        return new StoresApiEndpoint($this->client);
     }
 
     final public function getTextPagesEndpoint(): TextPagesApiEndpoint {

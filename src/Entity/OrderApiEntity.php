@@ -60,8 +60,24 @@ class OrderApiEntity extends AbstractApiEntity {
         return $this->returnField('payment_type');
     }
 
+    public function getStore(): ?StoreApiEntity {
+        return $this->returnField('store', StoreApiEntity::class);
+    }
+
+    public function getCreatedStore(): ?StoreApiEntity {
+        return $this->returnField('created_store', StoreApiEntity::class);
+    }
+
+    public function getStorageCenter(): ?StockStorageCenterApiEntity {
+        return $this->returnField('storage_center', StockStorageCenterApiEntity::class);
+    }
+
     public function getNote(): ?string {
         return $this->returnField('note');
+    }
+
+    public function getInvoiceNote(): ?string {
+        return $this->returnField('invoice_note');
     }
 
     public function getVariableSymbol(): ?string {

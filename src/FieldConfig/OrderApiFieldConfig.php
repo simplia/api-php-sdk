@@ -82,8 +82,32 @@ class OrderApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withStore(StoreApiFieldConfig $config): self {
+        $this->fields['store'] = $config;
+
+        return $this;
+    }
+
+    public function withCreatedStore(StoreApiFieldConfig $config): self {
+        $this->fields['created_store'] = $config;
+
+        return $this;
+    }
+
+    public function withStorageCenter(StockStorageCenterApiFieldConfig $config): self {
+        $this->fields['storage_center'] = $config;
+
+        return $this;
+    }
+
     public function withNote(): self {
         $this->fields['note'] = true;
+
+        return $this;
+    }
+
+    public function withInvoiceNote(): self {
+        $this->fields['invoice_note'] = true;
 
         return $this;
     }
