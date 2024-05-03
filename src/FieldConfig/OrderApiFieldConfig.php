@@ -118,6 +118,12 @@ class OrderApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withPriority(): self {
+        $this->fields['priority'] = true;
+
+        return $this;
+    }
+
     public function withItems(OrderItemApiFieldConfig $config): self {
         $this->fields['items'] = $config;
 

@@ -84,6 +84,10 @@ class OrderApiEntity extends AbstractApiEntity {
         return $this->returnField('variable_symbol');
     }
 
+    public function getPriority(): int {
+        return $this->returnField('priority');
+    }
+
     /**
      * @return OrderItemApiEntity[]
      */

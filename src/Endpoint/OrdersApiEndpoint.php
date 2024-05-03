@@ -13,6 +13,7 @@ use Generator;
 use Simplia\Api\Entity\OrderApiEntity;
 use Simplia\Api\FieldConfig\OrderApiFieldConfig;
 use Simplia\Api\Input\OrderCreateTypeApiInput;
+use Simplia\Api\Input\OrderPriorityTypeApiInput;
 use Simplia\Api\Input\OrderStatusTypeApiInput;
 use Simplia\Api\Request\OrderApiRequest;
 
@@ -54,14 +55,14 @@ class OrdersApiEndpoint extends AbstractApiEndpoint {
     }
 
     /**
-     * Change order status
+     * Change order priority
      */
     final public function updateStatus(
         string $id,
-        OrderStatusTypeApiInput $input,
+        OrderPriorityTypeApiInput $input,
         ?OrderApiFieldConfig $fields = null
     ): OrderApiEntity {
-        $result = $this->request('PUT', 'orders/' . $id . '/status', [], $input, $fields);
+        $result = $this->request('PUT', 'orders/' . $id . '/priority', [], $input, $fields);
 
         return new OrderApiEntity($result);
     }
