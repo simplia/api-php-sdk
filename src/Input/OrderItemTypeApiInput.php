@@ -22,6 +22,12 @@ class OrderItemTypeApiInput extends AbstractApiInput {
         return $this;
     }
 
+    public function setItemTrackingId(string $itemTrackingId): self {
+        $this->params['item_tracking_id'] = $itemTrackingId;
+
+        return $this;
+    }
+
     public function setQuantity(int $quantity): self {
         $this->params['quantity'] = $quantity;
 
