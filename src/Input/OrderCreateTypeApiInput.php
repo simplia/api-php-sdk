@@ -80,4 +80,10 @@ class OrderCreateTypeApiInput extends AbstractApiInput {
 
         return $this;
     }
+
+    public function setSendConfirmationEmail(bool $sendConfirmationEmail): self {
+        $this->params['send_confirmation_email'] = $sendConfirmationEmail ? 'true' : 'false';
+
+        return $this;
+    }
 }
