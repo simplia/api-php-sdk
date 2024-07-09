@@ -15,6 +15,7 @@ use Simplia\Api\FieldConfig\OrderApiFieldConfig;
 use Simplia\Api\Input\OrderCreateTypeApiInput;
 use Simplia\Api\Input\OrderPriorityTypeApiInput;
 use Simplia\Api\Input\OrderStatusTypeApiInput;
+use Simplia\Api\Input\OrderTypeApiInput;
 use Simplia\Api\Request\OrderApiRequest;
 
 class OrdersApiEndpoint extends AbstractApiEndpoint {
@@ -52,6 +53,19 @@ class OrdersApiEndpoint extends AbstractApiEndpoint {
         $result = $this->singleResult('orders/' . $id, [], $fields);
 
         return $result ? new OrderApiEntity($result) : null;
+    }
+
+    /**
+     * Update existing order (patch)
+     */
+    final public function update(
+        string $id,
+        OrderTypeApiInput $input,
+        ?OrderApiFieldConfig $fields = null
+    ): OrderApiEntity {
+        $result = $this->request('PATCH', 'orders/' . $id, [], $input, $fields);
+
+        return new OrderApiEntity($result);
     }
 
     /**

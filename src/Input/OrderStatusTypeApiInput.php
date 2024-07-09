@@ -15,4 +15,10 @@ class OrderStatusTypeApiInput extends AbstractApiInput {
 
         return $this;
     }
+
+    public function setSendInformationEmail(bool $sendInformationEmail): self {
+        $this->params['send_information_email'] = $sendInformationEmail ? 'true' : 'false';
+
+        return $this;
+    }
 }
