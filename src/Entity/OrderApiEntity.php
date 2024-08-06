@@ -20,6 +20,10 @@ class OrderApiEntity extends AbstractApiEntity {
         return $this->returnField('date_created');
     }
 
+    public function getDateDelayTo(): ?string {
+        return $this->returnField('date_delay_to');
+    }
+
     public function getDateInStatus(): ?string {
         return $this->returnField('date_in_status');
     }

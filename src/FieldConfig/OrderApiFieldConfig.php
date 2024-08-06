@@ -22,6 +22,12 @@ class OrderApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withDateDelayTo(): self {
+        $this->fields['date_delay_to'] = true;
+
+        return $this;
+    }
+
     public function withDateInStatus(): self {
         $this->fields['date_in_status'] = true;
 
