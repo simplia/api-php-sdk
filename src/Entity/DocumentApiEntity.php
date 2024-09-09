@@ -64,6 +64,10 @@ class DocumentApiEntity extends AbstractApiEntity {
         return $this->returnField('customer_address', ContactApiEntity::class);
     }
 
+    public function getIssuedBy(): ?AdminApiEntity {
+        return $this->returnField('issued_by', AdminApiEntity::class);
+    }
+
     public function getSupplier(): ?SupplierApiEntity {
         return $this->returnField('supplier', SupplierApiEntity::class);
     }

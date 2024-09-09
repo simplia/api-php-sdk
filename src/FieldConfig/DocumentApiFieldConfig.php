@@ -84,6 +84,12 @@ class DocumentApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withIssuedBy(AdminApiFieldConfig $config): self {
+        $this->fields['issued_by'] = $config;
+
+        return $this;
+    }
+
     public function withSupplier(SupplierApiFieldConfig $config): self {
         $this->fields['supplier'] = $config;
 
