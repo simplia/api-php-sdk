@@ -72,6 +72,10 @@ class OrderApiEntity extends AbstractApiEntity {
         return $this->returnField('created_store', StoreApiEntity::class);
     }
 
+    public function getCreatedBy(): ?AdminApiEntity {
+        return $this->returnField('created_by', AdminApiEntity::class);
+    }
+
     public function getStorageCenter(): ?StockStorageCenterApiEntity {
         return $this->returnField('storage_center', StockStorageCenterApiEntity::class);
     }

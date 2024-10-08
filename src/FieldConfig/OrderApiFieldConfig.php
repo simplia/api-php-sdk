@@ -100,6 +100,12 @@ class OrderApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withCreatedBy(AdminApiFieldConfig $config): self {
+        $this->fields['created_by'] = $config;
+
+        return $this;
+    }
+
     public function withStorageCenter(StockStorageCenterApiFieldConfig $config): self {
         $this->fields['storage_center'] = $config;
 
