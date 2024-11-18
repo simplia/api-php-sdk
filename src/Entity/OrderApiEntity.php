@@ -16,6 +16,10 @@ class OrderApiEntity extends AbstractApiEntity {
         return $this->returnField('id');
     }
 
+    public function getExternalCode(): ?string {
+        return $this->returnField('external_code');
+    }
+
     public function getDateCreated(): string {
         return $this->returnField('date_created');
     }

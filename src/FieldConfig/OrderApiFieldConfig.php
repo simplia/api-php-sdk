@@ -16,6 +16,12 @@ class OrderApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withExternalCode(): self {
+        $this->fields['external_code'] = true;
+
+        return $this;
+    }
+
     public function withDateCreated(): self {
         $this->fields['date_created'] = true;
 
