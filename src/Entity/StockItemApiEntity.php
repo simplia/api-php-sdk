@@ -16,6 +16,10 @@ class StockItemApiEntity extends AbstractApiEntity {
         return $this->returnField('id');
     }
 
+    public function getTrackingId(): string {
+        return $this->returnField('tracking_id');
+    }
+
     public function getCode(): string {
         return $this->returnField('code');
     }

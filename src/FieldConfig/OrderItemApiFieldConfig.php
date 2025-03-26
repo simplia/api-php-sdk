@@ -40,6 +40,12 @@ class OrderItemApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withBlockedAmount(): self {
+        $this->fields['blocked_amount'] = true;
+
+        return $this;
+    }
+
     public function withPrice(): self {
         $this->fields['price'] = true;
 

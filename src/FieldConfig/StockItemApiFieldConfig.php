@@ -16,6 +16,12 @@ class StockItemApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withTrackingId(): self {
+        $this->fields['tracking_id'] = true;
+
+        return $this;
+    }
+
     public function withCode(): self {
         $this->fields['code'] = true;
 

@@ -32,6 +32,10 @@ class OrderItemApiEntity extends AbstractApiEntity {
         return $this->returnField('amount');
     }
 
+    public function getBlockedAmount(): int {
+        return $this->returnField('blocked_amount');
+    }
+
     public function getPrice(): float {
         return $this->returnField('price');
     }
