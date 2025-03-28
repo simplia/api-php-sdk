@@ -22,6 +22,12 @@ class OrderApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withShopUrl(): self {
+        $this->fields['shop_url'] = true;
+
+        return $this;
+    }
+
     public function withDateCreated(): self {
         $this->fields['date_created'] = true;
 
@@ -40,6 +46,12 @@ class OrderApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withDatePickedUp(): self {
+        $this->fields['date_picked_up'] = true;
+
+        return $this;
+    }
+
     public function withCurrency(): self {
         $this->fields['currency'] = true;
 
@@ -48,6 +60,18 @@ class OrderApiFieldConfig extends AbstractApiFieldConfig {
 
     public function withFulfillment(): self {
         $this->fields['fulfillment'] = true;
+
+        return $this;
+    }
+
+    public function withMarketplaceSourceId(): self {
+        $this->fields['marketplace_source_id'] = true;
+
+        return $this;
+    }
+
+    public function withMarketplaceSource(): self {
+        $this->fields['marketplace_source'] = true;
 
         return $this;
     }
@@ -90,6 +114,18 @@ class OrderApiFieldConfig extends AbstractApiFieldConfig {
 
     public function withPaymentType(): self {
         $this->fields['payment_type'] = true;
+
+        return $this;
+    }
+
+    public function withTransportMethod(TransportMethodApiFieldConfig $config): self {
+        $this->fields['transport_method'] = $config;
+
+        return $this;
+    }
+
+    public function withPaymentMethod(PaymentMethodApiFieldConfig $config): self {
+        $this->fields['payment_method'] = $config;
 
         return $this;
     }

@@ -48,8 +48,16 @@ class OrderItemApiEntity extends AbstractApiEntity {
         return $this->returnField('vat_rate');
     }
 
+    public function getDiscountPercentage(): float {
+        return $this->returnField('discount_percentage');
+    }
+
     public function getStockItem(): ?StockItemApiEntity {
         return $this->returnField('stock_item', StockItemApiEntity::class);
+    }
+
+    public function getBundleType(): string {
+        return $this->returnField('bundle_type');
     }
 
     final public static function createFieldConfig(): OrderItemApiFieldConfig {

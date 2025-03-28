@@ -20,6 +20,10 @@ class OrderApiEntity extends AbstractApiEntity {
         return $this->returnField('external_code');
     }
 
+    public function getShopUrl(): ?string {
+        return $this->returnField('shop_url');
+    }
+
     public function getDateCreated(): string {
         return $this->returnField('date_created');
     }
@@ -32,12 +36,24 @@ class OrderApiEntity extends AbstractApiEntity {
         return $this->returnField('date_in_status');
     }
 
+    public function getDatePickedUp(): ?string {
+        return $this->returnField('date_picked_up');
+    }
+
     public function getCurrency(): string {
         return $this->returnField('currency');
     }
 
     public function isFulfillment(): bool {
         return $this->returnField('fulfillment');
+    }
+
+    public function getMarketplaceSourceId(): ?int {
+        return $this->returnField('marketplace_source_id');
+    }
+
+    public function getMarketplaceSource(): ?string {
+        return $this->returnField('marketplace_source');
     }
 
     public function getStatus(): string {
@@ -66,6 +82,14 @@ class OrderApiEntity extends AbstractApiEntity {
 
     public function getPaymentType(): ?string {
         return $this->returnField('payment_type');
+    }
+
+    public function getTransportMethod(): ?TransportMethodApiEntity {
+        return $this->returnField('transport_method', TransportMethodApiEntity::class);
+    }
+
+    public function getPaymentMethod(): ?PaymentMethodApiEntity {
+        return $this->returnField('payment_method', PaymentMethodApiEntity::class);
     }
 
     public function getStore(): ?StoreApiEntity {

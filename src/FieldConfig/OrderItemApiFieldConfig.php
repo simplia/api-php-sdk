@@ -64,8 +64,20 @@ class OrderItemApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withDiscountPercentage(): self {
+        $this->fields['discount_percentage'] = true;
+
+        return $this;
+    }
+
     public function withStockItem(StockItemApiFieldConfig $config): self {
         $this->fields['stock_item'] = $config;
+
+        return $this;
+    }
+
+    public function withBundleType(): self {
+        $this->fields['bundle_type'] = true;
 
         return $this;
     }
