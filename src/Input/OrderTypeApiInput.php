@@ -15,4 +15,10 @@ class OrderTypeApiInput extends AbstractApiInput {
 
         return $this;
     }
+
+    public function setStorageCenterId(int $storageCenterId): self {
+        $this->params['storage_center_id'] = $storageCenterId;
+
+        return $this;
+    }
 }
