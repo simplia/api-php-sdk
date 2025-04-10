@@ -58,8 +58,8 @@ class StockItemTypeApiInput extends AbstractApiInput {
         return $this;
     }
 
-    public function setDiscountAmount(float $discountAmount): self {
-        $this->params['discount_amount'] = $discountAmount;
+    public function setDiscountValue(float $discountValue): self {
+        $this->params['discount_value'] = $discountValue;
 
         return $this;
     }

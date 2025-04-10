@@ -44,6 +44,22 @@ class StockItemApiEntity extends AbstractApiEntity {
         return $this->returnField('accounting_value');
     }
 
+    public function getDiscountPercentage(): ?float {
+        return $this->returnField('discount_percentage');
+    }
+
+    public function getDiscountValue(): ?float {
+        return $this->returnField('discount_value');
+    }
+
+    public function getDiscountValidFrom(): ?string {
+        return $this->returnField('discount_valid_from');
+    }
+
+    public function getDiscountValidTo(): ?string {
+        return $this->returnField('discount_valid_to');
+    }
+
     public function getTotalStockAmount(): int {
         return $this->returnField('total_stock_amount');
     }

@@ -58,6 +58,30 @@ class StockItemApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withDiscountPercentage(): self {
+        $this->fields['discount_percentage'] = true;
+
+        return $this;
+    }
+
+    public function withDiscountValue(): self {
+        $this->fields['discount_value'] = true;
+
+        return $this;
+    }
+
+    public function withDiscountValidFrom(): self {
+        $this->fields['discount_valid_from'] = true;
+
+        return $this;
+    }
+
+    public function withDiscountValidTo(): self {
+        $this->fields['discount_valid_to'] = true;
+
+        return $this;
+    }
+
     public function withTotalStockAmount(): self {
         $this->fields['total_stock_amount'] = true;
 
