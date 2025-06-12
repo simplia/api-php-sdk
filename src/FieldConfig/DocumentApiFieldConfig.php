@@ -106,6 +106,12 @@ class DocumentApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withOrder(OrderApiFieldConfig $config): self {
+        $this->fields['order'] = $config;
+
+        return $this;
+    }
+
     public function withRelevantDocument(DocumentApiFieldConfig $config): self {
         $this->fields['relevant_document'] = $config;
 

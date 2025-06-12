@@ -79,6 +79,10 @@ class DocumentApiEntity extends AbstractApiEntity {
         return $this->returnField('stock_room', StockRoomApiEntity::class);
     }
 
+    public function getOrder(): ?OrderApiEntity {
+        return $this->returnField('order', OrderApiEntity::class);
+    }
+
     public function getRelevantDocument(): ?DocumentApiEntity {
         return $this->returnField('relevant_document', DocumentApiEntity::class);
     }
