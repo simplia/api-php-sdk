@@ -167,6 +167,10 @@ class OrderApiEntity extends AbstractApiEntity {
         return $this->returnField('invoice_address', ContactApiEntity::class);
     }
 
+    public function getUser(): ?UserApiEntity {
+        return $this->returnField('user', UserApiEntity::class);
+    }
+
     public function getTotalPrice(): float {
         return $this->returnField('total_price');
     }

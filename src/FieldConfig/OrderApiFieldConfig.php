@@ -220,6 +220,12 @@ class OrderApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withUser(UserApiFieldConfig $config): self {
+        $this->fields['user'] = $config;
+
+        return $this;
+    }
+
     public function withTotalPrice(): self {
         $this->fields['total_price'] = true;
 
