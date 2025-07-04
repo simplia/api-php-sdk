@@ -139,6 +139,13 @@ class OrderApiEntity extends AbstractApiEntity {
     }
 
     /**
+     * @return DocumentApiEntity[]
+     */
+    public function getDocuments(): array {
+        return $this->returnFieldArray('documents', DocumentApiEntity::class);
+    }
+
+    /**
      * @return OrderDiscountApiEntity[]
      */
     public function getDiscounts(): array {

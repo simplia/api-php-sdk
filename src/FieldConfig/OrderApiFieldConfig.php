@@ -190,6 +190,12 @@ class OrderApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withDocuments(DocumentApiFieldConfig $config): self {
+        $this->fields['documents'] = $config;
+
+        return $this;
+    }
+
     public function withDiscounts(OrderDiscountApiFieldConfig $config): self {
         $this->fields['discounts'] = $config;
 
