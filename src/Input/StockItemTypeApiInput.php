@@ -40,6 +40,12 @@ class StockItemTypeApiInput extends AbstractApiInput {
         return $this;
     }
 
+    public function setMinimumStock(float $minimumStock): self {
+        $this->params['minimum_stock'] = $minimumStock;
+
+        return $this;
+    }
+
     public function setAvailabilityDate(string $availabilityDate): self {
         $this->params['availability_date'] = $availabilityDate;
 
