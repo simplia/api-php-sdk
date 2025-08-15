@@ -76,6 +76,18 @@ class ProductApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withMainCategory(CategoryApiFieldConfig $config): self {
+        $this->fields['main_category'] = $config;
+
+        return $this;
+    }
+
+    public function withCategories(CategoryApiFieldConfig $config): self {
+        $this->fields['categories'] = $config;
+
+        return $this;
+    }
+
     public function withCreated(): self {
         $this->fields['created'] = true;
 

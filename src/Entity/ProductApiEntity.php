@@ -56,6 +56,17 @@ class ProductApiEntity extends AbstractApiEntity {
         return $this->returnField('ean');
     }
 
+    public function getMainCategory(): CategoryApiEntity {
+        return $this->returnField('main_category', CategoryApiEntity::class);
+    }
+
+    /**
+     * @return CategoryApiEntity[]
+     */
+    public function getCategories(): array {
+        return $this->returnFieldArray('categories', CategoryApiEntity::class);
+    }
+
     public function getCreated(): string {
         return $this->returnField('created');
     }
