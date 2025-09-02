@@ -11,6 +11,16 @@ namespace Simplia\Api\Request;
 
 class UserApiRequest extends AbstractApiRequest {
     /**
+     * @param string $loyaltyCard User loyalty card number
+     * @return $this
+     */
+    public function whereLoyaltyCard(string $loyaltyCard): self {
+        $this->params['loyalty_card'] = $loyaltyCard;
+
+        return $this;
+    }
+
+    /**
      * @param int[] $ids User IDs
      * @return $this
      */

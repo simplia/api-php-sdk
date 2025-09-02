@@ -16,6 +16,12 @@ class UserApiInput extends AbstractApiInput {
         return $this;
     }
 
+    public function setLoyaltyCard(string $loyaltyCard): self {
+        $this->params['loyalty_card'] = $loyaltyCard;
+
+        return $this;
+    }
+
     public function setWholesale(bool $wholesale): self {
         $this->params['wholesale'] = $wholesale ? 'true' : 'false';
 

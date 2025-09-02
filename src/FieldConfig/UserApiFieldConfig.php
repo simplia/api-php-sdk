@@ -16,6 +16,12 @@ class UserApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withLoyaltyCard(): self {
+        $this->fields['loyalty_card'] = true;
+
+        return $this;
+    }
+
     public function withWholesale(): self {
         $this->fields['wholesale'] = true;
 
