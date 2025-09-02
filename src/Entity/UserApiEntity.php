@@ -16,12 +16,16 @@ class UserApiEntity extends AbstractApiEntity {
         return $this->returnField('id');
     }
 
-    public function getLoyaltyCard(): string {
+    public function getLoyaltyCard(): ?string {
         return $this->returnField('loyalty_card');
     }
 
     public function isWholesale(): bool {
         return $this->returnField('wholesale');
+    }
+
+    public function getDiscountPercentage(): ?float {
+        return $this->returnField('discount_percentage');
     }
 
     public function getPointsFactor(): string {

@@ -28,6 +28,12 @@ class UserApiInput extends AbstractApiInput {
         return $this;
     }
 
+    public function setDiscountPercentage(float $discountPercentage): self {
+        $this->params['discount_percentage'] = $discountPercentage;
+
+        return $this;
+    }
+
     public function setPointsFactor(string $pointsFactor): self {
         $this->params['points_factor'] = $pointsFactor;
 

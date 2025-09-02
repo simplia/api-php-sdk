@@ -28,6 +28,12 @@ class UserApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withDiscountPercentage(): self {
+        $this->fields['discount_percentage'] = true;
+
+        return $this;
+    }
+
     public function withPointsFactor(): self {
         $this->fields['points_factor'] = true;
 
