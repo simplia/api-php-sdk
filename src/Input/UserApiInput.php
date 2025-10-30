@@ -16,6 +16,24 @@ class UserApiInput extends AbstractApiInput {
         return $this;
     }
 
+    public function setEmail(string $email): self {
+        $this->params['email'] = $email;
+
+        return $this;
+    }
+
+    public function setDeliveryAddress(ContactApiInput $deliveryAddress): self {
+        $this->params['delivery_address'] = $deliveryAddress;
+
+        return $this;
+    }
+
+    public function setInvoiceAddress(ContactApiInput $invoiceAddress): self {
+        $this->params['invoice_address'] = $invoiceAddress;
+
+        return $this;
+    }
+
     public function setLoyaltyCard(string $loyaltyCard): self {
         $this->params['loyalty_card'] = $loyaltyCard;
 
@@ -36,6 +54,12 @@ class UserApiInput extends AbstractApiInput {
 
     public function setPointsFactor(string $pointsFactor): self {
         $this->params['points_factor'] = $pointsFactor;
+
+        return $this;
+    }
+
+    public function setUserGroup(UserGroupApiInput $userGroup): self {
+        $this->params['user_group'] = $userGroup;
 
         return $this;
     }

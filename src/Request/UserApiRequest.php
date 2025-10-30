@@ -11,6 +11,16 @@ namespace Simplia\Api\Request;
 
 class UserApiRequest extends AbstractApiRequest {
     /**
+     * @param string $email User registration email
+     * @return $this
+     */
+    public function whereEmail(string $email): self {
+        $this->params['email'] = $email;
+
+        return $this;
+    }
+
+    /**
      * @param string $loyaltyCard User loyalty card number
      * @return $this
      */

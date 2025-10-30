@@ -21,4 +21,10 @@ class OrderTypeApiInput extends AbstractApiInput {
 
         return $this;
     }
+
+    public function setUserId(int $userId): self {
+        $this->params['user_id'] = $userId;
+
+        return $this;
+    }
 }

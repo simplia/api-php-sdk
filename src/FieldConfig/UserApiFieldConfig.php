@@ -16,6 +16,24 @@ class UserApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withEmail(): self {
+        $this->fields['email'] = true;
+
+        return $this;
+    }
+
+    public function withDeliveryAddress(ContactApiFieldConfig $config): self {
+        $this->fields['delivery_address'] = $config;
+
+        return $this;
+    }
+
+    public function withInvoiceAddress(ContactApiFieldConfig $config): self {
+        $this->fields['invoice_address'] = $config;
+
+        return $this;
+    }
+
     public function withLoyaltyCard(): self {
         $this->fields['loyalty_card'] = true;
 
@@ -36,6 +54,12 @@ class UserApiFieldConfig extends AbstractApiFieldConfig {
 
     public function withPointsFactor(): self {
         $this->fields['points_factor'] = true;
+
+        return $this;
+    }
+
+    public function withUserGroup(UserGroupApiFieldConfig $config): self {
+        $this->fields['user_group'] = $config;
 
         return $this;
     }

@@ -16,6 +16,18 @@ class UserApiEntity extends AbstractApiEntity {
         return $this->returnField('id');
     }
 
+    public function getEmail(): ?string {
+        return $this->returnField('email');
+    }
+
+    public function getDeliveryAddress(): ?ContactApiEntity {
+        return $this->returnField('delivery_address', ContactApiEntity::class);
+    }
+
+    public function getInvoiceAddress(): ?ContactApiEntity {
+        return $this->returnField('invoice_address', ContactApiEntity::class);
+    }
+
     public function getLoyaltyCard(): ?string {
         return $this->returnField('loyalty_card');
     }
@@ -30,6 +42,10 @@ class UserApiEntity extends AbstractApiEntity {
 
     public function getPointsFactor(): string {
         return $this->returnField('points_factor');
+    }
+
+    public function getUserGroup(): ?UserGroupApiEntity {
+        return $this->returnField('user_group', UserGroupApiEntity::class);
     }
 
     final public static function createFieldConfig(): UserApiFieldConfig {
