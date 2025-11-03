@@ -68,6 +68,10 @@ class OrderApiEntity extends AbstractApiEntity {
         return $this->returnField('carrier_code');
     }
 
+    public function getBranchCode(): ?string {
+        return $this->returnField('branch_code');
+    }
+
     public function getDeliveryPrice(): float {
         return $this->returnField('delivery_price');
     }

@@ -94,6 +94,12 @@ class OrderApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withBranchCode(): self {
+        $this->fields['branch_code'] = true;
+
+        return $this;
+    }
+
     public function withDeliveryPrice(): self {
         $this->fields['delivery_price'] = true;
 
