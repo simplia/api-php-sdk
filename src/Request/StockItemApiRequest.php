@@ -31,6 +31,26 @@ class StockItemApiRequest extends AbstractApiRequest {
     }
 
     /**
+     * @param string[] $codesSupplier Stock item supplier codes
+     * @return $this
+     */
+    public function whereCodesSupplier(array $codesSupplier): self {
+        $this->params['codes_supplier'] = $codesSupplier;
+
+        return $this;
+    }
+
+    /**
+     * @param int $supplierId Supplier ID
+     * @return $this
+     */
+    public function whereSupplierId(int $supplierId): self {
+        $this->params['supplier_id'] = $supplierId;
+
+        return $this;
+    }
+
+    /**
      * @param bool $inStock Only items currently in stock
      * @return $this
      */
