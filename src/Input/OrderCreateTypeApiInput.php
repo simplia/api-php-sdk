@@ -63,6 +63,12 @@ class OrderCreateTypeApiInput extends AbstractApiInput {
         return $this;
     }
 
+    public function setUserId(int $userId): self {
+        $this->params['user_id'] = $userId;
+
+        return $this;
+    }
+
     public function setCustomerNote(string $customerNote): self {
         $this->params['customer_note'] = $customerNote;
 
