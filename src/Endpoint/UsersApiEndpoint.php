@@ -12,7 +12,7 @@ namespace Simplia\Api\Endpoint;
 use Generator;
 use Simplia\Api\Entity\UserApiEntity;
 use Simplia\Api\FieldConfig\UserApiFieldConfig;
-use Simplia\Api\Input\UserApiInput;
+use Simplia\Api\Input\UserTypeApiInput;
 use Simplia\Api\Request\UserApiRequest;
 
 class UsersApiEndpoint extends AbstractApiEndpoint {
@@ -42,7 +42,7 @@ class UsersApiEndpoint extends AbstractApiEndpoint {
     /**
      * Update user (patch)
      */
-    final public function update(int $id, UserApiInput $input, ?UserApiFieldConfig $fields = null): UserApiEntity {
+    final public function update(int $id, UserTypeApiInput $input, ?UserApiFieldConfig $fields = null): UserApiEntity {
         $result = $this->request('PATCH', 'users/' . $id, [], $input, $fields);
 
         return new UserApiEntity($result);
