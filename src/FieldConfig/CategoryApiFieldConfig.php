@@ -27,4 +27,10 @@ class CategoryApiFieldConfig extends AbstractApiFieldConfig {
 
         return $this;
     }
+
+    public function withPathIds(): self {
+        $this->fields['path_ids'] = true;
+
+        return $this;
+    }
 }

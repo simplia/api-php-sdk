@@ -28,6 +28,12 @@ class OrderApiFieldConfig extends AbstractApiFieldConfig {
         return $this;
     }
 
+    public function withOnlineUrl(): self {
+        $this->fields['online_url'] = true;
+
+        return $this;
+    }
+
     public function withDateCreated(): self {
         $this->fields['date_created'] = true;
 

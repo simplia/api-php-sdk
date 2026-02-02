@@ -24,6 +24,10 @@ class OrderApiEntity extends AbstractApiEntity {
         return $this->returnField('shop_url');
     }
 
+    public function getOnlineUrl(): ?string {
+        return $this->returnField('online_url');
+    }
+
     public function getDateCreated(): string {
         return $this->returnField('date_created');
     }

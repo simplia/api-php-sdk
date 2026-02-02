@@ -24,6 +24,10 @@ class CategoryApiEntity extends AbstractApiEntity {
         return $this->returnField('path');
     }
 
+    public function getPathIds(): string {
+        return $this->returnField('path_ids');
+    }
+
     final public static function createFieldConfig(): CategoryApiFieldConfig {
         return new CategoryApiFieldConfig();
     }
