@@ -24,7 +24,7 @@ class CategoryApiEntity extends AbstractApiEntity {
         return $this->returnField('path');
     }
 
-    public function getPathIds(): string {
+    public function getPathIds(): array {
         return $this->returnField('path_ids');
     }
 
