@@ -113,6 +113,36 @@ class OrderApiRequest extends AbstractApiRequest {
     }
 
     /**
+     * @param bool $wholesale Wholesale orders
+     * @return $this
+     */
+    public function whereWholesale(bool $wholesale): self {
+        $this->params['wholesale'] = $wholesale ? 'true' : 'false';
+
+        return $this;
+    }
+
+    /**
+     * @param string $dateDelayFrom Orders with delay date from
+     * @return $this
+     */
+    public function whereDateDelayFrom(string $dateDelayFrom): self {
+        $this->params['date_delay_from'] = $dateDelayFrom;
+
+        return $this;
+    }
+
+    /**
+     * @param string $dateDelayTo Orders with delay date to
+     * @return $this
+     */
+    public function whereDateDelayTo(string $dateDelayTo): self {
+        $this->params['date_delay_to'] = $dateDelayTo;
+
+        return $this;
+    }
+
+    /**
      * @param int[] $ids Order IDs
      * @return $this
      */
