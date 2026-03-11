@@ -143,6 +143,26 @@ class OrderApiRequest extends AbstractApiRequest {
     }
 
     /**
+     * @param string $dateExpectedShipppingFrom Orders with expected shipping date from
+     * @return $this
+     */
+    public function whereDateExpectedShipppingFrom(string $dateExpectedShipppingFrom): self {
+        $this->params['date_expected_shippping_from'] = $dateExpectedShipppingFrom;
+
+        return $this;
+    }
+
+    /**
+     * @param string $dateExpectedShipppingTo Orders with expected shipping date to
+     * @return $this
+     */
+    public function whereDateExpectedShipppingTo(string $dateExpectedShipppingTo): self {
+        $this->params['date_expected_shippping_to'] = $dateExpectedShipppingTo;
+
+        return $this;
+    }
+
+    /**
      * @param int[] $ids Order IDs
      * @return $this
      */
