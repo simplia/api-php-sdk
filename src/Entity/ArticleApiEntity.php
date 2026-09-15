@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\ArticleApiFieldConfig;
+use Simplia\Api\FieldConfig\ArticleApiFieldConfig;
 
 /**
  * A blog or news article of the shop: headline, teaser, HTML body, publication time and the path it is published at. Articles of every language of the shop are listed together, inactive ones included.

@@ -7,13 +7,13 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\FieldConfig;
+namespace Simplia\Api\FieldConfig;
 
-use Simplia\Api3\FieldConfig\Admin\AdminReferenceApiFieldConfig;
-use Simplia\Api3\FieldConfig\Article\ArticleReferenceApiFieldConfig;
-use Simplia\Api3\FieldConfig\Category\CategoryReferenceApiFieldConfig;
-use Simplia\Api3\FieldConfig\Comment\CommentReferenceApiFieldConfig;
-use Simplia\Api3\FieldConfig\Product\ProductReferenceApiFieldConfig;
+use Simplia\Api\FieldConfig\Admin\AdminReferenceApiFieldConfig;
+use Simplia\Api\FieldConfig\Article\ArticleReferenceApiFieldConfig;
+use Simplia\Api\FieldConfig\Category\CategoryReferenceApiFieldConfig;
+use Simplia\Api\FieldConfig\Comment\CommentReferenceApiFieldConfig;
+use Simplia\Api\FieldConfig\Product\ProductReferenceApiFieldConfig;
 
 /**
  * Which properties of a CommentApiEntity to fetch.

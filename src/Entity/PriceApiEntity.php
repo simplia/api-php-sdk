@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\PriceApiFieldConfig;
-use Simplia\Api3\Money;
+use Simplia\Api\FieldConfig\PriceApiFieldConfig;
+use Simplia\Api\Money;
 
 /**
  * One stock item's price in one price list: the stored row, not the price a shopper is charged (no fallback to another list, no conversion, no rounding, no check of the discount window). Prices have no address of their own; they are read and written through their price list.

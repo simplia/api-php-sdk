@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\ContentGroupApiFieldConfig;
+use Simplia\Api\FieldConfig\ContentGroupApiFieldConfig;
 
 /**
  * A content group: a set of content — a category tree, and text pages, banners and articles kept apart the same way — that a storefront can be pointed at, one group per kind of content. The record `Category.content_group` points at, and the value the `content_group` filter of `GET /categories` takes. Every group is listed.

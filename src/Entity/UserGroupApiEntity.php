@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\UserGroupApiFieldConfig;
+use Simplia\Api\FieldConfig\UserGroupApiFieldConfig;
 
 /**
  * A customer group the shop sorts its accounts into, the record `User.user_group` points at. Groups have no status: every group is listed.

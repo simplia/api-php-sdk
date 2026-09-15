@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Exception;
+namespace Simplia\Api\Exception;
 
 /** A 422: the body or the query parameters were rejected; one Violation per rejected value. */
 final class ValidationException extends ApiProblemException {

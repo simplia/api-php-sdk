@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\OrderItemApiEntity;
-use Simplia\Api3\FieldConfig\OrderItemApiFieldConfig;
-use Simplia\Api3\Request\OrderItemsApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\OrderItemApiEntity;
+use Simplia\Api\FieldConfig\OrderItemApiFieldConfig;
+use Simplia\Api\Request\OrderItemsApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/order-items.

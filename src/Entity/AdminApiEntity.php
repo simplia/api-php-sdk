@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\AdminApiFieldConfig;
+use Simplia\Api\FieldConfig\AdminApiFieldConfig;
 
 /**
  * A staff account of the shop: a person who works in its administration, or a credential that calls its API — the record `Order.created_by` and `Document.issued_by` point at. Not a customer. Nothing an account signs in with is published. Inactive accounts are listed too.

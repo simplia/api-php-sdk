@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Input;
+namespace Simplia\Api\Input;
 
 /**
  * Re-prices some or all lines of a stock document. Lines not listed keep their price.

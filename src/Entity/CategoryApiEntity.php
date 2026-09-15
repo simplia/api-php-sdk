@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\Entity\CategoryApiEntity as CategoryApiEntity1;
-use Simplia\Api3\FieldConfig\CategoryApiFieldConfig;
+use Simplia\Api\Entity\CategoryApiEntity as CategoryApiEntity1;
+use Simplia\Api\FieldConfig\CategoryApiFieldConfig;
 
 /**
  * A category of the catalog tree, the record `Product.main_category` and `Product.categories` point at: its place in the tree, its texts in the request language and its customs data. The list holds the content group (storefront tree) of the storefront being called, or the one `content_group` names; any category can be read by id. Inactive categories are listed too.

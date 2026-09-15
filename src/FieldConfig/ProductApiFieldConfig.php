@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\FieldConfig;
+namespace Simplia\Api\FieldConfig;
 
-use Simplia\Api3\FieldConfig\Label\LabelReferenceApiFieldConfig;
-use Simplia\Api3\FieldConfig\Product\ProductAttributeApiFieldConfig;
+use Simplia\Api\FieldConfig\Label\LabelReferenceApiFieldConfig;
+use Simplia\Api\FieldConfig\Product\ProductAttributeApiFieldConfig;
 
 /**
  * Which properties of a ProductApiEntity to fetch.

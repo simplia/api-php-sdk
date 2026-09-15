@@ -7,11 +7,11 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\Order;
+namespace Simplia\Api\Entity\Order;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\FieldConfig\Order\PaymentApiFieldConfig;
-use Simplia\Api3\Money;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\FieldConfig\Order\PaymentApiFieldConfig;
+use Simplia\Api\Money;
 
 /**
  * One payment received against an order or a document: a bank transfer that arrived, a card payment that settled, cash taken at the counter, cash the courier collected. Several payments can settle one order.

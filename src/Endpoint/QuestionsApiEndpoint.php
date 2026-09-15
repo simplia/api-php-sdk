@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\QuestionApiEntity;
-use Simplia\Api3\FieldConfig\QuestionApiFieldConfig;
-use Simplia\Api3\Request\QuestionsApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\QuestionApiEntity;
+use Simplia\Api\FieldConfig\QuestionApiFieldConfig;
+use Simplia\Api\Request\QuestionsApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/questions.

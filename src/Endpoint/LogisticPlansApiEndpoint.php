@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\LogisticPlanApiEntity;
-use Simplia\Api3\FieldConfig\LogisticPlanApiFieldConfig;
-use Simplia\Api3\Request\LogisticPlansApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\LogisticPlanApiEntity;
+use Simplia\Api\FieldConfig\LogisticPlanApiFieldConfig;
+use Simplia\Api\Request\LogisticPlansApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/logistic-plans.

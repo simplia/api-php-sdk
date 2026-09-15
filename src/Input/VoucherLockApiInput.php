@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Input;
+namespace Simplia\Api\Input;
 
 /**
  * Takes a lock on a voucher code for a chosen number of seconds.

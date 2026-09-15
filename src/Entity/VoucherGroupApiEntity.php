@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\VoucherGroupApiFieldConfig;
-use Simplia\Api3\Money;
+use Simplia\Api\FieldConfig\VoucherGroupApiFieldConfig;
+use Simplia\Api\Money;
 
 /**
  * A voucher group: the campaign a set of discount codes belongs to, which defines what the codes take off and when they apply. The list holds the groups of the content group (storefront tree) being called, or the one `content_group` names; any group can be read by id.

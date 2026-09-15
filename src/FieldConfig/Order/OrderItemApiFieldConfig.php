@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\FieldConfig\Order;
+namespace Simplia\Api\FieldConfig\Order;
 
-use Simplia\Api3\FieldConfig\AbstractApiFieldConfig;
-use Simplia\Api3\FieldConfig\StockItemApiFieldConfig;
+use Simplia\Api\FieldConfig\AbstractApiFieldConfig;
+use Simplia\Api\FieldConfig\StockItemApiFieldConfig;
 
 /**
  * Which properties of a OrderItemApiEntity to fetch.

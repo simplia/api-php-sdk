@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\AdminApiEntity;
-use Simplia\Api3\FieldConfig\AdminApiFieldConfig;
-use Simplia\Api3\Request\AdminsApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\AdminApiEntity;
+use Simplia\Api\FieldConfig\AdminApiFieldConfig;
+use Simplia\Api\Request\AdminsApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/admins.

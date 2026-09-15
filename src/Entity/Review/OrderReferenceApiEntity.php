@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\Review;
+namespace Simplia\Api\Entity\Review;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\FieldConfig\Review\OrderReferenceApiFieldConfig;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\FieldConfig\Review\OrderReferenceApiFieldConfig;
 
 /**
  * A pointer to the customer order a document was issued for: the order's identifiers only. The full order is at GET /orders/{id}.

@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\Attribute;
+namespace Simplia\Api\Entity\Attribute;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\FieldConfig\Attribute\AttributeReferenceApiFieldConfig;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\FieldConfig\Attribute\AttributeReferenceApiFieldConfig;
 
 /**
  * A pointer at an attribute: its id, its name and unit in the request language and its kind — what a row of a product's `attributes` needs to be read; the whole record, with its values, is `GET /attributes/{id}`.

@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\Comment;
+namespace Simplia\Api\Entity\Comment;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\FieldConfig\Comment\CommentReferenceApiFieldConfig;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\FieldConfig\Comment\CommentReferenceApiFieldConfig;
 
 /**
  * A pointer at another comment: its id; the whole record is `GET /comments/{id}`.

@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\StockRoomApiFieldConfig;
+use Simplia\Api\FieldConfig\StockRoomApiFieldConfig;
 
 /**
  * A stock room: one warehouse inside a storage center, the unit stock is counted in and shelf positions belong to. Rooms that are inactive are listed too.

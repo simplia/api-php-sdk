@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\FieldConfig;
+namespace Simplia\Api\FieldConfig;
 
-use Simplia\Api3\FieldConfig\Label\LabelReferenceApiFieldConfig;
+use Simplia\Api\FieldConfig\Label\LabelReferenceApiFieldConfig;
 
 /**
  * Which properties of a StorageLocationApiEntity to fetch.

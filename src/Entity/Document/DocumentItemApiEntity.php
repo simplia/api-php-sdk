@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\Document;
+namespace Simplia\Api\Entity\Document;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\Entity\StockItemApiEntity;
-use Simplia\Api3\FieldConfig\Document\DocumentItemApiFieldConfig;
-use Simplia\Api3\Money;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\Entity\StockItemApiEntity;
+use Simplia\Api\FieldConfig\Document\DocumentItemApiFieldConfig;
+use Simplia\Api\Money;
 
 /**
  * One line of a document: what was invoiced, received or issued, how many units, at what unit price and VAT rate.

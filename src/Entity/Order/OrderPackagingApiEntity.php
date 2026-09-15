@@ -7,11 +7,11 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\Order;
+namespace Simplia\Api\Entity\Order;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\Entity\AdminApiEntity;
-use Simplia\Api3\FieldConfig\Order\OrderPackagingApiFieldConfig;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\Entity\AdminApiEntity;
+use Simplia\Api\FieldConfig\Order\OrderPackagingApiFieldConfig;
 
 /**
  * One warehouse session spent preparing an order: who collected the goods (picking) and who boxed them (packing), and when each stage started and ended. An order can have several, for example after a re-pick.

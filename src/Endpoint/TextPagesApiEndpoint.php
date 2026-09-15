@@ -7,13 +7,13 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\TextPageApiEntity;
-use Simplia\Api3\FieldConfig\TextPageApiFieldConfig;
-use Simplia\Api3\Input\TextPageApiInput;
-use Simplia\Api3\Request\TextPagesApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\TextPageApiEntity;
+use Simplia\Api\FieldConfig\TextPageApiFieldConfig;
+use Simplia\Api\Input\TextPageApiInput;
+use Simplia\Api\Request\TextPagesApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/text-pages.

@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\PackageApiFieldConfig;
-use Simplia\Api3\Money;
+use Simplia\Api\FieldConfig\PackageApiFieldConfig;
+use Simplia\Api\Money;
 
 /**
  * A shipment: one consignment handed to a carrier for an order, with the label address, the tracking number, the cash to collect on delivery and the delivery status the carrier reports.

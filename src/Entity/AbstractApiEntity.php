@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\Money;
+use Simplia\Api\Money;
 
 /**
  * One record as the API returned it. A member you did not select is not there — the reader throws and names the

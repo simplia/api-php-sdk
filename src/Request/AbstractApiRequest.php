@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Request;
+namespace Simplia\Api\Request;
 
 /** The filters and the sort of one list call; the generated subclass adds a `where…()` per filter and `orderBy…()` per sort. */
 abstract class AbstractApiRequest {

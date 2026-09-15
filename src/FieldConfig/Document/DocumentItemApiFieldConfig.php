@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\FieldConfig\Document;
+namespace Simplia\Api\FieldConfig\Document;
 
-use Simplia\Api3\FieldConfig\AbstractApiFieldConfig;
-use Simplia\Api3\FieldConfig\StockItemApiFieldConfig;
+use Simplia\Api\FieldConfig\AbstractApiFieldConfig;
+use Simplia\Api\FieldConfig\StockItemApiFieldConfig;
 
 /**
  * Which properties of a DocumentItemApiEntity to fetch.

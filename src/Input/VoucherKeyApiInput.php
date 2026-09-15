@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Input;
+namespace Simplia\Api\Input;
 
 /**
  * Proof of holding the lock on a voucher code, when one is held.

@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Input;
+namespace Simplia\Api\Input;
 
 /**
  * The complete part list of a bundle. Replaces what is there: parts not listed are removed. To empty a bundle use DELETE, not an empty list.

@@ -19,12 +19,13 @@ composer require simplia/api:^3
 
 Requires PHP 8.2+ and any PSR-18 HTTP client (Guzzle, Symfony HttpClient, …). The `/api/3` client is the
 `3.x` line of `simplia/api`; the `/api/2` client stays on the `0.1.x` line. Pin a version line, never
-`dev-master`.
+`dev-master`. Both lines share the `Simplia\Api` namespace: moving from the `/api/2` client is a
+version bump, and what changes are the classes and methods, which follow the API.
 
 ## Getting started
 
 ```php
-use Simplia\Api3\Api;
+use Simplia\Api\Api;
 
 $api = Api::withUsernameAuth($psr18Client, 'shop.example', 'api_login', 'api_key');   // HTTP Basic
 $api = Api::withJWT($psr18Client, 'shop.example', $integrationToken);                // Bearer, integration token
@@ -44,8 +45,8 @@ A record is never fetched whole. Every read takes a `*ApiFieldConfig` naming the
 embedded records included, to any depth; the API returns exactly those, plus `id` at every level.
 
 ```php
-use Simplia\Api3\Entity\OrderApiEntity;
-use Simplia\Api3\Entity\UserApiEntity;
+use Simplia\Api\Entity\OrderApiEntity;
+use Simplia\Api\Entity\UserApiEntity;
 
 $fields = OrderApiEntity::createFieldConfig()
     ->withCode()
@@ -64,7 +65,7 @@ Collections are paginated by keyset, not by page number: the API announces the n
 cursor, and `iterate()` follows it for you until the last page.
 
 ```php
-use Simplia\Api3\Request\OrdersApiRequest;
+use Simplia\Api\Request\OrdersApiRequest;
 
 $request = OrdersApiRequest::create()
     ->whereStatus(['unprocessed'])                  // filters: where*()
@@ -84,7 +85,7 @@ ISO 8601 string. Never build a cursor yourself.
 
 ### Money is a decimal string with a currency
 
-Every amount is a `Simplia\Api3\Money` — `amount` as a decimal string (`"1290.00"`), `currency` an ISO 4217
+Every amount is a `Simplia\Api\Money` — `amount` as a decimal string (`"1290.00"`), `currency` an ISO 4217
 code — never a float, on inputs and outputs alike. Writes send amounts in the record's own currency (an
 order in the currency its prices are sent in; a stock item, variant or voucher in the shop's main
 currency); an order, a document row and a payment publish each amount twice — in the shop's main currency
@@ -112,7 +113,7 @@ acting again, so a `create()` that timed out can be retried safely: keep your ke
 
 ### Errors are exceptions
 
-Every non-2xx answer is a `Simplia\Api3\Exception\ApiProblemException` — `getStatus()`, `getType()` (the
+Every non-2xx answer is a `Simplia\Api\Exception\ApiProblemException` — `getStatus()`, `getType()` (the
 slug after `/api/3/errors/`, the stable name of the error), `getTitle()`, `getDetail()`, `getBody()` —
 or one of its subclasses:
 
@@ -145,7 +146,7 @@ any shop, no credentials needed) and by `Deprecation` and `Sunset` headers on th
 ## Read one record
 
 ```php
-use Simplia\Api3\Entity\OrderApiEntity;
+use Simplia\Api\Entity\OrderApiEntity;
 
 $order = $api->getOrdersEndpoint()->get(123, OrderApiEntity::createFieldConfig()->withCode()->withTotalPrice());
 echo $order?->getCode();
@@ -155,8 +156,8 @@ echo $order?->getTotalPrice()->amount;   // "1290.00"
 ## Write
 
 ```php
-use Simplia\Api3\Entity\OrderApiEntity;
-use Simplia\Api3\Input\OrderStatusApiInput;
+use Simplia\Api\Entity\OrderApiEntity;
+use Simplia\Api\Input\OrderStatusApiInput;
 
 $order = $api->getOrdersEndpoint()->updateStatus(
     123,
@@ -168,8 +169,8 @@ $order = $api->getOrdersEndpoint()->updateStatus(
 ## Handle an error
 
 ```php
-use Simplia\Api3\Exception\RateLimitedException;
-use Simplia\Api3\Exception\ValidationException;
+use Simplia\Api\Exception\RateLimitedException;
+use Simplia\Api\Exception\ValidationException;
 
 try {
     $api->getOrdersEndpoint()->create($input);

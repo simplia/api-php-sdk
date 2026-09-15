@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Exception;
+namespace Simplia\Api\Exception;
 
 /** A 429: the credential's quota is spent for the current window. Nothing was done; retry after `retryAfter()` seconds. */
 final class RateLimitedException extends ApiProblemException {

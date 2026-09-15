@@ -7,11 +7,11 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\Order;
+namespace Simplia\Api\Entity\Order;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\FieldConfig\Order\OrderDiscountApiFieldConfig;
-use Simplia\Api3\Money;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\FieldConfig\Order\OrderDiscountApiFieldConfig;
+use Simplia\Api\Money;
 
 /**
  * One discount applied to an order, shown as its own line: a discount code, a loyalty or volume reduction, free shipping.

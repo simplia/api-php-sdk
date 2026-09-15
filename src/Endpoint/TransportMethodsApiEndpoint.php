@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\TransportMethodApiEntity;
-use Simplia\Api3\FieldConfig\TransportMethodApiFieldConfig;
-use Simplia\Api3\Request\TransportMethodsApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\TransportMethodApiEntity;
+use Simplia\Api\FieldConfig\TransportMethodApiFieldConfig;
+use Simplia\Api\Request\TransportMethodsApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/transport-methods.

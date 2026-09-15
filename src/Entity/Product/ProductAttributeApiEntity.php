@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\Product;
+namespace Simplia\Api\Entity\Product;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\Entity\Attribute\AttributeReferenceApiEntity;
-use Simplia\Api3\Entity\Attribute\AttributeValueReferenceApiEntity;
-use Simplia\Api3\FieldConfig\Product\ProductAttributeApiFieldConfig;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\Entity\Attribute\AttributeReferenceApiEntity;
+use Simplia\Api\Entity\Attribute\AttributeValueReferenceApiEntity;
+use Simplia\Api\FieldConfig\Product\ProductAttributeApiFieldConfig;
 
 /**
  * One attribute of a product: the attribute, and either the one `value` the product stores (a `text`, `integer` or `boolean` attribute) or the `values` chosen for it (a `choice` or `multi_choice` attribute). Both when the shop stored both.

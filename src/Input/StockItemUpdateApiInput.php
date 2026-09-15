@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Input;
+namespace Simplia\Api\Input;
 
-use Simplia\Api3\Money;
+use Simplia\Api\Money;
 
 /**
  * The changes to apply to one stock item. Send only the fields to change; a field that is absent or null is left as it is, so nothing can be cleared here.

@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Input;
+namespace Simplia\Api\Input;
 
 /**
  * Changes the commercial settings of a customer account. Send only the fields to change; a field that is absent or null is left as it is.

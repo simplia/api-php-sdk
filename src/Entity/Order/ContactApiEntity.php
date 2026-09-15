@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\Order;
+namespace Simplia\Api\Entity\Order;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\FieldConfig\Order\ContactApiFieldConfig;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\FieldConfig\Order\ContactApiFieldConfig;
 
 /**
  * A postal address with the contact details that go with it: an order's delivery or invoice address, a document's customer address, a customer account's addresses.

@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\ReviewApiEntity;
-use Simplia\Api3\FieldConfig\ReviewApiFieldConfig;
-use Simplia\Api3\Request\ReviewsApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\ReviewApiEntity;
+use Simplia\Api\FieldConfig\ReviewApiFieldConfig;
+use Simplia\Api\Request\ReviewsApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/reviews.

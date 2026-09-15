@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\Entity\Order\ContactApiEntity;
-use Simplia\Api3\FieldConfig\UserApiFieldConfig;
+use Simplia\Api\Entity\Order\ContactApiEntity;
+use Simplia\Api\FieldConfig\UserApiFieldConfig;
 
 /**
  * A registered customer account: the login e-mail, the saved delivery and invoice addresses, and the commercial settings that change what the customer pays.

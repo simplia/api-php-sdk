@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\FieldConfig;
+namespace Simplia\Api\FieldConfig;
 
-use Simplia\Api3\FieldConfig\Attribute\AttributeValueApiFieldConfig;
+use Simplia\Api\FieldConfig\Attribute\AttributeValueApiFieldConfig;
 
 /**
  * Which properties of a AttributeApiEntity to fetch.

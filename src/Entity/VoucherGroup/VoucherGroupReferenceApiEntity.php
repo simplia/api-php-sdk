@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\VoucherGroup;
+namespace Simplia\Api\Entity\VoucherGroup;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\FieldConfig\VoucherGroup\VoucherGroupReferenceApiFieldConfig;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\FieldConfig\VoucherGroup\VoucherGroupReferenceApiFieldConfig;
 
 /**
  * A pointer at the voucher group a code belongs to: its id and its name; the whole record, with what the discount does and when it applies, is `GET /voucher-groups/{id}`.

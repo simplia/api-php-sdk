@@ -7,11 +7,11 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\StockItem;
+namespace Simplia\Api\Entity\StockItem;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\FieldConfig\StockItem\VariantApiFieldConfig;
-use Simplia\Api3\Money;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\FieldConfig\StockItem\VariantApiFieldConfig;
+use Simplia\Api\Money;
 
 /**
  * The variant a stock item represents, with its own code, barcode and price.

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\FieldConfig;
+namespace Simplia\Api\FieldConfig;
 
 /**
  * Which properties to fetch, as the API's `fields` parameter: dotted paths into embeds; an embed with no member

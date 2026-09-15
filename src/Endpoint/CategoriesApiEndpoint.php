@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\CategoryApiEntity;
-use Simplia\Api3\FieldConfig\CategoryApiFieldConfig;
-use Simplia\Api3\Request\CategoriesApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\CategoryApiEntity;
+use Simplia\Api\FieldConfig\CategoryApiFieldConfig;
+use Simplia\Api\Request\CategoriesApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/categories.

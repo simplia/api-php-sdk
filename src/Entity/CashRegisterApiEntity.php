@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\CashRegisterApiFieldConfig;
+use Simplia\Api\FieldConfig\CashRegisterApiFieldConfig;
 
 /**
  * A point-of-sale till of the shop, the record `Document.cash_register` points at, and the store it stands in. Inactive tills are listed too.

@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\Question;
+namespace Simplia\Api\Entity\Question;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\FieldConfig\Question\QuestionAnswerApiFieldConfig;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\FieldConfig\Question\QuestionAnswerApiFieldConfig;
 
 /**
  * The shop's answer to a customer question: the HTML that was sent to the customer, and when.

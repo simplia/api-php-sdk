@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\FieldConfig;
+namespace Simplia\Api\FieldConfig;
 
-use Simplia\Api3\FieldConfig\StockItem\BundlePartApiFieldConfig;
-use Simplia\Api3\FieldConfig\StockItem\StockLevelApiFieldConfig;
-use Simplia\Api3\FieldConfig\StockItem\StorageLocationApiFieldConfig;
-use Simplia\Api3\FieldConfig\StockItem\VariantApiFieldConfig;
+use Simplia\Api\FieldConfig\StockItem\BundlePartApiFieldConfig;
+use Simplia\Api\FieldConfig\StockItem\StockLevelApiFieldConfig;
+use Simplia\Api\FieldConfig\StockItem\StorageLocationApiFieldConfig;
+use Simplia\Api\FieldConfig\StockItem\VariantApiFieldConfig;
 
 /**
  * Which properties of a StockItemApiEntity to fetch.

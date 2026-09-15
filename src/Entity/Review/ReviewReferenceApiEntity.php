@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\Review;
+namespace Simplia\Api\Entity\Review;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\FieldConfig\Review\ReviewReferenceApiFieldConfig;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\FieldConfig\Review\ReviewReferenceApiFieldConfig;
 
 /**
  * A pointer at another review: its id and the language it is written in; the whole record is `GET /reviews/{id}`.

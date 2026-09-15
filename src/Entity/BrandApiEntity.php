@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\BrandApiFieldConfig;
+use Simplia\Api\FieldConfig\BrandApiFieldConfig;
 
 /**
  * A brand or manufacturer products are sold under, the record `Product.brand` points at, with the supplier the shop buys the brand from. Inactive brands are listed too.

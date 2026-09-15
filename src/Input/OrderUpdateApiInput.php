@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Input;
+namespace Simplia\Api\Input;
 
 /**
  * Changes the warehouse note, the fulfilling storage center or the customer account of an order. Send only the fields to change; a field that is absent or null is left as it is, so nothing can be cleared here. Lines, prices, addresses and status are changed through other operations.

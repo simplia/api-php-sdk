@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\SupplierApiFieldConfig;
+use Simplia\Api\FieldConfig\SupplierApiFieldConfig;
 
 /**
  * A supplier the shop buys goods from, the record `Product.supplier` and `Document.supplier` point at. Inactive suppliers are listed too.

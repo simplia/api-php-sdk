@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\StoreApiFieldConfig;
+use Simplia\Api\FieldConfig\StoreApiFieldConfig;
 
 /**
  * A physical store of the shop: a branch with its own stock and, where offered, customer pickup. Only its identifier and name are published. Inactive stores are listed too.

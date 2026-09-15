@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\OrderItemApiFieldConfig;
-use Simplia\Api3\Money;
+use Simplia\Api\FieldConfig\OrderItemApiFieldConfig;
+use Simplia\Api\Money;
 
 /**
  * One line of an order, readable across all orders: the feed a warehouse or ERP integration polls for work. Each line is a product or variant with the quantity ordered and the price agreed when the order was placed. Only active lines are readable; a cancelled line answers 404 even by id.

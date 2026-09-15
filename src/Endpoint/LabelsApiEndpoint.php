@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\LabelApiEntity;
-use Simplia\Api3\FieldConfig\LabelApiFieldConfig;
-use Simplia\Api3\Request\LabelsApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\LabelApiEntity;
+use Simplia\Api\FieldConfig\LabelApiFieldConfig;
+use Simplia\Api\Request\LabelsApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/labels.

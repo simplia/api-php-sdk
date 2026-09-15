@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\StorageCenterApiEntity;
-use Simplia\Api3\FieldConfig\StorageCenterApiFieldConfig;
-use Simplia\Api3\Request\StorageCentersApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\StorageCenterApiEntity;
+use Simplia\Api\FieldConfig\StorageCenterApiFieldConfig;
+use Simplia\Api\Request\StorageCentersApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/storage-centers.

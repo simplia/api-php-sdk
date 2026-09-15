@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Input;
+namespace Simplia\Api\Input;
 
 /**
  * Applies changes to many stock items in one transaction. Answered with the updated items, one per input item in input order.

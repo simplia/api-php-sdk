@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3;
+namespace Simplia\Api;
 
 /**
  * An amount of money as the API carries it: a decimal string and the ISO 4217 code. Never a float.

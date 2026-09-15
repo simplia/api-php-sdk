@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Input;
+namespace Simplia\Api\Input;
 
-use Simplia\Api3\Money;
+use Simplia\Api\Money;
 
 /**
  * Changes the name, code, barcode or price of a variant. Send only the fields to change; a field that is absent or null is left as it is.

@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\AvailabilityApiEntity;
-use Simplia\Api3\FieldConfig\AvailabilityApiFieldConfig;
-use Simplia\Api3\Request\AvailabilitiesApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\AvailabilityApiEntity;
+use Simplia\Api\FieldConfig\AvailabilityApiFieldConfig;
+use Simplia\Api\Request\AvailabilitiesApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/availabilities.

@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Input;
+namespace Simplia\Api\Input;
 
-use Simplia\Api3\Money;
+use Simplia\Api\Money;
 
 /**
  * How a new order ships and is paid: the transport and payment methods and what the customer is charged for each. Both methods are required. The two charges are added into the order's single delivery price and must carry the same VAT rate; two different rates are a 422 violation on `payment_vat_rate` — post a payment fee at its own rate as an order line.

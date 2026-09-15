@@ -7,14 +7,14 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\Entity\Admin\AdminReferenceApiEntity;
-use Simplia\Api3\Entity\Article\ArticleReferenceApiEntity;
-use Simplia\Api3\Entity\Category\CategoryReferenceApiEntity;
-use Simplia\Api3\Entity\Comment\CommentReferenceApiEntity;
-use Simplia\Api3\Entity\Product\ProductReferenceApiEntity;
-use Simplia\Api3\FieldConfig\CommentApiFieldConfig;
+use Simplia\Api\Entity\Admin\AdminReferenceApiEntity;
+use Simplia\Api\Entity\Article\ArticleReferenceApiEntity;
+use Simplia\Api\Entity\Category\CategoryReferenceApiEntity;
+use Simplia\Api\Entity\Comment\CommentReferenceApiEntity;
+use Simplia\Api\Entity\Product\ProductReferenceApiEntity;
+use Simplia\Api\FieldConfig\CommentApiFieldConfig;
 
 /**
  * A comment a customer or a staff member wrote under a product, a category or an article of the shop, with the star rating given with it and its moderation state. Comments of every state are listed together; a reply is a comment of its own that points at the one it answers.

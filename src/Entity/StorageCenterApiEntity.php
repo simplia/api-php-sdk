@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\StorageCenterApiFieldConfig;
+use Simplia\Api\FieldConfig\StorageCenterApiFieldConfig;
 
 /**
  * A storage center: a site, branch or depot that owns one or more stock rooms. Centers that are inactive are listed too.

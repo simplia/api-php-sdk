@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\FieldConfig\VoucherGroup;
+namespace Simplia\Api\FieldConfig\VoucherGroup;
 
-use Simplia\Api3\FieldConfig\AbstractApiFieldConfig;
+use Simplia\Api\FieldConfig\AbstractApiFieldConfig;
 
 /**
  * Which properties of a VoucherGroupReferenceApiEntity to fetch.

@@ -7,11 +7,11 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\StockItem;
+namespace Simplia\Api\Entity\StockItem;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\Entity\StockRoomApiEntity;
-use Simplia\Api3\FieldConfig\StockItem\StorageLocationApiFieldConfig;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\Entity\StockRoomApiEntity;
+use Simplia\Api\FieldConfig\StockItem\StorageLocationApiFieldConfig;
 
 /**
  * One shelf position an item is kept at: a fixed assignment without a count, or a live count in a stock room that tracks stock per position. The position itself, with its kind, capacity and labels, is `GET /storage-locations/{id}`.

@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Input;
+namespace Simplia\Api\Input;
 
-use Simplia\Api3\Money;
+use Simplia\Api\Money;
 
 /**
  * One price row: sets the price of one stock item in the addressed price list.

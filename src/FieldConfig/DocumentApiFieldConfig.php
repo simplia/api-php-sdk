@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\FieldConfig;
+namespace Simplia\Api\FieldConfig;
 
-use Simplia\Api3\FieldConfig\Document\DocumentItemApiFieldConfig;
-use Simplia\Api3\FieldConfig\DocumentApiFieldConfig as DocumentApiFieldConfig1;
-use Simplia\Api3\FieldConfig\Order\ContactApiFieldConfig;
-use Simplia\Api3\FieldConfig\Order\PaymentApiFieldConfig;
+use Simplia\Api\FieldConfig\Document\DocumentItemApiFieldConfig;
+use Simplia\Api\FieldConfig\DocumentApiFieldConfig as DocumentApiFieldConfig1;
+use Simplia\Api\FieldConfig\Order\ContactApiFieldConfig;
+use Simplia\Api\FieldConfig\Order\PaymentApiFieldConfig;
 
 /**
  * Which properties of a DocumentApiEntity to fetch.

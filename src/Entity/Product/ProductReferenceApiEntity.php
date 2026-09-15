@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\Product;
+namespace Simplia\Api\Entity\Product;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\FieldConfig\Product\ProductReferenceApiFieldConfig;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\FieldConfig\Product\ProductReferenceApiFieldConfig;
 
 /**
  * A pointer at a product: its id and its name in the request language; the whole record is `GET /products/{id}`.

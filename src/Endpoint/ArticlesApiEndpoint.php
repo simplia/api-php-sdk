@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\ArticleApiEntity;
-use Simplia\Api3\FieldConfig\ArticleApiFieldConfig;
-use Simplia\Api3\Request\ArticlesApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\ArticleApiEntity;
+use Simplia\Api\FieldConfig\ArticleApiFieldConfig;
+use Simplia\Api\Request\ArticlesApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/articles.

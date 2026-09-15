@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\Entity\Attribute\AttributeValueApiEntity;
-use Simplia\Api3\FieldConfig\AttributeApiFieldConfig;
+use Simplia\Api\Entity\Attribute\AttributeValueApiEntity;
+use Simplia\Api\FieldConfig\AttributeApiFieldConfig;
 
 /**
  * A product attribute: a named property — a colour, a material, a length — with its unit, its kind (a text, a number, a yes/no, one choice or several out of a list) and, for a choice attribute, the values to choose from. The vocabulary a product's `attributes` list is written in; a row of that list names its attribute by `id`.

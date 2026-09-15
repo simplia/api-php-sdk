@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\VariantApiFieldConfig;
-use Simplia\Api3\Money;
+use Simplia\Api\FieldConfig\VariantApiFieldConfig;
+use Simplia\Api\Money;
 
 /**
  * One purchasable variation of a product, such as a size or color, with its own code, barcode and catalog price. The name is the option value (black, XL), not the product name. Variants that are inactive or archived are listed too.

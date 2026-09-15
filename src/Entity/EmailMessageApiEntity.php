@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\EmailMessageApiFieldConfig;
+use Simplia\Api\FieldConfig\EmailMessageApiFieldConfig;
 
 /**
  * The receipt for a sent e-mail: the identifier the mail server assigned to the message. Nothing is stored and there is no way to fetch it later.

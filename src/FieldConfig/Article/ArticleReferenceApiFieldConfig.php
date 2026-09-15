@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\FieldConfig\Article;
+namespace Simplia\Api\FieldConfig\Article;
 
-use Simplia\Api3\FieldConfig\AbstractApiFieldConfig;
+use Simplia\Api\FieldConfig\AbstractApiFieldConfig;
 
 /**
  * Which properties of a ArticleReferenceApiEntity to fetch.

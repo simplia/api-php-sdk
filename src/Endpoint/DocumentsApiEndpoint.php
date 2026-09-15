@@ -7,14 +7,14 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\DocumentApiEntity;
-use Simplia\Api3\FieldConfig\DocumentApiFieldConfig;
-use Simplia\Api3\Input\DocumentItemPricesApiInput;
-use Simplia\Api3\Input\StockDocumentApiInput;
-use Simplia\Api3\Request\DocumentsApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\DocumentApiEntity;
+use Simplia\Api\FieldConfig\DocumentApiFieldConfig;
+use Simplia\Api\Input\DocumentItemPricesApiInput;
+use Simplia\Api\Input\StockDocumentApiInput;
+use Simplia\Api\Request\DocumentsApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/documents.

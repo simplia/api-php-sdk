@@ -7,11 +7,11 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\MeApiEntity;
-use Simplia\Api3\FieldConfig\MeApiFieldConfig;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\MeApiEntity;
+use Simplia\Api\FieldConfig\MeApiFieldConfig;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/me.

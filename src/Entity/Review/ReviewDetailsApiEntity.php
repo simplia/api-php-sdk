@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\Review;
+namespace Simplia\Api\Entity\Review;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\FieldConfig\Review\ReviewDetailsApiFieldConfig;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\FieldConfig\Review\ReviewDetailsApiFieldConfig;
 
 /**
  * The further answers of an order review: whether the customer recommends the shop and how they rated the delivery, the transport, the website, the communication and the pick-up, 0 to 5 stars each, in half-star steps. Every value is null when the review form did not ask for it.

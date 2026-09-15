@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\Article;
+namespace Simplia\Api\Entity\Article;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\FieldConfig\Article\ArticleReferenceApiFieldConfig;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\FieldConfig\Article\ArticleReferenceApiFieldConfig;
 
 /**
  * A pointer at an article: its id and its name; the whole record is `GET /articles/{id}`.

@@ -7,16 +7,16 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\Entity\Order\ContactApiEntity;
-use Simplia\Api3\Entity\Order\OrderDiscountApiEntity;
-use Simplia\Api3\Entity\Order\OrderItemApiEntity;
-use Simplia\Api3\Entity\Order\OrderPackagingApiEntity;
-use Simplia\Api3\Entity\Order\PackageApiEntity;
-use Simplia\Api3\Entity\Order\PaymentApiEntity;
-use Simplia\Api3\FieldConfig\OrderApiFieldConfig;
-use Simplia\Api3\Money;
+use Simplia\Api\Entity\Order\ContactApiEntity;
+use Simplia\Api\Entity\Order\OrderDiscountApiEntity;
+use Simplia\Api\Entity\Order\OrderItemApiEntity;
+use Simplia\Api\Entity\Order\OrderPackagingApiEntity;
+use Simplia\Api\Entity\Order\PackageApiEntity;
+use Simplia\Api\Entity\Order\PaymentApiEntity;
+use Simplia\Api\FieldConfig\OrderApiFieldConfig;
+use Simplia\Api\Money;
 
 /**
  * A customer order: what was ordered, by whom, where it goes, how it is paid, and everything the shop has done with it since — payments received, shipments sent, documents issued, warehouse sessions. It moves through unprocessed, processed, waiting, ready and finished, or is cancelled.

@@ -7,16 +7,16 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\PriceApiEntity;
-use Simplia\Api3\Entity\PricingApiEntity;
-use Simplia\Api3\FieldConfig\PriceApiFieldConfig;
-use Simplia\Api3\FieldConfig\PricingApiFieldConfig;
-use Simplia\Api3\Input\PriceBatchApiInput;
-use Simplia\Api3\Request\PricingsApiRequest;
-use Simplia\Api3\Request\PricingsPricesApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\PriceApiEntity;
+use Simplia\Api\Entity\PricingApiEntity;
+use Simplia\Api\FieldConfig\PriceApiFieldConfig;
+use Simplia\Api\FieldConfig\PricingApiFieldConfig;
+use Simplia\Api\Input\PriceBatchApiInput;
+use Simplia\Api\Request\PricingsApiRequest;
+use Simplia\Api\Request\PricingsPricesApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/pricings.

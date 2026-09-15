@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Exception;
+namespace Simplia\Api\Exception;
 
 /**
  * Any non-2xx answer. `getType()` is the slug after `/api/3/errors/` (`not-found`, `order-refused`, …), stable

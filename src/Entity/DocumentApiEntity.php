@@ -7,13 +7,13 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\Entity\Document\DocumentItemApiEntity;
-use Simplia\Api3\Entity\DocumentApiEntity as DocumentApiEntity1;
-use Simplia\Api3\Entity\Order\ContactApiEntity;
-use Simplia\Api3\Entity\Order\PaymentApiEntity;
-use Simplia\Api3\FieldConfig\DocumentApiFieldConfig;
+use Simplia\Api\Entity\Document\DocumentItemApiEntity;
+use Simplia\Api\Entity\DocumentApiEntity as DocumentApiEntity1;
+use Simplia\Api\Entity\Order\ContactApiEntity;
+use Simplia\Api\Entity\Order\PaymentApiEntity;
+use Simplia\Api\FieldConfig\DocumentApiFieldConfig;
 
 /**
  * A posted accounting or warehouse document: an invoice, a proforma (deposit) invoice, a cancellation, a credit note, a till receipt, or a stock receipt, issue or transfer. Only closed (posted) documents are readable; a draft answers 404 even by its exact id or number.

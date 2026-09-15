@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Input;
+namespace Simplia\Api\Input;
 
 /**
  * A postal address with contact details for a new order. Every field is optional; the address counts as given when at least one field is set.

@@ -7,11 +7,11 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\StockItem;
+namespace Simplia\Api\Entity\StockItem;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\Entity\StockRoomApiEntity;
-use Simplia\Api3\FieldConfig\StockItem\StockLevelApiFieldConfig;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\Entity\StockRoomApiEntity;
+use Simplia\Api\FieldConfig\StockItem\StockLevelApiFieldConfig;
 
 /**
  * Stock of one item in one stock room, with the minimum, optimal and maximum levels the shop maintains for it there.

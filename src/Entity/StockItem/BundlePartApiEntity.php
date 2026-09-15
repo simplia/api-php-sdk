@@ -7,11 +7,11 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\StockItem;
+namespace Simplia\Api\Entity\StockItem;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\Entity\StockItemApiEntity;
-use Simplia\Api3\FieldConfig\StockItem\BundlePartApiFieldConfig;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\Entity\StockItemApiEntity;
+use Simplia\Api\FieldConfig\StockItem\BundlePartApiFieldConfig;
 
 /**
  * One part of a bundle: which stock item and how many of it go into one bundle.

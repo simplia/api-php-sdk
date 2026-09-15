@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Input;
+namespace Simplia\Api\Input;
 
-use Simplia\Api3\Money;
+use Simplia\Api\Money;
 
 /**
  * Creates a variant of an existing product. Answered with the variant.

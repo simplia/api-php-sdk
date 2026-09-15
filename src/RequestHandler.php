@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3;
+namespace Simplia\Api;
 
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Simplia\Api3\Exception\ApiProblemException;
-use Simplia\Api3\Exception\ConflictException;
-use Simplia\Api3\Exception\RateLimitedException;
-use Simplia\Api3\Exception\ValidationException;
+use Simplia\Api\Exception\ApiProblemException;
+use Simplia\Api\Exception\ConflictException;
+use Simplia\Api\Exception\RateLimitedException;
+use Simplia\Api\Exception\ValidationException;
 
 /**
  * The one HTTP seam of the client: builds `/api/3/` URLs, sends the credentials, follows keyset pages, turns a

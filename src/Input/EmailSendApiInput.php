@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Input;
+namespace Simplia\Api\Input;
 
 /**
  * One HTML e-mail to one recipient, optionally with attachments, sent from the shop's configured sender address. Nothing is stored: the message is not attached to any customer or order.

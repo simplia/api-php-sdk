@@ -7,14 +7,14 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\Entity\Product\ProductReferenceApiEntity;
-use Simplia\Api3\Entity\Review\OrderReferenceApiEntity;
-use Simplia\Api3\Entity\Review\ReviewDetailsApiEntity;
-use Simplia\Api3\Entity\Review\ReviewReferenceApiEntity;
-use Simplia\Api3\Entity\Review\ReviewReplyApiEntity;
-use Simplia\Api3\FieldConfig\ReviewApiFieldConfig;
+use Simplia\Api\Entity\Product\ProductReferenceApiEntity;
+use Simplia\Api\Entity\Review\OrderReferenceApiEntity;
+use Simplia\Api\Entity\Review\ReviewDetailsApiEntity;
+use Simplia\Api\Entity\Review\ReviewReferenceApiEntity;
+use Simplia\Api\Entity\Review\ReviewReplyApiEntity;
+use Simplia\Api\FieldConfig\ReviewApiFieldConfig;
 
 /**
  * A customer review of a product or of an order (the shopping experience as a whole), written in the shop's own review form or imported from a price-comparison portal such as Heureka. Reviews of every language and moderation state are listed together; `status` says whether the shop approved the review for showing.

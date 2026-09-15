@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\Entity\Label\LabelReferenceApiEntity;
-use Simplia\Api3\FieldConfig\StorageLocationApiFieldConfig;
+use Simplia\Api\Entity\Label\LabelReferenceApiEntity;
+use Simplia\Api\FieldConfig\StorageLocationApiFieldConfig;
 
 /**
  * A storage location: one shelf position of a stock room, as written on its label, with its kind, its capacity and the labels pinned on it. Every position of every stock room is listed; what is stored on a position is read through the stock items.

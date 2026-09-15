@@ -7,11 +7,11 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\Label;
+namespace Simplia\Api\Entity\Label;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\Entity\ImageApiEntity;
-use Simplia\Api3\FieldConfig\Label\LabelReferenceApiFieldConfig;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\Entity\ImageApiEntity;
+use Simplia\Api\FieldConfig\Label\LabelReferenceApiFieldConfig;
 
 /**
  * A pointer at a label: its id, code, name in the request language, colour and picture — what a badge needs; the whole record, with where, when and to whom it shows, is `GET /labels/{id}`.

@@ -7,11 +7,11 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\Entity\Product\ProductReferenceApiEntity;
-use Simplia\Api3\Entity\Question\QuestionAnswerApiEntity;
-use Simplia\Api3\FieldConfig\QuestionApiFieldConfig;
+use Simplia\Api\Entity\Product\ProductReferenceApiEntity;
+use Simplia\Api\Entity\Question\QuestionAnswerApiEntity;
+use Simplia\Api\FieldConfig\QuestionApiFieldConfig;
 
 /**
  * A question a customer asked about a product through the storefront, and the shop's answer to it. Questions of every state are listed together; nothing here is shown on the storefront.

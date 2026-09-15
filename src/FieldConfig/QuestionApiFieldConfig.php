@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\FieldConfig;
+namespace Simplia\Api\FieldConfig;
 
-use Simplia\Api3\FieldConfig\Product\ProductReferenceApiFieldConfig;
-use Simplia\Api3\FieldConfig\Question\QuestionAnswerApiFieldConfig;
+use Simplia\Api\FieldConfig\Product\ProductReferenceApiFieldConfig;
+use Simplia\Api\FieldConfig\Question\QuestionAnswerApiFieldConfig;
 
 /**
  * Which properties of a QuestionApiEntity to fetch.

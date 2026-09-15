@@ -7,15 +7,15 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\DocumentApiEntity;
-use Simplia\Api3\Entity\StockRoomApiEntity;
-use Simplia\Api3\FieldConfig\DocumentApiFieldConfig;
-use Simplia\Api3\FieldConfig\StockRoomApiFieldConfig;
-use Simplia\Api3\Input\StockAmountBatchApiInput;
-use Simplia\Api3\Request\StockRoomsApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\DocumentApiEntity;
+use Simplia\Api\Entity\StockRoomApiEntity;
+use Simplia\Api\FieldConfig\DocumentApiFieldConfig;
+use Simplia\Api\FieldConfig\StockRoomApiFieldConfig;
+use Simplia\Api\Input\StockAmountBatchApiInput;
+use Simplia\Api\Request\StockRoomsApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/stock-rooms.

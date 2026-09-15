@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Input;
+namespace Simplia\Api\Input;
 
 /**
  * Adds one image to a product's gallery: the file's bytes as base64 and an optional caption. Answered with the stored image's identifier and content hash. The image also becomes the product's main image when it had none.

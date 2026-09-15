@@ -7,11 +7,11 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\Attribute;
+namespace Simplia\Api\Entity\Attribute;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\Entity\ImageApiEntity;
-use Simplia\Api3\FieldConfig\Attribute\AttributeValueApiFieldConfig;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\Entity\ImageApiEntity;
+use Simplia\Api\FieldConfig\Attribute\AttributeValueApiFieldConfig;
 
 /**
  * One value a choice attribute offers: its id, its name in the request language, its position among the attribute's values and its picture, a colour swatch for instance.

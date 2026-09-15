@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\FieldConfig\Category;
+namespace Simplia\Api\FieldConfig\Category;
 
-use Simplia\Api3\FieldConfig\AbstractApiFieldConfig;
+use Simplia\Api\FieldConfig\AbstractApiFieldConfig;
 
 /**
  * Which properties of a CategoryReferenceApiEntity to fetch.

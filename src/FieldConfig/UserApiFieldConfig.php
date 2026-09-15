@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\FieldConfig;
+namespace Simplia\Api\FieldConfig;
 
-use Simplia\Api3\FieldConfig\Order\ContactApiFieldConfig;
+use Simplia\Api\FieldConfig\Order\ContactApiFieldConfig;
 
 /**
  * Which properties of a UserApiEntity to fetch.

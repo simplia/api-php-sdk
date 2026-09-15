@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\UserGroupApiEntity;
-use Simplia\Api3\FieldConfig\UserGroupApiFieldConfig;
-use Simplia\Api3\Request\UserGroupsApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\UserGroupApiEntity;
+use Simplia\Api\FieldConfig\UserGroupApiFieldConfig;
+use Simplia\Api\Request\UserGroupsApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/user-groups.

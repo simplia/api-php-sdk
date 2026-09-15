@@ -7,18 +7,18 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\Voucher\VoucherLockApiEntity;
-use Simplia\Api3\Entity\VoucherApiEntity;
-use Simplia\Api3\FieldConfig\Voucher\VoucherLockApiFieldConfig;
-use Simplia\Api3\FieldConfig\VoucherApiFieldConfig;
-use Simplia\Api3\Input\VoucherCreateApiInput;
-use Simplia\Api3\Input\VoucherKeyApiInput;
-use Simplia\Api3\Input\VoucherLockApiInput;
-use Simplia\Api3\Request\VouchersApiRequest;
-use Simplia\Api3\Request\VouchersLocksApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\Voucher\VoucherLockApiEntity;
+use Simplia\Api\Entity\VoucherApiEntity;
+use Simplia\Api\FieldConfig\Voucher\VoucherLockApiFieldConfig;
+use Simplia\Api\FieldConfig\VoucherApiFieldConfig;
+use Simplia\Api\Input\VoucherCreateApiInput;
+use Simplia\Api\Input\VoucherKeyApiInput;
+use Simplia\Api\Input\VoucherLockApiInput;
+use Simplia\Api\Request\VouchersApiRequest;
+use Simplia\Api\Request\VouchersLocksApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/vouchers.

@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Input;
+namespace Simplia\Api\Input;
 
 /**
  * A stock take for one stock room: the quantity each listed item must end up with there. Answered with the created stock documents, not with the items.

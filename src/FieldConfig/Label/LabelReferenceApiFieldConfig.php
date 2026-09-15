@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\FieldConfig\Label;
+namespace Simplia\Api\FieldConfig\Label;
 
-use Simplia\Api3\FieldConfig\AbstractApiFieldConfig;
-use Simplia\Api3\FieldConfig\ImageApiFieldConfig;
+use Simplia\Api\FieldConfig\AbstractApiFieldConfig;
+use Simplia\Api\FieldConfig\ImageApiFieldConfig;
 
 /**
  * Which properties of a LabelReferenceApiEntity to fetch.

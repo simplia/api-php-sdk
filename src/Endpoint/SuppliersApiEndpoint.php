@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\SupplierApiEntity;
-use Simplia\Api3\FieldConfig\SupplierApiFieldConfig;
-use Simplia\Api3\Request\SuppliersApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\SupplierApiEntity;
+use Simplia\Api\FieldConfig\SupplierApiFieldConfig;
+use Simplia\Api\Request\SuppliersApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/suppliers.

@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\TextPageApiFieldConfig;
+use Simplia\Api\FieldConfig\TextPageApiFieldConfig;
 
 /**
  * A static content page of the shop, such as terms and conditions or contact information: a title and an HTML body in the request language. Pages that are inactive are listed too.

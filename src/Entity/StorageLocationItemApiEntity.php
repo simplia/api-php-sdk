@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\StorageLocationItemApiFieldConfig;
+use Simplia\Api\FieldConfig\StorageLocationItemApiFieldConfig;
 
 /**
  * One stock item kept at a storage location: the assignment of the item to the shelf position, with a pointer at the item. A position that tracks stock per position keeps its live count on the item record (`StockItem.storage_locations`); this list names what is assigned to the position.

@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\FieldConfig\Voucher;
+namespace Simplia\Api\FieldConfig\Voucher;
 
-use Simplia\Api3\FieldConfig\AbstractApiFieldConfig;
-use Simplia\Api3\FieldConfig\VoucherApiFieldConfig;
+use Simplia\Api\FieldConfig\AbstractApiFieldConfig;
+use Simplia\Api\FieldConfig\VoucherApiFieldConfig;
 
 /**
  * Which properties of a VoucherLockApiEntity to fetch.

@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\CommentApiEntity;
-use Simplia\Api3\FieldConfig\CommentApiFieldConfig;
-use Simplia\Api3\Request\CommentsApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\CommentApiEntity;
+use Simplia\Api\FieldConfig\CommentApiFieldConfig;
+use Simplia\Api\Request\CommentsApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/comments.

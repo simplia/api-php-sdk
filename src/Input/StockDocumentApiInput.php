@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Input;
+namespace Simplia\Api\Input;
 
 /**
  * Creates and immediately posts one stock movement: goods received into a stock room or issued from it, one line per stock item. Answered with the created document.

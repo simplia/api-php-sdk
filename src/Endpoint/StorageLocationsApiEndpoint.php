@@ -7,15 +7,15 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\StorageLocationApiEntity;
-use Simplia\Api3\Entity\StorageLocationItemApiEntity;
-use Simplia\Api3\FieldConfig\StorageLocationApiFieldConfig;
-use Simplia\Api3\FieldConfig\StorageLocationItemApiFieldConfig;
-use Simplia\Api3\Request\StorageLocationsApiRequest;
-use Simplia\Api3\Request\StorageLocationsItemsApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\StorageLocationApiEntity;
+use Simplia\Api\Entity\StorageLocationItemApiEntity;
+use Simplia\Api\FieldConfig\StorageLocationApiFieldConfig;
+use Simplia\Api\FieldConfig\StorageLocationItemApiFieldConfig;
+use Simplia\Api\Request\StorageLocationsApiRequest;
+use Simplia\Api\Request\StorageLocationsItemsApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/storage-locations.

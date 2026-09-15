@@ -7,15 +7,15 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\StockItemApiEntity;
-use Simplia\Api3\FieldConfig\StockItemApiFieldConfig;
-use Simplia\Api3\Input\BundleApiInput;
-use Simplia\Api3\Input\StockItemBatchUpdateApiInput;
-use Simplia\Api3\Input\StockItemLocationApiInput;
-use Simplia\Api3\Request\StockItemsApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\StockItemApiEntity;
+use Simplia\Api\FieldConfig\StockItemApiFieldConfig;
+use Simplia\Api\Input\BundleApiInput;
+use Simplia\Api\Input\StockItemBatchUpdateApiInput;
+use Simplia\Api\Input\StockItemLocationApiInput;
+use Simplia\Api\Request\StockItemsApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/stock-items.

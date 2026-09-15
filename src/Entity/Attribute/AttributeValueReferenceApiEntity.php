@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\Attribute;
+namespace Simplia\Api\Entity\Attribute;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\FieldConfig\Attribute\AttributeValueReferenceApiFieldConfig;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\FieldConfig\Attribute\AttributeValueReferenceApiFieldConfig;
 
 /**
  * One chosen value: its id and its name in the request language; the value's own record, with its position and picture, is an entry of `values` of `GET /attributes/{id}`.

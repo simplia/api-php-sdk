@@ -7,11 +7,11 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\Voucher;
+namespace Simplia\Api\Entity\Voucher;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\Entity\VoucherApiEntity;
-use Simplia\Api3\FieldConfig\Voucher\VoucherLockApiFieldConfig;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\Entity\VoucherApiEntity;
+use Simplia\Api\FieldConfig\Voucher\VoucherLockApiFieldConfig;
 
 /**
  * A short-lived reservation of a voucher code, so that two checkouts cannot redeem the same code at once. The holder is identified by the key it chose.

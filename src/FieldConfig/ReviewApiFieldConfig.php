@@ -7,13 +7,13 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\FieldConfig;
+namespace Simplia\Api\FieldConfig;
 
-use Simplia\Api3\FieldConfig\Product\ProductReferenceApiFieldConfig;
-use Simplia\Api3\FieldConfig\Review\OrderReferenceApiFieldConfig;
-use Simplia\Api3\FieldConfig\Review\ReviewDetailsApiFieldConfig;
-use Simplia\Api3\FieldConfig\Review\ReviewReferenceApiFieldConfig;
-use Simplia\Api3\FieldConfig\Review\ReviewReplyApiFieldConfig;
+use Simplia\Api\FieldConfig\Product\ProductReferenceApiFieldConfig;
+use Simplia\Api\FieldConfig\Review\OrderReferenceApiFieldConfig;
+use Simplia\Api\FieldConfig\Review\ReviewDetailsApiFieldConfig;
+use Simplia\Api\FieldConfig\Review\ReviewReferenceApiFieldConfig;
+use Simplia\Api\FieldConfig\Review\ReviewReplyApiFieldConfig;
 
 /**
  * Which properties of a ReviewApiEntity to fetch.

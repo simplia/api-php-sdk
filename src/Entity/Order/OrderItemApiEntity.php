@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\Order;
+namespace Simplia\Api\Entity\Order;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\Entity\StockItemApiEntity;
-use Simplia\Api3\FieldConfig\Order\OrderItemApiFieldConfig;
-use Simplia\Api3\Money;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\Entity\StockItemApiEntity;
+use Simplia\Api\FieldConfig\Order\OrderItemApiFieldConfig;
+use Simplia\Api\Money;
 
 /**
  * One line of an order: a product or variant, the quantity ordered and the price agreed when the order was placed.

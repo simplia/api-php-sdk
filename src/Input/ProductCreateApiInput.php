@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Input;
+namespace Simplia\Api\Input;
 
 /**
  * Creates a product: its primary category and name, optionally its VAT rate and code. Answered with the full product.

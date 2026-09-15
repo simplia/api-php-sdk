@@ -7,14 +7,14 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\VariantApiEntity;
-use Simplia\Api3\FieldConfig\VariantApiFieldConfig;
-use Simplia\Api3\Input\VariantCreateApiInput;
-use Simplia\Api3\Input\VariantUpdateApiInput;
-use Simplia\Api3\Request\VariantsApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\VariantApiEntity;
+use Simplia\Api\FieldConfig\VariantApiFieldConfig;
+use Simplia\Api\Input\VariantCreateApiInput;
+use Simplia\Api\Input\VariantUpdateApiInput;
+use Simplia\Api\Request\VariantsApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/variants.

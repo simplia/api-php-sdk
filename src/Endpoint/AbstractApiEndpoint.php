@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\FieldConfig\AbstractApiFieldConfig;
-use Simplia\Api3\Input\AbstractApiInput;
-use Simplia\Api3\Request\AbstractApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\FieldConfig\AbstractApiFieldConfig;
+use Simplia\Api\Input\AbstractApiInput;
+use Simplia\Api\Request\AbstractApiRequest;
+use Simplia\Api\RequestHandler;
 
 /** The operations of one resource; the generated subclass adds one method per operation. */
 abstract class AbstractApiEndpoint {

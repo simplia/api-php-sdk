@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\TransportMethodApiFieldConfig;
+use Simplia\Api\FieldConfig\TransportMethodApiFieldConfig;
 
 /**
  * A shipping option offered at checkout, in the request language: which carrier delivers it, which of the carrier's services it uses, its position in the checkout list, and the store it is collected at for personal pickup. The same option has a different id in each language.

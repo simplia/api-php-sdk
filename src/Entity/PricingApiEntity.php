@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\PricingApiFieldConfig;
+use Simplia\Api\FieldConfig\PricingApiFieldConfig;
 
 /**
  * A price list: a named, coded set of prices per stock item in one currency, with an on/off switch, a precedence number and an optional validity window. The shop picks one active list per currency and customer at request time. Read-only here; lists are configured in the shop's administration. Inactive and expired lists are listed too.

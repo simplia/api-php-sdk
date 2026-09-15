@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\MeApiFieldConfig;
+use Simplia\Api\FieldConfig\MeApiFieldConfig;
 
 /**
  * The credential you are calling with: who it is and which permissions it holds.

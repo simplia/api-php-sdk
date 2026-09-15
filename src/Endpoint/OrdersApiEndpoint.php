@@ -7,16 +7,16 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\OrderApiEntity;
-use Simplia\Api3\FieldConfig\OrderApiFieldConfig;
-use Simplia\Api3\Input\OrderCreateApiInput;
-use Simplia\Api3\Input\OrderPriorityApiInput;
-use Simplia\Api3\Input\OrderStatusApiInput;
-use Simplia\Api3\Input\OrderUpdateApiInput;
-use Simplia\Api3\Request\OrdersApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\OrderApiEntity;
+use Simplia\Api\FieldConfig\OrderApiFieldConfig;
+use Simplia\Api\Input\OrderCreateApiInput;
+use Simplia\Api\Input\OrderPriorityApiInput;
+use Simplia\Api\Input\OrderStatusApiInput;
+use Simplia\Api\Input\OrderUpdateApiInput;
+use Simplia\Api\Request\OrdersApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/orders.

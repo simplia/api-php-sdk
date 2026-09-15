@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Input;
+namespace Simplia\Api\Input;
 
-use Simplia\Api3\Money;
+use Simplia\Api\Money;
 
 /** The body of one write; the generated subclass adds a `set…()` per property. Only what was set is sent. */
 abstract class AbstractApiInput implements \Countable {

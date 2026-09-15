@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\AvailabilityApiFieldConfig;
+use Simplia\Api\FieldConfig\AvailabilityApiFieldConfig;
 
 /**
  * An entry of the shop's availability list: the delivery promise a product can carry, such as in stock or 1 week, labeled in the request language. The identifier is the number of hours the customer waits.

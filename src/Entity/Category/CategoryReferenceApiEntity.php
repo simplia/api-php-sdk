@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\Category;
+namespace Simplia\Api\Entity\Category;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\FieldConfig\Category\CategoryReferenceApiFieldConfig;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\FieldConfig\Category\CategoryReferenceApiFieldConfig;
 
 /**
  * A pointer to a category of the catalog tree: its identifier, its name in the request language and the names and identifiers of its ancestors, as it appears on a product. The full category is at GET /categories/{id}.

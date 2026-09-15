@@ -7,13 +7,13 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\UserApiEntity;
-use Simplia\Api3\FieldConfig\UserApiFieldConfig;
-use Simplia\Api3\Input\UserUpdateApiInput;
-use Simplia\Api3\Request\UsersApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\UserApiEntity;
+use Simplia\Api\FieldConfig\UserApiFieldConfig;
+use Simplia\Api\Input\UserUpdateApiInput;
+use Simplia\Api\Request\UsersApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/users.

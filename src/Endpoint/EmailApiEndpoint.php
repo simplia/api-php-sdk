@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\EmailMessageApiEntity;
-use Simplia\Api3\FieldConfig\EmailMessageApiFieldConfig;
-use Simplia\Api3\Input\EmailSendApiInput;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\EmailMessageApiEntity;
+use Simplia\Api\FieldConfig\EmailMessageApiFieldConfig;
+use Simplia\Api\Input\EmailSendApiInput;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/email.

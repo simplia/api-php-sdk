@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Request;
+namespace Simplia\Api\Request;
 
 /**
  * The filters and the sort of `stock-rooms.list` (GET /api/3/stock-rooms).

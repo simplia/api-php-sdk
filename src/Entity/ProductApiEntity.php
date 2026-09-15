@@ -7,11 +7,11 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\Entity\Label\LabelReferenceApiEntity;
-use Simplia\Api3\Entity\Product\ProductAttributeApiEntity;
-use Simplia\Api3\FieldConfig\ProductApiFieldConfig;
+use Simplia\Api\Entity\Label\LabelReferenceApiEntity;
+use Simplia\Api\Entity\Product\ProductAttributeApiEntity;
+use Simplia\Api\FieldConfig\ProductApiFieldConfig;
 
 /**
  * A catalog product as the shop lists it: name and descriptions in the request language, identifying codes, VAT rate, brand, supplier, main image and categories. Prices and stock live on its stock item (GET /stock-items) or on its variants (GET /variants), not here. Products that are inactive or archived are listed too.

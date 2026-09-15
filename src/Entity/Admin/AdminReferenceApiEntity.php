@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\Admin;
+namespace Simplia\Api\Entity\Admin;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\FieldConfig\Admin\AdminReferenceApiFieldConfig;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\FieldConfig\Admin\AdminReferenceApiFieldConfig;
 
 /**
  * A pointer to a staff account of the shop: the person who issued a document, entered an order or handled it in the warehouse. Not a customer. The full account is at GET /admins/{id}.

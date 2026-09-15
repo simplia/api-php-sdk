@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\FieldConfig\Review;
+namespace Simplia\Api\FieldConfig\Review;
 
-use Simplia\Api3\FieldConfig\AbstractApiFieldConfig;
-use Simplia\Api3\FieldConfig\Admin\AdminReferenceApiFieldConfig;
+use Simplia\Api\FieldConfig\AbstractApiFieldConfig;
+use Simplia\Api\FieldConfig\Admin\AdminReferenceApiFieldConfig;
 
 /**
  * Which properties of a ReviewReplyApiEntity to fetch.

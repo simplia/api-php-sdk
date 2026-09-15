@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\LogisticPlanApiFieldConfig;
+use Simplia\Api\FieldConfig\LogisticPlanApiFieldConfig;
 
 /**
  * A named set of rules for moving stock between the shop's stock rooms automatically: which rooms restock which, and which kinds of demand count. A stock item is assigned one with PUT /stock-items/batch.

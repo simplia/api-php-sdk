@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\PackageApiEntity;
-use Simplia\Api3\FieldConfig\PackageApiFieldConfig;
-use Simplia\Api3\Request\PackagesApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\PackageApiEntity;
+use Simplia\Api\FieldConfig\PackageApiFieldConfig;
+use Simplia\Api\Request\PackagesApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/packages.

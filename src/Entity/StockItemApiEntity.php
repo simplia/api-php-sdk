@@ -7,14 +7,14 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\Entity\StockItem\BundlePartApiEntity;
-use Simplia\Api3\Entity\StockItem\StockLevelApiEntity;
-use Simplia\Api3\Entity\StockItem\StorageLocationApiEntity;
-use Simplia\Api3\Entity\StockItem\VariantApiEntity;
-use Simplia\Api3\FieldConfig\StockItemApiFieldConfig;
-use Simplia\Api3\Money;
+use Simplia\Api\Entity\StockItem\BundlePartApiEntity;
+use Simplia\Api\Entity\StockItem\StockLevelApiEntity;
+use Simplia\Api\Entity\StockItem\StorageLocationApiEntity;
+use Simplia\Api\Entity\StockItem\VariantApiEntity;
+use Simplia\Api\FieldConfig\StockItemApiFieldConfig;
+use Simplia\Api\Money;
 
 /**
  * One sellable, stock-tracked unit of the catalog: a product without variants, or one variant of a product. It carries the prices, the barcode, the supplier code, the availability promise, how many pieces are in each stock room and where they sit on the shelves, and, for a bundle, what it is assembled from.

@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\ImageApiFieldConfig;
+use Simplia\Api\FieldConfig\ImageApiFieldConfig;
 
 /**
  * A stored image: its identifier, the MD5 fingerprint of the stored file, the address a full-size rendition of it can be fetched from and its size in pixels.

@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\PaymentMethodApiEntity;
-use Simplia\Api3\FieldConfig\PaymentMethodApiFieldConfig;
-use Simplia\Api3\Request\PaymentMethodsApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\PaymentMethodApiEntity;
+use Simplia\Api\FieldConfig\PaymentMethodApiFieldConfig;
+use Simplia\Api\Request\PaymentMethodsApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/payment-methods.

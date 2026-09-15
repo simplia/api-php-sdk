@@ -7,11 +7,11 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity\Review;
+namespace Simplia\Api\Entity\Review;
 
-use Simplia\Api3\Entity\AbstractApiEntity;
-use Simplia\Api3\Entity\Admin\AdminReferenceApiEntity;
-use Simplia\Api3\FieldConfig\Review\ReviewReplyApiFieldConfig;
+use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\Entity\Admin\AdminReferenceApiEntity;
+use Simplia\Api\FieldConfig\Review\ReviewReplyApiFieldConfig;
 
 /**
  * The shop's reply to a review: what was said, when, and by which staff account when it was written in the shop.

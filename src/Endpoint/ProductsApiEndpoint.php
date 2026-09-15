@@ -7,17 +7,17 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\ImageApiEntity;
-use Simplia\Api3\Entity\ProductApiEntity;
-use Simplia\Api3\FieldConfig\ImageApiFieldConfig;
-use Simplia\Api3\FieldConfig\ProductApiFieldConfig;
-use Simplia\Api3\Input\ProductCreateApiInput;
-use Simplia\Api3\Input\ProductImageUploadApiInput;
-use Simplia\Api3\Input\ProductUpdateApiInput;
-use Simplia\Api3\Request\ProductsApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\ImageApiEntity;
+use Simplia\Api\Entity\ProductApiEntity;
+use Simplia\Api\FieldConfig\ImageApiFieldConfig;
+use Simplia\Api\FieldConfig\ProductApiFieldConfig;
+use Simplia\Api\Input\ProductCreateApiInput;
+use Simplia\Api\Input\ProductImageUploadApiInput;
+use Simplia\Api\Input\ProductUpdateApiInput;
+use Simplia\Api\Request\ProductsApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/products.

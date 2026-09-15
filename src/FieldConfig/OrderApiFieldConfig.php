@@ -7,14 +7,14 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\FieldConfig;
+namespace Simplia\Api\FieldConfig;
 
-use Simplia\Api3\FieldConfig\Order\ContactApiFieldConfig;
-use Simplia\Api3\FieldConfig\Order\OrderDiscountApiFieldConfig;
-use Simplia\Api3\FieldConfig\Order\OrderItemApiFieldConfig;
-use Simplia\Api3\FieldConfig\Order\OrderPackagingApiFieldConfig;
-use Simplia\Api3\FieldConfig\Order\PackageApiFieldConfig;
-use Simplia\Api3\FieldConfig\Order\PaymentApiFieldConfig;
+use Simplia\Api\FieldConfig\Order\ContactApiFieldConfig;
+use Simplia\Api\FieldConfig\Order\OrderDiscountApiFieldConfig;
+use Simplia\Api\FieldConfig\Order\OrderItemApiFieldConfig;
+use Simplia\Api\FieldConfig\Order\OrderPackagingApiFieldConfig;
+use Simplia\Api\FieldConfig\Order\PackageApiFieldConfig;
+use Simplia\Api\FieldConfig\Order\PaymentApiFieldConfig;
 
 /**
  * Which properties of a OrderApiEntity to fetch.

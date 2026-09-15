@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\CashRegisterApiEntity;
-use Simplia\Api3\FieldConfig\CashRegisterApiFieldConfig;
-use Simplia\Api3\Request\CashRegistersApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\CashRegisterApiEntity;
+use Simplia\Api\FieldConfig\CashRegisterApiFieldConfig;
+use Simplia\Api\Request\CashRegistersApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/cash-registers.

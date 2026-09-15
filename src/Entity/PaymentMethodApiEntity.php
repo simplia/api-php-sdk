@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\PaymentMethodApiFieldConfig;
+use Simplia\Api\FieldConfig\PaymentMethodApiFieldConfig;
 
 /**
  * A way to pay offered at checkout, such as card, cash on delivery or bank transfer, in the request language. The same method has a different id in each language.

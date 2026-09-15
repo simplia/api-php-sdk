@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Entity;
+namespace Simplia\Api\Entity;
 
-use Simplia\Api3\FieldConfig\LabelApiFieldConfig;
+use Simplia\Api\FieldConfig\LabelApiFieldConfig;
 
 /**
  * A label the shop pins on records — a badge such as "new" or "sale" on a product, a mark on a variant or on a storage location: its code, its name in the request language, its colour and picture, the kinds of record it applies to, who sees it and when. `GET /labels` lists every label; a product's `labels` list points at them by `id`.

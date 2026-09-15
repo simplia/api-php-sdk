@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Endpoint;
+namespace Simplia\Api\Endpoint;
 
-use Simplia\Api3\Entity\BrandApiEntity;
-use Simplia\Api3\FieldConfig\BrandApiFieldConfig;
-use Simplia\Api3\Request\BrandsApiRequest;
-use Simplia\Api3\RequestHandler;
+use Simplia\Api\Entity\BrandApiEntity;
+use Simplia\Api\FieldConfig\BrandApiFieldConfig;
+use Simplia\Api\Request\BrandsApiRequest;
+use Simplia\Api\RequestHandler;
 
 /**
  * The operations of /api/3/brands.

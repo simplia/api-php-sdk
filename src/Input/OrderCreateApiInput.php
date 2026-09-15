@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Simplia\Api3\Input;
+namespace Simplia\Api\Input;
 
 /**
  * Creates one customer order: the lines, the addresses, how it ships and is paid, and optional links to a store, a storage center and a customer account. The order starts in the unprocessed status; the answer is the full order with its number assigned.
