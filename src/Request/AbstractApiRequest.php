@@ -1,18 +1,24 @@
 <?php
 
-namespace Simplia\Api\Request;
+declare(strict_types=1);
 
+namespace Simplia\Api3\Request;
+
+/** The filters and the sort of one list call; the generated subclass adds a `where…()` per filter and `orderBy…()` per sort. */
 abstract class AbstractApiRequest {
+
+    /** @var array<string, mixed> */
     protected array $params = [];
 
+    final public function __construct() {
+    }
+
+    /** @return array<string, mixed> */
     public function toArray(): array {
         return $this->params;
     }
 
-    /**
-     * @return static
-     */
-    public static function create() {
+    public static function create(): static {
         return new static();
     }
 }

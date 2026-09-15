@@ -1,48 +1,63 @@
 <?php
 
-namespace Simplia\Api\Endpoint;
+declare(strict_types=1);
 
-use Simplia\Api\FieldConfig\AbstractApiFieldConfig;
-use Simplia\Api\Input\AbstractApiInput;
-use Simplia\Api\Request\AbstractApiRequest;
-use Simplia\Api\RequestHandler;
+namespace Simplia\Api3\Endpoint;
 
+use Simplia\Api3\FieldConfig\AbstractApiFieldConfig;
+use Simplia\Api3\Input\AbstractApiInput;
+use Simplia\Api3\Request\AbstractApiRequest;
+use Simplia\Api3\RequestHandler;
+
+/** The operations of one resource; the generated subclass adds one method per operation. */
 abstract class AbstractApiEndpoint {
-    protected RequestHandler $client;
 
-    public function __construct(RequestHandler $client) {
-        $this->client = $client;
+    public function __construct(protected readonly RequestHandler $client) {
     }
 
-    protected function singleResult(string $path, array $query, AbstractApiFieldConfig $fieldConfig): ?array {
-        $fields = $fieldConfig->toArray();
-        if (!empty($fields)) {
-            $query['fields'] = implode(',', $fields);
+    /**
+     * @param array<string, mixed> $query
+     * @return array<string, mixed>|null
+     */
+    protected function singleResult(string $path, array $query, AbstractApiFieldConfig $fields): ?array {
+        return $this->client->get($path, self::withFields($query, $fields));
+    }
+
+    /**
+     * @param array<string, mixed> $query
+     * @return \Generator<int, array<string, mixed>>
+     */
+    protected function iterateList(string $path, array $query, AbstractApiRequest $request, AbstractApiFieldConfig $fields, int $perPage): \Generator {
+        return $this->client->iterate($path, self::withFields(array_merge($query, $request->toArray()), $fields), $perPage);
+    }
+
+    /** @param array<string, mixed> $query */
+    protected function countList(string $path, array $query, AbstractApiRequest $request): int {
+        return $this->client->count($path, array_merge($query, $request->toArray()));
+    }
+
+    /**
+     * @param array<string, mixed> $query
+     * @return array<string, mixed>|null
+     */
+    protected function request(string $method, string $path, array $query, ?AbstractApiInput $input, ?AbstractApiFieldConfig $fields, string $contentType = RequestHandler::JSON, ?string $idempotencyKey = null): ?array {
+        $body = $input?->toArray();
+        if ($body === []) {
+            // An input with nothing set must go on the wire as `{}`, not `[]` — RFC 7396 treats a non-object
+            // merge-patch body as replacing the whole target.
+            $body = (object) [];
         }
 
-        return $this->client->get($path, $query);
+        return $this->client->send($method, $path, self::withFields($query, $fields), $body, $contentType, $idempotencyKey);
     }
 
-    protected function request(string $method, string $path, array $query, ?AbstractApiInput $input, ?AbstractApiFieldConfig $fieldConfig): ?array {
-        if ($fieldConfig) {
-            $fields = $fieldConfig->toArray();
-            if (!empty($fields)) {
-                $query['fields'] = implode(',', $fields);
-            }
-        }
-
-        return $this->client->request($method, $path, $query, $input ? $input->toArray() : []);
-    }
-
-    protected function iterateList(string $path, array $query, AbstractApiRequest $request, AbstractApiFieldConfig $fieldConfig, int $batchSize): \Generator {
-        return $this->client->iterate($path, $this->createQuery($query, $request, $fieldConfig), $batchSize);
-    }
-
-    private function createQuery(array $query, AbstractApiRequest $request, AbstractApiFieldConfig $fieldConfig): array {
-        $query = array_merge($query, $request->toArray());
-        $fields = $fieldConfig->toArray();
-        if (!empty($fields)) {
-            $query['fields'] = implode(',', $fields);
+    /**
+     * @param array<string, mixed> $query
+     * @return array<string, mixed>
+     */
+    private static function withFields(array $query, ?AbstractApiFieldConfig $fields): array {
+        if ($fields !== null && $fields->toArray() !== []) {
+            $query['fields'] = $fields->toQueryValue();
         }
 
         return $query;

@@ -1,11 +1,4 @@
 parameters:
-    level: 5
+    level: 8
     paths:
         - src
-    ignoreErrors:
-        -
-            message: '#Unsafe usage of new static#'
-            path: src/Input/AbstractApiInput.php
-        -
-            message: '#Unsafe usage of new static#'
-            path: src/Request/AbstractApiRequest.php

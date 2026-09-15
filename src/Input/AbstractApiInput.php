@@ -1,43 +1,63 @@
 <?php
 
-namespace Simplia\Api\Input;
+declare(strict_types=1);
 
-use Countable;
+namespace Simplia\Api3\Input;
 
-abstract class AbstractApiInput implements Countable {
+use Simplia\Api3\Money;
+
+/** The body of one write; the generated subclass adds a `set…()` per property. Only what was set is sent. */
+abstract class AbstractApiInput implements \Countable {
+
+    /** @var array<string, mixed> */
     protected array $params = [];
 
+    final public function __construct() {
+    }
+
+    /** @return array<string, mixed> */
     public function toArray(): array {
-        foreach ($this->params as &$param) {
-            if (is_array($param)) {
-                foreach ($param as &$value) {
-                    if ($value instanceof AbstractApiInput) {
-                        $value = $value->toArray();
-                    }
-                }
-            }
-        }
-
-        return $this->params;
+        return self::export($this->params);
     }
 
-    /**
-     * @return static
-     */
-    public static function create() {
+    public static function create(): static {
         return new static();
-    }
-
-    protected static function validateArray(array $values, string $class): void {
-        foreach ($values as $value) {
-            if (!is_object($value) || get_class($value) !== $class) {
-                throw new \RuntimeException('Expected value of type ' . $class);
-            }
-        }
     }
 
     public function count(): int {
         return count($this->params);
     }
 
+    /**
+     * @param list<mixed> $values
+     * @param class-string $class
+     */
+    protected static function validateArray(array $values, string $class): void {
+        foreach ($values as $value) {
+            if (!$value instanceof $class) {
+                throw new \InvalidArgumentException('Expected a list of ' . $class . '.');
+            }
+        }
+    }
+
+    /**
+     * @param array<array-key, mixed> $values
+     * @return array<array-key, mixed>
+     */
+    private static function export(array $values): array {
+        foreach ($values as $key => $value) {
+            if ($value instanceof self) {
+                // A nested input with nothing set exports as `{}`, not `[]` — RFC 7396 treats a non-object
+                // merge-patch body as replacing the whole target.
+                $exported = $value->toArray();
+                $values[$key] = $exported === [] ? (object) [] : $exported;
+            } elseif ($value instanceof Money) {
+                $values[$key] = $value->toArray();
+            } elseif (is_array($value)) {
+                $values[$key] = self::export($value);
+            }
+        }
+
+        return $values;
+    }
 }
