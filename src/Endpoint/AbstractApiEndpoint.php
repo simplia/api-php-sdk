@@ -41,6 +41,7 @@ abstract class AbstractApiEndpoint {
      * @return array<string, mixed>|null
      */
     protected function request(string $method, string $path, array $query, ?AbstractApiInput $input, ?AbstractApiFieldConfig $fields, string $contentType = RequestHandler::JSON, ?string $idempotencyKey = null): ?array {
+        $input?->assertComplete();
         $body = $input?->toArray();
         if ($body === []) {
             // An input with nothing set must go on the wire as `{}`, not `[]` — RFC 7396 treats a non-object

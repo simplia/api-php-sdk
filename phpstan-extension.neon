@@ -1,0 +1,6 @@
+# Consumer-side rule of simplia/api: an input built inline in an endpoint call must call every required setter.
+# phpstan/extension-installer picks this file up; otherwise add `includes: [vendor/simplia/api/phpstan-extension.neon]`.
+services:
+    -
+        class: Simplia\Api\PhpStan\RequiredPropertiesRule
+        tags: [phpstan.rules.rule]

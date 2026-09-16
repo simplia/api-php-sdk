@@ -13,19 +13,12 @@ use Simplia\Api\Enum\StockDocumentType;
 
 /**
  * Creates and immediately posts one stock movement: goods received into a stock room or issued from it, one line per stock item. Answered with the created document.
+ *
+ * Required before sending: setStockRoomId(), setType(), setItems(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
 final class StockDocumentApiInput extends AbstractApiInput {
-    /**
-     * @param int $stockRoomId Identifier of the stock room the goods move into or out of (`StockRoom.id`). An unknown id is a 422 violation.
-     * @param StockDocumentType $type Direction of the movement: `stock_input` receives goods (stock goes up), `stock_output` issues them (stock goes down). No other document type can be created here.
-     * @param list<StockDocumentItemApiInput> $items The movement lines, at least one. Send each stock item once: for a repeated item only the last line is kept and the earlier quantity is discarded.
-     */
-    public function __construct(int $stockRoomId, StockDocumentType $type, array $items) {
-        self::validateArray($items, StockDocumentItemApiInput::class);
-        $this->params['stock_room_id'] = $stockRoomId;
-        $this->params['type'] = $type;
-        $this->params['items'] = $items;
-    }
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = ['stock_room_id' => 'setStockRoomId', 'type' => 'setType', 'items' => 'setItems'];
 
     /**
      * Document number to assign instead of the next number from the shop's sequence, at most 32 characters. Omit to let the shop number the document.
@@ -37,10 +30,39 @@ final class StockDocumentApiInput extends AbstractApiInput {
     }
 
     /**
+     * Required. Identifier of the stock room the goods move into or out of (`StockRoom.id`). An unknown id is a 422 violation.
+     */
+    public function setStockRoomId(int $stockRoomId): self {
+        $this->params['stock_room_id'] = $stockRoomId;
+
+        return $this;
+    }
+
+    /**
      * Issue date to record instead of the moment of posting.
      */
     public function setIssuedAt(?\DateTimeInterface $issuedAt): self {
         $this->params['issued_at'] = $issuedAt?->format(\DateTimeInterface::ATOM);
+
+        return $this;
+    }
+
+    /**
+     * Required. Direction of the movement: `stock_input` receives goods (stock goes up), `stock_output` issues them (stock goes down). No other document type can be created here.
+     */
+    public function setType(StockDocumentType $type): self {
+        $this->params['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Required. The movement lines, at least one. Send each stock item once: for a repeated item only the last line is kept and the earlier quantity is discarded.
+     * @param list<StockDocumentItemApiInput> $items
+     */
+    public function setItems(array $items): self {
+        self::validateArray($items, StockDocumentItemApiInput::class);
+        $this->params['items'] = $items;
 
         return $this;
     }

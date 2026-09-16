@@ -13,16 +13,37 @@ use Simplia\Api\Money;
 
 /**
  * A new unit price and VAT rate for one existing line of a stock document.
+ *
+ * Required before sending: setId(), setPrice(), setVatRate(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
 final class DocumentItemPriceApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = ['id' => 'setId', 'price' => 'setPrice', 'vat_rate' => 'setVatRate'];
+
     /**
-     * @param int $id Identifier of the line to re-price: a `Document.rows[].id` of the addressed document, not a stock item id. A line of another document is a 422 violation.
-     * @param Money $price New unit price including VAT, in the document's own currency (the shop's main currency for a document without one); anything else is a 422 violation at `price.currency`. The amount in the shop's main currency is derived from it at the document's exchange rate.
-     * @param float $vatRate New VAT rate as a percentage (21 for 21 %). Always replaces the stored rate; VAT totals are recomputed from the new price and rate.
+     * Required. Identifier of the line to re-price: a `Document.rows[].id` of the addressed document, not a stock item id. A line of another document is a 422 violation.
      */
-    public function __construct(int $id, Money $price, float $vatRate) {
+    public function setId(int $id): self {
         $this->params['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Required. New unit price including VAT, in the document's own currency (the shop's main currency for a document without one); anything else is a 422 violation at `price.currency`. The amount in the shop's main currency is derived from it at the document's exchange rate.
+     */
+    public function setPrice(Money $price): self {
         $this->params['price'] = $price;
+
+        return $this;
+    }
+
+    /**
+     * Required. New VAT rate as a percentage (21 for 21 %). Always replaces the stored rate; VAT totals are recomputed from the new price and rate.
+     */
+    public function setVatRate(float $vatRate): self {
         $this->params['vat_rate'] = $vatRate;
+
+        return $this;
     }
 }

@@ -11,13 +11,21 @@ namespace Simplia\Api\Input;
 
 /**
  * A stock take for one stock room: the quantity each listed item must end up with there. Answered with the created stock documents, not with the items.
+ *
+ * Required before sending: setItems(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
 final class StockAmountBatchApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = ['items' => 'setItems'];
+
     /**
-     * @param list<StockAmountItemApiInput> $items The items and their target quantities, at least one. Violations across all items are answered together as one 422.
+     * Required. The items and their target quantities, at least one. Violations across all items are answered together as one 422.
+     * @param list<StockAmountItemApiInput> $items
      */
-    public function __construct(array $items) {
+    public function setItems(array $items): self {
         self::validateArray($items, StockAmountItemApiInput::class);
         $this->params['items'] = $items;
+
+        return $this;
     }
 }

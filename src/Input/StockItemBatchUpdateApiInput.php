@@ -11,13 +11,21 @@ namespace Simplia\Api\Input;
 
 /**
  * Applies changes to many stock items in one transaction. Answered with the updated items, one per input item in input order.
+ *
+ * Required before sending: setItems(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
 final class StockItemBatchUpdateApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = ['items' => 'setItems'];
+
     /**
-     * @param list<StockItemUpdateApiInput> $items The items to change, at least one. Violations across all items are answered together as one 422.
+     * Required. The items to change, at least one. Violations across all items are answered together as one 422.
+     * @param list<StockItemUpdateApiInput> $items
      */
-    public function __construct(array $items) {
+    public function setItems(array $items): self {
         self::validateArray($items, StockItemUpdateApiInput::class);
         $this->params['items'] = $items;
+
+        return $this;
     }
 }

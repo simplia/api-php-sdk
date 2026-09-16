@@ -13,22 +13,64 @@ use Simplia\Api\Money;
 
 /**
  * How a new order ships and is paid: the transport and payment methods and what the customer is charged for each. Both methods are required. The two charges are added into the order's single delivery price and must carry the same VAT rate; two different rates are a 422 violation on `payment_vat_rate` — post a payment fee at its own rate as an order line.
+ *
+ * Required before sending: setTransportMethodId(), setTransportPrice(), setTransportVatRate(), setPaymentMethodId(), setPaymentPrice(), setPaymentVatRate(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
 final class OrderDeliveryApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = ['transport_method_id' => 'setTransportMethodId', 'transport_price' => 'setTransportPrice', 'transport_vat_rate' => 'setTransportVatRate', 'payment_method_id' => 'setPaymentMethodId', 'payment_price' => 'setPaymentPrice', 'payment_vat_rate' => 'setPaymentVatRate'];
+
     /**
-     * @param int $transportMethodId Identifier of the transport method (`TransportMethod.id`); also sets the order's carrier. Required; an unknown id is a 422 violation.
-     * @param Money $transportPrice What the customer pays for shipping, including VAT, in the same currency as every other price in the request.
-     * @param float $transportVatRate VAT rate of the shipping charge, as a percentage (21 for 21 %). Not returned by any read.
-     * @param int $paymentMethodId Identifier of the payment method (`PaymentMethod.id`); also sets `Order.payment_type`. Required; an unknown id is a 422 violation.
-     * @param Money $paymentPrice Surcharge for the payment method, typically the cash-on-delivery fee, including VAT, in the same currency as every other price in the request; `0.00` when free.
-     * @param float $paymentVatRate VAT rate of the payment surcharge, as a percentage (21 for 21 %). Not returned by any read. Must equal `transport_vat_rate`.
+     * Required. Identifier of the transport method (`TransportMethod.id`); also sets the order's carrier. Required; an unknown id is a 422 violation.
      */
-    public function __construct(int $transportMethodId, Money $transportPrice, float $transportVatRate, int $paymentMethodId, Money $paymentPrice, float $paymentVatRate) {
+    public function setTransportMethodId(int $transportMethodId): self {
         $this->params['transport_method_id'] = $transportMethodId;
+
+        return $this;
+    }
+
+    /**
+     * Required. What the customer pays for shipping, including VAT, in the same currency as every other price in the request.
+     */
+    public function setTransportPrice(Money $transportPrice): self {
         $this->params['transport_price'] = $transportPrice;
+
+        return $this;
+    }
+
+    /**
+     * Required. VAT rate of the shipping charge, as a percentage (21 for 21 %). Not returned by any read.
+     */
+    public function setTransportVatRate(float $transportVatRate): self {
         $this->params['transport_vat_rate'] = $transportVatRate;
+
+        return $this;
+    }
+
+    /**
+     * Required. Identifier of the payment method (`PaymentMethod.id`); also sets `Order.payment_type`. Required; an unknown id is a 422 violation.
+     */
+    public function setPaymentMethodId(int $paymentMethodId): self {
         $this->params['payment_method_id'] = $paymentMethodId;
+
+        return $this;
+    }
+
+    /**
+     * Required. Surcharge for the payment method, typically the cash-on-delivery fee, including VAT, in the same currency as every other price in the request; `0.00` when free.
+     */
+    public function setPaymentPrice(Money $paymentPrice): self {
         $this->params['payment_price'] = $paymentPrice;
+
+        return $this;
+    }
+
+    /**
+     * Required. VAT rate of the payment surcharge, as a percentage (21 for 21 %). Not returned by any read. Must equal `transport_vat_rate`.
+     */
+    public function setPaymentVatRate(float $paymentVatRate): self {
         $this->params['payment_vat_rate'] = $paymentVatRate;
+
+        return $this;
     }
 }

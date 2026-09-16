@@ -4,13 +4,31 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Input;
 
+use Simplia\Api\Exception\IncompleteInputException;
 use Simplia\Api\Money;
 
-/** The body of one write: the required properties arrive through the generated constructor, the optional ones through a set…() each. Only what was given is sent. */
+/**
+ * The body of one write, built in steps: `create()`, then a `set…()` per property in any order. Only what was set is
+ * sent. The generated subclass lists the properties its schema requires in REQUIRED; an endpoint checks them
+ * (`assertComplete()`) before building the request.
+ */
 abstract class AbstractApiInput implements \Countable {
+
+    /**
+     * Wire name => setter, for every property the schema requires; empty here and on every PATCH body.
+     * @var array<string, string>
+     */
+    public const REQUIRED = [];
 
     /** @var array<string, mixed> */
     protected array $params = [];
+
+    final public function __construct() {
+    }
+
+    public static function create(): static {
+        return new static();
+    }
 
     /** @return array<string, mixed> */
     public function toArray(): array {
@@ -19,6 +37,45 @@ abstract class AbstractApiInput implements \Countable {
 
     public function count(): int {
         return count($this->params);
+    }
+
+    /**
+     * Throws when a required property of this input, or of any input nested in it, is absent or null. Every endpoint
+     * calls it before building the request; call it yourself to check an input in a test.
+     *
+     * @throws IncompleteInputException
+     */
+    public function assertComplete(): void {
+        $missing = [];
+        $setters = [];
+        $this->collectMissing('', $missing, $setters);
+        if ($missing !== []) {
+            throw new IncompleteInputException(static::class, $missing, $setters);
+        }
+    }
+
+    /**
+     * @param list<string> $missing
+     * @param list<string> $setters
+     */
+    private function collectMissing(string $prefix, array &$missing, array &$setters): void {
+        foreach (static::REQUIRED as $wire => $setter) {
+            if (!array_key_exists($wire, $this->params) || $this->params[$wire] === null) {
+                $missing[] = $prefix . $wire;
+                $setters[] = $setter . '()' . ($prefix === '' ? '' : ' on ' . (new \ReflectionClass($this))->getShortName());
+            }
+        }
+        foreach ($this->params as $wire => $value) {
+            if ($value instanceof self) {
+                $value->collectMissing($prefix . $wire . '.', $missing, $setters);
+            } elseif (is_array($value)) {
+                foreach ($value as $index => $item) {
+                    if ($item instanceof self) {
+                        $item->collectMissing($prefix . $wire . '[' . $index . '].', $missing, $setters);
+                    }
+                }
+            }
+        }
     }
 
     /**

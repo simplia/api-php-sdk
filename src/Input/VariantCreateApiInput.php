@@ -13,15 +13,29 @@ use Simplia\Api\Money;
 
 /**
  * Creates a variant of an existing product. Answered with the variant.
+ *
+ * Required before sending: setProductId(), setName(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
 final class VariantCreateApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = ['product_id' => 'setProductId', 'name' => 'setName'];
+
     /**
-     * @param int $productId Identifier of the product the variant belongs to (`Product.id`). Required; 404 when it does not exist. Not returned: a variant carries no product reference.
-     * @param string $name The option value of the variant, such as `black` or `XL`. Required.
+     * Required. Identifier of the product the variant belongs to (`Product.id`). Required; 404 when it does not exist. Not returned: a variant carries no product reference.
      */
-    public function __construct(int $productId, string $name) {
+    public function setProductId(int $productId): self {
         $this->params['product_id'] = $productId;
+
+        return $this;
+    }
+
+    /**
+     * Required. The option value of the variant, such as `black` or `XL`. Required.
+     */
+    public function setName(string $name): self {
         $this->params['name'] = $name;
+
+        return $this;
     }
 
     /**

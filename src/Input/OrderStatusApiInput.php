@@ -13,13 +13,20 @@ use Simplia\Api\Enum\OrderStatus;
 
 /**
  * Moves an order to another status, optionally telling the customer.
+ *
+ * Required before sending: setStatus(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
 final class OrderStatusApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = ['status' => 'setStatus'];
+
     /**
-     * @param OrderStatus $status The status to move the order to: `unprocessed`, `processed`, `waiting`, `ready`, `finished` or `cancelled`. Which transitions are allowed depends on the shop's configuration; a refused transition is a 409 and nothing changes. Moving to the current status changes nothing and answers 200.
+     * Required. The status to move the order to: `unprocessed`, `processed`, `waiting`, `ready`, `finished` or `cancelled`. Which transitions are allowed depends on the shop's configuration; a refused transition is a 409 and nothing changes. Moving to the current status changes nothing and answers 200.
      */
-    public function __construct(OrderStatus $status) {
+    public function setStatus(OrderStatus $status): self {
         $this->params['status'] = $status;
+
+        return $this;
     }
 
     /**

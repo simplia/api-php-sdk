@@ -13,6 +13,9 @@ namespace Simplia\Api\Input;
  * Changes the name, VAT rate or code of a product. Send only the fields to change; a field that is absent or null is left as it is.
  */
 final class ProductUpdateApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = [];
+
     /**
      * New product name, written for the request language.
      */

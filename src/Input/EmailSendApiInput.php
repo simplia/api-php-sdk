@@ -11,17 +11,38 @@ namespace Simplia\Api\Input;
 
 /**
  * One HTML e-mail to one recipient, optionally with attachments, sent from the shop's configured sender address. Nothing is stored: the message is not attached to any customer or order.
+ *
+ * Required before sending: setRecipient(), setSubject(), setHtmlBody(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
 final class EmailSendApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = ['recipient' => 'setRecipient', 'subject' => 'setSubject', 'html_body' => 'setHtmlBody'];
+
     /**
-     * @param string $recipient The recipient's e-mail address, a single bare address such as `user@example.com`: no display name, no list, no cc or bcc.
-     * @param string $subject Subject of the message.
-     * @param string $htmlBody Body of the message, as HTML. There is no plain-text alternative.
+     * Required. The recipient's e-mail address, a single bare address such as `user@example.com`: no display name, no list, no cc or bcc.
      */
-    public function __construct(string $recipient, string $subject, string $htmlBody) {
+    public function setRecipient(string $recipient): self {
         $this->params['recipient'] = $recipient;
+
+        return $this;
+    }
+
+    /**
+     * Required. Subject of the message.
+     */
+    public function setSubject(string $subject): self {
         $this->params['subject'] = $subject;
+
+        return $this;
+    }
+
+    /**
+     * Required. Body of the message, as HTML. There is no plain-text alternative.
+     */
+    public function setHtmlBody(string $htmlBody): self {
         $this->params['html_body'] = $htmlBody;
+
+        return $this;
     }
 
     /**

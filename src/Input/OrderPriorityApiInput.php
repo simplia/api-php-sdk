@@ -11,12 +11,19 @@ namespace Simplia\Api\Input;
 
 /**
  * Sets how urgently the warehouse handles an order.
+ *
+ * Required before sending: setPriority(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
 final class OrderPriorityApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = ['priority' => 'setPriority'];
+
     /**
-     * @param int $priority 0 normal, 1 important, 2 urgent, 3 emergency. Returned as `Order.priority`.
+     * Required. 0 normal, 1 important, 2 urgent, 3 emergency. Returned as `Order.priority`.
      */
-    public function __construct(int $priority) {
+    public function setPriority(int $priority): self {
         $this->params['priority'] = $priority;
+
+        return $this;
     }
 }

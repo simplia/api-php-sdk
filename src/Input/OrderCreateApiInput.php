@@ -11,23 +11,29 @@ namespace Simplia\Api\Input;
 
 /**
  * Creates one customer order: the lines, the addresses, how it ships and is paid, and optional links to a store, a storage center and a customer account. The order starts in the unprocessed status; the answer is the full order with its number assigned.
+ *
+ * Required before sending: setItems(), setDelivery(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
 final class OrderCreateApiInput extends AbstractApiInput {
-    /**
-     * @param list<OrderItemApiInput> $items The order lines, at least one.
-     * @param OrderDeliveryApiInput $delivery How the order ships and is paid: the transport and payment methods with their prices.
-     */
-    public function __construct(array $items, OrderDeliveryApiInput $delivery) {
-        self::validateArray($items, OrderItemApiInput::class);
-        $this->params['items'] = $items;
-        $this->params['delivery'] = $delivery;
-    }
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = ['items' => 'setItems', 'delivery' => 'setDelivery'];
 
     /**
      * Your own identifier for the order, such as an ERP or marketplace order number. Returned as `Order.external_code`. An empty string is ignored.
      */
     public function setExternalCode(?string $externalCode): self {
         $this->params['external_code'] = $externalCode;
+
+        return $this;
+    }
+
+    /**
+     * Required. The order lines, at least one.
+     * @param list<OrderItemApiInput> $items
+     */
+    public function setItems(array $items): self {
+        self::validateArray($items, OrderItemApiInput::class);
+        $this->params['items'] = $items;
 
         return $this;
     }
@@ -46,6 +52,15 @@ final class OrderCreateApiInput extends AbstractApiInput {
      */
     public function setInvoiceAddress(?OrderAddressApiInput $invoiceAddress): self {
         $this->params['invoice_address'] = $invoiceAddress;
+
+        return $this;
+    }
+
+    /**
+     * Required. How the order ships and is paid: the transport and payment methods with their prices.
+     */
+    public function setDelivery(OrderDeliveryApiInput $delivery): self {
+        $this->params['delivery'] = $delivery;
 
         return $this;
     }

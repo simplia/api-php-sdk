@@ -11,13 +11,21 @@ namespace Simplia\Api\Input;
 
 /**
  * The complete part list of a bundle. Replaces what is there: parts not listed are removed. To empty a bundle use DELETE, not an empty list.
+ *
+ * Required before sending: setParts(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
 final class BundleApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = ['parts' => 'setParts'];
+
     /**
-     * @param list<BundlePartApiInput> $parts The parts, at least one, each stock item once.
+     * Required. The parts, at least one, each stock item once.
+     * @param list<BundlePartApiInput> $parts
      */
-    public function __construct(array $parts) {
+    public function setParts(array $parts): self {
         self::validateArray($parts, BundlePartApiInput::class);
         $this->params['parts'] = $parts;
+
+        return $this;
     }
 }

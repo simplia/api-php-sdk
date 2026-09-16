@@ -22,6 +22,18 @@ Requires PHP 8.3+ and any PSR-18 HTTP client (Guzzle, Symfony HttpClient, …). 
 `dev-master`. Both lines share the `Simplia\Api` namespace: moving from the `/api/2` client is a
 version bump, and what changes are the classes and methods, which follow the API.
 
+Static analysis: the package ships a PHPStan 2.x rule that reports an input built in an endpoint call
+without one of its required setters. `phpstan/extension-installer` picks it up; otherwise add to your
+`phpstan.neon`:
+
+```neon
+includes:
+    - vendor/simplia/api/phpstan-extension.neon
+```
+
+`3.0.2` is the first tag of the `3.x` line to build on: `3.0.0` and `3.0.1` were retired before any consumer
+merged them (an older namespace, then constructor-based inputs).
+
 ## Getting started
 
 ```php
@@ -159,6 +171,10 @@ enum-typed property that this client does not know: `getField()` is the property
 the shop sent, `getEnum()` the enum class that lacks it. The shop is newer than the client; upgrade
 `simplia/api`.
 
+And one is thrown before there is an answer at all: `IncompleteInputException` — a `\LogicException` — when
+an input reaches an endpoint method without a property its schema requires. `getMissing()` lists the wire
+paths (`delivery.payment_price`, `items[1].price`); the message names the setters to call. Nothing was sent.
+
 ### Version 3 evolves without breaking you
 
 Changes within version 3 are additive: a new property, parameter or method may appear in any release and
@@ -177,11 +193,11 @@ the changelog (`GET /api/3/changelog` on any shop, no credentials needed) and by
   `create()`, `update()`, and the resource's actions (`updateStatus()`, `apply()`, `lock()`, …).
 - `*ApiFieldConfig` — which properties to fetch, embeds by nesting another field config.
 - `*ApiRequest` — the filters and sort of a list.
-- `*ApiInput` — the body of a write: the schema's required properties are the constructor's named
-  parameters, the rest are `set…()`; inputs have no factory of their own. The endpoint's `create()` takes
-  the full input, its `update()` a partial one (only what you set is sent, as a JSON merge patch); where
-  one body both creates and changes a record, the partial one is its own class with nothing required
-  (`TextPagePatchApiInput`).
+- `*ApiInput` — the body of a write, built in steps: `create()`, then a `set…()` per property in any order;
+  the class docblock lists the required ones, and an endpoint throws `IncompleteInputException` before
+  sending when one is missing. The endpoint's `create()` takes the full input, its `update()` a partial one
+  (only what you set is sent, as a JSON merge patch); where one body both creates and changes a record, the
+  partial one is its own class with nothing required (`TextPagePatchApiInput`).
 - `*ApiEntity` — one record as returned; a getter per property, typed.
 - `Enum\*` — one per value set, named after the record and property that own it (`OrderStatus`,
   `ReviewSource`).
@@ -199,11 +215,12 @@ echo $order?->getTotalPrice()->amount;   // "1290.00"
 
 ## Write
 
-The properties a body's schema lists as required are the constructor's named parameters — leave one out,
-or pass null, and PHPStan and your editor say so, instead of the API answering `422`. Everything else is
-a `set…()`, so a request can be built in steps. A rule the schema cannot express — "one of these three",
-a value another property makes mandatory — stays a setter and is stated in that property's description;
-those the API still answers `422` for.
+An input is a builder: `create()`, then a `set…()` per property, in any order, conditionally. The class
+docblock lists the setters the schema requires. Leave one out and the endpoint throws
+`IncompleteInputException` before any request, naming the setter to call; a required property's setter is
+typed non-null, so PHPStan and your editor catch a null earlier still. A rule the schema cannot express —
+"one of these three", a value another property makes mandatory — is stated in the property's description;
+those the API answers `422` for.
 
 ```php
 use Simplia\Api\Entity\OrderApiEntity;
@@ -212,21 +229,22 @@ use Simplia\Api\Input\OrderCreateApiInput;
 use Simplia\Api\Input\OrderDeliveryApiInput;
 use Simplia\Api\Input\OrderItemApiInput;
 use Simplia\Api\Input\OrderStatusApiInput;
+use Simplia\Api\Input\OrderUpdateApiInput;
 use Simplia\Api\Money;
 
-$input = new OrderCreateApiInput(
-    items: [
-        (new OrderItemApiInput(quantity: 2, price: new Money('490.00', 'CZK'), vatRate: 21.0))
-            // a setter, but not optional: one of the three names the item
-            ->setStockItemCode('SKU-1'),            // or setStockItemId() / setStockItemTrackingId()
-    ],
-    delivery: new OrderDeliveryApiInput(
-        transportMethodId: 3, transportPrice: new Money('99.00', 'CZK'), transportVatRate: 21.0,
-        paymentMethodId: 1, paymentPrice: new Money('0.00', 'CZK'), paymentVatRate: 21.0,
-    ),
-);
+$input = OrderCreateApiInput::create()
+    ->setItems([
+        OrderItemApiInput::create()
+            ->setQuantity(2)->setPrice(new Money('490.00', 'CZK'))->setVatRate(21.0)
+            ->setStockItemCode('SKU-1'),        // not optional: one of the three names the item (or setStockItemId() / setStockItemTrackingId())
+    ])
+    ->setDelivery(
+        OrderDeliveryApiInput::create()
+            ->setTransportMethodId(3)->setTransportPrice(new Money('99.00', 'CZK'))->setTransportVatRate(21.0)
+            ->setPaymentMethodId(1)->setPaymentPrice(new Money('0.00', 'CZK'))->setPaymentVatRate(21.0)
+    );
 if ($customerNote !== null) {
-    $input->setCustomerNote($customerNote);         // an optional property: only what you set is sent
+    $input->setCustomerNote($customerNote);     // an optional property: only what you set is sent
 }
 
 $order = $api->getOrdersEndpoint()->create(
@@ -234,17 +252,15 @@ $order = $api->getOrdersEndpoint()->create(
     OrderApiEntity::createFieldConfig()->selectCode()->selectStatus(),   // omit it for the id alone
 );
 
-$api->getOrdersEndpoint()->updateStatus($order->getId(), new OrderStatusApiInput(status: OrderStatus::Processed));
+$api->getOrdersEndpoint()->updateStatus($order->getId(), OrderStatusApiInput::create()->setStatus(OrderStatus::Processed));
+$api->getOrdersEndpoint()->update($order->getId(), OrderUpdateApiInput::create()->setPackagingNote('fragile'));
 ```
 
-An input whose properties are all optional has no constructor parameters; wrap the `new` in parentheses
-to chain from it.
-
-```php
-use Simplia\Api\Input\OrderUpdateApiInput;
-
-$api->getOrdersEndpoint()->update(123, (new OrderUpdateApiInput())->setPackagingNote('fragile'));
-```
+An `update()` takes a partial input: nothing is required, and only what you set is sent, as a JSON merge
+patch (a null clears the property). With the package's PHPStan rule (see Installing), a chain written in
+the call that lacks a required setter is reported at analysis time —
+`OrderCreateApiInput passed to OrdersApiEndpoint::create() lacks setDelivery().` — and whatever the rule
+cannot see, the endpoint still checks before sending.
 
 ## Handle an error
 

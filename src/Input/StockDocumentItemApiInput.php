@@ -11,14 +11,28 @@ namespace Simplia\Api\Input;
 
 /**
  * One line of a stock movement: which stock item and how many units.
+ *
+ * Required before sending: setStockItemId(), setQuantity(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
 final class StockDocumentItemApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = ['stock_item_id' => 'setStockItemId', 'quantity' => 'setQuantity'];
+
     /**
-     * @param int $stockItemId Identifier of the stock item to move (`StockItem.id`). An unknown id is a 422 violation at this line.
-     * @param int $quantity Number of units to move, always positive; the document `type` gives the direction.
+     * Required. Identifier of the stock item to move (`StockItem.id`). An unknown id is a 422 violation at this line.
      */
-    public function __construct(int $stockItemId, int $quantity) {
+    public function setStockItemId(int $stockItemId): self {
         $this->params['stock_item_id'] = $stockItemId;
+
+        return $this;
+    }
+
+    /**
+     * Required. Number of units to move, always positive; the document `type` gives the direction.
+     */
+    public function setQuantity(int $quantity): self {
         $this->params['quantity'] = $quantity;
+
+        return $this;
     }
 }

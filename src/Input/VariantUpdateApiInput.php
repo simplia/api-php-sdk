@@ -15,6 +15,9 @@ use Simplia\Api\Money;
  * Changes the name, code, barcode or price of a variant. Send only the fields to change; a field that is absent or null is left as it is.
  */
 final class VariantUpdateApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = [];
+
     /**
      * New option value of the variant.
      */

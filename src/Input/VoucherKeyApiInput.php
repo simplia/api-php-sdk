@@ -13,6 +13,9 @@ namespace Simplia\Api\Input;
  * Proof of holding the lock on a voucher code, when one is held.
  */
 final class VoucherKeyApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = [];
+
     /**
      * The key of the lock you hold on the code. Omit when no lock is held. A live lock held under another key answers 409; your own lock is released by the call.
      */

@@ -11,13 +11,21 @@ namespace Simplia\Api\Input;
 
 /**
  * Re-prices some or all lines of a stock document. Lines not listed keep their price.
+ *
+ * Required before sending: setItems(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
 final class DocumentItemPricesApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = ['items' => 'setItems'];
+
     /**
-     * @param list<DocumentItemPriceApiInput> $items The lines to re-price, at least one. Violations across all lines are answered together as one 422.
+     * Required. The lines to re-price, at least one. Violations across all lines are answered together as one 422.
+     * @param list<DocumentItemPriceApiInput> $items
      */
-    public function __construct(array $items) {
+    public function setItems(array $items): self {
         self::validateArray($items, DocumentItemPriceApiInput::class);
         $this->params['items'] = $items;
+
+        return $this;
     }
 }

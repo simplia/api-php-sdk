@@ -11,14 +11,28 @@ namespace Simplia\Api\Input;
 
 /**
  * Takes a lock on a voucher code for a chosen number of seconds.
+ *
+ * Required before sending: setKey(), setTtl(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
 final class VoucherLockApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = ['key' => 'setKey', 'ttl' => 'setTtl'];
+
     /**
-     * @param string $key A token you choose to identify the holder of the lock, such as a till or session identifier. Present it again to activate, apply or release. Locking again with the same key replaces your own lock.
-     * @param int $ttl How long the lock lasts, in seconds, from 30 to 604800 (7 days).
+     * Required. A token you choose to identify the holder of the lock, such as a till or session identifier. Present it again to activate, apply or release. Locking again with the same key replaces your own lock.
      */
-    public function __construct(string $key, int $ttl) {
+    public function setKey(string $key): self {
         $this->params['key'] = $key;
+
+        return $this;
+    }
+
+    /**
+     * Required. How long the lock lasts, in seconds, from 30 to 604800 (7 days).
+     */
+    public function setTtl(int $ttl): self {
         $this->params['ttl'] = $ttl;
+
+        return $this;
     }
 }

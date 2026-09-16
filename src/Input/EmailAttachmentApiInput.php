@@ -11,16 +11,37 @@ namespace Simplia\Api\Input;
 
 /**
  * One file attached to an e-mail.
+ *
+ * Required before sending: setName(), setBodyBase64(), setContentType(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
 final class EmailAttachmentApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = ['name' => 'setName', 'body_base64' => 'setBodyBase64', 'content_type' => 'setContentType'];
+
     /**
-     * @param string $name File name the recipient sees.
-     * @param string $bodyBase64 The file's bytes as standard base64, without a data: prefix and not double-encoded.
-     * @param string $contentType MIME type of the file, such as `application/pdf`. Not validated.
+     * Required. File name the recipient sees.
      */
-    public function __construct(string $name, string $bodyBase64, string $contentType) {
+    public function setName(string $name): self {
         $this->params['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Required. The file's bytes as standard base64, without a data: prefix and not double-encoded.
+     */
+    public function setBodyBase64(string $bodyBase64): self {
         $this->params['body_base64'] = $bodyBase64;
+
+        return $this;
+    }
+
+    /**
+     * Required. MIME type of the file, such as `application/pdf`. Not validated.
+     */
+    public function setContentType(string $contentType): self {
         $this->params['content_type'] = $contentType;
+
+        return $this;
     }
 }

@@ -11,12 +11,19 @@ namespace Simplia\Api\Input;
 
 /**
  * The fixed shelf position to assign a stock item to within a stock room.
+ *
+ * Required before sending: setName(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
 final class StockItemLocationApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = ['name' => 'setName'];
+
     /**
-     * @param string $name Position code inside the stock room, as written on the shelf label; created when it does not exist yet. Returned as `storage_locations[].name`.
+     * Required. Position code inside the stock room, as written on the shelf label; created when it does not exist yet. Returned as `storage_locations[].name`.
      */
-    public function __construct(string $name) {
+    public function setName(string $name): self {
         $this->params['name'] = $name;
+
+        return $this;
     }
 }

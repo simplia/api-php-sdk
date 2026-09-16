@@ -11,14 +11,28 @@ namespace Simplia\Api\Input;
 
 /**
  * One part of a bundle: which stock item and how many of it go into one bundle.
+ *
+ * Required before sending: setStockItemId(), setQuantity(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
 final class BundlePartApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = ['stock_item_id' => 'setStockItemId', 'quantity' => 'setQuantity'];
+
     /**
-     * @param int $stockItemId Identifier of the stock item used as the part (StockItem.id). An unknown or repeated id is a 422 violation at parts[N].stock_item_id.
-     * @param int $quantity How many of the part go into one unit of the bundle, at least 1.
+     * Required. Identifier of the stock item used as the part (StockItem.id). An unknown or repeated id is a 422 violation at parts[N].stock_item_id.
      */
-    public function __construct(int $stockItemId, int $quantity) {
+    public function setStockItemId(int $stockItemId): self {
         $this->params['stock_item_id'] = $stockItemId;
+
+        return $this;
+    }
+
+    /**
+     * Required. How many of the part go into one unit of the bundle, at least 1.
+     */
+    public function setQuantity(int $quantity): self {
         $this->params['quantity'] = $quantity;
+
+        return $this;
     }
 }

@@ -13,6 +13,9 @@ namespace Simplia\Api\Input;
  * A postal address with contact details for a new order. Every field is optional; the address counts as given when at least one field is set.
  */
 final class OrderAddressApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = [];
+
     /**
      * Given name of the recipient or contact.
      */

@@ -13,15 +13,29 @@ use Simplia\Api\Money;
 
 /**
  * One price row: sets the price of one stock item in the addressed price list.
+ *
+ * Required before sending: setStockItemId(), setValue(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
 final class PriceItemApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = ['stock_item_id' => 'setStockItemId', 'value' => 'setValue'];
+
     /**
-     * @param int $stockItemId Identifier of the stock item to price (`StockItem.id`). An unknown or repeated id is a 422 violation at `prices[i].stock_item_id`.
-     * @param Money $value The list price to store, in the price list's currency; anything else is a 422 violation at `prices[i].value.currency`. `0` stores a zero price, it does not delete the row.
+     * Required. Identifier of the stock item to price (`StockItem.id`). An unknown or repeated id is a 422 violation at `prices[i].stock_item_id`.
      */
-    public function __construct(int $stockItemId, Money $value) {
+    public function setStockItemId(int $stockItemId): self {
         $this->params['stock_item_id'] = $stockItemId;
+
+        return $this;
+    }
+
+    /**
+     * Required. The list price to store, in the price list's currency; anything else is a 422 violation at `prices[i].value.currency`. `0` stores a zero price, it does not delete the row.
+     */
+    public function setValue(Money $value): self {
         $this->params['value'] = $value;
+
+        return $this;
     }
 
     /**

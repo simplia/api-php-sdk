@@ -11,13 +11,20 @@ namespace Simplia\Api\Input;
 
 /**
  * The title and body of a text page, for the request language.
+ *
+ * Required before sending: setName(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
 final class TextPageApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = ['name' => 'setName'];
+
     /**
-     * @param string $name Title of the page. Required when creating; when updating, a blank value is a 422 violation.
+     * Required. Title of the page. Required when creating; when updating, a blank value is a 422 violation.
      */
-    public function __construct(string $name) {
+    public function setName(string $name): self {
         $this->params['name'] = $name;
+
+        return $this;
     }
 
     /**

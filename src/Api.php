@@ -61,14 +61,25 @@ final class Api {
     /**
      * HTTP Basic with the API login and its key.
      */
-    public static function withUsernameAuth(ClientInterface $client, string $hostname, string $username, string $password): self {
+    public static function withUsernameAuth(
+        ClientInterface $client,
+        string $hostname,
+        string $username,
+        #[\SensitiveParameter]
+        string $password,
+    ): self {
         return new self(new RequestHandler($client, $hostname, 'Basic ' . base64_encode($username . ':' . $password)));
     }
 
     /**
      * A Bearer integration token. The token is base64-wrapped on the wire, which is what the shop's authenticator decodes.
      */
-    public static function withJWT(ClientInterface $client, string $hostname, string $jwt): self {
+    public static function withJWT(
+        ClientInterface $client,
+        string $hostname,
+        #[\SensitiveParameter]
+        string $jwt,
+    ): self {
         return new self(new RequestHandler($client, $hostname, 'Bearer ' . base64_encode($jwt)));
     }
 

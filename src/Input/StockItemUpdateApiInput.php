@@ -13,13 +13,20 @@ use Simplia\Api\Money;
 
 /**
  * The changes to apply to one stock item. Send only the fields to change; a field that is absent or null is left as it is, so nothing can be cleared here.
+ *
+ * Required before sending: setId(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
 final class StockItemUpdateApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = ['id' => 'setId'];
+
     /**
-     * @param int $id Identifier of the stock item to change (`StockItem.id`). Required; an unknown id is a 422 violation at `items[i].id`.
+     * Required. Identifier of the stock item to change (`StockItem.id`). Required; an unknown id is a 422 violation at `items[i].id`.
      */
-    public function __construct(int $id) {
+    public function setId(int $id): self {
         $this->params['id'] = $id;
+
+        return $this;
     }
 
     /**

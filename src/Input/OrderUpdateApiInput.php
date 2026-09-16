@@ -13,6 +13,9 @@ namespace Simplia\Api\Input;
  * Changes the warehouse note, the fulfilling storage center or the customer account of an order. Send only the fields to change; a field that is absent or null is left as it is, so nothing can be cleared here. Lines, prices, addresses and status are changed through other operations.
  */
 final class OrderUpdateApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = [];
+
     /**
      * Internal note for the staff picking and packing the order; not shown to the customer and not printed on any document. Not returned by any read.
      */

@@ -27,7 +27,7 @@ final class RequestHandler {
     private readonly string $origin;
     private readonly Psr17Factory $factory;
 
-    public function __construct(private readonly ClientInterface $client, string $host, private readonly string $authorization) {
+    public function __construct(private readonly ClientInterface $client, string $host, #[\SensitiveParameter] private readonly string $authorization) {
         $this->origin = 'https://' . $host;
         $this->baseUri = $this->origin . '/api/3/';
         $this->factory = new Psr17Factory();

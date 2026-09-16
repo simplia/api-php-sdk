@@ -13,6 +13,9 @@ namespace Simplia\Api\Input;
  * Changes the commercial settings of a customer account. Send only the fields to change; a field that is absent or null is left as it is.
  */
 final class UserUpdateApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = [];
+
     /**
      * Whether the customer buys at wholesale prices. Returned as User.wholesale.
      */

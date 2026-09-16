@@ -11,13 +11,21 @@ namespace Simplia\Api\Input;
 
 /**
  * The prices to create or update in one price list, one row per stock item.
+ *
+ * Required before sending: setPrices(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
 final class PriceBatchApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = ['prices' => 'setPrices'];
+
     /**
-     * @param list<PriceItemApiInput> $prices The rows, 1 to 1000, each stock item once.
+     * Required. The rows, 1 to 1000, each stock item once.
+     * @param list<PriceItemApiInput> $prices
      */
-    public function __construct(array $prices) {
+    public function setPrices(array $prices): self {
         self::validateArray($prices, PriceItemApiInput::class);
         $this->params['prices'] = $prices;
+
+        return $this;
     }
 }

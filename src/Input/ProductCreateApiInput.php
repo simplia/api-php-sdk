@@ -11,15 +11,29 @@ namespace Simplia\Api\Input;
 
 /**
  * Creates a product: its primary category and name, optionally its VAT rate and code. Answered with the full product.
+ *
+ * Required before sending: setMainCategoryId(), setName(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
 final class ProductCreateApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = ['main_category_id' => 'setMainCategoryId', 'name' => 'setName'];
+
     /**
-     * @param int $mainCategoryId Identifier of the primary category (`Category.id`). Required.
-     * @param string $name Product name, written to every shop language. Required.
+     * Required. Identifier of the primary category (`Category.id`). Required.
      */
-    public function __construct(int $mainCategoryId, string $name) {
+    public function setMainCategoryId(int $mainCategoryId): self {
         $this->params['main_category_id'] = $mainCategoryId;
+
+        return $this;
+    }
+
+    /**
+     * Required. Product name, written to every shop language. Required.
+     */
+    public function setName(string $name): self {
         $this->params['name'] = $name;
+
+        return $this;
     }
 
     /**

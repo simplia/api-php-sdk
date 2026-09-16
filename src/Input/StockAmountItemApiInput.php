@@ -11,14 +11,28 @@ namespace Simplia\Api\Input;
 
 /**
  * One line of a stock take: this item must end up with this many pieces in the stock room.
+ *
+ * Required before sending: setId(), setQuantity(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
 final class StockAmountItemApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = ['id' => 'setId', 'quantity' => 'setQuantity'];
+
     /**
-     * @param int $id Identifier of the stock item (StockItem.id). An unknown id is a 422 violation at items[i].id.
-     * @param int $quantity The absolute quantity this item must end up with in the stock room, never a delta: the shop works out the difference from what is there now and posts it. 0 empties the item from the room; an item already at its target produces no document line.
+     * Required. Identifier of the stock item (StockItem.id). An unknown id is a 422 violation at items[i].id.
      */
-    public function __construct(int $id, int $quantity) {
+    public function setId(int $id): self {
         $this->params['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Required. The absolute quantity this item must end up with in the stock room, never a delta: the shop works out the difference from what is there now and posts it. 0 empties the item from the room; an item already at its target produces no document line.
+     */
+    public function setQuantity(int $quantity): self {
         $this->params['quantity'] = $quantity;
+
+        return $this;
     }
 }

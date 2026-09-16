@@ -11,13 +11,20 @@ namespace Simplia\Api\Input;
 
 /**
  * Adds one image to a product's gallery: the file's bytes as base64 and an optional caption. Answered with the stored image's identifier and content hash. The image also becomes the product's main image when it had none.
+ *
+ * Required before sending: setBodyBase64(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
 final class ProductImageUploadApiInput extends AbstractApiInput {
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = ['body_base64' => 'setBodyBase64'];
+
     /**
-     * @param string $bodyBase64 The image file as standard base64 of its raw bytes, without a data: prefix. Any readable image format, including SVG and AVIF.
+     * Required. The image file as standard base64 of its raw bytes, without a data: prefix. Any readable image format, including SVG and AVIF.
      */
-    public function __construct(string $bodyBase64) {
+    public function setBodyBase64(string $bodyBase64): self {
         $this->params['body_base64'] = $bodyBase64;
+
+        return $this;
     }
 
     /**

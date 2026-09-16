@@ -13,18 +13,12 @@ use Simplia\Api\Money;
 
 /**
  * One line of a new order: which stock item, how many, and the unit price and VAT rate to charge.
+ *
+ * Required before sending: setQuantity(), setPrice(), setVatRate(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
 final class OrderItemApiInput extends AbstractApiInput {
-    /**
-     * @param int $quantity Number of units ordered. 0 is allowed.
-     * @param Money $price Price of one unit including VAT, in the currency the order is placed in: every price in the request carries the same currency, and that currency becomes the order's. Stored as sent: it replaces the catalog price entirely, and no price list, customer discount or promotion is applied.
-     * @param float $vatRate VAT rate of the line, as a percentage (21 for 21 %).
-     */
-    public function __construct(int $quantity, Money $price, float $vatRate) {
-        $this->params['quantity'] = $quantity;
-        $this->params['price'] = $price;
-        $this->params['vat_rate'] = $vatRate;
-    }
+    /** Wire name => setter, for every property the schema requires. */
+    public const REQUIRED = ['quantity' => 'setQuantity', 'price' => 'setPrice', 'vat_rate' => 'setVatRate'];
 
     /**
      * Identifier of the stock item (`StockItem.id`). One of `stock_item_id`, `stock_item_code` or `stock_item_tracking_id` is required; when several are sent they are tried in that order. An unknown id is a 422 violation.
@@ -49,6 +43,33 @@ final class OrderItemApiInput extends AbstractApiInput {
      */
     public function setStockItemTrackingId(?string $stockItemTrackingId): self {
         $this->params['stock_item_tracking_id'] = $stockItemTrackingId;
+
+        return $this;
+    }
+
+    /**
+     * Required. Number of units ordered. 0 is allowed.
+     */
+    public function setQuantity(int $quantity): self {
+        $this->params['quantity'] = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * Required. Price of one unit including VAT, in the currency the order is placed in: every price in the request carries the same currency, and that currency becomes the order's. Stored as sent: it replaces the catalog price entirely, and no price list, customer discount or promotion is applied.
+     */
+    public function setPrice(Money $price): self {
+        $this->params['price'] = $price;
+
+        return $this;
+    }
+
+    /**
+     * Required. VAT rate of the line, as a percentage (21 for 21 %).
+     */
+    public function setVatRate(float $vatRate): self {
+        $this->params['vat_rate'] = $vatRate;
 
         return $this;
     }
