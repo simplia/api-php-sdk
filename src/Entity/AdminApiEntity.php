@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
+use Simplia\Api\Enum\AdminType;
 use Simplia\Api\FieldConfig\AdminApiFieldConfig;
 
 /**
@@ -45,11 +46,9 @@ final class AdminApiEntity extends AbstractApiEntity {
 
     /**
      * Kind of account: `standard` (a person using the administration), `api` (a credential created for calling the API) or `integration` (the account an installed integration calls as).
-     * @return 'standard'|'api'|'integration'
-     * @phpstan-return string
      */
-    public function getType(): string {
-        return $this->readString('type');
+    public function getType(): AdminType {
+        return $this->readEnum('type', AdminType::class);
     }
 
     public static function createFieldConfig(): AdminApiFieldConfig {

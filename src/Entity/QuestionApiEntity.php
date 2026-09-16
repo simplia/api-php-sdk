@@ -11,6 +11,7 @@ namespace Simplia\Api\Entity;
 
 use Simplia\Api\Entity\Product\ProductReferenceApiEntity;
 use Simplia\Api\Entity\Question\QuestionAnswerApiEntity;
+use Simplia\Api\Enum\QuestionStatus;
 use Simplia\Api\FieldConfig\QuestionApiFieldConfig;
 
 /**
@@ -54,11 +55,9 @@ final class QuestionApiEntity extends AbstractApiEntity {
 
     /**
      * State of the question: `open` (waiting for an answer), `postponed` (set aside by the shop), `answered`.
-     * @return 'open'|'postponed'|'answered'
-     * @phpstan-return string
      */
-    public function getStatus(): string {
-        return $this->readString('status');
+    public function getStatus(): QuestionStatus {
+        return $this->readEnum('status', QuestionStatus::class);
     }
 
     /**

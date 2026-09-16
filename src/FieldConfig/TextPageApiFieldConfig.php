@@ -16,7 +16,7 @@ final class TextPageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the page, shared by all its language versions.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -25,7 +25,7 @@ final class TextPageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Title of the page in the request language. Empty when none is stored.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -34,7 +34,7 @@ final class TextPageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Body of the page in the request language, as HTML. Empty when none is stored.
      */
-    public function withText(): self {
+    public function selectText(): self {
         $this->fields['text'] = true;
 
         return $this;

@@ -19,7 +19,7 @@ final class OrderPackagingApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the session. Not addressable by any endpoint.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -28,7 +28,7 @@ final class OrderPackagingApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The staff account that collected the goods from the shelves; the same record as `GET /admins/{id}`. Null when picking has not started or is not attributed.
      */
-    public function withPickedBy(AdminApiFieldConfig $config): self {
+    public function selectPickedBy(AdminApiFieldConfig $config): self {
         $this->fields['picked_by'] = $config;
 
         return $this;
@@ -37,7 +37,7 @@ final class OrderPackagingApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * When collecting the goods began. Null when it has not started.
      */
-    public function withPickingStartedAt(): self {
+    public function selectPickingStartedAt(): self {
         $this->fields['picking_started_at'] = true;
 
         return $this;
@@ -46,7 +46,7 @@ final class OrderPackagingApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * When collecting the goods finished. Null when it has not finished.
      */
-    public function withPickingEndedAt(): self {
+    public function selectPickingEndedAt(): self {
         $this->fields['picking_ended_at'] = true;
 
         return $this;
@@ -55,7 +55,7 @@ final class OrderPackagingApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The staff account that boxed the goods; the same record as `GET /admins/{id}`. Null when packing has not started or is not attributed.
      */
-    public function withPackagedBy(AdminApiFieldConfig $config): self {
+    public function selectPackagedBy(AdminApiFieldConfig $config): self {
         $this->fields['packaged_by'] = $config;
 
         return $this;
@@ -64,7 +64,7 @@ final class OrderPackagingApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * When boxing began. Null when it has not started.
      */
-    public function withPackagingStartedAt(): self {
+    public function selectPackagingStartedAt(): self {
         $this->fields['packaging_started_at'] = true;
 
         return $this;
@@ -73,7 +73,7 @@ final class OrderPackagingApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * When boxing finished and the parcel was ready for the carrier. Null when it has not finished.
      */
-    public function withPackagingEndedAt(): self {
+    public function selectPackagingEndedAt(): self {
         $this->fields['packaging_ended_at'] = true;
 
         return $this;

@@ -16,7 +16,7 @@ final class PaymentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the payment; the same value as `Order.payments[].id`.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -25,7 +25,7 @@ final class PaymentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * When the payment was received or booked.
      */
-    public function withPaidAt(): self {
+    public function selectPaidAt(): self {
         $this->fields['paid_at'] = true;
 
         return $this;
@@ -34,7 +34,7 @@ final class PaymentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * How the money arrived: `cod` (collected by the courier on delivery), `cash` (cash in person), `online` (card or payment gateway), `card_terminal` (card on a physical terminal), `bank_transfer`, `voucher` (a gift voucher or credit note), `loan` (an installment or consumer-credit provider), `internal` (a settlement between documents or orders, no money from the customer), `currency_diff` (a bookkeeping entry for an exchange-rate difference), `paypal` (historical). Null for a payment whose stored type has no public value.
      */
-    public function withType(): self {
+    public function selectType(): self {
         $this->fields['type'] = true;
 
         return $this;
@@ -43,7 +43,7 @@ final class PaymentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * ISO 4217 code of the currency the customer paid in.
      */
-    public function withCurrency(): self {
+    public function selectCurrency(): self {
         $this->fields['currency'] = true;
 
         return $this;
@@ -52,7 +52,7 @@ final class PaymentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Free note on the payment, such as the bank statement text. Null when there is none.
      */
-    public function withNote(): self {
+    public function selectNote(): self {
         $this->fields['note'] = true;
 
         return $this;
@@ -61,7 +61,7 @@ final class PaymentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Payment reference the payer quoted, which is how the payment was matched to the order. Null when none was given, for example on a cash payment.
      */
-    public function withVariableSymbol(): self {
+    public function selectVariableSymbol(): self {
         $this->fields['variable_symbol'] = true;
 
         return $this;
@@ -70,7 +70,7 @@ final class PaymentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The amount paid, in the shop's main currency.
      */
-    public function withAmount(): self {
+    public function selectAmount(): self {
         $this->fields['amount'] = true;
 
         return $this;
@@ -79,7 +79,7 @@ final class PaymentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The amount paid, in the currency it was paid in (`currency`).
      */
-    public function withAmountInPaymentCurrency(): self {
+    public function selectAmountInPaymentCurrency(): self {
         $this->fields['amount_in_payment_currency'] = true;
 
         return $this;

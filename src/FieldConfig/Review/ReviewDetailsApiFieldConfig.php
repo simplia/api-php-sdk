@@ -18,7 +18,7 @@ final class ReviewDetailsApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Whether the customer would recommend the shop. Null when not asked, or not stored as a yes or no.
      */
-    public function withRecommends(): self {
+    public function selectRecommends(): self {
         $this->fields['recommends'] = true;
 
         return $this;
@@ -27,7 +27,7 @@ final class ReviewDetailsApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Delivery time, 0 to 5 stars in half-star steps. Null when not rated, or not stored as a number.
      */
-    public function withDeliveryTime(): self {
+    public function selectDeliveryTime(): self {
         $this->fields['delivery_time'] = true;
 
         return $this;
@@ -36,7 +36,7 @@ final class ReviewDetailsApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Quality of the transport, 0 to 5 stars in half-star steps. Null when not rated, or not stored as a number.
      */
-    public function withTransportQuality(): self {
+    public function selectTransportQuality(): self {
         $this->fields['transport_quality'] = true;
 
         return $this;
@@ -45,7 +45,7 @@ final class ReviewDetailsApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Ease of use of the website, 0 to 5 stars in half-star steps. Null when not rated, or not stored as a number.
      */
-    public function withWebUsability(): self {
+    public function selectWebUsability(): self {
         $this->fields['web_usability'] = true;
 
         return $this;
@@ -54,7 +54,7 @@ final class ReviewDetailsApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Communication with the shop, 0 to 5 stars in half-star steps. Null when not rated, or not stored as a number.
      */
-    public function withCommunication(): self {
+    public function selectCommunication(): self {
         $this->fields['communication'] = true;
 
         return $this;
@@ -63,7 +63,7 @@ final class ReviewDetailsApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Waiting time at the pick-up point, 0 to 5 stars in half-star steps. Null when not rated, or not stored as a number.
      */
-    public function withPickupTime(): self {
+    public function selectPickupTime(): self {
         $this->fields['pickup_time'] = true;
 
         return $this;
@@ -72,7 +72,7 @@ final class ReviewDetailsApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Quality of the pick-up, 0 to 5 stars in half-star steps. Null when not rated, or not stored as a number.
      */
-    public function withPickupQuality(): self {
+    public function selectPickupQuality(): self {
         $this->fields['pickup_quality'] = true;
 
         return $this;

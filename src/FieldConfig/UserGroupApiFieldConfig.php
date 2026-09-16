@@ -16,7 +16,7 @@ final class UserGroupApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the group; the value `User.user_group.id` carries.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -25,7 +25,7 @@ final class UserGroupApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Name of the group. Null when none is stored.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -34,7 +34,7 @@ final class UserGroupApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Free-text note about the group, as the shop wrote it. Null when none is stored.
      */
-    public function withDescription(): self {
+    public function selectDescription(): self {
         $this->fields['description'] = true;
 
         return $this;

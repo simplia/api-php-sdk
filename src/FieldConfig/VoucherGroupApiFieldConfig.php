@@ -16,7 +16,7 @@ final class VoucherGroupApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the voucher group; the value `Voucher.group.id` carries and `VoucherCreateInput.group_id` takes.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -25,7 +25,7 @@ final class VoucherGroupApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Name of the group as shown in the shop's administration.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -34,7 +34,7 @@ final class VoucherGroupApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * What the group's codes do: `percentage` (a percentage off), `amount` (an amount off), `n_plus_1` (buy several, one is free), `percentage_with_limit` (a percentage off, up to a limit), `percentage_most_expensive_with_limit` (a percentage off the most expensive item, up to a limit), `credit` (an amount credited). Null when the record does not say.
      */
-    public function withKind(): self {
+    public function selectKind(): self {
         $this->fields['kind'] = true;
 
         return $this;
@@ -43,7 +43,7 @@ final class VoucherGroupApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The percentage the codes take off, for a percentage kind. Null for the other kinds.
      */
-    public function withPercent(): self {
+    public function selectPercent(): self {
         $this->fields['percent'] = true;
 
         return $this;
@@ -52,7 +52,7 @@ final class VoucherGroupApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The amount the codes take off or credit, in the shop's main currency, for an amount kind. Null for the other kinds.
      */
-    public function withAmount(): self {
+    public function selectAmount(): self {
         $this->fields['amount'] = true;
 
         return $this;
@@ -61,7 +61,7 @@ final class VoucherGroupApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * How many times each code of the group may be redeemed. 0 or null means unlimited.
      */
-    public function withMaxUses(): self {
+    public function selectMaxUses(): self {
         $this->fields['max_uses'] = true;
 
         return $this;
@@ -70,7 +70,7 @@ final class VoucherGroupApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The start of the validity window a newly generated code of the group receives, compared by calendar day; each code carries its own window (`Voucher.starts_at`), which is what redemption checks, and a group with a relative validity gives its codes a window counted from their creation. Null when there is no start bound.
      */
-    public function withStartsAt(): self {
+    public function selectStartsAt(): self {
         $this->fields['starts_at'] = true;
 
         return $this;
@@ -79,7 +79,7 @@ final class VoucherGroupApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The last day of the validity window a newly generated code of the group receives, inclusive, compared by calendar day; the time part is always midnight; each code carries its own window (`Voucher.ends_at`), which is what redemption checks. Null when the codes never expire; a far-future day is published as stored.
      */
-    public function withEndsAt(): self {
+    public function selectEndsAt(): self {
         $this->fields['ends_at'] = true;
 
         return $this;
@@ -88,7 +88,7 @@ final class VoucherGroupApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The content group (storefront tree) the group belongs to; its `id` is the value the `content_group` filter takes.
      */
-    public function withContentGroup(ContentGroupApiFieldConfig $config): self {
+    public function selectContentGroup(ContentGroupApiFieldConfig $config): self {
         $this->fields['content_group'] = $config;
 
         return $this;

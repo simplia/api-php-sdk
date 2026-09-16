@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
+use Simplia\Api\Enum\LabelAppliesTo;
 use Simplia\Api\FieldConfig\LabelApiFieldConfig;
 
 /**
@@ -52,11 +53,10 @@ final class LabelApiEntity extends AbstractApiEntity {
 
     /**
      * The kinds of record the label can be pinned on: `product`, `variant`, `storage_location`. Empty when the shop has not picked any.
-     * @return list<'product'|'variant'|'storage_location'>
-     * @phpstan-return list<string>
+     * @return list<LabelAppliesTo>
      */
     public function getAppliesTo(): array {
-        return $this->readStringList('applies_to');
+        return $this->readEnumList('applies_to', LabelAppliesTo::class);
     }
 
     /**

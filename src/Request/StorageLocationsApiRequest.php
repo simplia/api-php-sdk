@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Request;
 
+use Simplia\Api\Enum\StorageLocationType;
+
 /**
  * The filters and the sort of `storage-locations.list` (GET /api/3/storage-locations).
  */
@@ -34,10 +36,9 @@ final class StorageLocationsApiRequest extends AbstractApiRequest {
 
     /**
      * Only the positions of this kind. An unknown value is a 422 violation.
-     * @param 'normal'|'transitional'|'remote'|'mobile'|'mobile_packaging_slot'|'mobile_admin' $type
      */
-    public function whereType(string $type): self {
-        $this->params['type'] = $type;
+    public function whereType(StorageLocationType $type): self {
+        $this->params['type'] = $type->value;
 
         return $this;
     }

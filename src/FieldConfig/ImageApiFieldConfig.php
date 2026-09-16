@@ -16,7 +16,7 @@ final class ImageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the image.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -25,7 +25,7 @@ final class ImageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * MD5 of the stored image file's bytes, as 32 lower-case hexadecimal characters; use it to tell whether you already hold this exact stored file. It is not the MD5 of what `url` answers, which is a rendition. Null for images stored before hashing was introduced.
      */
-    public function withHashMd5(): self {
+    public function selectHashMd5(): self {
         $this->fields['hash_md5'] = true;
 
         return $this;
@@ -34,7 +34,7 @@ final class ImageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * HTTPS address of a full-size rendition of the image on the shop's image service: the picture at the size `width` by `height` when neither side exceeds 5000 pixels, otherwise fitted into 5000 by 5000; an SVG is the drawing itself, which scales. A JPEG; a PNG with its transparency kept when the stored file is a PNG or GIF; an SVG when the stored file is one. A rendition, so its bytes are not the stored file's. Fetch it from this address when you need it and do not build other addresses from it: it is signed by the shop and can change.
      */
-    public function withUrl(): self {
+    public function selectUrl(): self {
         $this->fields['url'] = true;
 
         return $this;
@@ -43,7 +43,7 @@ final class ImageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Width of the image in pixels as displayed (a photo's rotation flag applied). Null for an SVG, which has no pixel size, and when the size was not recorded; `url` then answers the picture fitted into 1600 pixels on that side.
      */
-    public function withWidth(): self {
+    public function selectWidth(): self {
         $this->fields['width'] = true;
 
         return $this;
@@ -52,7 +52,7 @@ final class ImageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Height of the image in pixels as displayed. Null for an SVG and when the size was not recorded (see `width`).
      */
-    public function withHeight(): self {
+    public function selectHeight(): self {
         $this->fields['height'] = true;
 
         return $this;

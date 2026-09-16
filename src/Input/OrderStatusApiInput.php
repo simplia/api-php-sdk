@@ -9,18 +9,17 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Input;
 
+use Simplia\Api\Enum\OrderStatus;
+
 /**
  * Moves an order to another status, optionally telling the customer.
  */
 final class OrderStatusApiInput extends AbstractApiInput {
     /**
-     * The status to move the order to: `unprocessed`, `processed`, `waiting`, `ready`, `finished` or `cancelled`. Which transitions are allowed depends on the shop's configuration; a refused transition is a 409 and nothing changes. Moving to the current status changes nothing and answers 200.
-     * @param 'unprocessed'|'processed'|'waiting'|'ready'|'finished'|'cancelled'|null $status
+     * @param OrderStatus $status The status to move the order to: `unprocessed`, `processed`, `waiting`, `ready`, `finished` or `cancelled`. Which transitions are allowed depends on the shop's configuration; a refused transition is a 409 and nothing changes. Moving to the current status changes nothing and answers 200.
      */
-    public function setStatus(?string $status): self {
+    public function __construct(OrderStatus $status) {
         $this->params['status'] = $status;
-
-        return $this;
     }
 
     /**

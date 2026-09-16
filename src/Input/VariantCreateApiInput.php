@@ -16,21 +16,12 @@ use Simplia\Api\Money;
  */
 final class VariantCreateApiInput extends AbstractApiInput {
     /**
-     * Identifier of the product the variant belongs to (`Product.id`). Required; 404 when it does not exist. Not returned: a variant carries no product reference.
+     * @param int $productId Identifier of the product the variant belongs to (`Product.id`). Required; 404 when it does not exist. Not returned: a variant carries no product reference.
+     * @param string $name The option value of the variant, such as `black` or `XL`. Required.
      */
-    public function setProductId(?int $productId): self {
+    public function __construct(int $productId, string $name) {
         $this->params['product_id'] = $productId;
-
-        return $this;
-    }
-
-    /**
-     * The option value of the variant, such as `black` or `XL`. Required.
-     */
-    public function setName(?string $name): self {
         $this->params['name'] = $name;
-
-        return $this;
     }
 
     /**

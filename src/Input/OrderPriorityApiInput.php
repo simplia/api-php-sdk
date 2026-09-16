@@ -14,11 +14,9 @@ namespace Simplia\Api\Input;
  */
 final class OrderPriorityApiInput extends AbstractApiInput {
     /**
-     * 0 normal, 1 important, 2 urgent, 3 emergency. Returned as `Order.priority`.
+     * @param int $priority 0 normal, 1 important, 2 urgent, 3 emergency. Returned as `Order.priority`.
      */
-    public function setPriority(?int $priority): self {
+    public function __construct(int $priority) {
         $this->params['priority'] = $priority;
-
-        return $this;
     }
 }

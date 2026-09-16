@@ -21,7 +21,7 @@ final class DocumentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the document. The address of every read and write, and the value `Order.documents[].id` and `Document.relevant_document.id` carry.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -30,7 +30,7 @@ final class DocumentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The document number as printed on the document (invoice number, receipt number, stock document number). Assigned when the document is closed; readable by `GET /documents/by-code/{code}`. Null when no number has been assigned.
      */
-    public function withCode(): self {
+    public function selectCode(): self {
         $this->fields['code'] = true;
 
         return $this;
@@ -39,7 +39,7 @@ final class DocumentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * When the document was issued. The value the list filters and sorts on.
      */
-    public function withIssuedAt(): self {
+    public function selectIssuedAt(): self {
         $this->fields['issued_at'] = true;
 
         return $this;
@@ -48,7 +48,7 @@ final class DocumentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Payment due date. Null when the document has none, which is usual for stock documents and receipts.
      */
-    public function withDueAt(): self {
+    public function selectDueAt(): self {
         $this->fields['due_at'] = true;
 
         return $this;
@@ -57,7 +57,7 @@ final class DocumentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Date of taxable supply, which decides the VAT period the document falls into. Null when none is recorded.
      */
-    public function withTaxPointAt(): self {
+    public function selectTaxPointAt(): self {
         $this->fields['tax_point_at'] = true;
 
         return $this;
@@ -66,7 +66,7 @@ final class DocumentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * ISO 4217 code of the currency the document is issued in.
      */
-    public function withCurrency(): self {
+    public function selectCurrency(): self {
         $this->fields['currency'] = true;
 
         return $this;
@@ -75,7 +75,7 @@ final class DocumentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Exchange rate frozen at issue: how many units of the shop's main currency one unit of `currency` is worth. 1 for a document in the main currency.
      */
-    public function withCurrencyRate(): self {
+    public function selectCurrencyRate(): self {
         $this->fields['currency_rate'] = true;
 
         return $this;
@@ -84,7 +84,7 @@ final class DocumentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Free-text note on the document, printed on it and passed to accounting. Null when there is none.
      */
-    public function withNote(): self {
+    public function selectNote(): self {
         $this->fields['note'] = true;
 
         return $this;
@@ -93,7 +93,7 @@ final class DocumentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Kind of document: `invoice` (tax invoice), `deposit` (proforma or advance invoice), `storno` (cancellation voiding another document), `return` (credit note), `receipt` (till receipt), `stock_input` (goods received into a stock room), `stock_output` (goods issued from a stock room), `stock_transfer` (one leg of a transfer between stock rooms).
      */
-    public function withType(): self {
+    public function selectType(): self {
         $this->fields['type'] = true;
 
         return $this;
@@ -102,7 +102,7 @@ final class DocumentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Reason or direction of a warehouse document; null for accounting documents. Transfer legs: `transfer_input`, `transfer_output`. Receipts: `stock_input_supplier` (from a supplier), `stock_input_invoice` (against an order), `stock_input_found` (found during a stock count), `stock_input_produced` (produced in-house). Issues: `stock_output_invoice` (for a customer order), `stock_output_receipt` (till sale), `stock_output_manual`, `stock_output_supplier_return`, `stock_output_reclaim` (warranty claim), `stock_output_destroyed` (write-off), `stock_output_consumption` (internal use), `stock_output_sample`, `stock_output_fabrication_consumption` (material consumed by production). Each has a `_commission` twin for consignment stock, goods held for a supplier who still owns them.
      */
-    public function withSubtype(): self {
+    public function selectSubtype(): self {
         $this->fields['subtype'] = true;
 
         return $this;
@@ -111,7 +111,7 @@ final class DocumentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Payment reference (variable symbol) used to match incoming bank transfers to this document. Null when none is assigned.
      */
-    public function withVariableSymbol(): self {
+    public function selectVariableSymbol(): self {
         $this->fields['variable_symbol'] = true;
 
         return $this;
@@ -120,7 +120,7 @@ final class DocumentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The document's lines.
      */
-    public function withRows(DocumentItemApiFieldConfig $config): self {
+    public function selectRows(DocumentItemApiFieldConfig $config): self {
         $this->fields['rows'] = $config;
 
         return $this;
@@ -129,7 +129,7 @@ final class DocumentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The buyer's billing details as frozen onto the document. Null when the document has no customer, which is usual for stock documents.
      */
-    public function withCustomerAddress(ContactApiFieldConfig $config): self {
+    public function selectCustomerAddress(ContactApiFieldConfig $config): self {
         $this->fields['customer_address'] = $config;
 
         return $this;
@@ -138,7 +138,7 @@ final class DocumentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The staff account that issued the document; the same record as `GET /admins/{id}`. Null when it was issued by an automated process.
      */
-    public function withIssuedBy(AdminApiFieldConfig $config): self {
+    public function selectIssuedBy(AdminApiFieldConfig $config): self {
         $this->fields['issued_by'] = $config;
 
         return $this;
@@ -147,7 +147,7 @@ final class DocumentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The supplier the goods came from, on a stock receipt; the same record as `GET /suppliers/{id}`. Null on other documents.
      */
-    public function withSupplier(SupplierApiFieldConfig $config): self {
+    public function selectSupplier(SupplierApiFieldConfig $config): self {
         $this->fields['supplier'] = $config;
 
         return $this;
@@ -156,7 +156,7 @@ final class DocumentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The storage center the document belongs to. Null when it is not assigned to one.
      */
-    public function withStorageCenter(StorageCenterApiFieldConfig $config): self {
+    public function selectStorageCenter(StorageCenterApiFieldConfig $config): self {
         $this->fields['storage_center'] = $config;
 
         return $this;
@@ -165,7 +165,7 @@ final class DocumentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The stock room the goods moved into or out of, on a warehouse document. Null on other documents.
      */
-    public function withStockRoom(StockRoomApiFieldConfig $config): self {
+    public function selectStockRoom(StockRoomApiFieldConfig $config): self {
         $this->fields['stock_room'] = $config;
 
         return $this;
@@ -174,7 +174,7 @@ final class DocumentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The customer order the document was issued for; the same record as `GET /orders/{id}`. Null when it is not tied to an order.
      */
-    public function withOrder(OrderApiFieldConfig $config): self {
+    public function selectOrder(OrderApiFieldConfig $config): self {
         $this->fields['order'] = $config;
 
         return $this;
@@ -183,7 +183,7 @@ final class DocumentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The document this one refers to, such as the invoice a credit note credits or the other leg of a stock transfer. Null when there is none or when that document is not yet closed.
      */
-    public function withRelevantDocument(DocumentApiFieldConfig $config): self {
+    public function selectRelevantDocument(DocumentApiFieldConfig $config): self {
         $this->fields['relevant_document'] = $config;
 
         return $this;
@@ -192,7 +192,7 @@ final class DocumentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Documents that refer to this one: the credit notes, cancellations or transfer legs issued against it. Closed documents only.
      */
-    public function withRelevantDocuments(DocumentApiFieldConfig $config): self {
+    public function selectRelevantDocuments(DocumentApiFieldConfig $config): self {
         $this->fields['relevant_documents'] = $config;
 
         return $this;
@@ -201,7 +201,7 @@ final class DocumentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Payments recorded against this document.
      */
-    public function withPayments(PaymentApiFieldConfig $config): self {
+    public function selectPayments(PaymentApiFieldConfig $config): self {
         $this->fields['payments'] = $config;
 
         return $this;
@@ -210,7 +210,7 @@ final class DocumentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The registered customer account the document belongs to; the same record as `GET /users/{id}`. Null for a guest customer or a warehouse document.
      */
-    public function withUser(UserApiFieldConfig $config): self {
+    public function selectUser(UserApiFieldConfig $config): self {
         $this->fields['user'] = $config;
 
         return $this;
@@ -219,7 +219,7 @@ final class DocumentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The till a receipt was rung up on; the same record as `GET /cash-registers/{id}`. Null unless the document is a till receipt.
      */
-    public function withCashRegister(CashRegisterApiFieldConfig $config): self {
+    public function selectCashRegister(CashRegisterApiFieldConfig $config): self {
         $this->fields['cash_register'] = $config;
 
         return $this;

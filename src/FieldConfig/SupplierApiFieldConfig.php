@@ -16,7 +16,7 @@ final class SupplierApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the supplier; the value `Product.supplier.id` and `Document.supplier.id` carry.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -25,7 +25,7 @@ final class SupplierApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Name of the supplier. Null when none is stored.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -34,7 +34,7 @@ final class SupplierApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The shop's own code for the supplier, the one its accounting export identifies the supplier by. Null when none is set.
      */
-    public function withCode(): self {
+    public function selectCode(): self {
         $this->fields['code'] = true;
 
         return $this;
@@ -43,7 +43,7 @@ final class SupplierApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * ISO 4217 code of the currency the supplier invoices in, such as `EUR`.
      */
-    public function withCurrency(): self {
+    public function selectCurrency(): self {
         $this->fields['currency'] = true;
 
         return $this;
@@ -52,7 +52,7 @@ final class SupplierApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Whether the shop currently buys from the supplier. An inactive supplier is kept for the documents that name it.
      */
-    public function withActive(): self {
+    public function selectActive(): self {
         $this->fields['active'] = true;
 
         return $this;

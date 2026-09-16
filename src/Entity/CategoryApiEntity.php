@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Simplia\Api\Entity;
 
 use Simplia\Api\Entity\CategoryApiEntity as CategoryApiEntity1;
+use Simplia\Api\Enum\CategoryType;
 use Simplia\Api\FieldConfig\CategoryApiFieldConfig;
 
 /**
@@ -68,11 +69,9 @@ final class CategoryApiEntity extends AbstractApiEntity {
 
     /**
      * Kind of category: `normal` (products are assigned to it), `alias` (a link to another category, whose products and page it shows) or `automatic` (its products are selected by a rule).
-     * @return 'normal'|'alias'|'automatic'
-     * @phpstan-return string
      */
-    public function getType(): string {
-        return $this->readString('type');
+    public function getType(): CategoryType {
+        return $this->readEnum('type', CategoryType::class);
     }
 
     /**

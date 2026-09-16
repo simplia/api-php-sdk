@@ -21,7 +21,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the stock item. The value every write addresses (`stock_item_id`, `StockAmountItemInput.id`) and every reference carries (`Order.items[].stock_item.id`, `Price.stock_item_id`).
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -30,7 +30,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * External handle of the stock item, always `P` followed by the id. Accepted by `POST /orders` as `stock_item_tracking_id`.
      */
-    public function withTrackingId(): self {
+    public function selectTrackingId(): self {
         $this->fields['tracking_id'] = true;
 
         return $this;
@@ -39,7 +39,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The shop's own code (SKU) of the stock item. Empty when none is set.
      */
-    public function withCode(): self {
+    public function selectCode(): self {
         $this->fields['code'] = true;
 
         return $this;
@@ -48,7 +48,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The supplier's or manufacturer's code for the stock item. Null when none is set.
      */
-    public function withCodeSupplier(): self {
+    public function selectCodeSupplier(): self {
         $this->fields['code_supplier'] = true;
 
         return $this;
@@ -57,7 +57,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Barcode (EAN) of the stock item. Null when none is recorded.
      */
-    public function withEan(): self {
+    public function selectEan(): self {
         $this->fields['ean'] = true;
 
         return $this;
@@ -66,7 +66,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Undiscounted selling price of one unit including VAT, in the shop's main currency.
      */
-    public function withFullPrice(): self {
+    public function selectFullPrice(): self {
         $this->fields['full_price'] = true;
 
         return $this;
@@ -75,7 +75,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Reference price shown struck through in the storefront, including VAT, in the shop's main currency. Display only, never used in a calculation; zero when none is set.
      */
-    public function withOriginalPrice(): self {
+    public function selectOriginalPrice(): self {
         $this->fields['original_price'] = true;
 
         return $this;
@@ -84,7 +84,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Warehouse valuation of one unit without VAT, in the shop's main currency; the basis of the margin. Zero when none is set.
      */
-    public function withAccountingValue(): self {
+    public function selectAccountingValue(): self {
         $this->fields['accounting_value'] = true;
 
         return $this;
@@ -93,7 +93,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Percentage taken off `full_price` while the discount window is open. Wins over `discount_value`. Null when no percentage discount is configured.
      */
-    public function withDiscountPercentage(): self {
+    public function selectDiscountPercentage(): self {
         $this->fields['discount_percentage'] = true;
 
         return $this;
@@ -102,7 +102,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Fixed amount taken off `full_price` while the discount window is open, in the shop's main currency. Ignored when `discount_percentage` is set. Null when no fixed discount is configured.
      */
-    public function withDiscountValue(): self {
+    public function selectDiscountValue(): self {
         $this->fields['discount_value'] = true;
 
         return $this;
@@ -111,7 +111,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * First day the discount applies, inclusive, compared by calendar day. The discount is active only when both bounds are set. Null when none is set.
      */
-    public function withDiscountStartsAt(): self {
+    public function selectDiscountStartsAt(): self {
         $this->fields['discount_starts_at'] = true;
 
         return $this;
@@ -120,7 +120,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Last day the discount applies, inclusive, compared by calendar day. The discount is active only when both bounds are set. Null when none is set.
      */
-    public function withDiscountEndsAt(): self {
+    public function selectDiscountEndsAt(): self {
         $this->fields['discount_ends_at'] = true;
 
         return $this;
@@ -129,7 +129,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Pieces in stock across every stock room, the sum of `stock_levels[].quantity`. For a bundle, the number of complete bundles that can be assembled.
      */
-    public function withTotalQuantity(): self {
+    public function selectTotalQuantity(): self {
         $this->fields['total_quantity'] = true;
 
         return $this;
@@ -138,7 +138,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Pieces committed to open orders across every stock room, minus what has already been issued.
      */
-    public function withTotalReservedQuantity(): self {
+    public function selectTotalReservedQuantity(): self {
         $this->fields['total_reserved_quantity'] = true;
 
         return $this;
@@ -147,7 +147,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Pieces physically set aside for orders across every stock room; a subset of the reserved pieces.
      */
-    public function withTotalBlockedQuantity(): self {
+    public function selectTotalBlockedQuantity(): self {
         $this->fields['total_blocked_quantity'] = true;
 
         return $this;
@@ -156,7 +156,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Delivery promise in hours until dispatch; 0 means in stock. The same value as `Availability.id`.
      */
-    public function withAvailabilityHours(): self {
+    public function selectAvailabilityHours(): self {
         $this->fields['availability_hours'] = true;
 
         return $this;
@@ -165,7 +165,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Date from which the item becomes available, when a future date is set; cleared automatically once it passes. Null otherwise.
      */
-    public function withAvailableAt(): self {
+    public function selectAvailableAt(): self {
         $this->fields['available_at'] = true;
 
         return $this;
@@ -174,7 +174,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Whether the shop reorders the item from its supplier, so it can be sold while out of stock.
      */
-    public function withDemandable(): self {
+    public function selectDemandable(): self {
         $this->fields['demandable'] = true;
 
         return $this;
@@ -183,7 +183,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Display name in the request language: the product's name, with the variant's value in parentheses for a variant.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -192,7 +192,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Shelf positions the item is kept at: fixed assignments (quantity null) and live counts in stock rooms that track stock per position. Included by default; a `fields` selection that does not name it leaves it out.
      */
-    public function withStorageLocations(StorageLocationApiFieldConfig $config): self {
+    public function selectStorageLocations(StorageLocationApiFieldConfig $config): self {
         $this->fields['storage_locations'] = $config;
 
         return $this;
@@ -201,7 +201,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The catalog product the item belongs to; the same record as `GET /products/{id}`, selectable through `product.…`.
      */
-    public function withProduct(ProductApiFieldConfig $config): self {
+    public function selectProduct(ProductApiFieldConfig $config): self {
         $this->fields['product'] = $config;
 
         return $this;
@@ -210,7 +210,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The variant the item represents. Null when the item is the product itself. Included by default; a `fields` selection that does not name it leaves it out.
      */
-    public function withVariant(VariantApiFieldConfig $config): self {
+    public function selectVariant(VariantApiFieldConfig $config): self {
         $this->fields['variant'] = $config;
 
         return $this;
@@ -219,7 +219,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * What the item is assembled from, when it is a bundle; empty otherwise. Included by default; a `fields` selection that does not name it leaves it out.
      */
-    public function withBundleParts(BundlePartApiFieldConfig $config): self {
+    public function selectBundleParts(BundlePartApiFieldConfig $config): self {
         $this->fields['bundle_parts'] = $config;
 
         return $this;
@@ -228,7 +228,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Stock and target levels per stock room; a room appears only once the item has had stock activity there. Included by default; a `fields` selection that does not name it leaves it out.
      */
-    public function withStockLevels(StockLevelApiFieldConfig $config): self {
+    public function selectStockLevels(StockLevelApiFieldConfig $config): self {
         $this->fields['stock_levels'] = $config;
 
         return $this;
@@ -237,7 +237,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Date of the first goods receipt from a supplier for this item. Null when it was never bought in. Included by default; a `fields` selection that does not name it leaves it out.
      */
-    public function withFirstPurchasedAt(): self {
+    public function selectFirstPurchasedAt(): self {
         $this->fields['first_purchased_at'] = true;
 
         return $this;
@@ -246,7 +246,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Date of the most recent goods receipt from a supplier. Null when it was never bought in. Included by default; a `fields` selection that does not name it leaves it out.
      */
-    public function withLastPurchasedAt(): self {
+    public function selectLastPurchasedAt(): self {
         $this->fields['last_purchased_at'] = true;
 
         return $this;
@@ -255,7 +255,7 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Date of the most recent invoice or till receipt containing the item. Null when it was never sold. Included by default; a `fields` selection that does not name it leaves it out.
      */
-    public function withLastSoldAt(): self {
+    public function selectLastSoldAt(): self {
         $this->fields['last_sold_at'] = true;
 
         return $this;

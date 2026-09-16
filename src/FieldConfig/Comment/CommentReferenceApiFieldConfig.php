@@ -18,7 +18,7 @@ final class CommentReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the comment; the same value as `Comment.id`.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;

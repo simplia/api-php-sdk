@@ -17,7 +17,7 @@ property, filter and error is published at https://api.simplia.cz/ and served by
 composer require simplia/api:^3
 ```
 
-Requires PHP 8.2+ and any PSR-18 HTTP client (Guzzle, Symfony HttpClient, …). The `/api/3` client is the
+Requires PHP 8.3+ and any PSR-18 HTTP client (Guzzle, Symfony HttpClient, …). The `/api/3` client is the
 `3.x` line of `simplia/api`; the `/api/2` client stays on the `0.1.x` line. Pin a version line, never
 `dev-master`. Both lines share the `Simplia\Api` namespace: moving from the `/api/2` client is a
 version bump, and what changes are the classes and methods, which follow the API.
@@ -37,7 +37,7 @@ listed on every method) and its own rate-limit quota.
 
 ## Principles
 
-Six rules shape every call. They are the API's rules, and the client makes them explicit.
+Nine rules shape every call. They are the API's rules, and the client makes them explicit.
 
 ### You name what you read
 
@@ -49,10 +49,13 @@ use Simplia\Api\Entity\OrderApiEntity;
 use Simplia\Api\Entity\UserApiEntity;
 
 $fields = OrderApiEntity::createFieldConfig()
-    ->withCode()
-    ->withTotalPrice()
-    ->withUser(UserApiEntity::createFieldConfig()->withEmail());   // an embed: name its fields too
+    ->selectCode()
+    ->selectTotalPrice()
+    ->selectUser(UserApiEntity::createFieldConfig()->selectEmail());   // an embed: name its fields too
 ```
+
+A field config is a builder like a query builder: each `select…()` changes it and returns it, so build one
+per request, or `clone` a base config before extending it.
 
 An entity answers only what was selected: reading a property you did not name throws
 (`Field "user.email" was not loaded - add it to the field config first`) rather than returning `null`, so a
@@ -65,10 +68,11 @@ Collections are paginated by keyset, not by page number: the API announces the n
 cursor, and `iterate()` follows it for you until the last page.
 
 ```php
+use Simplia\Api\Enum\OrderStatus;
 use Simplia\Api\Request\OrdersApiRequest;
 
 $request = OrdersApiRequest::create()
-    ->whereStatus(['unprocessed'])                  // filters: where*()
+    ->whereStatus([OrderStatus::Unprocessed])       // filters: where*()
     ->whereCreatedAtFrom(new \DateTimeImmutable('-7 days'))
     ->orderByCreatedAtDesc();                       // sort: orderBy*(); the allowed sorts are the methods you see
 
@@ -97,6 +101,31 @@ under the plain name, and in the record's own currency under `*_in_order_currenc
 `id` is always the numeric identifier. Where the shop also has a human code (orders, documents, stock
 items, vouchers, …) the endpoint offers `getByCode()`; the client URL-encodes the code for you.
 
+### Values are enums
+
+Every property, filter or input value the API restricts to a fixed set is a PHP enum in
+`Simplia\Api\Enum` (`OrderStatus`, `PaymentType`, …): filters and inputs take it, entities return it, and
+`match` over it is checked by PHPStan.
+
+```php
+use Simplia\Api\Entity\OrderApiEntity;
+use Simplia\Api\Enum\OrderStatus;
+
+$order = $api->getOrdersEndpoint()->get(123, OrderApiEntity::createFieldConfig()->selectStatus());
+
+$label = match ($order?->getStatus()) {
+    OrderStatus::Unprocessed, OrderStatus::Processed => 'open',
+    OrderStatus::Waiting, OrderStatus::Ready => 'in progress',
+    OrderStatus::Finished, OrderStatus::Cancelled => 'closed',
+    null => 'no public status',   // also the arm for a 404, which get() answers as null
+};
+```
+
+The set is the API's at the time this client was generated; a value the shop adds later arrives as
+`UnknownEnumValueException` (see Errors), which is your cue to upgrade `simplia/api`. A nullable member is
+a nullable enum: `getStatus()` is `?OrderStatus`, null for an order in a state the API does not expose
+(archived, deleted).
+
 ### Every credential has a rate limit
 
 A credential may spend 600 units per sliding 60-second window: reading one record costs 1, a write 2, a
@@ -124,12 +153,22 @@ or one of its subclasses:
 
 `get()` and `getByCode()` return `null` for a 404 instead of throwing.
 
+One exception is not about the answer's status but its content. `UnknownEnumValueException` — an
+`\UnexpectedValueException`, not an `ApiProblemException` — is thrown when a getter reads a value of an
+enum-typed property that this client does not know: `getField()` is the property, `getValue()` the value
+the shop sent, `getEnum()` the enum class that lacks it. The shop is newer than the client; upgrade
+`simplia/api`.
+
 ### Version 3 evolves without breaking you
 
-Changes within version 3 are additive: a new property, parameter, method or enumeration value may appear
-in any release and never breaks a client that ignores it — and the entities read only the properties you
-selected. A removal is announced at least twelve months ahead in the changelog (`GET /api/3/changelog` on
-any shop, no credentials needed) and by `Deprecation` and `Sunset` headers on the affected operation.
+Changes within version 3 are additive: a new property, parameter or method may appear in any release and
+never breaks a client that ignores it — and the entities read only the properties you selected.
+Enumeration values are the one exception, because this client reads them as PHP enums rather than as
+strings: a value it does not know throws. So a new value is declared in the API's document one release
+before any shop emits it, and a client generated from that release already knows it. A removal is
+announced at least twelve months ahead in
+the changelog (`GET /api/3/changelog` on any shop, no credentials needed) and by `Deprecation` and
+`Sunset` headers on the affected operation.
 
 ## Vocabulary
 
@@ -138,9 +177,14 @@ any shop, no credentials needed) and by `Deprecation` and `Sunset` headers on th
   `create()`, `update()`, and the resource's actions (`updateStatus()`, `apply()`, `lock()`, …).
 - `*ApiFieldConfig` — which properties to fetch, embeds by nesting another field config.
 - `*ApiRequest` — the filters and sort of a list.
-- `*ApiInput` — the body of a write; `create()` takes the full input, `update()` a partial one (only
-  what you set is sent, as a JSON merge patch).
+- `*ApiInput` — the body of a write: the schema's required properties are the constructor's named
+  parameters, the rest are `set…()`; inputs have no factory of their own. The endpoint's `create()` takes
+  the full input, its `update()` a partial one (only what you set is sent, as a JSON merge patch); where
+  one body both creates and changes a record, the partial one is its own class with nothing required
+  (`TextPagePatchApiInput`).
 - `*ApiEntity` — one record as returned; a getter per property, typed.
+- `Enum\*` — one per value set, named after the record and property that own it (`OrderStatus`,
+  `ReviewSource`).
 - `Money` — an amount and its currency.
 
 ## Read one record
@@ -148,37 +192,81 @@ any shop, no credentials needed) and by `Deprecation` and `Sunset` headers on th
 ```php
 use Simplia\Api\Entity\OrderApiEntity;
 
-$order = $api->getOrdersEndpoint()->get(123, OrderApiEntity::createFieldConfig()->withCode()->withTotalPrice());
+$order = $api->getOrdersEndpoint()->get(123, OrderApiEntity::createFieldConfig()->selectCode()->selectTotalPrice());
 echo $order?->getCode();
 echo $order?->getTotalPrice()->amount;   // "1290.00"
 ```
 
 ## Write
 
+The properties a body's schema lists as required are the constructor's named parameters — leave one out,
+or pass null, and PHPStan and your editor say so, instead of the API answering `422`. Everything else is
+a `set…()`, so a request can be built in steps. A rule the schema cannot express — "one of these three",
+a value another property makes mandatory — stays a setter and is stated in that property's description;
+those the API still answers `422` for.
+
 ```php
 use Simplia\Api\Entity\OrderApiEntity;
+use Simplia\Api\Enum\OrderStatus;
+use Simplia\Api\Input\OrderCreateApiInput;
+use Simplia\Api\Input\OrderDeliveryApiInput;
+use Simplia\Api\Input\OrderItemApiInput;
 use Simplia\Api\Input\OrderStatusApiInput;
+use Simplia\Api\Money;
 
-$order = $api->getOrdersEndpoint()->updateStatus(
-    123,
-    OrderStatusApiInput::create()->setStatus('processed'),
-    OrderApiEntity::createFieldConfig()->withStatus(),   // what the answer should carry; omit it for the id alone
+$input = new OrderCreateApiInput(
+    items: [
+        (new OrderItemApiInput(quantity: 2, price: new Money('490.00', 'CZK'), vatRate: 21.0))
+            // a setter, but not optional: one of the three names the item
+            ->setStockItemCode('SKU-1'),            // or setStockItemId() / setStockItemTrackingId()
+    ],
+    delivery: new OrderDeliveryApiInput(
+        transportMethodId: 3, transportPrice: new Money('99.00', 'CZK'), transportVatRate: 21.0,
+        paymentMethodId: 1, paymentPrice: new Money('0.00', 'CZK'), paymentVatRate: 21.0,
+    ),
 );
+if ($customerNote !== null) {
+    $input->setCustomerNote($customerNote);         // an optional property: only what you set is sent
+}
+
+$order = $api->getOrdersEndpoint()->create(
+    $input,
+    OrderApiEntity::createFieldConfig()->selectCode()->selectStatus(),   // omit it for the id alone
+);
+
+$api->getOrdersEndpoint()->updateStatus($order->getId(), new OrderStatusApiInput(status: OrderStatus::Processed));
+```
+
+An input whose properties are all optional has no constructor parameters; wrap the `new` in parentheses
+to chain from it.
+
+```php
+use Simplia\Api\Input\OrderUpdateApiInput;
+
+$api->getOrdersEndpoint()->update(123, (new OrderUpdateApiInput())->setPackagingNote('fragile'));
 ```
 
 ## Handle an error
 
 ```php
+use Simplia\Api\Entity\OrderApiEntity;
 use Simplia\Api\Exception\RateLimitedException;
+use Simplia\Api\Exception\UnknownEnumValueException;
 use Simplia\Api\Exception\ValidationException;
 
 try {
-    $api->getOrdersEndpoint()->create($input);
+    $order = $api->getOrdersEndpoint()->create($input, OrderApiEntity::createFieldConfig()->selectStatus());
+    $status = $order->getStatus();
 } catch (ValidationException $e) {
     foreach ($e->violations() as $violation) {
         // which property, and why
     }
 } catch (RateLimitedException $e) {
     sleep($e->retryAfter() ?? 1);   // then send the same request, with the same idempotency key
+} catch (UnknownEnumValueException $e) {
+    // $e->getField() carried $e->getValue(), which this client does not know: upgrade simplia/api
 }
 ```
+
+The enum exception comes from the getter that reads the value, not from the call that fetched it: an
+answer you never read a new value out of never throws.

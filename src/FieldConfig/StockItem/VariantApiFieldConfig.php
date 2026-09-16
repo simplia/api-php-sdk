@@ -18,7 +18,7 @@ final class VariantApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the variant; the same value as `Variant.id`.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -27,7 +27,7 @@ final class VariantApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The option value of the variant, such as `black` or `XL`. Empty when none is stored.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -36,7 +36,7 @@ final class VariantApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The shop's own code (SKU) of the variant's stock item. Empty when none is set.
      */
-    public function withCode(): self {
+    public function selectCode(): self {
         $this->fields['code'] = true;
 
         return $this;
@@ -45,7 +45,7 @@ final class VariantApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Catalog price of the variant including VAT, in the shop's main currency, before any price list, customer discount or promotion.
      */
-    public function withPrice(): self {
+    public function selectPrice(): self {
         $this->fields['price'] = true;
 
         return $this;
@@ -54,7 +54,7 @@ final class VariantApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The supplier's or manufacturer's part number for the variant. Null when none is set.
      */
-    public function withCodeSupplier(): self {
+    public function selectCodeSupplier(): self {
         $this->fields['code_supplier'] = true;
 
         return $this;
@@ -63,7 +63,7 @@ final class VariantApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Barcode (EAN) of the variant. Null when none is recorded.
      */
-    public function withEan(): self {
+    public function selectEan(): self {
         $this->fields['ean'] = true;
 
         return $this;
@@ -72,7 +72,7 @@ final class VariantApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * When the variant was created.
      */
-    public function withCreatedAt(): self {
+    public function selectCreatedAt(): self {
         $this->fields['created_at'] = true;
 
         return $this;

@@ -14,11 +14,9 @@ namespace Simplia\Api\Input;
  */
 final class StockItemLocationApiInput extends AbstractApiInput {
     /**
-     * Position code inside the stock room, as written on the shelf label; created when it does not exist yet. Returned as `storage_locations[].name`.
+     * @param string $name Position code inside the stock room, as written on the shelf label; created when it does not exist yet. Returned as `storage_locations[].name`.
      */
-    public function setName(?string $name): self {
+    public function __construct(string $name) {
         $this->params['name'] = $name;
-
-        return $this;
     }
 }

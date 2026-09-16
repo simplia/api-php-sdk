@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
+use Simplia\Api\Enum\PackageStatus;
 use Simplia\Api\FieldConfig\PackageApiFieldConfig;
 use Simplia\Api\Money;
 
@@ -109,11 +110,9 @@ final class PackageApiEntity extends AbstractApiEntity {
 
     /**
      * Delivery state last reported by the carrier: `unknown` (no tracking update yet), `on_the_way` (in transit), `delivered` (handed to the customer), `deposited` (waiting at a pickup point or parcel box), `returned` (not collected, sent back to the shop).
-     * @return 'unknown'|'on_the_way'|'delivered'|'deposited'|'returned'
-     * @phpstan-return string
      */
-    public function getStatus(): string {
-        return $this->readString('status');
+    public function getStatus(): PackageStatus {
+        return $this->readEnum('status', PackageStatus::class);
     }
 
     /**

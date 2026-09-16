@@ -16,7 +16,7 @@ final class TransportMethodApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the transport method in the request language; the same value as `Order.transport_method.id`, and what `OrderDeliveryInput.transport_method_id` takes.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -25,7 +25,7 @@ final class TransportMethodApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Name of the transport method as shown to customers, in the request language.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -34,7 +34,7 @@ final class TransportMethodApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Code of the carrier that delivers it, as a lower-case slug such as `ppl`, `gls` or `dpd`; `osobne` for personal pickup at a store.
      */
-    public function withCarrierCode(): self {
+    public function selectCarrierCode(): self {
         $this->fields['carrier_code'] = true;
 
         return $this;
@@ -43,7 +43,7 @@ final class TransportMethodApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Code of the carrier's service or parcel type this option uses, in the carrier's own vocabulary. Null when the carrier's default service is used.
      */
-    public function withPackageTypeCode(): self {
+    public function selectPackageTypeCode(): self {
         $this->fields['package_type_code'] = true;
 
         return $this;
@@ -52,7 +52,7 @@ final class TransportMethodApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Position in the checkout list: the lowest number comes first.
      */
-    public function withPriority(): self {
+    public function selectPriority(): self {
         $this->fields['priority'] = true;
 
         return $this;
@@ -61,7 +61,7 @@ final class TransportMethodApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The store the goods are collected at, for a personal-pickup option. Null for carrier delivery.
      */
-    public function withStore(StoreApiFieldConfig $config): self {
+    public function selectStore(StoreApiFieldConfig $config): self {
         $this->fields['store'] = $config;
 
         return $this;

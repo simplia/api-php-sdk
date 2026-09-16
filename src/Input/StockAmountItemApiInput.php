@@ -14,20 +14,11 @@ namespace Simplia\Api\Input;
  */
 final class StockAmountItemApiInput extends AbstractApiInput {
     /**
-     * Identifier of the stock item (StockItem.id). An unknown id is a 422 violation at items[i].id.
+     * @param int $id Identifier of the stock item (StockItem.id). An unknown id is a 422 violation at items[i].id.
+     * @param int $quantity The absolute quantity this item must end up with in the stock room, never a delta: the shop works out the difference from what is there now and posts it. 0 empties the item from the room; an item already at its target produces no document line.
      */
-    public function setId(?int $id): self {
+    public function __construct(int $id, int $quantity) {
         $this->params['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * The absolute quantity this item must end up with in the stock room, never a delta: the shop works out the difference from what is there now and posts it. 0 empties the item from the room; an item already at its target produces no document line.
-     */
-    public function setQuantity(?int $quantity): self {
         $this->params['quantity'] = $quantity;
-
-        return $this;
     }
 }

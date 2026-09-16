@@ -16,29 +16,13 @@ use Simplia\Api\Money;
  */
 final class DocumentItemPriceApiInput extends AbstractApiInput {
     /**
-     * Identifier of the line to re-price: a `Document.rows[].id` of the addressed document, not a stock item id. A line of another document is a 422 violation.
+     * @param int $id Identifier of the line to re-price: a `Document.rows[].id` of the addressed document, not a stock item id. A line of another document is a 422 violation.
+     * @param Money $price New unit price including VAT, in the document's own currency (the shop's main currency for a document without one); anything else is a 422 violation at `price.currency`. The amount in the shop's main currency is derived from it at the document's exchange rate.
+     * @param float $vatRate New VAT rate as a percentage (21 for 21 %). Always replaces the stored rate; VAT totals are recomputed from the new price and rate.
      */
-    public function setId(?int $id): self {
+    public function __construct(int $id, Money $price, float $vatRate) {
         $this->params['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * New unit price including VAT, in the document's own currency (the shop's main currency for a document without one); anything else is a 422 violation at `price.currency`. The amount in the shop's main currency is derived from it at the document's exchange rate.
-     */
-    public function setPrice(?Money $price): self {
         $this->params['price'] = $price;
-
-        return $this;
-    }
-
-    /**
-     * New VAT rate as a percentage (21 for 21 %). Always replaces the stored rate; VAT totals are recomputed from the new price and rate.
-     */
-    public function setVatRate(?float $vatRate): self {
         $this->params['vat_rate'] = $vatRate;
-
-        return $this;
     }
 }

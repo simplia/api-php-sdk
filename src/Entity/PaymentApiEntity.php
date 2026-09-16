@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
+use Simplia\Api\Enum\PaymentType;
 use Simplia\Api\FieldConfig\PaymentApiFieldConfig;
 use Simplia\Api\Money;
 
@@ -32,11 +33,9 @@ final class PaymentApiEntity extends AbstractApiEntity {
 
     /**
      * How the money arrived: `cod` (collected by the courier on delivery), `cash` (cash in person), `online` (card or payment gateway), `card_terminal` (card on a physical terminal), `bank_transfer`, `voucher` (a gift voucher or credit note), `loan` (an installment or consumer-credit provider), `internal` (a settlement between documents or orders, no money from the customer), `currency_diff` (a bookkeeping entry for an exchange-rate difference), `paypal` (historical). Null for a payment whose stored type has no public value.
-     * @return 'cod'|'cash'|'online'|'card_terminal'|'currency_diff'|'internal'|'voucher'|'bank_transfer'|'paypal'|'loan'|''|null
-     * @phpstan-return string|null
      */
-    public function getType(): ?string {
-        return $this->readStringOrNull('type');
+    public function getType(): ?PaymentType {
+        return $this->readEnumOrNull('type', PaymentType::class);
     }
 
     /**

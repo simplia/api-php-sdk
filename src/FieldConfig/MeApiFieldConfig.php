@@ -16,7 +16,7 @@ final class MeApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric id of the administrator account behind the credential.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -25,7 +25,7 @@ final class MeApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Display name of the administrator account.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -34,7 +34,7 @@ final class MeApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Permission keys the credential holds, sorted, exactly as granted — an umbrella key (api:orders:read, api:orders:write) is listed as itself, not expanded; each operation names the key it needs as x-permission.
      */
-    public function withGrants(): self {
+    public function selectGrants(): self {
         $this->fields['grants'] = true;
 
         return $this;

@@ -18,7 +18,7 @@ final class AttributeReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Attribute id; `GET /attributes/{id}` answers the whole record.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -27,7 +27,7 @@ final class AttributeReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Name in the request language. Null when the attribute has no name in that language.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -36,7 +36,7 @@ final class AttributeReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Unit of the value in the request language ("cm", "kg"), as the shop wrote it. Null when the attribute has none.
      */
-    public function withUnit(): self {
+    public function selectUnit(): self {
         $this->fields['unit'] = true;
 
         return $this;
@@ -45,7 +45,7 @@ final class AttributeReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * What a value of the attribute is: `text`, `integer` or `boolean` (the row carries one `value`), `choice` (one of the attribute's values, in `values`) or `multi_choice` (several, in `values`).
      */
-    public function withType(): self {
+    public function selectType(): self {
         $this->fields['type'] = true;
 
         return $this;

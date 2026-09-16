@@ -19,7 +19,7 @@ final class VoucherLockApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the lock; the value the `ids` filter of `GET /vouchers/{code}/locks` takes. A lock is released by its `key`, not by this id.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -28,7 +28,7 @@ final class VoucherLockApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The token the holder chose when taking the lock. Present it again to activate, apply or release; a different key is refused with 409.
      */
-    public function withKey(): self {
+    public function selectKey(): self {
         $this->fields['key'] = true;
 
         return $this;
@@ -37,7 +37,7 @@ final class VoucherLockApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * When the lock was taken.
      */
-    public function withLockedAt(): self {
+    public function selectLockedAt(): self {
         $this->fields['locked_at'] = true;
 
         return $this;
@@ -46,7 +46,7 @@ final class VoucherLockApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * When the lock lapses on its own; after that it no longer blocks anyone and is no longer listed.
      */
-    public function withExpiresAt(): self {
+    public function selectExpiresAt(): self {
         $this->fields['expires_at'] = true;
 
         return $this;
@@ -55,7 +55,7 @@ final class VoucherLockApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The locked voucher, in full.
      */
-    public function withVoucher(VoucherApiFieldConfig $config): self {
+    public function selectVoucher(VoucherApiFieldConfig $config): self {
         $this->fields['voucher'] = $config;
 
         return $this;

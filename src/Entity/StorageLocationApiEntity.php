@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Simplia\Api\Entity;
 
 use Simplia\Api\Entity\Label\LabelReferenceApiEntity;
+use Simplia\Api\Enum\StorageLocationType;
 use Simplia\Api\FieldConfig\StorageLocationApiFieldConfig;
 
 /**
@@ -46,11 +47,9 @@ final class StorageLocationApiEntity extends AbstractApiEntity {
 
     /**
      * Kind of position: `normal` (a shelf), `transitional` (a holding area for goods being received or prepared), `remote` (an external storage area), `mobile` (a mobile position, such as a picker's cart), `mobile_packaging_slot` (a packaging slot: the basket an order's picked items are gathered in), `mobile_admin` (a picker's own mobile position).
-     * @return 'normal'|'transitional'|'remote'|'mobile'|'mobile_packaging_slot'|'mobile_admin'
-     * @phpstan-return string
      */
-    public function getType(): string {
-        return $this->readString('type');
+    public function getType(): StorageLocationType {
+        return $this->readEnum('type', StorageLocationType::class);
     }
 
     /**

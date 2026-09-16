@@ -14,13 +14,10 @@ namespace Simplia\Api\Input;
  */
 final class StockItemBatchUpdateApiInput extends AbstractApiInput {
     /**
-     * The items to change, at least one. Violations across all items are answered together as one 422.
-     * @param list<StockItemUpdateApiInput> $items
+     * @param list<StockItemUpdateApiInput> $items The items to change, at least one. Violations across all items are answered together as one 422.
      */
-    public function setItems(array $items): self {
+    public function __construct(array $items) {
         self::validateArray($items, StockItemUpdateApiInput::class);
         $this->params['items'] = $items;
-
-        return $this;
     }
 }

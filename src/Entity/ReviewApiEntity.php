@@ -14,6 +14,9 @@ use Simplia\Api\Entity\Review\OrderReferenceApiEntity;
 use Simplia\Api\Entity\Review\ReviewDetailsApiEntity;
 use Simplia\Api\Entity\Review\ReviewReferenceApiEntity;
 use Simplia\Api\Entity\Review\ReviewReplyApiEntity;
+use Simplia\Api\Enum\ReviewSource;
+use Simplia\Api\Enum\ReviewStatus;
+use Simplia\Api\Enum\ReviewSubject;
 use Simplia\Api\FieldConfig\ReviewApiFieldConfig;
 
 /**
@@ -29,29 +32,23 @@ final class ReviewApiEntity extends AbstractApiEntity {
 
     /**
      * What the review is about: a `product`, or an `order` (the shopping experience as a whole).
-     * @return 'product'|'order'
-     * @phpstan-return string
      */
-    public function getSubject(): string {
-        return $this->readString('subject');
+    public function getSubject(): ReviewSubject {
+        return $this->readEnum('subject', ReviewSubject::class);
     }
 
     /**
      * Where the review came from: `shop` for one written in the shop's own review form, otherwise the price-comparison portal it was imported from (Heureka, Zboží.cz, Biano, Árukereső, Compari or Pazaruvaj).
-     * @return 'shop'|'heureka'|'zbozi_cz'|'biano'|'arukereso'|'compari'|'pazaruvaj'
-     * @phpstan-return string
      */
-    public function getSource(): string {
-        return $this->readString('source');
+    public function getSource(): ReviewSource {
+        return $this->readEnum('source', ReviewSource::class);
     }
 
     /**
      * Moderation state: `pending` (not yet decided), `approved` (may be shown), `rejected`.
-     * @return 'pending'|'approved'|'rejected'
-     * @phpstan-return string
      */
-    public function getStatus(): string {
-        return $this->readString('status');
+    public function getStatus(): ReviewStatus {
+        return $this->readEnum('status', ReviewStatus::class);
     }
 
     /**

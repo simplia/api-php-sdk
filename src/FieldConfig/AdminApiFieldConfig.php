@@ -16,7 +16,7 @@ final class AdminApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the staff account; the value `Order.created_by.id` and `Document.issued_by.id` carry.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -25,7 +25,7 @@ final class AdminApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Given name. Null when not filled.
      */
-    public function withFirstName(): self {
+    public function selectFirstName(): self {
         $this->fields['first_name'] = true;
 
         return $this;
@@ -34,7 +34,7 @@ final class AdminApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Family name. Null when not filled.
      */
-    public function withLastName(): self {
+    public function selectLastName(): self {
         $this->fields['last_name'] = true;
 
         return $this;
@@ -43,7 +43,7 @@ final class AdminApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Whether the account is enabled. A disabled account can neither sign in nor call the API; an enabled one may still be limited by the shop's own sign-in rules. An inactive account is kept for the orders and documents that name it.
      */
-    public function withActive(): self {
+    public function selectActive(): self {
         $this->fields['active'] = true;
 
         return $this;
@@ -52,7 +52,7 @@ final class AdminApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Kind of account: `standard` (a person using the administration), `api` (a credential created for calling the API) or `integration` (the account an installed integration calls as).
      */
-    public function withType(): self {
+    public function selectType(): self {
         $this->fields['type'] = true;
 
         return $this;

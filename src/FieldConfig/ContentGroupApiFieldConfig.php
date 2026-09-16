@@ -16,7 +16,7 @@ final class ContentGroupApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the content group; the value `Category.content_group.id` carries and the `content_group` filter of `GET /categories` takes.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -25,7 +25,7 @@ final class ContentGroupApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Name of the content group, such as `default` or `b2b`.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;

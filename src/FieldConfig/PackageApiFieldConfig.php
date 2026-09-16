@@ -16,7 +16,7 @@ final class PackageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the shipment; the same value as `Order.packages[].id`.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -25,7 +25,7 @@ final class PackageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Recipient name printed on the label. Null when not filled.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -34,7 +34,7 @@ final class PackageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Company name printed on the label. Null when the delivery is not to a business.
      */
-    public function withCompany(): self {
+    public function selectCompany(): self {
         $this->fields['company'] = true;
 
         return $this;
@@ -43,7 +43,7 @@ final class PackageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Street and house number printed on the label. Null when not filled.
      */
-    public function withStreet(): self {
+    public function selectStreet(): self {
         $this->fields['street'] = true;
 
         return $this;
@@ -52,7 +52,7 @@ final class PackageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Town or city printed on the label. Null when not filled.
      */
-    public function withCity(): self {
+    public function selectCity(): self {
         $this->fields['city'] = true;
 
         return $this;
@@ -61,7 +61,7 @@ final class PackageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Postal code printed on the label. Null when not filled.
      */
-    public function withZip(): self {
+    public function selectZip(): self {
         $this->fields['zip'] = true;
 
         return $this;
@@ -70,7 +70,7 @@ final class PackageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Recipient phone number given to the carrier for delivery notifications. Null when not filled.
      */
-    public function withPhone(): self {
+    public function selectPhone(): self {
         $this->fields['phone'] = true;
 
         return $this;
@@ -79,7 +79,7 @@ final class PackageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Recipient e-mail address given to the carrier for delivery notifications. Null when not filled.
      */
-    public function withEmail(): self {
+    public function selectEmail(): self {
         $this->fields['email'] = true;
 
         return $this;
@@ -88,7 +88,7 @@ final class PackageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Tracking number the carrier assigned to the first parcel of the shipment. Null until a label has been generated.
      */
-    public function withCode(): self {
+    public function selectCode(): self {
         $this->fields['code'] = true;
 
         return $this;
@@ -97,7 +97,7 @@ final class PackageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Destination country as a lower-case two-letter code (ISO 3166-1 alpha-2). Null when not filled.
      */
-    public function withCountry(): self {
+    public function selectCountry(): self {
         $this->fields['country'] = true;
 
         return $this;
@@ -106,7 +106,7 @@ final class PackageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * ISO 4217 code of the currency the customer pays the courier in on delivery, which is the order's currency. Not the currency of `cash_on_delivery` or `price`, which carry their own.
      */
-    public function withCurrency(): self {
+    public function selectCurrency(): self {
         $this->fields['currency'] = true;
 
         return $this;
@@ -115,7 +115,7 @@ final class PackageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Payment reference the carrier quotes when passing on the cash collected on delivery. Null when none is set.
      */
-    public function withVariableSymbol(): self {
+    public function selectVariableSymbol(): self {
         $this->fields['variable_symbol'] = true;
 
         return $this;
@@ -124,7 +124,7 @@ final class PackageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Whether the cash collected on delivery for this shipment has been received from the carrier and recorded as a payment. Not whether the customer has paid the order.
      */
-    public function withPaid(): self {
+    public function selectPaid(): self {
         $this->fields['paid'] = true;
 
         return $this;
@@ -133,7 +133,7 @@ final class PackageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Delivery state last reported by the carrier: `unknown` (no tracking update yet), `on_the_way` (in transit), `delivered` (handed to the customer), `deposited` (waiting at a pickup point or parcel box), `returned` (not collected, sent back to the shop).
      */
-    public function withStatus(): self {
+    public function selectStatus(): self {
         $this->fields['status'] = true;
 
         return $this;
@@ -142,7 +142,7 @@ final class PackageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Total weight of the shipment in kilograms, summed over its parcels. Null when it has no parcels yet.
      */
-    public function withWeight(): self {
+    public function selectWeight(): self {
         $this->fields['weight'] = true;
 
         return $this;
@@ -151,7 +151,7 @@ final class PackageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Exchange rate frozen on the shipment: how many units of the shop's main currency one unit of `currency` is worth. 0 when nothing is collected on delivery.
      */
-    public function withCurrencyRate(): self {
+    public function selectCurrencyRate(): self {
         $this->fields['currency_rate'] = true;
 
         return $this;
@@ -160,7 +160,7 @@ final class PackageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Amount the courier collects from the customer on delivery, in the shop's main currency. Zero when nothing is collected.
      */
-    public function withCashOnDelivery(): self {
+    public function selectCashOnDelivery(): self {
         $this->fields['cash_on_delivery'] = true;
 
         return $this;
@@ -169,7 +169,7 @@ final class PackageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Declared value of the shipment's contents, for insurance and customs, in the shop's main currency. Not what the customer pays.
      */
-    public function withPrice(): self {
+    public function selectPrice(): self {
         $this->fields['price'] = true;
 
         return $this;
@@ -178,7 +178,7 @@ final class PackageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * When the shipment was created. Not the day it was handed to the carrier, which is what the `shipment_date_*` filters of `GET /packages` range over.
      */
-    public function withCreatedAt(): self {
+    public function selectCreatedAt(): self {
         $this->fields['created_at'] = true;
 
         return $this;

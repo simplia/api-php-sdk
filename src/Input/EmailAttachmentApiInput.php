@@ -14,29 +14,13 @@ namespace Simplia\Api\Input;
  */
 final class EmailAttachmentApiInput extends AbstractApiInput {
     /**
-     * File name the recipient sees.
+     * @param string $name File name the recipient sees.
+     * @param string $bodyBase64 The file's bytes as standard base64, without a data: prefix and not double-encoded.
+     * @param string $contentType MIME type of the file, such as `application/pdf`. Not validated.
      */
-    public function setName(?string $name): self {
+    public function __construct(string $name, string $bodyBase64, string $contentType) {
         $this->params['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * The file's bytes as standard base64, without a data: prefix and not double-encoded.
-     */
-    public function setBodyBase64(?string $bodyBase64): self {
         $this->params['body_base64'] = $bodyBase64;
-
-        return $this;
-    }
-
-    /**
-     * MIME type of the file, such as `application/pdf`. Not validated.
-     */
-    public function setContentType(?string $contentType): self {
         $this->params['content_type'] = $contentType;
-
-        return $this;
     }
 }

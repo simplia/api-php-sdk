@@ -13,6 +13,19 @@ abstract class AbstractApiFieldConfig {
     /** @var array<string, true|AbstractApiFieldConfig> */
     protected array $fields = [];
 
+    /**
+     * A copy selects on its own nested configs: PHP's clone is shallow, so without this a config cloned as a
+     * base — what the README tells a caller to do — shared every nested config with the original, and one more
+     * `select…()` on the copy silently widened the base too.
+     */
+    public function __clone() {
+        foreach ($this->fields as $field => $content) {
+            if ($content instanceof self) {
+                $this->fields[$field] = clone $content;
+            }
+        }
+    }
+
     /** @return list<string> */
     public function toArray(): array {
         $fields = [];

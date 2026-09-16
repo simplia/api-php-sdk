@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
+use Simplia\Api\Enum\OrderItemBundleType;
 use Simplia\Api\FieldConfig\OrderItemApiFieldConfig;
 use Simplia\Api\Money;
 
@@ -123,11 +124,9 @@ final class OrderItemApiEntity extends AbstractApiEntity {
 
     /**
      * Whether the line is a bundle: `none` (an ordinary product), `bundle` (a set of different products sold together), `multipack` (several units of one product or its variants sold as one pack).
-     * @return 'none'|'bundle'|'multipack'
-     * @phpstan-return string
      */
-    public function getBundleType(): string {
-        return $this->readString('bundle_type');
+    public function getBundleType(): OrderItemBundleType {
+        return $this->readEnum('bundle_type', OrderItemBundleType::class);
     }
 
     public static function createFieldConfig(): OrderItemApiFieldConfig {

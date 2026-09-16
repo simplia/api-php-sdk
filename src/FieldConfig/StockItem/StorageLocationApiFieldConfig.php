@@ -19,7 +19,7 @@ final class StorageLocationApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the position, shared by every item stored there; the `{id}` of `GET /storage-locations/{id}`.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -28,7 +28,7 @@ final class StorageLocationApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The stock room the position is in; the same object as `GET /stock-rooms/{id}`.
      */
-    public function withStorage(StockRoomApiFieldConfig $config): self {
+    public function selectStorage(StockRoomApiFieldConfig $config): self {
         $this->fields['storage'] = $config;
 
         return $this;
@@ -37,7 +37,7 @@ final class StorageLocationApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Position code as written on the shelf label, such as `A1` or `A-03-2`; the value `PUT /stock-items/{id}/location/{stock_room}` sets.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -46,7 +46,7 @@ final class StorageLocationApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Free-text note about the position. Null when there is none.
      */
-    public function withDescription(): self {
+    public function selectDescription(): self {
         $this->fields['description'] = true;
 
         return $this;
@@ -55,7 +55,7 @@ final class StorageLocationApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Pieces of the item at this position, in a stock room that tracks stock per position. Null for a fixed assignment without a count.
      */
-    public function withQuantity(): self {
+    public function selectQuantity(): self {
         $this->fields['quantity'] = true;
 
         return $this;

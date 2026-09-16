@@ -16,7 +16,7 @@ final class PriceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the price row. Usable only in the `ids` filter of `GET /pricings/{pricing_id}/prices`; writes address a price by `stock_item_id`.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -25,7 +25,7 @@ final class PriceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Identifier of the stock item the price is for; the same value as `StockItem.id`, and the key a batch write addresses.
      */
-    public function withStockItemId(): self {
+    public function selectStockItemId(): self {
         $this->fields['stock_item_id'] = true;
 
         return $this;
@@ -34,7 +34,7 @@ final class PriceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Code (SKU) of the stock item, for convenience; the same value as `StockItem.code`. Null when the item has none.
      */
-    public function withStockItemCode(): self {
+    public function selectStockItemCode(): self {
         $this->fields['stock_item_code'] = true;
 
         return $this;
@@ -43,7 +43,7 @@ final class PriceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The list price of the item in this price list, in the list's currency. A zero is a real zero price.
      */
-    public function withValue(): self {
+    public function selectValue(): self {
         $this->fields['value'] = true;
 
         return $this;
@@ -52,7 +52,7 @@ final class PriceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The discounted price of the item in the list's currency, meant for the discount window; not checked against today's date. Null when no discounted price is stored.
      */
-    public function withValueAfterDiscount(): self {
+    public function selectValueAfterDiscount(): self {
         $this->fields['value_after_discount'] = true;
 
         return $this;
@@ -61,7 +61,7 @@ final class PriceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * First day the discounted price applies. Stored as a calendar date, so the time part is always midnight. Null when there is no start bound.
      */
-    public function withDiscountStartsAt(): self {
+    public function selectDiscountStartsAt(): self {
         $this->fields['discount_starts_at'] = true;
 
         return $this;
@@ -70,7 +70,7 @@ final class PriceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Last day the discounted price applies. Stored as a calendar date, so the time part is always midnight. Null when there is no end bound.
      */
-    public function withDiscountEndsAt(): self {
+    public function selectDiscountEndsAt(): self {
         $this->fields['discount_ends_at'] = true;
 
         return $this;
@@ -79,7 +79,7 @@ final class PriceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Where the stored value came from: `manual` (entered by a person, an import or this API), `bot` (an automated repricing job), `fallback` (derived from another price list).
      */
-    public function withSource(): self {
+    public function selectSource(): self {
         $this->fields['source'] = true;
 
         return $this;

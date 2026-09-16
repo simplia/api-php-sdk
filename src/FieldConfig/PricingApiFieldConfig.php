@@ -16,7 +16,7 @@ final class PricingApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the price list; the `{pricing_id}` of the price operations.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -25,7 +25,7 @@ final class PricingApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Name of the price list as shown in the shop's administration.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -34,7 +34,7 @@ final class PricingApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Stable code of the price list, unique across price lists.
      */
-    public function withCode(): self {
+    public function selectCode(): self {
         $this->fields['code'] = true;
 
         return $this;
@@ -43,7 +43,7 @@ final class PricingApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * ISO 4217 code of the currency every price in this list is in, and the currency a batch write must send.
      */
-    public function withCurrency(): self {
+    public function selectCurrency(): self {
         $this->fields['currency'] = true;
 
         return $this;
@@ -52,7 +52,7 @@ final class PricingApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Whether the list takes part in price selection. An inactive list is ignored by the storefront but still readable here.
      */
-    public function withActive(): self {
+    public function selectActive(): self {
         $this->fields['active'] = true;
 
         return $this;
@@ -61,7 +61,7 @@ final class PricingApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Precedence among price lists: the lowest number wins when several lists match. Unique across lists.
      */
-    public function withPriority(): self {
+    public function selectPriority(): self {
         $this->fields['priority'] = true;
 
         return $this;
@@ -70,7 +70,7 @@ final class PricingApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * When the list becomes eligible for selection. Null when there is no start bound.
      */
-    public function withStartsAt(): self {
+    public function selectStartsAt(): self {
         $this->fields['starts_at'] = true;
 
         return $this;
@@ -79,7 +79,7 @@ final class PricingApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * When the list stops being eligible for selection. Null when it never expires.
      */
-    public function withEndsAt(): self {
+    public function selectEndsAt(): self {
         $this->fields['ends_at'] = true;
 
         return $this;

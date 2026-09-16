@@ -19,7 +19,7 @@ final class AttributeValueApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Value id, the `id` an entry of a product's `attributes[].values` carries.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -28,7 +28,7 @@ final class AttributeValueApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Name in the request language. Null when the value has no name in that language.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -37,7 +37,7 @@ final class AttributeValueApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Position among the attribute's values; lower first.
      */
-    public function withPriority(): self {
+    public function selectPriority(): self {
         $this->fields['priority'] = true;
 
         return $this;
@@ -46,7 +46,7 @@ final class AttributeValueApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * A picture standing for the value — a colour swatch, a pattern — when the shop stored one. Null when none is stored.
      */
-    public function withImage(ImageApiFieldConfig $config): self {
+    public function selectImage(ImageApiFieldConfig $config): self {
         $this->fields['image'] = $config;
 
         return $this;

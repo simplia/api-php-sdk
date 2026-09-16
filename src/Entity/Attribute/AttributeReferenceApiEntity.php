@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Simplia\Api\Entity\Attribute;
 
 use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\Enum\AttributeType;
 use Simplia\Api\FieldConfig\Attribute\AttributeReferenceApiFieldConfig;
 
 /**
@@ -39,11 +40,9 @@ final class AttributeReferenceApiEntity extends AbstractApiEntity {
 
     /**
      * What a value of the attribute is: `text`, `integer` or `boolean` (the row carries one `value`), `choice` (one of the attribute's values, in `values`) or `multi_choice` (several, in `values`).
-     * @return 'boolean'|'choice'|'multi_choice'|'text'|'integer'
-     * @phpstan-return string
      */
-    public function getType(): string {
-        return $this->readString('type');
+    public function getType(): AttributeType {
+        return $this->readEnum('type', AttributeType::class);
     }
 
     public static function createFieldConfig(): AttributeReferenceApiFieldConfig {

@@ -14,20 +14,11 @@ namespace Simplia\Api\Input;
  */
 final class StockDocumentItemApiInput extends AbstractApiInput {
     /**
-     * Identifier of the stock item to move (`StockItem.id`). An unknown id is a 422 violation at this line.
+     * @param int $stockItemId Identifier of the stock item to move (`StockItem.id`). An unknown id is a 422 violation at this line.
+     * @param int $quantity Number of units to move, always positive; the document `type` gives the direction.
      */
-    public function setStockItemId(?int $stockItemId): self {
+    public function __construct(int $stockItemId, int $quantity) {
         $this->params['stock_item_id'] = $stockItemId;
-
-        return $this;
-    }
-
-    /**
-     * Number of units to move, always positive; the document `type` gives the direction.
-     */
-    public function setQuantity(?int $quantity): self {
         $this->params['quantity'] = $quantity;
-
-        return $this;
     }
 }

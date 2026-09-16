@@ -14,20 +14,11 @@ namespace Simplia\Api\Input;
  */
 final class BundlePartApiInput extends AbstractApiInput {
     /**
-     * Identifier of the stock item used as the part (StockItem.id). An unknown or repeated id is a 422 violation at parts[N].stock_item_id.
+     * @param int $stockItemId Identifier of the stock item used as the part (StockItem.id). An unknown or repeated id is a 422 violation at parts[N].stock_item_id.
+     * @param int $quantity How many of the part go into one unit of the bundle, at least 1.
      */
-    public function setStockItemId(?int $stockItemId): self {
+    public function __construct(int $stockItemId, int $quantity) {
         $this->params['stock_item_id'] = $stockItemId;
-
-        return $this;
-    }
-
-    /**
-     * How many of the part go into one unit of the bundle, at least 1.
-     */
-    public function setQuantity(?int $quantity): self {
         $this->params['quantity'] = $quantity;
-
-        return $this;
     }
 }

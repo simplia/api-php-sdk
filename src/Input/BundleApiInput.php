@@ -14,13 +14,10 @@ namespace Simplia\Api\Input;
  */
 final class BundleApiInput extends AbstractApiInput {
     /**
-     * The parts, at least one, each stock item once.
-     * @param list<BundlePartApiInput> $parts
+     * @param list<BundlePartApiInput> $parts The parts, at least one, each stock item once.
      */
-    public function setParts(array $parts): self {
+    public function __construct(array $parts) {
         self::validateArray($parts, BundlePartApiInput::class);
         $this->params['parts'] = $parts;
-
-        return $this;
     }
 }

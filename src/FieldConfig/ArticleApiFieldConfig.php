@@ -16,7 +16,7 @@ final class ArticleApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the article.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -25,7 +25,7 @@ final class ArticleApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Headline of the article. Null when none is stored.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -34,7 +34,7 @@ final class ArticleApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Teaser shown in listings, as HTML. Null when the article has none.
      */
-    public function withAnnotation(): self {
+    public function selectAnnotation(): self {
         $this->fields['annotation'] = true;
 
         return $this;
@@ -43,7 +43,7 @@ final class ArticleApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Body of the article, as HTML. Null when the article has none.
      */
-    public function withText(): self {
+    public function selectText(): self {
         $this->fields['text'] = true;
 
         return $this;
@@ -52,7 +52,7 @@ final class ArticleApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * When the article is published. Null when no date is set; such articles are listed too.
      */
-    public function withPublishedAt(): self {
+    public function selectPublishedAt(): self {
         $this->fields['published_at'] = true;
 
         return $this;
@@ -61,7 +61,7 @@ final class ArticleApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Path of the article on the shop's site, relative to the shop origin, such as `/blog/new-products`. Null when the article has no address.
      */
-    public function withUrl(): self {
+    public function selectUrl(): self {
         $this->fields['url'] = true;
 
         return $this;

@@ -9,16 +9,19 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Request;
 
+use Simplia\Api\Enum\PaymentType;
+
 /**
  * The filters and the sort of `payments.list` (GET /api/3/payments).
  */
 final class PaymentsApiRequest extends AbstractApiRequest {
     /**
      * Filter by payment type. Repeatable; allowed: cod, cash, online, card_terminal, currency_diff, internal, voucher, bank_transfer, paypal, loan (422 otherwise).
-     * @param list<'cod'|'cash'|'online'|'card_terminal'|'currency_diff'|'internal'|'voucher'|'bank_transfer'|'paypal'|'loan'> $type
+     * @param list<PaymentType> $type
      */
     public function whereType(array $type): self {
-        $this->params['type'] = $type;
+        self::validateArray($type, PaymentType::class);
+        $this->params['type'] = array_map(static fn(PaymentType $value): string => $value->value, $type);
 
         return $this;
     }

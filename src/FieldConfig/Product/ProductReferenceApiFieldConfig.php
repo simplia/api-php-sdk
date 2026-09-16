@@ -18,7 +18,7 @@ final class ProductReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the product; the same value as `Product.id`.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -27,7 +27,7 @@ final class ProductReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Product name in the request language. Null when the product no longer exists or has no name in that language.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;

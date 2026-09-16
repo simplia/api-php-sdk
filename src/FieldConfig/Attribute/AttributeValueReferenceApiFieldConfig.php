@@ -18,7 +18,7 @@ final class AttributeValueReferenceApiFieldConfig extends AbstractApiFieldConfig
     /**
      * Value id, one of the `values[].id` of the attribute.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -27,7 +27,7 @@ final class AttributeValueReferenceApiFieldConfig extends AbstractApiFieldConfig
     /**
      * Name in the request language. Null when the value has no name in that language.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;

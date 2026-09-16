@@ -18,7 +18,7 @@ final class ReviewReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the review; the same value as `Review.id`.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -27,7 +27,7 @@ final class ReviewReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The language that review is written in, as the shop's own language code.
      */
-    public function withLanguage(): self {
+    public function selectLanguage(): self {
         $this->fields['language'] = true;
 
         return $this;

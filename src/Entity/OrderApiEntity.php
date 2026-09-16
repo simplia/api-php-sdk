@@ -15,6 +15,7 @@ use Simplia\Api\Entity\Order\OrderItemApiEntity;
 use Simplia\Api\Entity\Order\OrderPackagingApiEntity;
 use Simplia\Api\Entity\Order\PackageApiEntity;
 use Simplia\Api\Entity\Order\PaymentApiEntity;
+use Simplia\Api\Enum\OrderStatus;
 use Simplia\Api\FieldConfig\OrderApiFieldConfig;
 use Simplia\Api\Money;
 
@@ -121,12 +122,10 @@ final class OrderApiEntity extends AbstractApiEntity {
     }
 
     /**
-     * Where the order stands: `unprocessed` (new, not yet handled), `processed` (accepted for processing), `waiting` (on hold, for stock or payment), `ready` (picked and packed, waiting for the carrier), `finished` (dispatched), `cancelled`. Empty for an order whose stored state has no public value.
-     * @return 'unprocessed'|'processed'|'waiting'|'ready'|'finished'|'cancelled'
-     * @phpstan-return string
+     * Where the order stands: `unprocessed` (new, not yet handled), `processed` (accepted for processing), `waiting` (on hold, for stock or payment), `ready` (picked and packed, waiting for the carrier), `finished` (dispatched), `cancelled`. Null for an order without a stored state, or whose stored state has no public value: archived, deleted, or one of the older paid/unpaid states.
      */
-    public function getStatus(): string {
-        return $this->readString('status');
+    public function getStatus(): ?OrderStatus {
+        return $this->readEnumOrNull('status', OrderStatus::class);
     }
 
     /**

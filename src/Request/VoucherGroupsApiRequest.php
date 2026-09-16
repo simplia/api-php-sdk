@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Request;
 
+use Simplia\Api\Enum\VoucherGroupKind;
+
 /**
  * The filters and the sort of `voucher-groups.list` (GET /api/3/voucher-groups).
  */
@@ -34,10 +36,9 @@ final class VoucherGroupsApiRequest extends AbstractApiRequest {
 
     /**
      * Only the groups whose codes work this way. An unknown value is a 422 violation.
-     * @param 'percentage'|'amount'|'n_plus_1'|'percentage_most_expensive_with_limit'|'percentage_with_limit'|'credit' $kind
      */
-    public function whereKind(string $kind): self {
-        $this->params['kind'] = $kind;
+    public function whereKind(VoucherGroupKind $kind): self {
+        $this->params['kind'] = $kind->value;
 
         return $this;
     }

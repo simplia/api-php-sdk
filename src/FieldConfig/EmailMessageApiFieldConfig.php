@@ -16,7 +16,7 @@ final class EmailMessageApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Message-ID the mail transport assigned to the message handed to the mail server; use it to correlate with mail logs. Where sending is suppressed, the fixed value `debug-suppressed`.
      */
-    public function withMessageId(): self {
+    public function selectMessageId(): self {
         $this->fields['message_id'] = true;
 
         return $this;

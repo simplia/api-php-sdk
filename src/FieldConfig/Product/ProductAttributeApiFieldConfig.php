@@ -20,7 +20,7 @@ final class ProductAttributeApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The attribute; its `type` says which of `value` and `values` carries the answer.
      */
-    public function withAttribute(AttributeReferenceApiFieldConfig $config): self {
+    public function selectAttribute(AttributeReferenceApiFieldConfig $config): self {
         $this->fields['attribute'] = $config;
 
         return $this;
@@ -29,7 +29,7 @@ final class ProductAttributeApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The stored value, as text, for a `text`, `integer` or `boolean` attribute — a number or a yes/no is stored as text too. Null for a choice attribute.
      */
-    public function withValue(): self {
+    public function selectValue(): self {
         $this->fields['value'] = true;
 
         return $this;
@@ -38,7 +38,7 @@ final class ProductAttributeApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The chosen values, in the attribute's order, for a `choice` or `multi_choice` attribute. Empty for the other kinds.
      */
-    public function withValues(AttributeValueReferenceApiFieldConfig $config): self {
+    public function selectValues(AttributeValueReferenceApiFieldConfig $config): self {
         $this->fields['values'] = $config;
 
         return $this;

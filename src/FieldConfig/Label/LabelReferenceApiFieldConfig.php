@@ -19,7 +19,7 @@ final class LabelReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Label id; `GET /labels/{id}` answers the whole record.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -28,7 +28,7 @@ final class LabelReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The short code the shop gave the label. Null when it has none.
      */
-    public function withCode(): self {
+    public function selectCode(): self {
         $this->fields['code'] = true;
 
         return $this;
@@ -37,7 +37,7 @@ final class LabelReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Name in the request language. Null when the label has no name in that language.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -46,7 +46,7 @@ final class LabelReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The label's colour as a hexadecimal `#rrggbb` value. Null when the shop set none.
      */
-    public function withColor(): self {
+    public function selectColor(): self {
         $this->fields['color'] = true;
 
         return $this;
@@ -55,7 +55,7 @@ final class LabelReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The label's picture, shown in place of its name when the shop stored one. Null when none is stored.
      */
-    public function withImage(ImageApiFieldConfig $config): self {
+    public function selectImage(ImageApiFieldConfig $config): self {
         $this->fields['image'] = $config;
 
         return $this;

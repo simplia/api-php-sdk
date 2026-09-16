@@ -19,7 +19,7 @@ final class StockLevelApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the stock level row. Not a stock item id.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -28,7 +28,7 @@ final class StockLevelApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The stock room the level is counted in; the same object as `GET /stock-rooms/{id}`.
      */
-    public function withStockRoom(StockRoomApiFieldConfig $config): self {
+    public function selectStockRoom(StockRoomApiFieldConfig $config): self {
         $this->fields['stock_room'] = $config;
 
         return $this;
@@ -37,7 +37,7 @@ final class StockLevelApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Pieces physically in this stock room.
      */
-    public function withQuantity(): self {
+    public function selectQuantity(): self {
         $this->fields['quantity'] = true;
 
         return $this;
@@ -46,7 +46,7 @@ final class StockLevelApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Pieces in this stock room committed to open orders.
      */
-    public function withReservedQuantity(): self {
+    public function selectReservedQuantity(): self {
         $this->fields['reserved_quantity'] = true;
 
         return $this;
@@ -55,7 +55,7 @@ final class StockLevelApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Minimum stock the shop wants to hold in this stock room; internal transfers top it up towards this level. 0 when none is set.
      */
-    public function withMinimumQuantity(): self {
+    public function selectMinimumQuantity(): self {
         $this->fields['minimum_quantity'] = true;
 
         return $this;
@@ -64,7 +64,7 @@ final class StockLevelApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Target level a top-up transfer aims for in this stock room. 0 when none is set.
      */
-    public function withOptimalQuantity(): self {
+    public function selectOptimalQuantity(): self {
         $this->fields['optimal_quantity'] = true;
 
         return $this;
@@ -73,7 +73,7 @@ final class StockLevelApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Ceiling for this stock room; excess above it can be moved elsewhere. 0 when none is set.
      */
-    public function withMaximumQuantity(): self {
+    public function selectMaximumQuantity(): self {
         $this->fields['maximum_quantity'] = true;
 
         return $this;
@@ -82,7 +82,7 @@ final class StockLevelApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Manually maintained suggested piece count for logistic planning. 0 when none is set.
      */
-    public function withSuggestedQuantity(): self {
+    public function selectSuggestedQuantity(): self {
         $this->fields['suggested_quantity'] = true;
 
         return $this;

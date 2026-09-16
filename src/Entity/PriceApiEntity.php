@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
+use Simplia\Api\Enum\PriceSource;
 use Simplia\Api\FieldConfig\PriceApiFieldConfig;
 use Simplia\Api\Money;
 
@@ -67,11 +68,9 @@ final class PriceApiEntity extends AbstractApiEntity {
 
     /**
      * Where the stored value came from: `manual` (entered by a person, an import or this API), `bot` (an automated repricing job), `fallback` (derived from another price list).
-     * @return 'manual'|'bot'|'fallback'
-     * @phpstan-return string
      */
-    public function getSource(): string {
-        return $this->readString('source');
+    public function getSource(): PriceSource {
+        return $this->readEnum('source', PriceSource::class);
     }
 
     public static function createFieldConfig(): PriceApiFieldConfig {

@@ -23,7 +23,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the order. The address of every write, and the value `OrderItem.order_id` and the `order_id` filter of `GET /packages` carry.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -32,7 +32,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The order number shown to customers and staff. Readable by `GET /orders/by-code/{code}`. Null when the order has no number yet.
      */
-    public function withCode(): self {
+    public function selectCode(): self {
         $this->fields['code'] = true;
 
         return $this;
@@ -41,7 +41,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The order's identifier in the system it came from: a marketplace order id, or the value supplied when the order was created through this API. Null for an order placed in the shop itself.
      */
-    public function withExternalCode(): self {
+    public function selectExternalCode(): self {
         $this->fields['external_code'] = true;
 
         return $this;
@@ -50,7 +50,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Address of the shop (domain) the order was placed on. Null when it was not recorded.
      */
-    public function withShopUrl(): self {
+    public function selectShopUrl(): self {
         $this->fields['shop_url'] = true;
 
         return $this;
@@ -59,7 +59,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Public link at which the customer can follow this order. Null when the shop it was placed on no longer exists.
      */
-    public function withOnlineUrl(): self {
+    public function selectOnlineUrl(): self {
         $this->fields['online_url'] = true;
 
         return $this;
@@ -68,7 +68,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * When the order was placed.
      */
-    public function withCreatedAt(): self {
+    public function selectCreatedAt(): self {
         $this->fields['created_at'] = true;
 
         return $this;
@@ -77,7 +77,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Day before which the order must not be dispatched, as asked by the customer or an operator. Null when dispatch is not postponed.
      */
-    public function withDelayedUntilDate(): self {
+    public function selectDelayedUntilDate(): self {
         $this->fields['delayed_until_date'] = true;
 
         return $this;
@@ -86,7 +86,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Day the shop expects to dispatch the order: an estimate, not an instruction. Null when there is no estimate.
      */
-    public function withExpectedDispatchDate(): self {
+    public function selectExpectedDispatchDate(): self {
         $this->fields['expected_dispatch_date'] = true;
 
         return $this;
@@ -95,7 +95,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * When the order entered its current `status`. Null when no transition has been recorded.
      */
-    public function withStatusChangedAt(): self {
+    public function selectStatusChangedAt(): self {
         $this->fields['status_changed_at'] = true;
 
         return $this;
@@ -104,7 +104,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * When the customer took delivery of the goods, as reported by the carrier. Null until then, and null for an order without an invoice.
      */
-    public function withPickedUpAt(): self {
+    public function selectPickedUpAt(): self {
         $this->fields['picked_up_at'] = true;
 
         return $this;
@@ -113,7 +113,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * ISO 4217 code of the currency the customer ordered in. Empty when the order has no currency recorded.
      */
-    public function withCurrency(): self {
+    public function selectCurrency(): self {
         $this->fields['currency'] = true;
 
         return $this;
@@ -122,7 +122,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Whether the order is handled by an external fulfillment partner rather than the shop's own warehouse.
      */
-    public function withFulfillment(): self {
+    public function selectFulfillment(): self {
         $this->fields['fulfillment'] = true;
 
         return $this;
@@ -131,7 +131,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the marketplace the order was imported from, as the marketplace connector reports it. Null for an order that did not come through a marketplace.
      */
-    public function withMarketplaceSourceId(): self {
+    public function selectMarketplaceSourceId(): self {
         $this->fields['marketplace_source_id'] = true;
 
         return $this;
@@ -140,16 +140,16 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Name of the marketplace the order was imported from, as the connector reports it (for example `Amazon`). Null for an order that did not come through a marketplace.
      */
-    public function withMarketplaceSource(): self {
+    public function selectMarketplaceSource(): self {
         $this->fields['marketplace_source'] = true;
 
         return $this;
     }
 
     /**
-     * Where the order stands: `unprocessed` (new, not yet handled), `processed` (accepted for processing), `waiting` (on hold, for stock or payment), `ready` (picked and packed, waiting for the carrier), `finished` (dispatched), `cancelled`. Empty for an order whose stored state has no public value.
+     * Where the order stands: `unprocessed` (new, not yet handled), `processed` (accepted for processing), `waiting` (on hold, for stock or payment), `ready` (picked and packed, waiting for the carrier), `finished` (dispatched), `cancelled`. Null for an order without a stored state, or whose stored state has no public value: archived, deleted, or one of the older paid/unpaid states.
      */
-    public function withStatus(): self {
+    public function selectStatus(): self {
         $this->fields['status'] = true;
 
         return $this;
@@ -158,7 +158,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Exchange rate frozen on the order: how many units of the shop's main currency one unit of `currency` is worth. 0 when no rate was recorded.
      */
-    public function withCurrencyRate(): self {
+    public function selectCurrencyRate(): self {
         $this->fields['currency_rate'] = true;
 
         return $this;
@@ -167,7 +167,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Code of the carrier that delivers the order, such as `ppl`, `ups` or `gls`; `pickup` when the customer collects in person or no carrier is set.
      */
-    public function withCarrierCode(): self {
+    public function selectCarrierCode(): self {
         $this->fields['carrier_code'] = true;
 
         return $this;
@@ -176,7 +176,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Identifier of the pickup point or parcel shop the customer chose, in the carrier's own format. Null when the delivery goes to an address.
      */
-    public function withBranchCode(): self {
+    public function selectBranchCode(): self {
         $this->fields['branch_code'] = true;
 
         return $this;
@@ -185,7 +185,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Shipping and handling charged on the order, including VAT, in the shop's main currency.
      */
-    public function withDeliveryPrice(): self {
+    public function selectDeliveryPrice(): self {
         $this->fields['delivery_price'] = true;
 
         return $this;
@@ -194,7 +194,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Shipping and handling charged on the order, including VAT, in the order's own currency (`currency`): the amount the customer saw.
      */
-    public function withDeliveryPriceInOrderCurrency(): self {
+    public function selectDeliveryPriceInOrderCurrency(): self {
         $this->fields['delivery_price_in_order_currency'] = true;
 
         return $this;
@@ -203,7 +203,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Shipping and handling charged on the order, without VAT, in the shop's main currency.
      */
-    public function withDeliveryPriceWithoutVat(): self {
+    public function selectDeliveryPriceWithoutVat(): self {
         $this->fields['delivery_price_without_vat'] = true;
 
         return $this;
@@ -212,7 +212,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Shipping and handling charged on the order, without VAT, in the order's own currency (`currency`).
      */
-    public function withDeliveryPriceWithoutVatInOrderCurrency(): self {
+    public function selectDeliveryPriceWithoutVatInOrderCurrency(): self {
         $this->fields['delivery_price_without_vat_in_order_currency'] = true;
 
         return $this;
@@ -221,7 +221,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Label of the delivery and payment combination the customer chose, as it was named at the time. Null when not recorded.
      */
-    public function withDeliveryName(): self {
+    public function selectDeliveryName(): self {
         $this->fields['delivery_name'] = true;
 
         return $this;
@@ -230,7 +230,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * How the customer chose to pay: `cash_on_delivery` (pay the courier), `online` (card or payment gateway), `bank_transfer`, `cash` (in person), `against_invoice` (invoiced, paid later). Null for a payment type without a public value.
      */
-    public function withPaymentType(): self {
+    public function selectPaymentType(): self {
         $this->fields['payment_type'] = true;
 
         return $this;
@@ -239,7 +239,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The note the customer wrote with the order. Null when there is none.
      */
-    public function withNote(): self {
+    public function selectNote(): self {
         $this->fields['note'] = true;
 
         return $this;
@@ -248,7 +248,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Note to print on the invoice. Null when there is none.
      */
-    public function withInvoiceNote(): self {
+    public function selectInvoiceNote(): self {
         $this->fields['invoice_note'] = true;
 
         return $this;
@@ -257,7 +257,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Payment reference (variable symbol) the customer quotes on a bank transfer, derived from the order number. Null when the order has no number.
      */
-    public function withVariableSymbol(): self {
+    public function selectVariableSymbol(): self {
         $this->fields['variable_symbol'] = true;
 
         return $this;
@@ -266,7 +266,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * How urgently the warehouse should handle the order: 0 normal, 1 important, 2 urgent, 3 emergency. Set with `PUT /orders/{id}/priority`.
      */
-    public function withPriority(): self {
+    public function selectPriority(): self {
         $this->fields['priority'] = true;
 
         return $this;
@@ -275,7 +275,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Grand total of the order including VAT: the lines, minus discounts, plus shipping, in the shop's main currency. Included by default; a `fields` selection that does not name it leaves it out.
      */
-    public function withTotalPrice(): self {
+    public function selectTotalPrice(): self {
         $this->fields['total_price'] = true;
 
         return $this;
@@ -284,7 +284,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Grand total of the order including VAT, in the order's own currency (`currency`): what the customer was charged. Included by default; a `fields` selection that does not name it leaves it out.
      */
-    public function withTotalPriceInOrderCurrency(): self {
+    public function selectTotalPriceInOrderCurrency(): self {
         $this->fields['total_price_in_order_currency'] = true;
 
         return $this;
@@ -293,7 +293,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Grand total of the order without VAT, in the shop's main currency. Included by default; a `fields` selection that does not name it leaves it out.
      */
-    public function withTotalPriceWithoutVat(): self {
+    public function selectTotalPriceWithoutVat(): self {
         $this->fields['total_price_without_vat'] = true;
 
         return $this;
@@ -302,7 +302,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Grand total of the order without VAT, in the order's own currency (`currency`). Included by default; a `fields` selection that does not name it leaves it out.
      */
-    public function withTotalPriceWithoutVatInOrderCurrency(): self {
+    public function selectTotalPriceWithoutVatInOrderCurrency(): self {
         $this->fields['total_price_without_vat_in_order_currency'] = true;
 
         return $this;
@@ -311,7 +311,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Sum of the payments received against the order, in the shop's main currency. Included by default; a `fields` selection that does not name it leaves it out.
      */
-    public function withTotalPaid(): self {
+    public function selectTotalPaid(): self {
         $this->fields['total_paid'] = true;
 
         return $this;
@@ -320,7 +320,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Sum of the payments received against the order, in the order's own currency (`currency`): a payment made in that currency counts as paid; one made in another currency is converted from the shop's main currency at `currency_rate`. Null when such a conversion is impossible because the order has no exchange rate. Included by default; a `fields` selection that does not name it leaves it out.
      */
-    public function withTotalPaidInOrderCurrency(): self {
+    public function selectTotalPaidInOrderCurrency(): self {
         $this->fields['total_paid_in_order_currency'] = true;
 
         return $this;
@@ -329,7 +329,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The shipping method the order uses; the same object as `GET /transport-methods/{id}`. Null when none is linked.
      */
-    public function withTransportMethod(TransportMethodApiFieldConfig $config): self {
+    public function selectTransportMethod(TransportMethodApiFieldConfig $config): self {
         $this->fields['transport_method'] = $config;
 
         return $this;
@@ -338,7 +338,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The payment method the order uses; the same object as `GET /payment-methods/{id}`. Null when none is linked.
      */
-    public function withPaymentMethod(PaymentMethodApiFieldConfig $config): self {
+    public function selectPaymentMethod(PaymentMethodApiFieldConfig $config): self {
         $this->fields['payment_method'] = $config;
 
         return $this;
@@ -347,7 +347,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The store the order is assigned to. Null when it is not assigned to one.
      */
-    public function withStore(StoreApiFieldConfig $config): self {
+    public function selectStore(StoreApiFieldConfig $config): self {
         $this->fields['store'] = $config;
 
         return $this;
@@ -356,7 +356,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The store the order was entered at, when it was created at a point of sale. Null otherwise.
      */
-    public function withCreatedStore(StoreApiFieldConfig $config): self {
+    public function selectCreatedStore(StoreApiFieldConfig $config): self {
         $this->fields['created_store'] = $config;
 
         return $this;
@@ -365,7 +365,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The staff account that entered the order; the same record as `GET /admins/{id}`. Null when the customer placed it online.
      */
-    public function withCreatedBy(AdminApiFieldConfig $config): self {
+    public function selectCreatedBy(AdminApiFieldConfig $config): self {
         $this->fields['created_by'] = $config;
 
         return $this;
@@ -374,7 +374,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The storage center that fulfills the order; changed with `PATCH /orders/{id}`. Null when none is assigned.
      */
-    public function withStorageCenter(StorageCenterApiFieldConfig $config): self {
+    public function selectStorageCenter(StorageCenterApiFieldConfig $config): self {
         $this->fields['storage_center'] = $config;
 
         return $this;
@@ -383,7 +383,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The registered customer account that placed the order; the same record as `GET /users/{id}`. Null for a guest order.
      */
-    public function withUser(UserApiFieldConfig $config): self {
+    public function selectUser(UserApiFieldConfig $config): self {
         $this->fields['user'] = $config;
 
         return $this;
@@ -392,7 +392,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Where the goods are delivered. Null when no delivery address is recorded.
      */
-    public function withDeliveryAddress(ContactApiFieldConfig $config): self {
+    public function selectDeliveryAddress(ContactApiFieldConfig $config): self {
         $this->fields['delivery_address'] = $config;
 
         return $this;
@@ -401,7 +401,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Who is billed. Null when no separate billing address is recorded.
      */
-    public function withInvoiceAddress(ContactApiFieldConfig $config): self {
+    public function selectInvoiceAddress(ContactApiFieldConfig $config): self {
         $this->fields['invoice_address'] = $config;
 
         return $this;
@@ -410,7 +410,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The ordered lines. Cancelled lines are not included.
      */
-    public function withItems(OrderItemApiFieldConfig $config): self {
+    public function selectItems(OrderItemApiFieldConfig $config): self {
         $this->fields['items'] = $config;
 
         return $this;
@@ -419,7 +419,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Payments recorded against the order.
      */
-    public function withPayments(PaymentApiFieldConfig $config): self {
+    public function selectPayments(PaymentApiFieldConfig $config): self {
         $this->fields['payments'] = $config;
 
         return $this;
@@ -428,7 +428,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Closed documents issued for the order; each the same record as `GET /documents/{id}`, selectable through `documents.…`.
      */
-    public function withDocuments(DocumentApiFieldConfig $config): self {
+    public function selectDocuments(DocumentApiFieldConfig $config): self {
         $this->fields['documents'] = $config;
 
         return $this;
@@ -437,7 +437,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Discounts applied to the order, each shown as its own line.
      */
-    public function withDiscounts(OrderDiscountApiFieldConfig $config): self {
+    public function selectDiscounts(OrderDiscountApiFieldConfig $config): self {
         $this->fields['discounts'] = $config;
 
         return $this;
@@ -446,7 +446,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Shipments sent for the order.
      */
-    public function withPackages(PackageApiFieldConfig $config): self {
+    public function selectPackages(PackageApiFieldConfig $config): self {
         $this->fields['packages'] = $config;
 
         return $this;
@@ -455,7 +455,7 @@ final class OrderApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Warehouse picking and packing sessions logged for the order.
      */
-    public function withPackagingHistories(OrderPackagingApiFieldConfig $config): self {
+    public function selectPackagingHistories(OrderPackagingApiFieldConfig $config): self {
         $this->fields['packaging_histories'] = $config;
 
         return $this;

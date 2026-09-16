@@ -16,12 +16,10 @@ use Simplia\Api\Money;
  */
 final class VoucherCreateApiInput extends AbstractApiInput {
     /**
-     * Identifier of the voucher group the code belongs to (`Voucher.group.id`). Required; 404 when it does not exist.
+     * @param int $groupId Identifier of the voucher group the code belongs to (`Voucher.group.id`). Required; 404 when it does not exist.
      */
-    public function setGroupId(?int $groupId): self {
+    public function __construct(int $groupId) {
         $this->params['group_id'] = $groupId;
-
-        return $this;
     }
 
     /**

@@ -18,7 +18,7 @@ final class CategoryApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the category; the value `Product.main_category.id` carries and the `category` filter of `GET /products` takes.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -27,7 +27,7 @@ final class CategoryApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Category name in the request language. Null when the category has no text in that language.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -36,7 +36,7 @@ final class CategoryApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Names of the category and its ancestors, root first, joined by `|`, such as `Phones|Apple|iPhone`. An ancestor without a name in the request language leaves an empty segment.
      */
-    public function withPath(): self {
+    public function selectPath(): self {
         $this->fields['path'] = true;
 
         return $this;
@@ -45,7 +45,7 @@ final class CategoryApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Identifiers of the category and its ancestors, root first, this category last; one entry per segment of `path`.
      */
-    public function withPathIds(): self {
+    public function selectPathIds(): self {
         $this->fields['path_ids'] = true;
 
         return $this;
@@ -54,7 +54,7 @@ final class CategoryApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The category this one sits under, selectable to any depth up the tree; the same record as `GET /categories/{id}`. Null for a root of the tree.
      */
-    public function withParent(CategoryApiFieldConfig $config): self {
+    public function selectParent(CategoryApiFieldConfig $config): self {
         $this->fields['parent'] = $config;
 
         return $this;
@@ -63,7 +63,7 @@ final class CategoryApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Depth in the tree: 0 for a root, 1 for its subcategories, and so on; one less than the number of entries of `path_ids`.
      */
-    public function withLevel(): self {
+    public function selectLevel(): self {
         $this->fields['level'] = true;
 
         return $this;
@@ -72,7 +72,7 @@ final class CategoryApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Display order among the categories that share the same parent, lowest first. Null when never set.
      */
-    public function withPosition(): self {
+    public function selectPosition(): self {
         $this->fields['position'] = true;
 
         return $this;
@@ -81,7 +81,7 @@ final class CategoryApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Kind of category: `normal` (products are assigned to it), `alias` (a link to another category, whose products and page it shows) or `automatic` (its products are selected by a rule).
      */
-    public function withType(): self {
+    public function selectType(): self {
         $this->fields['type'] = true;
 
         return $this;
@@ -90,7 +90,7 @@ final class CategoryApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Whether the category is shown on the storefront. An inactive category keeps its products and its place in the tree.
      */
-    public function withActive(): self {
+    public function selectActive(): self {
         $this->fields['active'] = true;
 
         return $this;
@@ -99,7 +99,7 @@ final class CategoryApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The shop's own code for the category. Null when none is set.
      */
-    public function withCode(): self {
+    public function selectCode(): self {
         $this->fields['code'] = true;
 
         return $this;
@@ -108,7 +108,7 @@ final class CategoryApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Path of the category's page on the storefront in the request language, such as `/phones/apple/`; for an `alias` category, the path of the category it links to. Null when the category has no page in that language.
      */
-    public function withUrl(): self {
+    public function selectUrl(): self {
         $this->fields['url'] = true;
 
         return $this;
@@ -117,7 +117,7 @@ final class CategoryApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Number of active products in the category and its subcategories, as the shop last counted them; a parent includes the products of its children, and an `alias` category mirrors the count of the category it links to. Null when never counted.
      */
-    public function withProductCount(): self {
+    public function selectProductCount(): self {
         $this->fields['product_count'] = true;
 
         return $this;
@@ -126,7 +126,7 @@ final class CategoryApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Harmonized System code the category's products are declared under on customs documents when a product carries no code of its own. Null when none is set.
      */
-    public function withHsCode(): self {
+    public function selectHsCode(): self {
         $this->fields['hs_code'] = true;
 
         return $this;
@@ -135,7 +135,7 @@ final class CategoryApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Name of the goods as written on customs documents for the category's products. Null when none is set.
      */
-    public function withCustomsName(): self {
+    public function selectCustomsName(): self {
         $this->fields['customs_name'] = true;
 
         return $this;
@@ -144,7 +144,7 @@ final class CategoryApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The category's main picture. Null when none is stored.
      */
-    public function withImage(ImageApiFieldConfig $config): self {
+    public function selectImage(ImageApiFieldConfig $config): self {
         $this->fields['image'] = $config;
 
         return $this;
@@ -153,7 +153,7 @@ final class CategoryApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * A small picture of the category, for a menu or a tile, wherever the storefront's template puts it. Null when none is stored.
      */
-    public function withIcon(ImageApiFieldConfig $config): self {
+    public function selectIcon(ImageApiFieldConfig $config): self {
         $this->fields['icon'] = $config;
 
         return $this;
@@ -162,7 +162,7 @@ final class CategoryApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * A background picture for the category's page. Null when none is stored.
      */
-    public function withBackground(ImageApiFieldConfig $config): self {
+    public function selectBackground(ImageApiFieldConfig $config): self {
         $this->fields['background'] = $config;
 
         return $this;
@@ -171,7 +171,7 @@ final class CategoryApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The background picture for narrow screens, when the storefront's template uses one. Null when none is stored.
      */
-    public function withBackgroundMobile(ImageApiFieldConfig $config): self {
+    public function selectBackgroundMobile(ImageApiFieldConfig $config): self {
         $this->fields['background_mobile'] = $config;
 
         return $this;
@@ -180,7 +180,7 @@ final class CategoryApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The content group (storefront tree) the category belongs to; its `id` is the value the `content_group` filter takes.
      */
-    public function withContentGroup(ContentGroupApiFieldConfig $config): self {
+    public function selectContentGroup(ContentGroupApiFieldConfig $config): self {
         $this->fields['content_group'] = $config;
 
         return $this;
@@ -189,7 +189,7 @@ final class CategoryApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * When the category was last written — a change to the category itself or a refresh of its product count — RFC 3339 with offset.
      */
-    public function withUpdatedAt(): self {
+    public function selectUpdatedAt(): self {
         $this->fields['updated_at'] = true;
 
         return $this;

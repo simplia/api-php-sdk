@@ -18,7 +18,7 @@ final class AdminReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the staff account; the same value as `Admin.id`.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -27,7 +27,7 @@ final class AdminReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Given name. Null when not filled.
      */
-    public function withFirstName(): self {
+    public function selectFirstName(): self {
         $this->fields['first_name'] = true;
 
         return $this;
@@ -36,7 +36,7 @@ final class AdminReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Family name. Null when not filled.
      */
-    public function withLastName(): self {
+    public function selectLastName(): self {
         $this->fields['last_name'] = true;
 
         return $this;

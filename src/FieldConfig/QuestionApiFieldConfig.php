@@ -19,7 +19,7 @@ final class QuestionApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the question.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -28,7 +28,7 @@ final class QuestionApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The product the question was asked about. Null when it was asked without one.
      */
-    public function withProduct(ProductReferenceApiFieldConfig $config): self {
+    public function selectProduct(ProductReferenceApiFieldConfig $config): self {
         $this->fields['product'] = $config;
 
         return $this;
@@ -37,7 +37,7 @@ final class QuestionApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The product name as recorded when the question was asked, which outlives the product. Null when none was recorded.
      */
-    public function withProductName(): self {
+    public function selectProductName(): self {
         $this->fields['product_name'] = true;
 
         return $this;
@@ -46,7 +46,7 @@ final class QuestionApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The name the customer gave; when none was given, the storefront records the part of the e-mail address before the @ in its place. Null when nothing is recorded.
      */
-    public function withAuthor(): self {
+    public function selectAuthor(): self {
         $this->fields['author'] = true;
 
         return $this;
@@ -55,7 +55,7 @@ final class QuestionApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The question, as plain text with its line breaks. Null when empty.
      */
-    public function withText(): self {
+    public function selectText(): self {
         $this->fields['text'] = true;
 
         return $this;
@@ -64,7 +64,7 @@ final class QuestionApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * State of the question: `open` (waiting for an answer), `postponed` (set aside by the shop), `answered`.
      */
-    public function withStatus(): self {
+    public function selectStatus(): self {
         $this->fields['status'] = true;
 
         return $this;
@@ -73,7 +73,7 @@ final class QuestionApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The shop's answer, the HTML as it was sent to the customer. Null when the question has not been answered.
      */
-    public function withAnswer(QuestionAnswerApiFieldConfig $config): self {
+    public function selectAnswer(QuestionAnswerApiFieldConfig $config): self {
         $this->fields['answer'] = $config;
 
         return $this;
@@ -82,7 +82,7 @@ final class QuestionApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * When the question was asked. The value the list sorts on by default.
      */
-    public function withCreatedAt(): self {
+    public function selectCreatedAt(): self {
         $this->fields['created_at'] = true;
 
         return $this;

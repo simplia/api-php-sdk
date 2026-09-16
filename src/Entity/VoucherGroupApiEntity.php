@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
+use Simplia\Api\Enum\VoucherGroupKind;
 use Simplia\Api\FieldConfig\VoucherGroupApiFieldConfig;
 use Simplia\Api\Money;
 
@@ -32,11 +33,9 @@ final class VoucherGroupApiEntity extends AbstractApiEntity {
 
     /**
      * What the group's codes do: `percentage` (a percentage off), `amount` (an amount off), `n_plus_1` (buy several, one is free), `percentage_with_limit` (a percentage off, up to a limit), `percentage_most_expensive_with_limit` (a percentage off the most expensive item, up to a limit), `credit` (an amount credited). Null when the record does not say.
-     * @return 'percentage'|'amount'|'n_plus_1'|'percentage_most_expensive_with_limit'|'percentage_with_limit'|'credit'|''|null
-     * @phpstan-return string|null
      */
-    public function getKind(): ?string {
-        return $this->readStringOrNull('kind');
+    public function getKind(): ?VoucherGroupKind {
+        return $this->readEnumOrNull('kind', VoucherGroupKind::class);
     }
 
     /**

@@ -16,7 +16,7 @@ final class AvailabilityApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the availability; by the shop's convention also the number of hours until the goods are available, 0 meaning in stock. The value `StockItem.availability_hours` carries.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -25,7 +25,7 @@ final class AvailabilityApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The shop's own label for this availability, in the request language.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;

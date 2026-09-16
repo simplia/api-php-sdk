@@ -18,7 +18,7 @@ final class AttributeApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Attribute id, the `attribute.id` a row of a product's `attributes` carries.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -27,7 +27,7 @@ final class AttributeApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Name in the request language. Null when the attribute has no name in that language.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -36,7 +36,7 @@ final class AttributeApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Unit of the value in the request language ("cm", "kg"), as the shop wrote it. Null when the attribute has none.
      */
-    public function withUnit(): self {
+    public function selectUnit(): self {
         $this->fields['unit'] = true;
 
         return $this;
@@ -45,7 +45,7 @@ final class AttributeApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * What a value of the attribute is: `text`, `integer` or `boolean` (a product stores one `value`, as text), `choice` (one of `values`) or `multi_choice` (several of `values`).
      */
-    public function withType(): self {
+    public function selectType(): self {
         $this->fields['type'] = true;
 
         return $this;
@@ -54,7 +54,7 @@ final class AttributeApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * What the attribute stands for, when the shop marked it: `size`, `color`, `gender`, `material`, `pattern`, `age_group`, `collection` or `season`. Null when it stands for nothing in particular.
      */
-    public function withMeaning(): self {
+    public function selectMeaning(): self {
         $this->fields['meaning'] = true;
 
         return $this;
@@ -63,7 +63,7 @@ final class AttributeApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The kind of record the attribute describes: `product` (it appears in a product's `attributes`), `brand`, `store`, `customer` or `article`. Null for a kind this document does not name.
      */
-    public function withAppliesTo(): self {
+    public function selectAppliesTo(): self {
         $this->fields['applies_to'] = true;
 
         return $this;
@@ -72,7 +72,7 @@ final class AttributeApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Whether the storefront shows the attribute at all.
      */
-    public function withActive(): self {
+    public function selectActive(): self {
         $this->fields['active'] = true;
 
         return $this;
@@ -81,7 +81,7 @@ final class AttributeApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Whether the storefront shows the attribute on the product's page.
      */
-    public function withOnDetail(): self {
+    public function selectOnDetail(): self {
         $this->fields['on_detail'] = true;
 
         return $this;
@@ -90,7 +90,7 @@ final class AttributeApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Whether the storefront offers the attribute as a filter of a product list.
      */
-    public function withInFilter(): self {
+    public function selectInFilter(): self {
         $this->fields['in_filter'] = true;
 
         return $this;
@@ -99,7 +99,7 @@ final class AttributeApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Position among the shop's attributes; lower first. The order of `sort=priority` and of a product's `attributes` list.
      */
-    public function withPriority(): self {
+    public function selectPriority(): self {
         $this->fields['priority'] = true;
 
         return $this;
@@ -108,7 +108,7 @@ final class AttributeApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * A picture standing for the attribute, when the shop stored one. Null when none is stored.
      */
-    public function withImage(ImageApiFieldConfig $config): self {
+    public function selectImage(ImageApiFieldConfig $config): self {
         $this->fields['image'] = $config;
 
         return $this;
@@ -117,7 +117,7 @@ final class AttributeApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * For a `choice` or `multi_choice` attribute, the values a product can carry, in the shop's order (`priority`, then id). Empty for the other kinds.
      */
-    public function withValues(AttributeValueApiFieldConfig $config): self {
+    public function selectValues(AttributeValueApiFieldConfig $config): self {
         $this->fields['values'] = $config;
 
         return $this;

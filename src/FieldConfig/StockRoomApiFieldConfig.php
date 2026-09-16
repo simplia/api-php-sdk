@@ -16,7 +16,7 @@ final class StockRoomApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the stock room; the {stock_room} of the location and stock-adjustment writes, and the value stock_levels[].stock_room.id carries.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -25,7 +25,7 @@ final class StockRoomApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Name of the stock room. Null when none is stored.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -34,7 +34,7 @@ final class StockRoomApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The storage center the room belongs to; the same object as GET /storage-centers/{id}.
      */
-    public function withStorageCenter(StorageCenterApiFieldConfig $config): self {
+    public function selectStorageCenter(StorageCenterApiFieldConfig $config): self {
         $this->fields['storage_center'] = $config;
 
         return $this;

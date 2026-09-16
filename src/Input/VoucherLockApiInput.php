@@ -14,20 +14,11 @@ namespace Simplia\Api\Input;
  */
 final class VoucherLockApiInput extends AbstractApiInput {
     /**
-     * A token you choose to identify the holder of the lock, such as a till or session identifier. Present it again to activate, apply or release. Locking again with the same key replaces your own lock.
+     * @param string $key A token you choose to identify the holder of the lock, such as a till or session identifier. Present it again to activate, apply or release. Locking again with the same key replaces your own lock.
+     * @param int $ttl How long the lock lasts, in seconds, from 30 to 604800 (7 days).
      */
-    public function setKey(?string $key): self {
+    public function __construct(string $key, int $ttl) {
         $this->params['key'] = $key;
-
-        return $this;
-    }
-
-    /**
-     * How long the lock lasts, in seconds, from 30 to 604800 (7 days).
-     */
-    public function setTtl(?int $ttl): self {
         $this->params['ttl'] = $ttl;
-
-        return $this;
     }
 }

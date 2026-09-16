@@ -14,13 +14,10 @@ namespace Simplia\Api\Input;
  */
 final class PriceBatchApiInput extends AbstractApiInput {
     /**
-     * The rows, 1 to 1000, each stock item once.
-     * @param list<PriceItemApiInput> $prices
+     * @param list<PriceItemApiInput> $prices The rows, 1 to 1000, each stock item once.
      */
-    public function setPrices(array $prices): self {
+    public function __construct(array $prices) {
         self::validateArray($prices, PriceItemApiInput::class);
         $this->params['prices'] = $prices;
-
-        return $this;
     }
 }

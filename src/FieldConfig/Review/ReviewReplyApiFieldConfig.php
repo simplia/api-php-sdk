@@ -19,7 +19,7 @@ final class ReviewReplyApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The reply, as written.
      */
-    public function withText(): self {
+    public function selectText(): self {
         $this->fields['text'] = true;
 
         return $this;
@@ -28,7 +28,7 @@ final class ReviewReplyApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * When the reply was written in the shop. Null for a reply the shop gave on the portal the review came from.
      */
-    public function withRepliedAt(): self {
+    public function selectRepliedAt(): self {
         $this->fields['replied_at'] = true;
 
         return $this;
@@ -37,7 +37,7 @@ final class ReviewReplyApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The staff account that wrote the reply in the shop. Null for a reply given on the portal, or when the account was deleted.
      */
-    public function withRepliedBy(AdminReferenceApiFieldConfig $config): self {
+    public function selectRepliedBy(AdminReferenceApiFieldConfig $config): self {
         $this->fields['replied_by'] = $config;
 
         return $this;

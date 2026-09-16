@@ -18,7 +18,7 @@ final class OrderDiscountApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the discount line. Not addressable by any endpoint.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -27,7 +27,7 @@ final class OrderDiscountApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Label of the discount as shown on the order, such as the discount code used.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -36,7 +36,7 @@ final class OrderDiscountApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Amount taken off the order, as a positive number including VAT, in the shop's main currency.
      */
-    public function withPrice(): self {
+    public function selectPrice(): self {
         $this->fields['price'] = true;
 
         return $this;
@@ -45,7 +45,7 @@ final class OrderDiscountApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Amount taken off the order, as a positive number including VAT, in the order's own currency.
      */
-    public function withPriceInOrderCurrency(): self {
+    public function selectPriceInOrderCurrency(): self {
         $this->fields['price_in_order_currency'] = true;
 
         return $this;
@@ -54,7 +54,7 @@ final class OrderDiscountApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * VAT rate the discount is applied at, as a percentage (21 for 21 %); used to split it into net and VAT. Null when not recorded.
      */
-    public function withVatRate(): self {
+    public function selectVatRate(): self {
         $this->fields['vat_rate'] = true;
 
         return $this;

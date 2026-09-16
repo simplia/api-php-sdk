@@ -18,7 +18,7 @@ final class CategoryReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the category; the value the `category` filter of `GET /products` takes.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -27,7 +27,7 @@ final class CategoryReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Category name in the request language. Null when the category has no text in that language.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -36,7 +36,7 @@ final class CategoryReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Names of the category and its ancestors, root first, joined by `|`, such as `Phones|Apple|iPhone`. An ancestor without a name in the request language leaves an empty segment.
      */
-    public function withPath(): self {
+    public function selectPath(): self {
         $this->fields['path'] = true;
 
         return $this;
@@ -45,7 +45,7 @@ final class CategoryReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Identifiers of the category and its ancestors, root first, this category last; one entry per segment of `path`.
      */
-    public function withPathIds(): self {
+    public function selectPathIds(): self {
         $this->fields['path_ids'] = true;
 
         return $this;

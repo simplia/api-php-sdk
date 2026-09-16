@@ -14,21 +14,20 @@ namespace Simplia\Api\Input;
  */
 final class OrderCreateApiInput extends AbstractApiInput {
     /**
+     * @param list<OrderItemApiInput> $items The order lines, at least one.
+     * @param OrderDeliveryApiInput $delivery How the order ships and is paid: the transport and payment methods with their prices.
+     */
+    public function __construct(array $items, OrderDeliveryApiInput $delivery) {
+        self::validateArray($items, OrderItemApiInput::class);
+        $this->params['items'] = $items;
+        $this->params['delivery'] = $delivery;
+    }
+
+    /**
      * Your own identifier for the order, such as an ERP or marketplace order number. Returned as `Order.external_code`. An empty string is ignored.
      */
     public function setExternalCode(?string $externalCode): self {
         $this->params['external_code'] = $externalCode;
-
-        return $this;
-    }
-
-    /**
-     * The order lines, at least one.
-     * @param list<OrderItemApiInput> $items
-     */
-    public function setItems(array $items): self {
-        self::validateArray($items, OrderItemApiInput::class);
-        $this->params['items'] = $items;
 
         return $this;
     }
@@ -47,15 +46,6 @@ final class OrderCreateApiInput extends AbstractApiInput {
      */
     public function setInvoiceAddress(?OrderAddressApiInput $invoiceAddress): self {
         $this->params['invoice_address'] = $invoiceAddress;
-
-        return $this;
-    }
-
-    /**
-     * How the order ships and is paid: the transport and payment methods with their prices.
-     */
-    public function setDelivery(?OrderDeliveryApiInput $delivery): self {
-        $this->params['delivery'] = $delivery;
 
         return $this;
     }

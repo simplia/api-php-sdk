@@ -16,12 +16,10 @@ use Simplia\Api\Money;
  */
 final class StockItemUpdateApiInput extends AbstractApiInput {
     /**
-     * Identifier of the stock item to change (`StockItem.id`). Required; an unknown id is a 422 violation at `items[i].id`.
+     * @param int $id Identifier of the stock item to change (`StockItem.id`). Required; an unknown id is a 422 violation at `items[i].id`.
      */
-    public function setId(?int $id): self {
+    public function __construct(int $id) {
         $this->params['id'] = $id;
-
-        return $this;
     }
 
     /**

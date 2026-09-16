@@ -14,21 +14,12 @@ namespace Simplia\Api\Input;
  */
 final class ProductCreateApiInput extends AbstractApiInput {
     /**
-     * Identifier of the primary category (`Category.id`). Required.
+     * @param int $mainCategoryId Identifier of the primary category (`Category.id`). Required.
+     * @param string $name Product name, written to every shop language. Required.
      */
-    public function setMainCategoryId(?int $mainCategoryId): self {
+    public function __construct(int $mainCategoryId, string $name) {
         $this->params['main_category_id'] = $mainCategoryId;
-
-        return $this;
-    }
-
-    /**
-     * Product name, written to every shop language. Required.
-     */
-    public function setName(?string $name): self {
         $this->params['name'] = $name;
-
-        return $this;
     }
 
     /**

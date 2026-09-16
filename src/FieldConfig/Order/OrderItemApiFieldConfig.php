@@ -19,7 +19,7 @@ final class OrderItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the line; the same value as `OrderItem.id` at `GET /order-items/{id}`.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -28,7 +28,7 @@ final class OrderItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the order the line belongs to; the same value as `Order.id`.
      */
-    public function withOrderId(): self {
+    public function selectOrderId(): self {
         $this->fields['order_id'] = true;
 
         return $this;
@@ -37,7 +37,7 @@ final class OrderItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Order number of the order the line belongs to; the same value as `Order.code`. Null when the order has none.
      */
-    public function withOrderCode(): self {
+    public function selectOrderCode(): self {
         $this->fields['order_code'] = true;
 
         return $this;
@@ -46,7 +46,7 @@ final class OrderItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Product name followed by the variant name, as they were at the time of ordering.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -55,7 +55,7 @@ final class OrderItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Note attached to the line, such as a customization request. Null when there is none.
      */
-    public function withNote(): self {
+    public function selectNote(): self {
         $this->fields['note'] = true;
 
         return $this;
@@ -64,7 +64,7 @@ final class OrderItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Code (SKU) of the stock item on the line: the linked stock item's current code, or the code recorded on the line when nothing is linked.
      */
-    public function withCode(): self {
+    public function selectCode(): self {
         $this->fields['code'] = true;
 
         return $this;
@@ -73,7 +73,7 @@ final class OrderItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Number of units ordered on this line.
      */
-    public function withQuantity(): self {
+    public function selectQuantity(): self {
         $this->fields['quantity'] = true;
 
         return $this;
@@ -82,7 +82,7 @@ final class OrderItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Number of those units reserved in stock for this line: still in the warehouse, no longer available to anyone else. 0 when nothing is reserved.
      */
-    public function withBlockedQuantity(): self {
+    public function selectBlockedQuantity(): self {
         $this->fields['blocked_quantity'] = true;
 
         return $this;
@@ -91,7 +91,7 @@ final class OrderItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Price of one unit, including VAT, in the shop's main currency.
      */
-    public function withPrice(): self {
+    public function selectPrice(): self {
         $this->fields['price'] = true;
 
         return $this;
@@ -100,7 +100,7 @@ final class OrderItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Price of one unit, including VAT, in the order's own currency: the unit price the customer saw.
      */
-    public function withPriceInOrderCurrency(): self {
+    public function selectPriceInOrderCurrency(): self {
         $this->fields['price_in_order_currency'] = true;
 
         return $this;
@@ -109,7 +109,7 @@ final class OrderItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Price of one unit, without VAT, in the shop's main currency.
      */
-    public function withPriceWithoutVat(): self {
+    public function selectPriceWithoutVat(): self {
         $this->fields['price_without_vat'] = true;
 
         return $this;
@@ -118,7 +118,7 @@ final class OrderItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Price of one unit, without VAT, in the order's own currency.
      */
-    public function withPriceWithoutVatInOrderCurrency(): self {
+    public function selectPriceWithoutVatInOrderCurrency(): self {
         $this->fields['price_without_vat_in_order_currency'] = true;
 
         return $this;
@@ -127,7 +127,7 @@ final class OrderItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * VAT rate applied to the line, as a percentage (21 for 21 %).
      */
-    public function withVatRate(): self {
+    public function selectVatRate(): self {
         $this->fields['vat_rate'] = true;
 
         return $this;
@@ -136,7 +136,7 @@ final class OrderItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Discount applied to the line, as a percentage of the unit price. 0 when there is none.
      */
-    public function withDiscountPercentage(): self {
+    public function selectDiscountPercentage(): self {
         $this->fields['discount_percentage'] = true;
 
         return $this;
@@ -145,7 +145,7 @@ final class OrderItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The stock item the line refers to; the same record as `GET /stock-items/{id}`, any of its members selectable through `items.stock_item.…`. Null when the line has no linked stock item.
      */
-    public function withStockItem(StockItemApiFieldConfig $config): self {
+    public function selectStockItem(StockItemApiFieldConfig $config): self {
         $this->fields['stock_item'] = $config;
 
         return $this;
@@ -154,7 +154,7 @@ final class OrderItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Whether the line is a bundle: `none` (an ordinary product), `bundle` (a set of different products sold together), `multipack` (several units of one product or its variants sold as one pack).
      */
-    public function withBundleType(): self {
+    public function selectBundleType(): self {
         $this->fields['bundle_type'] = true;
 
         return $this;

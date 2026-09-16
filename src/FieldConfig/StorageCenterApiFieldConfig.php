@@ -16,7 +16,7 @@ final class StorageCenterApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the storage center; the value Order.storage_center.id and StockRoom.storage_center.id carry.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -25,7 +25,7 @@ final class StorageCenterApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Name of the storage center.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;

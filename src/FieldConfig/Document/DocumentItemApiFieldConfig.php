@@ -19,7 +19,7 @@ final class DocumentItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the line; the value `PUT /documents/{id}/rows/price` addresses in `items[].id`. Not a stock item id.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -28,7 +28,7 @@ final class DocumentItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The line's text as printed on the document. Null when the stored text is empty.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -37,7 +37,7 @@ final class DocumentItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Number of units the line covers. Negative on a document that issues goods. Null when not recorded.
      */
-    public function withQuantity(): self {
+    public function selectQuantity(): self {
         $this->fields['quantity'] = true;
 
         return $this;
@@ -46,7 +46,7 @@ final class DocumentItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Unit price including VAT, in the shop's main currency. Null when the line has no price.
      */
-    public function withPrice(): self {
+    public function selectPrice(): self {
         $this->fields['price'] = true;
 
         return $this;
@@ -55,7 +55,7 @@ final class DocumentItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Unit price including VAT, in the document's own currency (the document's `currency`, or the shop's main currency when none is recorded). Null when the line has no price in that currency.
      */
-    public function withPriceInDocumentCurrency(): self {
+    public function selectPriceInDocumentCurrency(): self {
         $this->fields['price_in_document_currency'] = true;
 
         return $this;
@@ -64,7 +64,7 @@ final class DocumentItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * VAT rate applied to the line, as a percentage (21 for 21 %).
      */
-    public function withVatRate(): self {
+    public function selectVatRate(): self {
         $this->fields['vat_rate'] = true;
 
         return $this;
@@ -73,7 +73,7 @@ final class DocumentItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * What the line is: `item` (a stock item), `bundle` (a bundle of items), `discount`, `shipping` (delivery charge), `deposit` (an advance payment), `rounding` (cash rounding), `other`. Null when not recorded.
      */
-    public function withType(): self {
+    public function selectType(): self {
         $this->fields['type'] = true;
 
         return $this;
@@ -82,7 +82,7 @@ final class DocumentItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The stock item the line refers to; the same record as `GET /stock-items/{id}`, any of its members selectable through `rows.stock_item.…`. Null for a line that is not a stock item, such as a discount, shipping, rounding or deposit line.
      */
-    public function withStockItem(StockItemApiFieldConfig $config): self {
+    public function selectStockItem(StockItemApiFieldConfig $config): self {
         $this->fields['stock_item'] = $config;
 
         return $this;

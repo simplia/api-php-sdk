@@ -16,7 +16,7 @@ final class LabelApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Label id, the `id` an entry of a product's `labels` carries.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -25,7 +25,7 @@ final class LabelApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * A short code the shop gave the label: lowercase letters, digits and underscores, unique among the shop's labels. Null when the label has none.
      */
-    public function withCode(): self {
+    public function selectCode(): self {
         $this->fields['code'] = true;
 
         return $this;
@@ -34,7 +34,7 @@ final class LabelApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Name in the request language. Null when the label has no name in that language.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -43,7 +43,7 @@ final class LabelApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The label's colour as a hexadecimal `#rrggbb` value. Null when the shop set none.
      */
-    public function withColor(): self {
+    public function selectColor(): self {
         $this->fields['color'] = true;
 
         return $this;
@@ -52,7 +52,7 @@ final class LabelApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The label's picture, shown in place of its name when the shop stored one. Null when none is stored.
      */
-    public function withImage(ImageApiFieldConfig $config): self {
+    public function selectImage(ImageApiFieldConfig $config): self {
         $this->fields['image'] = $config;
 
         return $this;
@@ -61,7 +61,7 @@ final class LabelApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The kinds of record the label can be pinned on: `product`, `variant`, `storage_location`. Empty when the shop has not picked any.
      */
-    public function withAppliesTo(): self {
+    public function selectAppliesTo(): self {
         $this->fields['applies_to'] = true;
 
         return $this;
@@ -70,7 +70,7 @@ final class LabelApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Whether retail customers see the label.
      */
-    public function withPublicRetail(): self {
+    public function selectPublicRetail(): self {
         $this->fields['public_retail'] = true;
 
         return $this;
@@ -79,7 +79,7 @@ final class LabelApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Whether wholesale customers see the label.
      */
-    public function withPublicWholesale(): self {
+    public function selectPublicWholesale(): self {
         $this->fields['public_wholesale'] = true;
 
         return $this;
@@ -88,7 +88,7 @@ final class LabelApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Position among the shop's labels; lower first. The order of `sort=priority` and of a product's `labels` list.
      */
-    public function withPriority(): self {
+    public function selectPriority(): self {
         $this->fields['priority'] = true;
 
         return $this;
@@ -97,7 +97,7 @@ final class LabelApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The start of the label's validity window; before it the label is not shown.
      */
-    public function withStartsAt(): self {
+    public function selectStartsAt(): self {
         $this->fields['starts_at'] = true;
 
         return $this;
@@ -106,7 +106,7 @@ final class LabelApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The end of the label's validity window; after it the label is not shown.
      */
-    public function withEndsAt(): self {
+    public function selectEndsAt(): self {
         $this->fields['ends_at'] = true;
 
         return $this;

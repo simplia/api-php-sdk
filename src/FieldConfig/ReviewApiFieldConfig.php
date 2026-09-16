@@ -22,7 +22,7 @@ final class ReviewApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the review.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -31,7 +31,7 @@ final class ReviewApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * What the review is about: a `product`, or an `order` (the shopping experience as a whole).
      */
-    public function withSubject(): self {
+    public function selectSubject(): self {
         $this->fields['subject'] = true;
 
         return $this;
@@ -40,7 +40,7 @@ final class ReviewApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Where the review came from: `shop` for one written in the shop's own review form, otherwise the price-comparison portal it was imported from (Heureka, Zboží.cz, Biano, Árukereső, Compari or Pazaruvaj).
      */
-    public function withSource(): self {
+    public function selectSource(): self {
         $this->fields['source'] = true;
 
         return $this;
@@ -49,7 +49,7 @@ final class ReviewApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Moderation state: `pending` (not yet decided), `approved` (may be shown), `rejected`.
      */
-    public function withStatus(): self {
+    public function selectStatus(): self {
         $this->fields['status'] = true;
 
         return $this;
@@ -58,7 +58,7 @@ final class ReviewApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The reviewed product. Null for a review of an order.
      */
-    public function withProduct(ProductReferenceApiFieldConfig $config): self {
+    public function selectProduct(ProductReferenceApiFieldConfig $config): self {
         $this->fields['product'] = $config;
 
         return $this;
@@ -67,7 +67,7 @@ final class ReviewApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The order the review is linked to: the reviewed order, or the order the reviewed product was bought in. Null when there is none or it was deleted.
      */
-    public function withOrder(OrderReferenceApiFieldConfig $config): self {
+    public function selectOrder(OrderReferenceApiFieldConfig $config): self {
         $this->fields['order'] = $config;
 
         return $this;
@@ -76,7 +76,7 @@ final class ReviewApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The name the reviewer gave, as it is shown with the review. Null when none was given.
      */
-    public function withAuthor(): self {
+    public function selectAuthor(): self {
         $this->fields['author'] = true;
 
         return $this;
@@ -85,7 +85,7 @@ final class ReviewApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Overall rating, 0 to 5 stars. Null when the reviewer gave none.
      */
-    public function withRating(): self {
+    public function selectRating(): self {
         $this->fields['rating'] = true;
 
         return $this;
@@ -94,7 +94,7 @@ final class ReviewApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The review text, as written. Null when the reviewer wrote none.
      */
-    public function withText(): self {
+    public function selectText(): self {
         $this->fields['text'] = true;
 
         return $this;
@@ -103,7 +103,7 @@ final class ReviewApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * What the reviewer liked, when the form asked for it separately. Null when none was given.
      */
-    public function withPros(): self {
+    public function selectPros(): self {
         $this->fields['pros'] = true;
 
         return $this;
@@ -112,7 +112,7 @@ final class ReviewApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * What the reviewer disliked, when the form asked for it separately. Null when none was given.
      */
-    public function withCons(): self {
+    public function selectCons(): self {
         $this->fields['cons'] = true;
 
         return $this;
@@ -121,7 +121,7 @@ final class ReviewApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The further answers of an order review: whether the customer recommends the shop and the star ratings of the delivery, the transport, the website, the communication and the pick-up. Null when the review stores none of them, which is the case for a product review.
      */
-    public function withDetails(ReviewDetailsApiFieldConfig $config): self {
+    public function selectDetails(ReviewDetailsApiFieldConfig $config): self {
         $this->fields['details'] = $config;
 
         return $this;
@@ -130,7 +130,7 @@ final class ReviewApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The pictures the reviewer attached, in the shop's order. Empty when there are none.
      */
-    public function withImages(ImageApiFieldConfig $config): self {
+    public function selectImages(ImageApiFieldConfig $config): self {
         $this->fields['images'] = $config;
 
         return $this;
@@ -139,7 +139,7 @@ final class ReviewApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The shop's reply to the review: the one written in the shop, or, for an imported review, the one the shop gave on the portal. Null when there is none.
      */
-    public function withReply(ReviewReplyApiFieldConfig $config): self {
+    public function selectReply(ReviewReplyApiFieldConfig $config): self {
         $this->fields['reply'] = $config;
 
         return $this;
@@ -148,7 +148,7 @@ final class ReviewApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The language the review is written in, as the shop's own language code.
      */
-    public function withLanguage(): self {
+    public function selectLanguage(): self {
         $this->fields['language'] = true;
 
         return $this;
@@ -157,7 +157,7 @@ final class ReviewApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The review this one is a machine translation of. Null when this review is the original.
      */
-    public function withOriginal(ReviewReferenceApiFieldConfig $config): self {
+    public function selectOriginal(ReviewReferenceApiFieldConfig $config): self {
         $this->fields['original'] = $config;
 
         return $this;
@@ -166,7 +166,7 @@ final class ReviewApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The identifier the review carries on the portal it was imported from. Null when the review carries none.
      */
-    public function withExternalId(): self {
+    public function selectExternalId(): self {
         $this->fields['external_id'] = true;
 
         return $this;
@@ -175,7 +175,7 @@ final class ReviewApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * When the review was written. The value the list sorts on by default.
      */
-    public function withCreatedAt(): self {
+    public function selectCreatedAt(): self {
         $this->fields['created_at'] = true;
 
         return $this;

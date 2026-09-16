@@ -16,7 +16,7 @@ final class CashRegisterApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the till; the value `Document.cash_register.id` carries.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -25,7 +25,7 @@ final class CashRegisterApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Display name of the till.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -34,7 +34,7 @@ final class CashRegisterApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The store the till stands in. Null when it is not assigned to a store.
      */
-    public function withStore(StoreApiFieldConfig $config): self {
+    public function selectStore(StoreApiFieldConfig $config): self {
         $this->fields['store'] = $config;
 
         return $this;
@@ -43,7 +43,7 @@ final class CashRegisterApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Whether the till is in use. An inactive till is kept for the receipts that name it.
      */
-    public function withActive(): self {
+    public function selectActive(): self {
         $this->fields['active'] = true;
 
         return $this;

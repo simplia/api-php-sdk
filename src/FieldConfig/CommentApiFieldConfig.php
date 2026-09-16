@@ -22,7 +22,7 @@ final class CommentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the comment.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -31,7 +31,7 @@ final class CommentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * What the comment was written under: a `product`, a `category` or an `article`. The matching one of `product`, `category` and `article` is set.
      */
-    public function withSubject(): self {
+    public function selectSubject(): self {
         $this->fields['subject'] = true;
 
         return $this;
@@ -40,7 +40,7 @@ final class CommentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The product the comment was written under. Null unless `subject` is `product`.
      */
-    public function withProduct(ProductReferenceApiFieldConfig $config): self {
+    public function selectProduct(ProductReferenceApiFieldConfig $config): self {
         $this->fields['product'] = $config;
 
         return $this;
@@ -49,7 +49,7 @@ final class CommentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The category the comment was written under. Null unless `subject` is `category`.
      */
-    public function withCategory(CategoryReferenceApiFieldConfig $config): self {
+    public function selectCategory(CategoryReferenceApiFieldConfig $config): self {
         $this->fields['category'] = $config;
 
         return $this;
@@ -58,7 +58,7 @@ final class CommentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The article the comment was written under. Null unless `subject` is `article`.
      */
-    public function withArticle(ArticleReferenceApiFieldConfig $config): self {
+    public function selectArticle(ArticleReferenceApiFieldConfig $config): self {
         $this->fields['article'] = $config;
 
         return $this;
@@ -67,7 +67,7 @@ final class CommentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The comment this one replies to. Null for a comment that starts a thread; the `parent` filter lists the replies of a comment.
      */
-    public function withParent(CommentReferenceApiFieldConfig $config): self {
+    public function selectParent(CommentReferenceApiFieldConfig $config): self {
         $this->fields['parent'] = $config;
 
         return $this;
@@ -76,7 +76,7 @@ final class CommentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The title the writer gave the comment. Null when none was given.
      */
-    public function withTitle(): self {
+    public function selectTitle(): self {
         $this->fields['title'] = true;
 
         return $this;
@@ -85,7 +85,7 @@ final class CommentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The name the writer gave. Null when none was given.
      */
-    public function withAuthor(): self {
+    public function selectAuthor(): self {
         $this->fields['author'] = true;
 
         return $this;
@@ -94,7 +94,7 @@ final class CommentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The e-mail address the writer gave, as stored. Null when none was given.
      */
-    public function withEmail(): self {
+    public function selectEmail(): self {
         $this->fields['email'] = true;
 
         return $this;
@@ -103,7 +103,7 @@ final class CommentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The phone number the writer gave, as stored. Null when none was given.
      */
-    public function withPhone(): self {
+    public function selectPhone(): self {
         $this->fields['phone'] = true;
 
         return $this;
@@ -112,7 +112,7 @@ final class CommentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The staff account that wrote the comment, when a staff member wrote it in the shop's administration: a reply, or a comment of the shop's own. Null for a customer's comment.
      */
-    public function withStaff(AdminReferenceApiFieldConfig $config): self {
+    public function selectStaff(AdminReferenceApiFieldConfig $config): self {
         $this->fields['staff'] = $config;
 
         return $this;
@@ -121,7 +121,7 @@ final class CommentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The comment, as plain text with its line breaks. Null when empty.
      */
-    public function withText(): self {
+    public function selectText(): self {
         $this->fields['text'] = true;
 
         return $this;
@@ -130,7 +130,7 @@ final class CommentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Moderation state: `pending` (waiting for the shop's approval), `approved`. A rejected comment is deleted, so no third state exists.
      */
-    public function withStatus(): self {
+    public function selectStatus(): self {
         $this->fields['status'] = true;
 
         return $this;
@@ -139,7 +139,7 @@ final class CommentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * When the comment was approved. Null while it is pending.
      */
-    public function withApprovedAt(): self {
+    public function selectApprovedAt(): self {
         $this->fields['approved_at'] = true;
 
         return $this;
@@ -148,7 +148,7 @@ final class CommentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The star rating given with the comment, 0 to 5 stars. Null when none was given.
      */
-    public function withRating(): self {
+    public function selectRating(): self {
         $this->fields['rating'] = true;
 
         return $this;
@@ -157,7 +157,7 @@ final class CommentApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * When the comment was written. The value the list sorts on by default.
      */
-    public function withCreatedAt(): self {
+    public function selectCreatedAt(): self {
         $this->fields['created_at'] = true;
 
         return $this;

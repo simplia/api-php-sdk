@@ -12,6 +12,7 @@ namespace Simplia\Api\Endpoint;
 use Simplia\Api\Entity\TextPageApiEntity;
 use Simplia\Api\FieldConfig\TextPageApiFieldConfig;
 use Simplia\Api\Input\TextPageApiInput;
+use Simplia\Api\Input\TextPagePatchApiInput;
 use Simplia\Api\Request\TextPagesApiRequest;
 use Simplia\Api\RequestHandler;
 
@@ -63,7 +64,7 @@ final class TextPagesApiEndpoint extends AbstractApiEndpoint {
      * Update a text page.
      * Permission: api:text-pages:update.
      */
-    public function update(int $id, TextPageApiInput $input, ?TextPageApiFieldConfig $fields = null): TextPageApiEntity {
+    public function update(int $id, TextPagePatchApiInput $input, ?TextPageApiFieldConfig $fields = null): TextPageApiEntity {
         $result = $this->request('PATCH', 'text-pages/' . $id, [], $input, $fields, RequestHandler::MERGE_PATCH);
 
         return new TextPageApiEntity($result ?? throw new \UnexpectedValueException('The API answered without a body.'));

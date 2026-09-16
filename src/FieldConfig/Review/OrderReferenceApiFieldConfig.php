@@ -18,7 +18,7 @@ final class OrderReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the order; the same value as `Order.id`.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -27,7 +27,7 @@ final class OrderReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The order number shown to customers and staff; the same value as `Order.code`. Null when the order has none.
      */
-    public function withCode(): self {
+    public function selectCode(): self {
         $this->fields['code'] = true;
 
         return $this;

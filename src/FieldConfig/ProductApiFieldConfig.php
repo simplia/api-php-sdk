@@ -19,7 +19,7 @@ final class ProductApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the product; the same value as `StockItem.product.id`. Not a stock item id.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -28,7 +28,7 @@ final class ProductApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Product name in the request language. Null when the product has no text in that language.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -37,7 +37,7 @@ final class ProductApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * VAT rate applied to the product, as a percentage with two decimals (`21.00`).
      */
-    public function withVatRate(): self {
+    public function selectVatRate(): self {
         $this->fields['vat_rate'] = true;
 
         return $this;
@@ -46,7 +46,7 @@ final class ProductApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Short description shown in listings, in the request language, as HTML. Null when the product has no text in that language.
      */
-    public function withShortDescription(): self {
+    public function selectShortDescription(): self {
         $this->fields['short_description'] = true;
 
         return $this;
@@ -55,7 +55,7 @@ final class ProductApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Full description in the request language, as HTML. Null when the product has no text in that language.
      */
-    public function withLongDescription(): self {
+    public function selectLongDescription(): self {
         $this->fields['long_description'] = true;
 
         return $this;
@@ -64,7 +64,7 @@ final class ProductApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The brand the product is sold under; the same record as `GET /brands/{id}`. Null when none is set.
      */
-    public function withBrand(BrandApiFieldConfig $config): self {
+    public function selectBrand(BrandApiFieldConfig $config): self {
         $this->fields['brand'] = $config;
 
         return $this;
@@ -73,7 +73,7 @@ final class ProductApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The product's main image. Null when it has none.
      */
-    public function withMainImage(ImageApiFieldConfig $config): self {
+    public function selectMainImage(ImageApiFieldConfig $config): self {
         $this->fields['main_image'] = $config;
 
         return $this;
@@ -82,7 +82,7 @@ final class ProductApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The product's own pictures in the shop's order. The main picture is among them when it is one of them; a main picture chosen from a variant's pictures appears only as `main_image`. Empty when the product has no pictures of its own.
      */
-    public function withImages(ImageApiFieldConfig $config): self {
+    public function selectImages(ImageApiFieldConfig $config): self {
         $this->fields['images'] = $config;
 
         return $this;
@@ -91,7 +91,7 @@ final class ProductApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The supplier the shop buys the product from: the product's own supplier, or its brand's supplier when the product has none; the same record as `GET /suppliers/{id}`. Null when neither is set.
      */
-    public function withSupplier(SupplierApiFieldConfig $config): self {
+    public function selectSupplier(SupplierApiFieldConfig $config): self {
         $this->fields['supplier'] = $config;
 
         return $this;
@@ -100,7 +100,7 @@ final class ProductApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The shop's own code (SKU) of the product's stock item. Empty when none is set.
      */
-    public function withCode(): self {
+    public function selectCode(): self {
         $this->fields['code'] = true;
 
         return $this;
@@ -109,7 +109,7 @@ final class ProductApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The supplier's or manufacturer's part number for the product. Null when none is set.
      */
-    public function withCodeSupplier(): self {
+    public function selectCodeSupplier(): self {
         $this->fields['code_supplier'] = true;
 
         return $this;
@@ -118,7 +118,7 @@ final class ProductApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Barcode (EAN) of the product's stock item. Null when none is recorded.
      */
-    public function withEan(): self {
+    public function selectEan(): self {
         $this->fields['ean'] = true;
 
         return $this;
@@ -127,7 +127,7 @@ final class ProductApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The product's primary category, the one the `category` filter of `GET /products` matches; the same record as `GET /categories/{id}`.
      */
-    public function withMainCategory(CategoryApiFieldConfig $config): self {
+    public function selectMainCategory(CategoryApiFieldConfig $config): self {
         $this->fields['main_category'] = $config;
 
         return $this;
@@ -136,7 +136,7 @@ final class ProductApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The product's further category assignments within this storefront's category tree; each the same record as `GET /categories/{id}`. Empty when there are none.
      */
-    public function withCategories(CategoryApiFieldConfig $config): self {
+    public function selectCategories(CategoryApiFieldConfig $config): self {
         $this->fields['categories'] = $config;
 
         return $this;
@@ -145,7 +145,7 @@ final class ProductApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * What the product says about itself in the shop's attributes — its colour, material, size — in the shop's order: for each, the attribute, and either one `value` or the chosen `values`. Empty when the product carries none.
      */
-    public function withAttributes(ProductAttributeApiFieldConfig $config): self {
+    public function selectAttributes(ProductAttributeApiFieldConfig $config): self {
         $this->fields['attributes'] = $config;
 
         return $this;
@@ -154,7 +154,7 @@ final class ProductApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The labels pinned on the product, in the shop's order — every label assigned, whether or not it shows today (`GET /labels/{id}` says when and to whom). Empty when none is pinned.
      */
-    public function withLabels(LabelReferenceApiFieldConfig $config): self {
+    public function selectLabels(LabelReferenceApiFieldConfig $config): self {
         $this->fields['labels'] = $config;
 
         return $this;
@@ -163,7 +163,7 @@ final class ProductApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * When the product was created.
      */
-    public function withCreatedAt(): self {
+    public function selectCreatedAt(): self {
         $this->fields['created_at'] = true;
 
         return $this;

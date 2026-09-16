@@ -18,7 +18,7 @@ final class QuestionAnswerApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The answer as HTML, as it was sent to the customer.
      */
-    public function withText(): self {
+    public function selectText(): self {
         $this->fields['text'] = true;
 
         return $this;
@@ -27,7 +27,7 @@ final class QuestionAnswerApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * When the answer was sent. Null when not recorded.
      */
-    public function withAnsweredAt(): self {
+    public function selectAnsweredAt(): self {
         $this->fields['answered_at'] = true;
 
         return $this;

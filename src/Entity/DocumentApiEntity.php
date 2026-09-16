@@ -13,6 +13,8 @@ use Simplia\Api\Entity\Document\DocumentItemApiEntity;
 use Simplia\Api\Entity\DocumentApiEntity as DocumentApiEntity1;
 use Simplia\Api\Entity\Order\ContactApiEntity;
 use Simplia\Api\Entity\Order\PaymentApiEntity;
+use Simplia\Api\Enum\DocumentSubtype;
+use Simplia\Api\Enum\DocumentType;
 use Simplia\Api\FieldConfig\DocumentApiFieldConfig;
 
 /**
@@ -77,20 +79,16 @@ final class DocumentApiEntity extends AbstractApiEntity {
 
     /**
      * Kind of document: `invoice` (tax invoice), `deposit` (proforma or advance invoice), `storno` (cancellation voiding another document), `return` (credit note), `receipt` (till receipt), `stock_input` (goods received into a stock room), `stock_output` (goods issued from a stock room), `stock_transfer` (one leg of a transfer between stock rooms).
-     * @return 'deposit'|'invoice'|'storno'|'receipt'|'return'|'stock_input'|'stock_output'|'stock_transfer'
-     * @phpstan-return string
      */
-    public function getType(): string {
-        return $this->readString('type');
+    public function getType(): DocumentType {
+        return $this->readEnum('type', DocumentType::class);
     }
 
     /**
      * Reason or direction of a warehouse document; null for accounting documents. Transfer legs: `transfer_input`, `transfer_output`. Receipts: `stock_input_supplier` (from a supplier), `stock_input_invoice` (against an order), `stock_input_found` (found during a stock count), `stock_input_produced` (produced in-house). Issues: `stock_output_invoice` (for a customer order), `stock_output_receipt` (till sale), `stock_output_manual`, `stock_output_supplier_return`, `stock_output_reclaim` (warranty claim), `stock_output_destroyed` (write-off), `stock_output_consumption` (internal use), `stock_output_sample`, `stock_output_fabrication_consumption` (material consumed by production). Each has a `_commission` twin for consignment stock, goods held for a supplier who still owns them.
-     * @return 'transfer_input'|'transfer_output'|'transfer_input_commission'|'transfer_output_commission'|'stock_input_supplier'|'stock_input_commission'|'stock_input_invoice'|'stock_input_found'|'stock_input_produced'|'stock_output_commission'|'stock_output_invoice'|'stock_output_receipt'|'stock_output_supplier_return'|'stock_output_supplier_return_commission'|'stock_output_destroyed'|'stock_output_destroyed_commission'|'stock_output_manual'|'stock_output_sample'|'stock_output_sample_commission'|'stock_output_consumption'|'stock_output_consumption_commission'|'stock_output_fabrication_consumption'|'stock_output_reclaim'|'stock_output_reclaim_commission'|''|null
-     * @phpstan-return string|null
      */
-    public function getSubtype(): ?string {
-        return $this->readStringOrNull('subtype');
+    public function getSubtype(): ?DocumentSubtype {
+        return $this->readEnumOrNull('subtype', DocumentSubtype::class);
     }
 
     /**

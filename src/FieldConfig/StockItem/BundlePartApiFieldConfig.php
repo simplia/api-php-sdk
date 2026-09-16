@@ -19,7 +19,7 @@ final class BundlePartApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the part line. Not a stock item id.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -28,7 +28,7 @@ final class BundlePartApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * How many of the part go into one unit of the bundle.
      */
-    public function withQuantity(): self {
+    public function selectQuantity(): self {
         $this->fields['quantity'] = true;
 
         return $this;
@@ -37,7 +37,7 @@ final class BundlePartApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The stock item used as the part; the same record as `GET /stock-items/{id}`, any of its members selectable through `bundle_parts.stock_item.…`.
      */
-    public function withStockItem(StockItemApiFieldConfig $config): self {
+    public function selectStockItem(StockItemApiFieldConfig $config): self {
         $this->fields['stock_item'] = $config;
 
         return $this;

@@ -18,7 +18,7 @@ final class VoucherGroupReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the group; the same value as `VoucherGroup.id`, and the value VoucherCreateInput.group_id takes.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -27,7 +27,7 @@ final class VoucherGroupReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Name of the group as shown in the shop's administration.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;

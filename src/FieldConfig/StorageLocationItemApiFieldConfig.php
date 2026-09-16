@@ -16,7 +16,7 @@ final class StorageLocationItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the assignment of the item to the position.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -25,7 +25,7 @@ final class StorageLocationItemApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The stock item kept at the position; the same record as `GET /stock-items/{id}`, whose `storage_locations` name this position — any of its members selectable through `stock_item.…`.
      */
-    public function withStockItem(StockItemApiFieldConfig $config): self {
+    public function selectStockItem(StockItemApiFieldConfig $config): self {
         $this->fields['stock_item'] = $config;
 
         return $this;

@@ -16,21 +16,12 @@ use Simplia\Api\Money;
  */
 final class PriceItemApiInput extends AbstractApiInput {
     /**
-     * Identifier of the stock item to price (`StockItem.id`). An unknown or repeated id is a 422 violation at `prices[i].stock_item_id`.
+     * @param int $stockItemId Identifier of the stock item to price (`StockItem.id`). An unknown or repeated id is a 422 violation at `prices[i].stock_item_id`.
+     * @param Money $value The list price to store, in the price list's currency; anything else is a 422 violation at `prices[i].value.currency`. `0` stores a zero price, it does not delete the row.
      */
-    public function setStockItemId(int $stockItemId): self {
+    public function __construct(int $stockItemId, Money $value) {
         $this->params['stock_item_id'] = $stockItemId;
-
-        return $this;
-    }
-
-    /**
-     * The list price to store, in the price list's currency; anything else is a 422 violation at `prices[i].value.currency`. `0` stores a zero price, it does not delete the row.
-     */
-    public function setValue(?Money $value): self {
         $this->params['value'] = $value;
-
-        return $this;
     }
 
     /**

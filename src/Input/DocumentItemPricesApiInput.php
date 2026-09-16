@@ -14,13 +14,10 @@ namespace Simplia\Api\Input;
  */
 final class DocumentItemPricesApiInput extends AbstractApiInput {
     /**
-     * The lines to re-price, at least one. Violations across all lines are answered together as one 422.
-     * @param list<DocumentItemPriceApiInput> $items
+     * @param list<DocumentItemPriceApiInput> $items The lines to re-price, at least one. Violations across all lines are answered together as one 422.
      */
-    public function setItems(array $items): self {
+    public function __construct(array $items) {
         self::validateArray($items, DocumentItemPriceApiInput::class);
         $this->params['items'] = $items;
-
-        return $this;
     }
 }

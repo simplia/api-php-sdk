@@ -16,7 +16,7 @@ final class PaymentMethodApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the payment method in the request language; the same value as Order.payment_method.id, and what OrderDeliveryInput.payment_method_id takes.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -25,7 +25,7 @@ final class PaymentMethodApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Name of the payment method as shown to customers, in the request language.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;

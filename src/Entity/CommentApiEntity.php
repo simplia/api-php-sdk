@@ -14,6 +14,8 @@ use Simplia\Api\Entity\Article\ArticleReferenceApiEntity;
 use Simplia\Api\Entity\Category\CategoryReferenceApiEntity;
 use Simplia\Api\Entity\Comment\CommentReferenceApiEntity;
 use Simplia\Api\Entity\Product\ProductReferenceApiEntity;
+use Simplia\Api\Enum\CommentStatus;
+use Simplia\Api\Enum\CommentSubject;
 use Simplia\Api\FieldConfig\CommentApiFieldConfig;
 
 /**
@@ -29,11 +31,9 @@ final class CommentApiEntity extends AbstractApiEntity {
 
     /**
      * What the comment was written under: a `product`, a `category` or an `article`. The matching one of `product`, `category` and `article` is set.
-     * @return 'product'|'category'|'article'
-     * @phpstan-return string
      */
-    public function getSubject(): string {
-        return $this->readString('subject');
+    public function getSubject(): CommentSubject {
+        return $this->readEnum('subject', CommentSubject::class);
     }
 
     /**
@@ -108,11 +108,9 @@ final class CommentApiEntity extends AbstractApiEntity {
 
     /**
      * Moderation state: `pending` (waiting for the shop's approval), `approved`. A rejected comment is deleted, so no third state exists.
-     * @return 'pending'|'approved'
-     * @phpstan-return string
      */
-    public function getStatus(): string {
-        return $this->readString('status');
+    public function getStatus(): CommentStatus {
+        return $this->readEnum('status', CommentStatus::class);
     }
 
     /**

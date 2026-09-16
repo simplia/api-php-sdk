@@ -18,7 +18,7 @@ final class ArticleReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the article; the same value as `Article.id`.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -27,7 +27,7 @@ final class ArticleReferenceApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Name of the article. Null when the article no longer exists or has no name.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;

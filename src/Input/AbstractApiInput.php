@@ -6,22 +6,15 @@ namespace Simplia\Api\Input;
 
 use Simplia\Api\Money;
 
-/** The body of one write; the generated subclass adds a `set…()` per property. Only what was set is sent. */
+/** The body of one write: the required properties arrive through the generated constructor, the optional ones through a set…() each. Only what was given is sent. */
 abstract class AbstractApiInput implements \Countable {
 
     /** @var array<string, mixed> */
     protected array $params = [];
 
-    final public function __construct() {
-    }
-
     /** @return array<string, mixed> */
     public function toArray(): array {
         return self::export($this->params);
-    }
-
-    public static function create(): static {
-        return new static();
     }
 
     public function count(): int {

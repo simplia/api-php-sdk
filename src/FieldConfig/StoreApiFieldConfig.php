@@ -16,7 +16,7 @@ final class StoreApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the store; the value Order.store.id and TransportMethod.store.id carry, and OrderCreateInput.store_id takes.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -25,7 +25,7 @@ final class StoreApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Name of the store. Null when none is stored.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;

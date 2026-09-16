@@ -18,7 +18,7 @@ final class UserApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the account; the same value as `Order.user.id`.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -27,7 +27,7 @@ final class UserApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * E-mail address of the account, which is its login. Null when the account has none, such as one created at a till.
      */
-    public function withEmail(): self {
+    public function selectEmail(): self {
         $this->fields['email'] = true;
 
         return $this;
@@ -36,7 +36,7 @@ final class UserApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Loyalty card number of the customer, as printed on the card. Null when the customer has none.
      */
-    public function withLoyaltyCard(): self {
+    public function selectLoyaltyCard(): self {
         $this->fields['loyalty_card'] = true;
 
         return $this;
@@ -45,7 +45,7 @@ final class UserApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Whether the customer buys at wholesale prices.
      */
-    public function withWholesale(): self {
+    public function selectWholesale(): self {
         $this->fields['wholesale'] = true;
 
         return $this;
@@ -54,7 +54,7 @@ final class UserApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Personal discount of the customer, as a percentage taken off prices (5 for 5 %). Null when none is configured.
      */
-    public function withDiscountPercentage(): self {
+    public function selectDiscountPercentage(): self {
         $this->fields['discount_percentage'] = true;
 
         return $this;
@@ -63,7 +63,7 @@ final class UserApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Bonus added to the customer's loyalty-points rate, as a decimal string such as `0.0040`; `0.0` means no bonus.
      */
-    public function withPointsFactor(): self {
+    public function selectPointsFactor(): self {
         $this->fields['points_factor'] = true;
 
         return $this;
@@ -72,7 +72,7 @@ final class UserApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The customer's saved delivery address. Null when none is saved.
      */
-    public function withDeliveryAddress(ContactApiFieldConfig $config): self {
+    public function selectDeliveryAddress(ContactApiFieldConfig $config): self {
         $this->fields['delivery_address'] = $config;
 
         return $this;
@@ -81,7 +81,7 @@ final class UserApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The customer's saved billing address. Null when none is saved.
      */
-    public function withInvoiceAddress(ContactApiFieldConfig $config): self {
+    public function selectInvoiceAddress(ContactApiFieldConfig $config): self {
         $this->fields['invoice_address'] = $config;
 
         return $this;
@@ -90,7 +90,7 @@ final class UserApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The customer group the account belongs to. Null when it is in none.
      */
-    public function withUserGroup(UserGroupApiFieldConfig $config): self {
+    public function selectUserGroup(UserGroupApiFieldConfig $config): self {
         $this->fields['user_group'] = $config;
 
         return $this;

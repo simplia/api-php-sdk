@@ -9,6 +9,9 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Request;
 
+use Simplia\Api\Enum\CommentStatus;
+use Simplia\Api\Enum\CommentSubject;
+
 /**
  * The filters and the sort of `comments.list` (GET /api/3/comments).
  */
@@ -25,10 +28,9 @@ final class CommentsApiRequest extends AbstractApiRequest {
 
     /**
      * Only the comments written under a product, a category or an article. An unknown value is a 422 violation.
-     * @param 'product'|'category'|'article' $subject
      */
-    public function whereSubject(string $subject): self {
-        $this->params['subject'] = $subject;
+    public function whereSubject(CommentSubject $subject): self {
+        $this->params['subject'] = $subject->value;
 
         return $this;
     }
@@ -71,10 +73,9 @@ final class CommentsApiRequest extends AbstractApiRequest {
 
     /**
      * Only the comments in this moderation state. An unknown value is a 422 violation.
-     * @param 'pending'|'approved' $status
      */
-    public function whereStatus(string $status): self {
-        $this->params['status'] = $status;
+    public function whereStatus(CommentStatus $status): self {
+        $this->params['status'] = $status->value;
 
         return $this;
     }

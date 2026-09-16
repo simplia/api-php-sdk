@@ -9,6 +9,10 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Request;
 
+use Simplia\Api\Enum\ReviewSource;
+use Simplia\Api\Enum\ReviewStatus;
+use Simplia\Api\Enum\ReviewSubject;
+
 /**
  * The filters and the sort of `reviews.list` (GET /api/3/reviews).
  */
@@ -43,30 +47,27 @@ final class ReviewsApiRequest extends AbstractApiRequest {
 
     /**
      * Only the reviews of products, or only the reviews of orders. An unknown value is a 422 violation.
-     * @param 'product'|'order' $subject
      */
-    public function whereSubject(string $subject): self {
-        $this->params['subject'] = $subject;
+    public function whereSubject(ReviewSubject $subject): self {
+        $this->params['subject'] = $subject->value;
 
         return $this;
     }
 
     /**
      * Only the reviews written in the shop, or only those imported from one portal; one of the `source` values of a review. An unknown value is a 422 violation.
-     * @param 'shop'|'heureka'|'zbozi_cz'|'biano'|'arukereso'|'compari'|'pazaruvaj' $source
      */
-    public function whereSource(string $source): self {
-        $this->params['source'] = $source;
+    public function whereSource(ReviewSource $source): self {
+        $this->params['source'] = $source->value;
 
         return $this;
     }
 
     /**
      * Only the reviews in this moderation state. An unknown value is a 422 violation.
-     * @param 'pending'|'approved'|'rejected' $status
      */
-    public function whereStatus(string $status): self {
-        $this->params['status'] = $status;
+    public function whereStatus(ReviewStatus $status): self {
+        $this->params['status'] = $status->value;
 
         return $this;
     }

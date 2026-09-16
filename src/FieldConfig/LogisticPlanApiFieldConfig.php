@@ -16,7 +16,7 @@ final class LogisticPlanApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the plan; the value StockItemUpdateInput.logistic_plan_id takes.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -25,7 +25,7 @@ final class LogisticPlanApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Name of the plan.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -34,7 +34,7 @@ final class LogisticPlanApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Whether demand from retail customer orders counts for this plan's transfers.
      */
-    public function withActiveRetail(): self {
+    public function selectActiveRetail(): self {
         $this->fields['active_retail'] = true;
 
         return $this;
@@ -43,7 +43,7 @@ final class LogisticPlanApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Whether demand from wholesale customer orders counts for this plan's transfers.
      */
-    public function withActiveWholesale(): self {
+    public function selectActiveWholesale(): self {
         $this->fields['active_wholesale'] = true;
 
         return $this;
@@ -52,7 +52,7 @@ final class LogisticPlanApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Whether demand from repair jobs counts for this plan's transfers.
      */
-    public function withActiveRepair(): self {
+    public function selectActiveRepair(): self {
         $this->fields['active_repair'] = true;
 
         return $this;

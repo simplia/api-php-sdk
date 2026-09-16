@@ -10,6 +10,9 @@ declare(strict_types=1);
 namespace Simplia\Api\Entity;
 
 use Simplia\Api\Entity\Attribute\AttributeValueApiEntity;
+use Simplia\Api\Enum\AttributeAppliesTo;
+use Simplia\Api\Enum\AttributeMeaning;
+use Simplia\Api\Enum\AttributeType;
 use Simplia\Api\FieldConfig\AttributeApiFieldConfig;
 
 /**
@@ -39,29 +42,23 @@ final class AttributeApiEntity extends AbstractApiEntity {
 
     /**
      * What a value of the attribute is: `text`, `integer` or `boolean` (a product stores one `value`, as text), `choice` (one of `values`) or `multi_choice` (several of `values`).
-     * @return 'boolean'|'choice'|'multi_choice'|'text'|'integer'
-     * @phpstan-return string
      */
-    public function getType(): string {
-        return $this->readString('type');
+    public function getType(): AttributeType {
+        return $this->readEnum('type', AttributeType::class);
     }
 
     /**
      * What the attribute stands for, when the shop marked it: `size`, `color`, `gender`, `material`, `pattern`, `age_group`, `collection` or `season`. Null when it stands for nothing in particular.
-     * @return 'size'|'color'|'gender'|'material'|'pattern'|'age_group'|'collection'|'season'|''|null
-     * @phpstan-return string|null
      */
-    public function getMeaning(): ?string {
-        return $this->readStringOrNull('meaning');
+    public function getMeaning(): ?AttributeMeaning {
+        return $this->readEnumOrNull('meaning', AttributeMeaning::class);
     }
 
     /**
      * The kind of record the attribute describes: `product` (it appears in a product's `attributes`), `brand`, `store`, `customer` or `article`. Null for a kind this document does not name.
-     * @return 'product'|'brand'|'store'|'customer'|'article'|''|null
-     * @phpstan-return string|null
      */
-    public function getAppliesTo(): ?string {
-        return $this->readStringOrNull('applies_to');
+    public function getAppliesTo(): ?AttributeAppliesTo {
+        return $this->readEnumOrNull('applies_to', AttributeAppliesTo::class);
     }
 
     /**

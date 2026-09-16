@@ -14,30 +14,14 @@ namespace Simplia\Api\Input;
  */
 final class EmailSendApiInput extends AbstractApiInput {
     /**
-     * The recipient's e-mail address, a single bare address such as `user@example.com`: no display name, no list, no cc or bcc.
+     * @param string $recipient The recipient's e-mail address, a single bare address such as `user@example.com`: no display name, no list, no cc or bcc.
+     * @param string $subject Subject of the message.
+     * @param string $htmlBody Body of the message, as HTML. There is no plain-text alternative.
      */
-    public function setRecipient(?string $recipient): self {
+    public function __construct(string $recipient, string $subject, string $htmlBody) {
         $this->params['recipient'] = $recipient;
-
-        return $this;
-    }
-
-    /**
-     * Subject of the message.
-     */
-    public function setSubject(?string $subject): self {
         $this->params['subject'] = $subject;
-
-        return $this;
-    }
-
-    /**
-     * Body of the message, as HTML. There is no plain-text alternative.
-     */
-    public function setHtmlBody(?string $htmlBody): self {
         $this->params['html_body'] = $htmlBody;
-
-        return $this;
     }
 
     /**

@@ -14,12 +14,10 @@ namespace Simplia\Api\Input;
  */
 final class ProductImageUploadApiInput extends AbstractApiInput {
     /**
-     * The image file as standard base64 of its raw bytes, without a data: prefix. Any readable image format, including SVG and AVIF.
+     * @param string $bodyBase64 The image file as standard base64 of its raw bytes, without a data: prefix. Any readable image format, including SVG and AVIF.
      */
-    public function setBodyBase64(?string $bodyBase64): self {
+    public function __construct(string $bodyBase64) {
         $this->params['body_base64'] = $bodyBase64;
-
-        return $this;
     }
 
     /**

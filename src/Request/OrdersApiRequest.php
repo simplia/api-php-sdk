@@ -9,16 +9,19 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Request;
 
+use Simplia\Api\Enum\OrderStatus;
+
 /**
  * The filters and the sort of `orders.list` (GET /api/3/orders).
  */
 final class OrdersApiRequest extends AbstractApiRequest {
     /**
      * Filter by order status. Repeatable; allowed: unprocessed, processed, waiting, ready, finished, cancelled (422 otherwise).
-     * @param list<'unprocessed'|'processed'|'waiting'|'ready'|'finished'|'cancelled'> $status
+     * @param list<OrderStatus> $status
      */
     public function whereStatus(array $status): self {
-        $this->params['status'] = $status;
+        self::validateArray($status, OrderStatus::class);
+        $this->params['status'] = array_map(static fn(OrderStatus $value): string => $value->value, $status);
 
         return $this;
     }

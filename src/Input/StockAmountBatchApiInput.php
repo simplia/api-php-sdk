@@ -14,13 +14,10 @@ namespace Simplia\Api\Input;
  */
 final class StockAmountBatchApiInput extends AbstractApiInput {
     /**
-     * The items and their target quantities, at least one. Violations across all items are answered together as one 422.
-     * @param list<StockAmountItemApiInput> $items
+     * @param list<StockAmountItemApiInput> $items The items and their target quantities, at least one. Violations across all items are answered together as one 422.
      */
-    public function setItems(array $items): self {
+    public function __construct(array $items) {
         self::validateArray($items, StockAmountItemApiInput::class);
         $this->params['items'] = $items;
-
-        return $this;
     }
 }

@@ -18,7 +18,7 @@ final class ContactApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the stored address. Each address of an order has its own.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -27,7 +27,7 @@ final class ContactApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Given name of the recipient or contact. Null when not filled.
      */
-    public function withFirstName(): self {
+    public function selectFirstName(): self {
         $this->fields['first_name'] = true;
 
         return $this;
@@ -36,7 +36,7 @@ final class ContactApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Family name of the recipient or contact. Null when not filled.
      */
-    public function withLastName(): self {
+    public function selectLastName(): self {
         $this->fields['last_name'] = true;
 
         return $this;
@@ -45,7 +45,7 @@ final class ContactApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Street and house number. Null when not filled.
      */
-    public function withStreet(): self {
+    public function selectStreet(): self {
         $this->fields['street'] = true;
 
         return $this;
@@ -54,7 +54,7 @@ final class ContactApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Postal code, as entered. Null when not filled.
      */
-    public function withZip(): self {
+    public function selectZip(): self {
         $this->fields['zip'] = true;
 
         return $this;
@@ -63,7 +63,7 @@ final class ContactApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Town or city. Null when not filled.
      */
-    public function withCity(): self {
+    public function selectCity(): self {
         $this->fields['city'] = true;
 
         return $this;
@@ -72,7 +72,7 @@ final class ContactApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * State, province or county, where the destination country uses one. Null when not filled.
      */
-    public function withRegion(): self {
+    public function selectRegion(): self {
         $this->fields['region'] = true;
 
         return $this;
@@ -81,7 +81,7 @@ final class ContactApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Country as a lower-case two-letter code (ISO 3166-1 alpha-2), such as `cz`. Null when not filled.
      */
-    public function withCountry(): self {
+    public function selectCountry(): self {
         $this->fields['country'] = true;
 
         return $this;
@@ -90,7 +90,7 @@ final class ContactApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Company name, when the address belongs to a business. Null for a private person.
      */
-    public function withCompanyName(): self {
+    public function selectCompanyName(): self {
         $this->fields['company_name'] = true;
 
         return $this;
@@ -99,7 +99,7 @@ final class ContactApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Company registration number in the national business register (Czech IČO). Not the VAT number. Null when not a business or not filled.
      */
-    public function withCompanyId(): self {
+    public function selectCompanyId(): self {
         $this->fields['company_id'] = true;
 
         return $this;
@@ -108,7 +108,7 @@ final class ContactApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * VAT identification number (Czech DIČ, EU VAT id), usually the country prefix followed by digits. Null when not VAT-registered or not filled.
      */
-    public function withCompanyVatId(): self {
+    public function selectCompanyVatId(): self {
         $this->fields['company_vat_id'] = true;
 
         return $this;
@@ -117,7 +117,7 @@ final class ContactApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Contact phone number, as entered. Null when not filled.
      */
-    public function withPhone(): self {
+    public function selectPhone(): self {
         $this->fields['phone'] = true;
 
         return $this;
@@ -126,7 +126,7 @@ final class ContactApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Contact e-mail address. Null when not filled.
      */
-    public function withEmail(): self {
+    public function selectEmail(): self {
         $this->fields['email'] = true;
 
         return $this;

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
+use Simplia\Api\Exception\UnknownEnumValueException;
 use Simplia\Api\Money;
 
 /**
@@ -66,6 +67,43 @@ abstract class AbstractApiEntity {
         }
 
         return $value;
+    }
+
+    /**
+     * @template T of \BackedEnum
+     * @param class-string<T> $enum
+     * @return T
+     */
+    final protected function readEnum(string $key, string $enum): \BackedEnum {
+        return $this->readEnumOrNull($key, $enum) ?? throw $this->unexpected($key, 'a ' . $enum . ' value');
+    }
+
+    /**
+     * @template T of \BackedEnum
+     * @param class-string<T> $enum
+     * @return T|null
+     */
+    final protected function readEnumOrNull(string $key, string $enum): ?\BackedEnum {
+        $value = $this->readStringOrNull($key);
+        if ($value === null) {
+            return null;
+        }
+
+        return $enum::tryFrom($value) ?? throw new UnknownEnumValueException($this->fieldPrefix . $key, $value, $enum);
+    }
+
+    /**
+     * @template T of \BackedEnum
+     * @param class-string<T> $enum
+     * @return list<T>
+     */
+    final protected function readEnumList(string $key, string $enum): array {
+        $list = [];
+        foreach ($this->readStringList($key) as $value) {
+            $list[] = $enum::tryFrom($value) ?? throw new UnknownEnumValueException($this->fieldPrefix . $key, $value, $enum);
+        }
+
+        return $list;
     }
 
     final protected function readFloat(string $key): float {

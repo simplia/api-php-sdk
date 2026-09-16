@@ -14,12 +14,10 @@ namespace Simplia\Api\Input;
  */
 final class TextPageApiInput extends AbstractApiInput {
     /**
-     * Title of the page. Required when creating; when updating, a blank value is a 422 violation.
+     * @param string $name Title of the page. Required when creating; when updating, a blank value is a 422 violation.
      */
-    public function setName(?string $name): self {
+    public function __construct(string $name) {
         $this->params['name'] = $name;
-
-        return $this;
     }
 
     /**

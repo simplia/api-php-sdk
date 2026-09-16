@@ -18,7 +18,7 @@ final class VoucherApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the voucher; the `{id}` of `GET /vouchers/{id}`.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -27,7 +27,7 @@ final class VoucherApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The code the customer types; the `{code}` of the action operations.
      */
-    public function withCode(): self {
+    public function selectCode(): self {
         $this->fields['code'] = true;
 
         return $this;
@@ -36,7 +36,7 @@ final class VoucherApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * When the code becomes redeemable, compared by calendar day. Null when there is no start bound.
      */
-    public function withStartsAt(): self {
+    public function selectStartsAt(): self {
         $this->fields['starts_at'] = true;
 
         return $this;
@@ -45,7 +45,7 @@ final class VoucherApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Last day the code is redeemable, inclusive, compared by calendar day; the time part is always midnight. Null when the code never expires.
      */
-    public function withEndsAt(): self {
+    public function selectEndsAt(): self {
         $this->fields['ends_at'] = true;
 
         return $this;
@@ -54,7 +54,7 @@ final class VoucherApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Face value of an amount-based code, in the shop's main currency. Null for a percentage or other non-amount code.
      */
-    public function withValue(): self {
+    public function selectValue(): self {
         $this->fields['value'] = true;
 
         return $this;
@@ -63,7 +63,7 @@ final class VoucherApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Whether the code is in circulation. A code created here is active at once; a prepared (inactive) code becomes active through `POST /vouchers/{code}/activate`.
      */
-    public function withActive(): self {
+    public function selectActive(): self {
         $this->fields['active'] = true;
 
         return $this;
@@ -72,7 +72,7 @@ final class VoucherApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The voucher group the code belongs to. Null for a code without a group, which is never valid.
      */
-    public function withGroup(VoucherGroupReferenceApiFieldConfig $config): self {
+    public function selectGroup(VoucherGroupReferenceApiFieldConfig $config): self {
         $this->fields['group'] = $config;
 
         return $this;
@@ -81,7 +81,7 @@ final class VoucherApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * How many times the code may be redeemed, from its group. 0 or null means unlimited.
      */
-    public function withMaxUses(): self {
+    public function selectMaxUses(): self {
         $this->fields['max_uses'] = true;
 
         return $this;
@@ -90,7 +90,7 @@ final class VoucherApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * How many times the code has been redeemed.
      */
-    public function withTotalUses(): self {
+    public function selectTotalUses(): self {
         $this->fields['total_uses'] = true;
 
         return $this;
@@ -99,7 +99,7 @@ final class VoucherApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Whether the code can be redeemed right now: active, in a group, not used up, and within its validity window.
      */
-    public function withValid(): self {
+    public function selectValid(): self {
         $this->fields['valid'] = true;
 
         return $this;

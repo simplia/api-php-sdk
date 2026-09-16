@@ -16,7 +16,7 @@ final class BrandApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Numeric identifier of the brand; the value `Product.brand.id` carries.
      */
-    public function withId(): self {
+    public function selectId(): self {
         $this->fields['id'] = true;
 
         return $this;
@@ -25,7 +25,7 @@ final class BrandApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Brand name, the same in every language. Null when none is stored.
      */
-    public function withName(): self {
+    public function selectName(): self {
         $this->fields['name'] = true;
 
         return $this;
@@ -34,7 +34,7 @@ final class BrandApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The shop's own code for the brand. Null when none is set.
      */
-    public function withCode(): self {
+    public function selectCode(): self {
         $this->fields['code'] = true;
 
         return $this;
@@ -43,7 +43,7 @@ final class BrandApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * URL-safe form of the name used in the brand's storefront address, such as `bellroy`. Null when none is set.
      */
-    public function withSlug(): self {
+    public function selectSlug(): self {
         $this->fields['slug'] = true;
 
         return $this;
@@ -52,7 +52,7 @@ final class BrandApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * Whether the brand is offered in the catalog; a shop can have it recomputed nightly from the brand's products. An inactive brand is kept for the products that carry it.
      */
-    public function withActive(): self {
+    public function selectActive(): self {
         $this->fields['active'] = true;
 
         return $this;
@@ -61,7 +61,7 @@ final class BrandApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The supplier the shop buys this brand from; `Product.supplier` falls back to it when a product has no supplier of its own; the same record as `GET /suppliers/{id}`. Null when none is set.
      */
-    public function withSupplier(SupplierApiFieldConfig $config): self {
+    public function selectSupplier(SupplierApiFieldConfig $config): self {
         $this->fields['supplier'] = $config;
 
         return $this;
@@ -70,7 +70,7 @@ final class BrandApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The brand's main picture, such as its logo. Null when none is stored.
      */
-    public function withImage(ImageApiFieldConfig $config): self {
+    public function selectImage(ImageApiFieldConfig $config): self {
         $this->fields['image'] = $config;
 
         return $this;
@@ -79,7 +79,7 @@ final class BrandApiFieldConfig extends AbstractApiFieldConfig {
     /**
      * The brand's second picture, the larger one a storefront uses where it previews the brand, a brand list for instance. Null when none is stored.
      */
-    public function withPreviewImage(ImageApiFieldConfig $config): self {
+    public function selectPreviewImage(ImageApiFieldConfig $config): self {
         $this->fields['preview_image'] = $config;
 
         return $this;

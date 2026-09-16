@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Request;
 
+use Simplia\Api\Enum\QuestionStatus;
+
 /**
  * The filters and the sort of `questions.list` (GET /api/3/questions).
  */
@@ -34,10 +36,9 @@ final class QuestionsApiRequest extends AbstractApiRequest {
 
     /**
      * Only the questions in this state. An unknown value is a 422 violation.
-     * @param 'open'|'postponed'|'answered' $status
      */
-    public function whereStatus(string $status): self {
-        $this->params['status'] = $status;
+    public function whereStatus(QuestionStatus $status): self {
+        $this->params['status'] = $status->value;
 
         return $this;
     }
