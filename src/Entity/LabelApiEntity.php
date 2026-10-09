@@ -52,7 +52,7 @@ final class LabelApiEntity extends AbstractApiEntity {
     }
 
     /**
-     * The kinds of record the label can be pinned on: `product`, `variant`, `storage_location`. Empty when the shop has not picked any.
+     * The kinds of record the label can be pinned on: `product`, `variant`, `storage_location`, `article`. Empty when the shop has not picked any.
      * @return list<LabelAppliesTo>
      */
     public function getAppliesTo(): array {

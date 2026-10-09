@@ -10,11 +10,12 @@ declare(strict_types=1);
 namespace Simplia\Api\Enum;
 
 /**
- * The kinds of record the label can be pinned on: `product`, `variant`, `storage_location`. Empty when the shop has not picked any.
+ * The kinds of record the label can be pinned on: `product`, `variant`, `storage_location`, `article`. Empty when the shop has not picked any.
  * Carried by Label.applies_to.
  */
 enum LabelAppliesTo: string {
     case Product = 'product';
     case Variant = 'variant';
     case StorageLocation = 'storage_location';
+    case Article = 'article';
 }

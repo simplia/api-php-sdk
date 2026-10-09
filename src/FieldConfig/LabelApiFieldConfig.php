@@ -59,7 +59,7 @@ final class LabelApiFieldConfig extends AbstractApiFieldConfig {
     }
 
     /**
-     * The kinds of record the label can be pinned on: `product`, `variant`, `storage_location`. Empty when the shop has not picked any.
+     * The kinds of record the label can be pinned on: `product`, `variant`, `storage_location`, `article`. Empty when the shop has not picked any.
      */
     public function selectAppliesTo(): self {
         $this->fields['applies_to'] = true;
