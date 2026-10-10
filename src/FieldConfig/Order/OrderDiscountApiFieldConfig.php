@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Simplia\Api\FieldConfig\Order;
 
 use Simplia\Api\FieldConfig\AbstractApiFieldConfig;
+use Simplia\Api\FieldConfig\VoucherApiFieldConfig;
 
 /**
  * Which properties of a OrderDiscountApiEntity to fetch.
@@ -56,6 +57,15 @@ final class OrderDiscountApiFieldConfig extends AbstractApiFieldConfig {
      */
     public function selectVatRate(): self {
         $this->fields['vat_rate'] = true;
+
+        return $this;
+    }
+
+    /**
+     * The discount code redeemed on this line; the same record as `GET /vouchers/{id}`, any of its members selectable through `discounts.voucher.…`. Null for a discount that is not a code, such as a loyalty or volume reduction.
+     */
+    public function selectVoucher(VoucherApiFieldConfig $config): self {
+        $this->fields['voucher'] = $config;
 
         return $this;
     }

@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Simplia\Api\Entity\Order;
 
 use Simplia\Api\Entity\AbstractApiEntity;
+use Simplia\Api\Entity\VoucherApiEntity;
 use Simplia\Api\FieldConfig\Order\OrderDiscountApiFieldConfig;
 use Simplia\Api\Money;
 
@@ -50,6 +51,13 @@ final class OrderDiscountApiEntity extends AbstractApiEntity {
      */
     public function getVatRate(): ?float {
         return $this->readFloatOrNull('vat_rate');
+    }
+
+    /**
+     * The discount code redeemed on this line; the same record as `GET /vouchers/{id}`, any of its members selectable through `discounts.voucher.…`. Null for a discount that is not a code, such as a loyalty or volume reduction.
+     */
+    public function getVoucher(): ?VoucherApiEntity {
+        return $this->readEntityOrNull('voucher', VoucherApiEntity::class);
     }
 
     public static function createFieldConfig(): OrderDiscountApiFieldConfig {

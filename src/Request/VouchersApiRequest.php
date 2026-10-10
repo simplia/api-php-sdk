@@ -42,6 +42,15 @@ final class VouchersApiRequest extends AbstractApiRequest {
     }
 
     /**
+     * Only the codes redeemed at least once (`true`, `total_uses` above 0), or only the never-redeemed ones (`false`). A value other than true or false is a 422 violation.
+     */
+    public function whereUsed(bool $used): self {
+        $this->params['used'] = $used ? 'true' : 'false';
+
+        return $this;
+    }
+
+    /**
      * Only the codes of the content group (storefront tree) with this identifier, from `GET /content-groups`; without it, the list is the content group of the storefront being called. A non-integer or value below 1 is a 422 violation; an identifier that names no content group lists nothing.
      */
     public function whereContentGroup(int $contentGroup): self {

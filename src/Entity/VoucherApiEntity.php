@@ -14,7 +14,7 @@ use Simplia\Api\FieldConfig\VoucherApiFieldConfig;
 use Simplia\Api\Money;
 
 /**
- * A discount code a customer redeems at checkout: one code belonging to a voucher group (the campaign that defines what the discount does), with its validity window, use limit and usage count. Codes are created from a group, then locked, activated and applied through the action operations. The list holds the codes of the content group (storefront tree) being called, or the one `content_group` names; any code can be read by id or by its code.
+ * A discount code a customer redeems at checkout: one code belonging to a voucher group (the campaign that defines what the discount does), with its validity window, use limit and usage count. Codes are created from a group, then locked, activated and applied through the action operations. The list holds the codes of the content group (storefront tree) being called, or the one `content_group` names; any code can be read by id or by its code. The orders a code was redeemed on are listed by `GET /orders?voucher={id}`, those of a whole group by `GET /orders?voucher_group={id}`.
  */
 final class VoucherApiEntity extends AbstractApiEntity {
     /**

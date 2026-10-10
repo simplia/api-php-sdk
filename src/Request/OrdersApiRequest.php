@@ -144,6 +144,24 @@ final class OrdersApiRequest extends AbstractApiRequest {
     }
 
     /**
+     * Only the orders that redeemed the voucher with this identifier, from `GET /vouchers`; each such order shows it in `discounts[].voucher`. A non-integer or value below 1 is a 422 violation; an identifier no order redeemed lists nothing.
+     */
+    public function whereVoucher(int $voucher): self {
+        $this->params['voucher'] = $voucher;
+
+        return $this;
+    }
+
+    /**
+     * Only the orders that redeemed any voucher of the voucher group with this identifier, from `GET /voucher-groups`; an order that redeemed several of its codes is listed once. A non-integer or value below 1 is a 422 violation; an identifier no order redeemed lists nothing.
+     */
+    public function whereVoucherGroup(int $voucherGroup): self {
+        $this->params['voucher_group'] = $voucherGroup;
+
+        return $this;
+    }
+
+    /**
      * Filter by order ids. Repeatable (`ids[]=1&ids[]=2`); every element must be an integer (digits only; 422 otherwise); unknown ids are silently absent.
      * @param list<int> $ids
      */
