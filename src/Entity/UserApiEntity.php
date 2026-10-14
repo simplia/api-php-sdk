@@ -31,6 +31,13 @@ final class UserApiEntity extends AbstractApiEntity {
     }
 
     /**
+     * Public nickname the customer chose in their profile. Null when none is set.
+     */
+    public function getNickname(): ?string {
+        return $this->readStringOrNull('nickname');
+    }
+
+    /**
      * Loyalty card number of the customer, as printed on the card. Null when the customer has none.
      */
     public function getLoyaltyCard(): ?string {

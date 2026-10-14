@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Simplia\Api\Input;
 
 /**
- * Changes the commercial settings of a customer account. Send only the fields to change; a field that is absent or null is left as it is.
+ * Changes the commercial settings or the customer group of a customer account. Send only the fields to change; a field that is absent or null is left as it is, so a group cannot be removed here.
  */
 final class UserUpdateApiInput extends AbstractApiInput {
     /** Wire name => setter, for every property the schema requires. */
@@ -39,6 +39,15 @@ final class UserUpdateApiInput extends AbstractApiInput {
      */
     public function setPointsFactor(?string $pointsFactor): self {
         $this->params['points_factor'] = $pointsFactor;
+
+        return $this;
+    }
+
+    /**
+     * Identifier of the customer group to put the account in (`UserGroup.id`). An account belongs to at most one group, so this replaces its current group. An unknown id is a 422 violation. Returned as `User.user_group`.
+     */
+    public function setUserGroupId(int $userGroupId): self {
+        $this->params['user_group_id'] = $userGroupId;
 
         return $this;
     }

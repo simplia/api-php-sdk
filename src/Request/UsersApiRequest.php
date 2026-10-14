@@ -41,6 +41,15 @@ final class UsersApiRequest extends AbstractApiRequest {
         return $this;
     }
 
+    /**
+     * Only accounts with a nickname (`true`), or only those without one (`false`); an empty nickname counts as none. A value other than true or false is a 422 violation.
+     */
+    public function whereHasNickname(bool $hasNickname): self {
+        $this->params['has_nickname'] = $hasNickname ? 'true' : 'false';
+
+        return $this;
+    }
+
     public function orderByIdAsc(): self {
         $this->params['sort'] = 'id';
 
