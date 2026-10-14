@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\FieldConfig;
 
+use Simplia\Api\FieldConfig\StockItem\BillOfMaterialLineApiFieldConfig;
 use Simplia\Api\FieldConfig\StockItem\BundlePartApiFieldConfig;
 use Simplia\Api\FieldConfig\StockItem\StockLevelApiFieldConfig;
 use Simplia\Api\FieldConfig\StockItem\StorageLocationApiFieldConfig;
@@ -221,6 +222,15 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
      */
     public function selectBundleParts(BundlePartApiFieldConfig $config): self {
         $this->fields['bundle_parts'] = $config;
+
+        return $this;
+    }
+
+    /**
+     * What one unit of the item is produced from, line by line, when the item is made in-house; empty otherwise.
+     */
+    public function selectBillOfMaterial(BillOfMaterialLineApiFieldConfig $config): self {
+        $this->fields['bill_of_material'] = $config;
 
         return $this;
     }

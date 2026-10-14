@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Simplia\Api\Entity;
 
+use Simplia\Api\Entity\StockItem\BillOfMaterialLineApiEntity;
 use Simplia\Api\Entity\StockItem\BundlePartApiEntity;
 use Simplia\Api\Entity\StockItem\StockLevelApiEntity;
 use Simplia\Api\Entity\StockItem\StorageLocationApiEntity;
@@ -181,6 +182,14 @@ final class StockItemApiEntity extends AbstractApiEntity {
      */
     public function getBundleParts(): array {
         return $this->readEntities('bundle_parts', BundlePartApiEntity::class);
+    }
+
+    /**
+     * What one unit of the item is produced from, line by line, when the item is made in-house; empty otherwise.
+     * @return list<BillOfMaterialLineApiEntity>
+     */
+    public function getBillOfMaterial(): array {
+        return $this->readEntities('bill_of_material', BillOfMaterialLineApiEntity::class);
     }
 
     /**

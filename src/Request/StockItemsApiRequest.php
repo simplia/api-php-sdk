@@ -23,6 +23,15 @@ final class StockItemsApiRequest extends AbstractApiRequest {
     }
 
     /**
+     * When true, only items made in-house from a bill of material (at least one `bill_of_material` line). false is a no-op.
+     */
+    public function whereHasBillOfMaterial(bool $hasBillOfMaterial): self {
+        $this->params['has_bill_of_material'] = $hasBillOfMaterial ? 'true' : 'false';
+
+        return $this;
+    }
+
+    /**
      * Filter by item code (the code property). Repeatable (`codes[]=A&codes[]=B`); every element must be a non-blank string of at most 255 characters (422 otherwise); unknown codes are silently absent.
      * @param list<string> $codes
      */
