@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Simplia\Api\Enum;
 
 /**
- * What the attribute stands for, when the shop marked it: `size`, `color`, `gender`, `material`, `pattern`, `age_group`, `collection` or `season`. Null when it stands for nothing in particular.
+ * What the attribute stands for, when the shop marked it: `size`, `color`, `gender`, `material`, `pattern`, `age_group`, `collection`, `season` or `size_system` (the sizing system its values follow, e.g. EU or UK; not sent yet). Null when it stands for nothing in particular.
  * Carried by Attribute.meaning.
  */
 enum AttributeMeaning: string {
@@ -22,4 +22,5 @@ enum AttributeMeaning: string {
     case AgeGroup = 'age_group';
     case Collection = 'collection';
     case Season = 'season';
+    case SizeSystem = 'size_system';
 }

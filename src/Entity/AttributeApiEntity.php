@@ -48,7 +48,7 @@ final class AttributeApiEntity extends AbstractApiEntity {
     }
 
     /**
-     * What the attribute stands for, when the shop marked it: `size`, `color`, `gender`, `material`, `pattern`, `age_group`, `collection` or `season`. Null when it stands for nothing in particular.
+     * What the attribute stands for, when the shop marked it: `size`, `color`, `gender`, `material`, `pattern`, `age_group`, `collection`, `season` or `size_system` (the sizing system its values follow, e.g. EU or UK; not sent yet). Null when it stands for nothing in particular.
      */
     public function getMeaning(): ?AttributeMeaning {
         return $this->readEnumOrNull('meaning', AttributeMeaning::class);
