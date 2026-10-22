@@ -182,6 +182,42 @@ final class StockItemApiFieldConfig extends AbstractApiFieldConfig {
     }
 
     /**
+     * Weight of one piece in grams. Null when the shop has not recorded it.
+     */
+    public function selectWeightGrams(): self {
+        $this->fields['weight_grams'] = true;
+
+        return $this;
+    }
+
+    /**
+     * Width of one piece in millimeters. Null when the shop has not recorded it.
+     */
+    public function selectWidthMillimeters(): self {
+        $this->fields['width_millimeters'] = true;
+
+        return $this;
+    }
+
+    /**
+     * Height of one piece in millimeters. Null when the shop has not recorded it.
+     */
+    public function selectHeightMillimeters(): self {
+        $this->fields['height_millimeters'] = true;
+
+        return $this;
+    }
+
+    /**
+     * Length of one piece in millimeters. Null when the shop has not recorded it.
+     */
+    public function selectLengthMillimeters(): self {
+        $this->fields['length_millimeters'] = true;
+
+        return $this;
+    }
+
+    /**
      * Display name in the request language: the product's name, with the variant's value in parentheses for a variant.
      */
     public function selectName(): self {

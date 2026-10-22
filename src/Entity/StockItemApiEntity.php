@@ -148,6 +148,34 @@ final class StockItemApiEntity extends AbstractApiEntity {
     }
 
     /**
+     * Weight of one piece in grams. Null when the shop has not recorded it.
+     */
+    public function getWeightGrams(): ?int {
+        return $this->readIntOrNull('weight_grams');
+    }
+
+    /**
+     * Width of one piece in millimeters. Null when the shop has not recorded it.
+     */
+    public function getWidthMillimeters(): ?int {
+        return $this->readIntOrNull('width_millimeters');
+    }
+
+    /**
+     * Height of one piece in millimeters. Null when the shop has not recorded it.
+     */
+    public function getHeightMillimeters(): ?int {
+        return $this->readIntOrNull('height_millimeters');
+    }
+
+    /**
+     * Length of one piece in millimeters. Null when the shop has not recorded it.
+     */
+    public function getLengthMillimeters(): ?int {
+        return $this->readIntOrNull('length_millimeters');
+    }
+
+    /**
      * Display name in the request language: the product's name, with the variant's value in parentheses for a variant.
      */
     public function getName(): string {
