@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Simplia\Api\Input;
 
 /**
- * Changes the name, VAT rate or code of a product. Send only the fields to change; a field that is absent or null is left as it is.
+ * Changes the name, VAT rate, code or barcode (EAN) of a product. Send only the fields to change; a field that is absent or null is left as it is.
  */
 final class ProductUpdateApiInput extends AbstractApiInput {
     /** Wire name => setter, for every property the schema requires. */
@@ -39,6 +39,15 @@ final class ProductUpdateApiInput extends AbstractApiInput {
      */
     public function setCode(?string $code): self {
         $this->params['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * New barcode (EAN) of the product's stock item. An empty string clears it.
+     */
+    public function setEan(?string $ean): self {
+        $this->params['ean'] = $ean;
 
         return $this;
     }

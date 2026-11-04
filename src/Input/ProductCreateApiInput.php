@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Simplia\Api\Input;
 
 /**
- * Creates a product: its primary category and name, optionally its VAT rate and code. Answered with the full product.
+ * Creates a product: its primary category and name, optionally its VAT rate, code and barcode (EAN). Answered with the full product.
  *
  * Required before sending: setMainCategoryId(), setName(). A missing one throws IncompleteInputException at the endpoint call, before any request.
  */
@@ -50,6 +50,15 @@ final class ProductCreateApiInput extends AbstractApiInput {
      */
     public function setCode(?string $code): self {
         $this->params['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Barcode (EAN) of the product's stock item. Omit to leave it unset; an empty string is treated as omitted.
+     */
+    public function setEan(?string $ean): self {
+        $this->params['ean'] = $ean;
 
         return $this;
     }
