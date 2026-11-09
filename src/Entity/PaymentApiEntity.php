@@ -73,6 +73,20 @@ final class PaymentApiEntity extends AbstractApiEntity {
         return $this->readMoney('amount_in_payment_currency');
     }
 
+    /**
+     * The order the payment settles; the same record as `GET /orders/{id}`. Null when the payment belongs to no order directly, such as a payment taken at the counter for a receipt: its order, if it has one, is `document.order`.
+     */
+    public function getOrder(): ?OrderApiEntity {
+        return $this->readEntityOrNull('order', OrderApiEntity::class);
+    }
+
+    /**
+     * The document the payment was recorded against, such as the receipt of a counter sale; the same record as `GET /documents/{id}`. Null when there is none or when that document is not yet closed.
+     */
+    public function getDocument(): ?DocumentApiEntity {
+        return $this->readEntityOrNull('document', DocumentApiEntity::class);
+    }
+
     public static function createFieldConfig(): PaymentApiFieldConfig {
         return new PaymentApiFieldConfig();
     }

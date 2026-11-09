@@ -84,4 +84,22 @@ final class PaymentApiFieldConfig extends AbstractApiFieldConfig {
 
         return $this;
     }
+
+    /**
+     * The order the payment settles; the same record as `GET /orders/{id}`. Null when the payment belongs to no order directly, such as a payment taken at the counter for a receipt: its order, if it has one, is `document.order`.
+     */
+    public function selectOrder(OrderApiFieldConfig $config): self {
+        $this->fields['order'] = $config;
+
+        return $this;
+    }
+
+    /**
+     * The document the payment was recorded against, such as the receipt of a counter sale; the same record as `GET /documents/{id}`. Null when there is none or when that document is not yet closed.
+     */
+    public function selectDocument(DocumentApiFieldConfig $config): self {
+        $this->fields['document'] = $config;
+
+        return $this;
+    }
 }
