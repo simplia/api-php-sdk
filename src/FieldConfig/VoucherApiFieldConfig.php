@@ -61,6 +61,15 @@ final class VoucherApiFieldConfig extends AbstractApiFieldConfig {
     }
 
     /**
+     * Face value of a gift voucher in the currency it was paid in, e.g. 40.00 EUR for a voucher bought on a euro domain of a CZK shop. A voucher paid in a currency other than the shop's main one redeems exactly this amount, and only on orders and receipts in that currency. Null when the currency was not recorded (codes issued before November 2026, and codes not sold as gift vouchers) or for a code without an amount.
+     */
+    public function selectValueInVoucherCurrency(): self {
+        $this->fields['value_in_voucher_currency'] = true;
+
+        return $this;
+    }
+
+    /**
      * Whether the code is in circulation. A code created here is active at once; a prepared (inactive) code becomes active through `POST /vouchers/{code}/activate`.
      */
     public function selectActive(): self {
