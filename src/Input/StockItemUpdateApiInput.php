@@ -48,6 +48,15 @@ final class StockItemUpdateApiInput extends AbstractApiInput {
     }
 
     /**
+     * New warehouse valuation of one unit without VAT, in the shop's main currency (`StockItem.accounting_value`). Accepted only when the shop keeps a fixed stock price; otherwise a 422 violation at `items[i].accounting_value`, because the value is derived from purchases or the accounting system. Goods issued from then on are valued at it; documents already closed keep their values.
+     */
+    public function setAccountingValue(?Money $accountingValue): self {
+        $this->params['accounting_value'] = $accountingValue;
+
+        return $this;
+    }
+
+    /**
      * New VAT rate as a percentage (21 for 21 %). Not returned by any read.
      */
     public function setVatRate(?float $vatRate): self {
